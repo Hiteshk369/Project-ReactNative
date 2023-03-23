@@ -39,12 +39,7 @@ const FormNavigation = () => {
                 <View style={styles.navCircle} />
                 <View style={styles.navLine} />
               </View>
-              <Text
-                style={
-                  item.active
-                    ? {fontSize: 8, width: 60, height: 30, color: '#ff6f00'}
-                    : {fontSize: 8, width: 60, height: 30}
-                }>
+              <Text style={item.active ? styles.active : styles.notActive}>
                 {item.name}
               </Text>
             </View>
@@ -53,7 +48,7 @@ const FormNavigation = () => {
               <View style={styles.navFlowContainer}>
                 <View style={styles.navCircle} />
               </View>
-              <Text style={{fontSize: 8, width: 60, height: 30}}>
+              <Text style={item.active ? styles.active : styles.notActive}>
                 {item.name}
               </Text>
             </View>
@@ -85,6 +80,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  active: {
+    fontSize: 8,
+    width: 60,
+    height: 30,
+    color: '#ff6f00',
+  },
+  notActive: {
+    fontSize: 8,
+    width: 60,
+    height: 30,
   },
 });
 
