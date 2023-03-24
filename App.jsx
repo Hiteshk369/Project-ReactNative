@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import MainRegistration from './screens/Registration/MainRegistration';
 import PersonalDetailsRegistration from './screens/Registration/PersonalDetailsRegistration';
 import Verification from './screens/Registration/OTP/Verification';
+import Otpkey from './screens/Registration/OTP/Otpkey';
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
         {/* <PersonalDetailsRegistration /> */}
         {/* <MainRegistration /> */}
-        <Verification/>
+        {/* <Verification/> */}
+        <Otpkey/>
       </LinearGradient>
     </SafeAreaView>
   );

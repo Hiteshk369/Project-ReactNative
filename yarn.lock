@@ -6035,6 +6035,13 @@ react-native-linear-gradient@^2.6.2:
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.6.2.tgz"
   integrity sha512-Z8Xxvupsex+9BBFoSYS87bilNPWcRfRsGC0cpJk72Nxb5p2nEkGSBv73xZbEHnW2mUFvP+huYxrVvjZkr/gRjQ==
 
+react-native-otp-textinput@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/react-native-otp-textinput/-/react-native-otp-textinput-1.0.0.tgz"
+  integrity sha512-S3KGfgZm+Hgpb7btOCUgNdIwsWs9ouRQDigEu4y57u7L3Ws9QkncIvbJ1BLDBJftLuwnM6+93qlO1QeSHF3qAA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-phone-number-input@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/react-native-phone-number-input/-/react-native-phone-number-input-2.1.0.tgz"
@@ -6067,7 +6074,7 @@ react-native-web@*, react-native-web@0.9.x:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
 
-react-native@*, "react-native@>= 0.62", react-native@0.71.4:
+react-native@*, "react-native@>= 0.62", react-native@>=0.20.0, react-native@0.71.4:
   version "0.71.4"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.71.4.tgz"
   integrity sha512-3hSYqvWrOdKhpV3HpEKp1/CkWx8Sr/N/miCrmUIAsVTSJUR7JW0VvIsrV9urDhUj/s6v2WF4n7qIEEJsmTCrPw==
