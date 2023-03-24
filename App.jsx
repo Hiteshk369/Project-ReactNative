@@ -3,17 +3,19 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import MainRegistration from './screens/Registration/MainRegistration';
 import PersonalDetailsRegistration from './screens/Registration/PersonalDetailsRegistration';
-import Verification from './screens/Registration/OTP/Verification';
-import Otpkey from './screens/Registration/OTP/Otpkey';
-
+import OtpKey from './screens/OTP/OtpKey';
+import OtpVerification from './screens/OTP/OtpVerification';
+import VerificationRegistration from './screens/Registration/VerificationRegistration';
 const App = () => {
   return (
     <SafeAreaView>
       <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
         {/* <PersonalDetailsRegistration /> */}
         {/* <MainRegistration /> */}
-        {/* <Verification/> */}
-        <Otpkey/>
+        {/* <Verification /> */}
+        {/* <OtpKey /> */}
+        {/* <OtpVerification /> */}
+        <VerificationRegistration />
       </LinearGradient>
     </SafeAreaView>
   );
