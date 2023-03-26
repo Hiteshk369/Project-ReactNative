@@ -10,138 +10,148 @@ import {
 import {FormNavigation, SaveButton} from '../../../components';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import LinearGradient from 'react-native-linear-gradient';
 
 const VerificationRegistration = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <View style={styles.breadCrumb}>
-        <FormNavigation />
-      </View>
-      <View style={styles.inputContainer}>
-        <View style={styles.verificationHeadingContainer}>
-          <Text style={styles.verificationHeading}>Verification</Text>
+    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        <View style={styles.breadCrumb}>
+          <FormNavigation />
         </View>
-        <View style={styles.mrnContainer}>
-          <Text style={styles.mrnHeading}>
-            Medical Registration Number<Text style={styles.redColor}>*</Text>
-          </Text>
-          <TextInput
-            style={styles.mrnInput}
-            placeholder="Enter Your MRN"
-            placeholderTextColor={'#d8d8d8'}
-          />
-        </View>
-        <View style={styles.verificationDocumentsContainer}>
-          <Text style={styles.verificationHeading}>Verification Documents</Text>
-          <View style={styles.bulletPointContainer}>
-            <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-            <Text style={styles.bulletPointText}>
-              Kindly make sure all the images are clear and readable
+        <View style={styles.inputContainer}>
+          <View style={styles.verificationHeadingContainer}>
+            <Text style={styles.verificationHeading}>Verification</Text>
+          </View>
+          <View style={styles.mrnContainer}>
+            <Text style={styles.mrnHeading}>
+              Medical Registration Number<Text style={styles.redColor}>*</Text>
             </Text>
+            <TextInput
+              style={styles.mrnInput}
+              placeholder="Enter Your MRN"
+              placeholderTextColor={'#d8d8d8'}
+            />
           </View>
-          <View style={styles.bulletPointContainer}>
-            <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-            <Text style={styles.bulletPointText}>
-              For identity proof only upload Passport Voter ID or Driving
-              License
+          <View style={styles.verificationDocumentsContainer}>
+            <Text style={styles.verificationHeading}>
+              Verification Documents
             </Text>
+            <View style={styles.bulletPointContainer}>
+              <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+              <Text style={styles.bulletPointText}>
+                Kindly make sure all the images are clear and readable
+              </Text>
+            </View>
+            <View style={styles.bulletPointContainer}>
+              <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+              <Text style={styles.bulletPointText}>
+                For identity proof only upload Passport Voter ID or Driving
+                License
+              </Text>
+            </View>
+          </View>
+          <View style={styles.uploadContainer}>
+            <View style={styles.flexDocumentContainer}>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  MRN Certificate<Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  ID Proof<Text style={styles.bracketText}>(Front Side)</Text>{' '}
+                  <Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.flexDocumentContainer}>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  ID Proof<Text style={styles.bracketText}>(Back Side)</Text>
+                  <Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  Educational<Text style={styles.bracketText}>(Highest)</Text>{' '}
+                  <Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.flexDocumentContainer}>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  Other
+                  <Text style={styles.bracketText}>(Clinic Registration)</Text>
+                  <Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.documentContainer}>
+                <Text style={styles.documentName}>
+                  MBBS Certificate
+                  <Text style={styles.redColor}>*</Text>
+                </Text>
+                <TouchableOpacity style={styles.imageContainer}>
+                  <AntDesign
+                    name="pluscircle"
+                    color={'#141261'}
+                    style={styles.plusIcon}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
         </View>
-        <View style={styles.uploadContainer}>
-          <View style={styles.flexDocumentContainer}>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                MRN Certificate<Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                ID Proof<Text style={styles.bracketText}>(Front Side)</Text>{' '}
-                <Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.flexDocumentContainer}>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                ID Proof<Text style={styles.bracketText}>(Back Side)</Text>
-                <Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                Educational<Text style={styles.bracketText}>(Highest)</Text>{' '}
-                <Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.flexDocumentContainer}>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                Other
-                <Text style={styles.bracketText}>(Clinic Registration)</Text>
-                <Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.documentContainer}>
-              <Text style={styles.documentName}>
-                MBBS Certificate
-                <Text style={styles.redColor}>*</Text>
-              </Text>
-              <TouchableOpacity style={styles.imageContainer}>
-                <AntDesign
-                  name="pluscircle"
-                  color={'#141261'}
-                  style={styles.plusIcon}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
+        <View style={styles.buttonContainer}>
+          <SaveButton />
         </View>
-      </View>
-      <View style={styles.buttonContainer}>
-        <SaveButton />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  gradient: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+  },
   container: {
     height: '100%',
     width: '100%',

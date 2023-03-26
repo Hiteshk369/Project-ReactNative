@@ -30,7 +30,7 @@ const FormNavigation = () => {
   ];
 
   return (
-    <View style={styles.navFlowContainer}>
+    <View style={styles.mainNavFlowContainer}>
       {navItems.map(item => (
         <View style={styles.navFlowContainer} key={item.id}>
           {item.id <= 4 ? (
@@ -60,6 +60,13 @@ const FormNavigation = () => {
 };
 
 const styles = StyleSheet.create({
+  mainNavFlowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   navFlowContainer: {
     display: 'flex',
     flexDirection: 'row',

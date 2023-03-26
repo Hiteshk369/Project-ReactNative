@@ -5,98 +5,119 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 const MainRegistration = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const navigation = useNavigation();
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <View style={styles.headingContainer}>
-        <Text style={styles.heading}>Get Started</Text>
-        <Text style={styles.description}>Register yourself to get access</Text>
-        <Text style={styles.descriptionTwo}>to our features</Text>
-      </View>
-      <View style={styles.inputFormContainer}>
-        <View style={styles.boxContainer}>
-          <View style={styles.box} />
-        </View>
-        <View style={styles.greetingContainer}>
-          <Text style={styles.greeting}>Hello Doctors !</Text>
-          <Text style={styles.greetingDescription}>
-            You are one step closer towards making your practice better
-          </Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <View style={styles.InputFieldContainer}>
-            <View style={styles.InputFieldHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                style={styles.input}
-                placeholderTextColor={'#d3d3d3'}
-                placeholder="Dr. Umar"
-              />
+    <SafeAreaView>
+      <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.container}>
+          <View style={styles.headingContainer}>
+            <Text style={styles.heading}>Get Started</Text>
+            <Text style={styles.description}>
+              Register yourself to get access
+            </Text>
+            <Text style={styles.descriptionTwo}>to our features</Text>
+          </View>
+          <View style={styles.inputFormContainer}>
+            <View style={styles.boxContainer}>
+              <View style={styles.box} />
             </View>
-            <View style={styles.InputFieldHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
+            <View style={styles.greetingContainer}>
+              <Text style={styles.greeting}>Hello Doctors !</Text>
+              <Text style={styles.greetingDescription}>
+                You are one step closer towards making your practice better
+              </Text>
+            </View>
+            <View style={styles.boxContainer}>
+              <View style={styles.InputFieldContainer}>
+                <View style={styles.InputFieldHolder}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholderTextColor={'#d3d3d3'}
+                    placeholder="Dr. Umar"
+                  />
+                </View>
+                <View style={styles.InputFieldHolder}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholderTextColor={'#d3d3d3'}
+                    placeholder="Pulmonologist"
+                  />
+                </View>
+              </View>
+            </View>
+            <View styles={styles.clinicDetailsContainer}>
+              <Text style={styles.clinicHeading}>Clinic Details</Text>
+              <Text style={styles.clinicName}>Clinic Name*</Text>
+              <TextInput style={styles.clinicInput} />
+              <Text style={styles.clinicName}>Pin code*</Text>
+              <TextInput style={styles.clinicInput} />
+              <View style={styles.referralTextContainer}>
+                <Text style={styles.referralName}>Referral code</Text>
+                <Text style={styles.referralOptional}>(optional)</Text>
+              </View>
+              <TextInput style={styles.clinicInput} />
+            </View>
+            <View style={styles.privacyPolicyContainer}>
+              <CheckBox
+                tintColors={{true: '#4d0d7e', false: '#afafaf'}}
+                onChange={() => setToggleCheckBox(!toggleCheckBox)}
+                value={toggleCheckBox}
               />
-              <TextInput
-                style={styles.input}
-                placeholderTextColor={'#d3d3d3'}
-                placeholder="Pulmonologist"
-              />
+              <Text style={styles.privacyPolicy}>
+                I agree to the{' '}
+                <Text style={styles.privacyTerms}>Terms & service</Text> and
+                <Text style={styles.privacyTerms}> Privacy Policy</Text>
+              </Text>
+            </View>
+            <View style={styles.nextButtonContainer}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('PersonalDetailsRegistration')
+                }
+                style={styles.nextButton}>
+                <Text style={styles.nextText}>Next</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
-        <View styles={styles.clinicDetailsContainer}>
-          <Text style={styles.clinicHeading}>Clinic Details</Text>
-          <Text style={styles.clinicName}>Clinic Name*</Text>
-          <TextInput style={styles.clinicInput} />
-          <Text style={styles.clinicName}>Pin code*</Text>
-          <TextInput style={styles.clinicInput} />
-          <View style={styles.referralTextContainer}>
-            <Text style={styles.referralName}>Referral code</Text>
-            <Text style={styles.referralOptional}>(optional)</Text>
-          </View>
-          <TextInput style={styles.clinicInput} />
-        </View>
-        <View style={styles.privacyPolicyContainer}>
-          <CheckBox
-            tintColors={{true: '#4d0d7e', false: '#afafaf'}}
-            onChange={() => setToggleCheckBox(!toggleCheckBox)}
-            value={toggleCheckBox}
-          />
-          <Text style={styles.privacyPolicy}>
-            I agree to the{' '}
-            <Text style={styles.privacyTerms}>Terms & service</Text> and
-            <Text style={styles.privacyTerms}> Privacy Policy</Text>
-          </Text>
-        </View>
-        <View style={styles.nextButtonContainer}>
-          <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextText}>Next</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
+        </ScrollView>
+      </LinearGradient>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  Container: {
+  gradient: {
     height: '100%',
     width: '100%',
-    margin: 20,
+    position: 'relative',
+  },
+  container: {
+    height: '100%',
+    width: '100%',
+    paddingTop: 20,
   },
   headingContainer: {
     display: 'flex',

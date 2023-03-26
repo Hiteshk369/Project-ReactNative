@@ -4,20 +4,49 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import {FormNavigation, SaveButton} from '../../../components';
+import LinearGradient from 'react-native-linear-gradient';
 
 const PersonalDetailsRegistration = () => {
   return (
-    <ScrollView showsHorizontalScrollIndicator={false} style={styles.container}>
-      <View style={styles.uploadImage} />
-      <Entypo name="camera" style={styles.cameraImage} />
-      <View>
-        <View style={styles.breadCrumb}>
-          <FormNavigation />
-        </View>
-        <View style={styles.inputDetailsForm}>
-          <View style={styles.personalDetailsForm}>
-            <View style={styles.nameInput}>
-              <View style={styles.nameInputHolder}>
+    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        style={styles.container}>
+        <View style={styles.uploadImage} />
+        <Entypo name="camera" style={styles.cameraImage} />
+        <View>
+          <View style={styles.breadCrumb}>
+            <FormNavigation />
+          </View>
+          <View style={styles.inputDetailsForm}>
+            <View style={styles.personalDetailsForm}>
+              <View style={styles.nameInput}>
+                <View style={styles.nameInputHolder}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    placeholderTextColor={'#d3d3d3'}
+                    style={styles.inputField}
+                    placeholder="First name"
+                  />
+                </View>
+                <View style={styles.nameInputHolder}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    placeholderTextColor={'#d3d3d3'}
+                    style={styles.inputField}
+                    placeholder="Last name"
+                  />
+                </View>
+              </View>
+              <View style={styles.inputHolder}>
                 <FontAwesome
                   name="circle-thin"
                   color="#c8c8c8"
@@ -26,10 +55,10 @@ const PersonalDetailsRegistration = () => {
                 <TextInput
                   placeholderTextColor={'#d3d3d3'}
                   style={styles.inputField}
-                  placeholder="First name"
+                  placeholder="Enter your mail address"
                 />
               </View>
-              <View style={styles.nameInputHolder}>
+              <View style={styles.inputHolder}>
                 <FontAwesome
                   name="circle-thin"
                   color="#c8c8c8"
@@ -38,182 +67,163 @@ const PersonalDetailsRegistration = () => {
                 <TextInput
                   placeholderTextColor={'#d3d3d3'}
                   style={styles.inputField}
-                  placeholder="Last name"
+                  placeholder="Enter your gender"
                 />
               </View>
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter your mail address"
-              />
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter your gender"
-              />
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter your date of birth"
-              />
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter your headline"
-              />
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter your contact number"
-              />
-            </View>
-            <View style={styles.inputHolder}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.circleIcon}
-              />
-              <TextInput
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.inputField}
-                placeholder="Enter contact for patients (optional)"
-              />
-            </View>
-          </View>
-          <View style={styles.subForms}>
-            <View style={styles.subFormsHeading}>
-              <Text style={styles.subFormsHeadingText}>About Us</Text>
-              <Entypo name="chevron-thin-down" color="black" />
-            </View>
-            <View style={styles.textAreaContainer}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.textAreaCircle}
-              />
-              <TextInput
-                multiline={true}
-                numberOfLines={4}
-                placeholder="Enter your about us details here"
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.textAreaInput}
-              />
-            </View>
-          </View>
-          <View style={styles.subForms}>
-            <View style={styles.subFormsHeading}>
-              <Text style={styles.subFormsHeadingText}>Specialization</Text>
-              <Entypo name="chevron-thin-down" color="black" />
-            </View>
-            <View style={styles.dropDown}>
-              <View style={styles.flexRow}>
+              <View style={styles.inputHolder}>
                 <FontAwesome
                   name="circle-thin"
                   color="#c8c8c8"
                   style={styles.circleIcon}
                 />
                 <TextInput
-                  style={styles.dropDownInput}
-                  placeholder="Pulmonologist"
                   placeholderTextColor={'#d3d3d3'}
+                  style={styles.inputField}
+                  placeholder="Enter your date of birth"
                 />
               </View>
-              <Entypo name="chevron-thin-down" color="black" />
-            </View>
-            <View style={styles.textAreaContainer}>
-              <FontAwesome
-                name="circle-thin"
-                color="#c8c8c8"
-                style={styles.textAreaCircle}
-              />
-              <TextInput
-                multiline={true}
-                numberOfLines={4}
-                placeholder="Enter your about us details here"
-                placeholderTextColor={'#d3d3d3'}
-                style={styles.textAreaInput}
-              />
-            </View>
-          </View>
-          <View style={styles.subForms}>
-            <View style={styles.subFormsHeading}>
-              <Text style={styles.subFormsHeadingText}>Social Details</Text>
-              <Entypo name="chevron-thin-down" color="black" />
-            </View>
-            <View style={styles.dropDown}>
-              <View style={styles.flexRow}>
+              <View style={styles.inputHolder}>
                 <FontAwesome
                   name="circle-thin"
                   color="#c8c8c8"
                   style={styles.circleIcon}
                 />
                 <TextInput
-                  style={styles.dropDownInput}
-                  placeholder="Pulmonologist"
                   placeholderTextColor={'#d3d3d3'}
+                  style={styles.inputField}
+                  placeholder="Enter your headline"
                 />
               </View>
-              <Entypo name="chevron-thin-down" color="black" />
-            </View>
-            <View style={styles.dropDown}>
-              <View style={styles.flexRow}>
+              <View style={styles.inputHolder}>
                 <FontAwesome
                   name="circle-thin"
                   color="#c8c8c8"
                   style={styles.circleIcon}
                 />
                 <TextInput
-                  style={styles.dropDownInput}
-                  placeholder="Pulmonologist"
                   placeholderTextColor={'#d3d3d3'}
+                  style={styles.inputField}
+                  placeholder="Enter your contact number"
                 />
               </View>
-              <Entypo name="chevron-thin-down" color="black" />
+              <View style={styles.inputHolder}>
+                <FontAwesome
+                  name="circle-thin"
+                  color="#c8c8c8"
+                  style={styles.circleIcon}
+                />
+                <TextInput
+                  placeholderTextColor={'#d3d3d3'}
+                  style={styles.inputField}
+                  placeholder="Enter contact for patients (optional)"
+                />
+              </View>
             </View>
+            <View style={styles.subForms}>
+              <View style={styles.subFormsHeading}>
+                <Text style={styles.subFormsHeadingText}>About Us</Text>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+              <View style={styles.textAreaContainer}>
+                <FontAwesome
+                  name="circle-thin"
+                  color="#c8c8c8"
+                  style={styles.textAreaCircle}
+                />
+                <TextInput
+                  multiline={true}
+                  numberOfLines={4}
+                  placeholder="Enter your about us details here"
+                  placeholderTextColor={'#d3d3d3'}
+                  style={styles.textAreaInput}
+                />
+              </View>
+            </View>
+            <View style={styles.subForms}>
+              <View style={styles.subFormsHeading}>
+                <Text style={styles.subFormsHeadingText}>Specialization</Text>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+              <View style={styles.dropDown}>
+                <View style={styles.flexRow}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    style={styles.dropDownInput}
+                    placeholder="Pulmonologist"
+                    placeholderTextColor={'#d3d3d3'}
+                  />
+                </View>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+              <View style={styles.textAreaContainer}>
+                <FontAwesome
+                  name="circle-thin"
+                  color="#c8c8c8"
+                  style={styles.textAreaCircle}
+                />
+                <TextInput
+                  multiline={true}
+                  numberOfLines={4}
+                  placeholder="Enter your about us details here"
+                  placeholderTextColor={'#d3d3d3'}
+                  style={styles.textAreaInput}
+                />
+              </View>
+            </View>
+            <View style={styles.subForms}>
+              <View style={styles.subFormsHeading}>
+                <Text style={styles.subFormsHeadingText}>Social Details</Text>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+              <View style={styles.dropDown}>
+                <View style={styles.flexRow}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    style={styles.dropDownInput}
+                    placeholder="Pulmonologist"
+                    placeholderTextColor={'#d3d3d3'}
+                  />
+                </View>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+              <View style={styles.dropDown}>
+                <View style={styles.flexRow}>
+                  <FontAwesome
+                    name="circle-thin"
+                    color="#c8c8c8"
+                    style={styles.circleIcon}
+                  />
+                  <TextInput
+                    style={styles.dropDownInput}
+                    placeholder="Pulmonologist"
+                    placeholderTextColor={'#d3d3d3'}
+                  />
+                </View>
+                <Entypo name="chevron-thin-down" color="black" />
+              </View>
+            </View>
+            <SaveButton />
           </View>
-          <SaveButton />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  gradient: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+  },
   container: {
     height: '100%',
     width: '100%',
