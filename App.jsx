@@ -9,6 +9,13 @@ import VerificationRegistration from './screens/Registration/VerificationRegistr
 import Dashboard from './screens/DashBoard/Dashboard';
 import Summary from './screens/DashBoard/Summary';
 import SummaryAppointment from './screens/DashBoard/SummaryAppointment';
+import MainAppointment from './screens/Appointements/MainAppointment';
+import AddAppointment from './screens/Appointements/AddAppointment';
+import SellPackage from './screens/Package/SellPackage';
+import CreateNewPackage from './screens/Package/CreateNewPackage';
+import Connect from './screens/Appointements/Connect';
+
+
 const App = () => {
   return (
     <SafeAreaView>
@@ -21,7 +28,12 @@ const App = () => {
         {/* <VerificationRegistration /> */}
         {/* <Dashboard/> */}
         {/* <Summary/> */}
-        <SummaryAppointment/>
+        {/* <SummaryAppointment/> */}
+        {/* <MainAppointment/> */}
+        {/* <AddAppointment/> */}
+        {/* <SellPackage/> */}
+        {/* <CreateNewPackage/> */}
+        <Connect/>
       {/* </LinearGradient> */}
     </SafeAreaView>
   );
