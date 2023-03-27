@@ -1,16 +1,20 @@
 import {SafeAreaView} from 'react-native';
-import MainRegistration from './screens/Registration/MainRegistration';
-import PersonalDetailsRegistration from './screens/Registration/PersonalDetailsRegistration';
+
 import OtpKey from './screens/OTP/OtpKey';
 import OtpVerification from './screens/OTP/OtpVerification';
-import VerificationRegistration from './screens/Registration/VerificationRegistration';
-import Dashboard from './screens/DashBoard/Dashboard';
+
+import Dashboard from './screens/DashBoard/Home';
 import Summary from './screens/DashBoard/Summary';
 import SummaryAppointment from './screens/DashBoard/SummaryAppointment';
 import RegisterStack from './Navigation/RegisterStack';
+import HomeStack from './Navigation/HomeStack';
 
 const App = () => {
-  return <RegisterStack />;
+  return (
+    <SafeAreaView>
+      <SummaryAppointment />
+    </SafeAreaView>
+  );
 };
 
 export default App;

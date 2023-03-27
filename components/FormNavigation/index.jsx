@@ -1,4 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
+import {Colors} from '../../constants/colors';
 
 const FormNavigation = () => {
   const navItems = [
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
   navCircle: {
     height: 50,
     width: 50,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 50,
   },
   navLine: {
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     width: 20,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
     width: 60,
     height: 30,
-    color: '#ff6f00',
+    color: Colors.orange,
   },
   notActive: {
     fontSize: 8,

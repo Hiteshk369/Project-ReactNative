@@ -1,29 +1,28 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
-import React, {Component} from 'react';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {useState} from 'react';
+import {Colors} from '../../../constants/colors';
+import {WeekCalendar} from '../../../components';
 
-import CalendarStrip from 'react-native-slideable-calendar-strip';
 import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const SummaryAppointment = () => {
+  const [date, setDate] = useState(new Date());
   return (
-    <ScrollView>
+    <View style={styles.mainContainer}>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text>DASHBOARD</Text>
+        <TouchableOpacity style={styles.notSelectedButton}>
+          <FontAwesome style={styles.notSelectedButtonText} name="circle-o" />
+          <Text style={styles.notSelectedButtonText}>DASHBOARD</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.buttonText}>SUMMARY</Text>
+        <TouchableOpacity style={styles.selectedButton}>
+          <FontAwesome style={styles.selectedButtonText} name="circle-o" />
+          <Text style={styles.selectedButtonText}>SUMMARY</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.headText}>
         <Text style={styles.boldText}>
-          Green Helth clinic, Kukatpally Housing Board
+          Green Health clinic, Kukatpally Housing Board
         </Text>
         <Text style={styles.addrText}>Kukatpally Housing Board</Text>
       </View>
@@ -36,40 +35,34 @@ const SummaryAppointment = () => {
       </View>
 
       <View style={styles.container}>
-        <CalendarStrip
-          isEnglish
-          showWeekNumber
-          showEnglishLuna
-          // selectedDate={this.state.selectedDate} onPressDate={(date) => { this.setState({ selectedDate: date });
-          // }}
-          // onPressGoToday={(today) => { this.setState({ selectedDate: today });
-          // }}
-          // onSwipeDown={() => { alert('onSwipeDown');
-          // }}
-          markedDate={['2020-03-04', '2020-03-15', '2020-03-04', '2020-03-01']}
-          weekStartsOn={1}
-        />
+        <WeekCalendar date={date} onChange={newDate => setDate(newDate)} />
       </View>
       <View style={styles.appText}>
-        <Text style={styles.text}>No Appointments for Sun,05 March 2023</Text>
+        <Text style={styles.text}>No Appointments for Sun, 05 March 2023</Text>
       </View>
-      <View style={styles.appButtons}>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.appButtonText}>Block Calender</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.appButtonText}>Book Appointment</Text>
-        </TouchableOpacity>
+      <View style={styles.bookButtonsContainer}>
+        <View style={styles.appButtons}>
+          <TouchableOpacity style={styles.buttonBackground}>
+            <Text style={styles.appButtonText}>Block Calender</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonBackground}>
+            <Text style={styles.appButtonText}>Book Appointment</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    position: 'relative',
+    height: '100%',
+  },
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     marginTop: 25,
+    marginHorizontal: 10,
   },
   buttons: {
     display: 'flex',
@@ -77,73 +70,103 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: Colors.lightGrayBg,
   },
-  buttonBackground: {
-    margin: 5,
-    width: '47%',
-    paddingVertical: 12,
-    backgroundColor: '#fff',
+  notSelectedButton: {
+    width: '50%',
+    backgroundColor: Colors.white,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 4,
+    paddingTop: 16,
+    paddingBottom: 10,
   },
-  buttonText: {
-    color: '#1e1262',
+  notSelectedButtonText: {
+    color: Colors.lightGrayText,
+    fontSize: 16,
+  },
+  selectedButton: {
+    width: '50%',
+    backgroundColor: Colors.white,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    borderBottomColor: Colors.darkPurple,
+    borderBottomWidth: 2,
+    paddingTop: 16,
+    paddingBottom: 10,
+  },
+  selectedButtonText: {
+    color: Colors.darkPurple,
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 16,
   },
   headText: {
     paddingHorizontal: 15,
-    margin: 10,
+    padding: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#D3D3D3',
-    color: '#000000',
+    borderBottomColor: Colors.lightGrayBg,
+    color: Colors.black,
   },
   boldText: {
     fontWeight: '500',
-    color: '#000000',
+    color: Colors.black,
   },
   addrText: {
     fontSize: 12,
     marginTop: 5,
   },
   calenderText: {
-    color: '#000',
+    color: Colors.black,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginLeft: 20,
     marginRight: 25,
+    marginTop: 10,
   },
   appText: {
     marginBottom: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#D3D3D3',
+    borderTopWidth: 1,
+    borderTopColor: Colors.lightGrayBg,
+    borderBottomColor: Colors.lightGrayBg,
   },
   text: {
     display: 'flex',
     alignItems: 'center',
     marginTop: 10,
-    fontSize: 15,
-    color: '#000000',
+    fontSize: 14,
+    color: Colors.black,
     marginLeft: 10,
     paddingLeft: 10,
+    fontWeight: '500',
+  },
+  bookButtonsContainer: {
+    position: 'absolute',
+    bottom: 15,
+    borderTopWidth: 1,
+    borderTopColor: Colors.lightGrayBg,
+    width: '100%',
   },
   appButtons: {
-    display: 'flex',
+    marginHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 425,
+    justifyContent: 'space-between',
   },
   appButtonText: {
-    color: '#1e1262',
-    fontSize: 12,
+    paddingTop: 10,
+    color: Colors.darkPurple,
+    fontSize: 14,
+    fontWeight: '700',
   },
 });
 

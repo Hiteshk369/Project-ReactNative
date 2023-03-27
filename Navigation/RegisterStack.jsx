@@ -1,10 +1,16 @@
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import MainRegistration from '../screens/Registration/MainRegistration';
-import PersonalDetailsRegistration from '../screens/Registration/PersonalDetailsRegistration';
-import VerificationRegistration from '../screens/Registration/VerificationRegistration';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+
+import {Colors} from '../constants/colors';
+import {
+  MainRegistration,
+  PersonalDetailsRegistration,
+  VerificationRegistration,
+  BankingDetailsRegistration,
+} from '../screens/Registration';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,9 +23,9 @@ const RegisterStack = () => {
           component={MainRegistration}
           options={{
             headerStyle: {
-              backgroundColor: '#1e1262',
+              backgroundColor: Colors.darkPurple,
             },
-            headerTintColor: '#a9edfe',
+            headerTintColor: Colors.navigationHeaderBlueColor,
             headerTitleStyle: {
               fontWeight: 'normal',
             },
@@ -43,9 +49,9 @@ const RegisterStack = () => {
           options={{
             title: 'Registration',
             headerStyle: {
-              backgroundColor: '#1e1262',
+              backgroundColor: Colors.darkPurple,
             },
-            headerTintColor: '#fff',
+            headerTintColor: Colors.white,
             headerTitleStyle: {
               fontWeight: '300',
             },
@@ -63,9 +69,29 @@ const RegisterStack = () => {
           options={{
             title: 'Registration',
             headerStyle: {
-              backgroundColor: '#1e1262',
+              backgroundColor: Colors.darkPurple,
             },
-            headerTintColor: '#fff',
+            headerTintColor: Colors.white,
+            headerTitleStyle: {
+              fontWeight: '300',
+            },
+            headerTitleAlign: 'center',
+            headerLeft: () => (
+              <TouchableOpacity>
+                <Entypo name="chevron-left" style={styles.backIcon} />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="BankingDetailsRegistration"
+          component={BankingDetailsRegistration}
+          options={{
+            title: 'Registration',
+            headerStyle: {
+              backgroundColor: Colors.darkPurple,
+            },
+            headerTintColor: Colors.white,
             headerTitleStyle: {
               fontWeight: '300',
             },
@@ -84,7 +110,7 @@ const RegisterStack = () => {
 
 const styles = StyleSheet.create({
   backIcon: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 24,
   },
   iconContainer: {
@@ -93,11 +119,11 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   helpIcon: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 18,
   },
   helpText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 16,
     fontWeight: '400',
   },

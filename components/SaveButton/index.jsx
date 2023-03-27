@@ -1,4 +1,5 @@
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Colors} from '../../constants/colors';
 
 const SaveButton = () => {
   return (
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     margin: 5,
     width: '98%',
     paddingVertical: 15,
-    backgroundColor: '#ff6f00',
+    backgroundColor: Colors.orange,
     borderRadius: 50,
     display: 'flex',
     alignItems: 'center',
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 

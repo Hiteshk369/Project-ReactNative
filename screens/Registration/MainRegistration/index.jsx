@@ -8,8 +8,9 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React, {useState} from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import {Colors} from '../../../constants/colors';
 
+import CheckBox from '@react-native-community/checkbox';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
@@ -19,7 +20,9 @@ const MainRegistration = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView>
-      <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+      <LinearGradient
+        colors={[Colors.darkPurple, Colors.lightPurple]}
+        style={styles.gradient}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={styles.container}>
@@ -43,26 +46,18 @@ const MainRegistration = () => {
             <View style={styles.boxContainer}>
               <View style={styles.InputFieldContainer}>
                 <View style={styles.InputFieldHolder}>
-                  <FontAwesome
-                    name="circle-thin"
-                    color="#c8c8c8"
-                    style={styles.circleIcon}
-                  />
+                  <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={'#d3d3d3'}
+                    placeholderTextColor={Colors.placeHolderTextColor}
                     placeholder="Dr. Umar"
                   />
                 </View>
                 <View style={styles.InputFieldHolder}>
-                  <FontAwesome
-                    name="circle-thin"
-                    color="#c8c8c8"
-                    style={styles.circleIcon}
-                  />
+                  <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={'#d3d3d3'}
+                    placeholderTextColor={Colors.placeHolderTextColor}
                     placeholder="Pulmonologist"
                   />
                 </View>
@@ -82,7 +77,10 @@ const MainRegistration = () => {
             </View>
             <View style={styles.privacyPolicyContainer}>
               <CheckBox
-                tintColors={{true: '#4d0d7e', false: '#afafaf'}}
+                tintColors={{
+                  true: Colors.lightPurple,
+                  false: Colors.borderGray,
+                }}
                 onChange={() => setToggleCheckBox(!toggleCheckBox)}
                 value={toggleCheckBox}
               />
@@ -143,7 +141,7 @@ const styles = StyleSheet.create({
   },
   inputFormContainer: {
     height: 'auto',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     marginHorizontal: 10,
     borderRadius: 25,
     marginBottom: 80,
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
   box: {
     height: 125,
     width: 125,
-    borderColor: '#000',
+    borderColor: Colors.black,
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,
@@ -167,12 +165,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   greeting: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 16,
     fontWeight: '700',
   },
   greetingDescription: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 11,
     fontWeight: '400',
   },
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#afafaf',
+    borderColor: Colors.borderGray,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 6,
@@ -198,22 +196,23 @@ const styles = StyleSheet.create({
   },
   circleIcon: {
     fontSize: 15,
+    color: Colors.circleIcon,
   },
   input: {
-    color: '#606060',
+    color: Colors.inputTextColor,
   },
   clinicDetailsContainer: {
     width: '90%',
   },
   clinicHeading: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 16,
     fontWeight: '700',
     marginBottom: 8,
     marginHorizontal: 15,
   },
   clinicName: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 13,
     fontWeight: '400',
     marginHorizontal: 15,
@@ -223,9 +222,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomColor: '#afafaf',
+    borderBottomColor: Colors.borderGray,
     borderWidth: 1.25,
-    color: '#606060',
+    color: Colors.inputTextColor,
     paddingBottom: 1,
     marginBottom: 8,
   },
@@ -236,12 +235,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   referralName: {
-    color: '#000',
+    color: Colors.black,
     fontWeight: '700',
     fontSize: 16,
   },
   referralOptional: {
-    color: '#000',
+    color: Colors.black,
     fontWeight: '400',
     fontSize: 14,
   },
@@ -250,16 +249,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     display: 'flex',
     flexDirection: 'row',
-    color: '#000',
+    color: Colors.black,
     alignItems: 'center',
     gap: 2,
   },
   privacyPolicy: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 10.5,
   },
   privacyTerms: {
-    color: '#d95858',
+    color: Colors.lightRed,
   },
   nextButtonContainer: {
     display: 'flex',
@@ -274,11 +273,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 10,
     marginTop: 10,
-    backgroundColor: '#4d0d7e',
+    backgroundColor: Colors.lightPurple,
     borderRadius: 20,
   },
   nextText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 18,
     fontWeight: '500',
   },

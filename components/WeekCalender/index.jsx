@@ -1,6 +1,7 @@
 import {addDays, format, getDate, isSameDay, startOfWeek} from 'date-fns';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Colors} from '../../constants/colors';
 
 const WeekCalendar = ({date, onChange}) => {
   const [week, setWeek] = useState([]);
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     width: 35,
   },
   selectedTouchable: {
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
   },
   weekDayItem: {
     alignItems: 'center',

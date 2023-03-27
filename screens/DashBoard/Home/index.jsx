@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import {Colors} from '../../../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -13,7 +14,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Dashboard = () => {
+const Home = () => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.navigation}>
@@ -21,17 +22,17 @@ const Dashboard = () => {
         <View style={styles.navIcons}>
           <MaterialIcons
             name="notifications"
-            color="#fff"
+            color={Colors.white}
             style={styles.circleIcon}
           />
           <AntDesign
             name="questioncircle"
-            color="#fff"
+            color={Colors.white}
             style={styles.circleIcon}
           />
           <MaterialIcons
             name="settings"
-            color="#fff"
+            color={Colors.white}
             style={styles.circleIcon}
           />
         </View>
@@ -41,10 +42,14 @@ const Dashboard = () => {
         <View style={styles.Card}>
           <View style={styles.doctorCard}>
             <LinearGradient
-              colors={['#1e1262', '#4d0d7e']}
+              colors={[Colors.darkPurple, Colors.lightPurple]}
               style={styles.gradient}>
               <View style={styles.box}>
-                <Fontisto name="doctor" color="#fff" style={styles.drIcon} />
+                <Fontisto
+                  name="doctor"
+                  color={Colors.white}
+                  style={styles.drIcon}
+                />
               </View>
               <Text style={styles.boxText}>Dr. Chandra Shekar</Text>
               <View style={styles.bottomText}>
@@ -145,25 +150,6 @@ const Dashboard = () => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* <View style={styles.footer}>
-          <MaterialIcons name="home" color="#000" style={styles.footerIcon} />
-          <MaterialIcons name="group" color="#000" style={styles.footerIcon} />
-          <MaterialIcons
-            name="calendar-today"
-            color="#000"
-            style={styles.footerIcon}
-          />
-          <MaterialIcons
-            name="calendar-today"
-            color="#000"
-            style={styles.footerIcon}
-          />
-          <FontAwesome
-            name="user-circle-o"
-            color="#000"
-            style={styles.footerIcon}
-          />
-        </View> */}
       </ScrollView>
     </View>
   );
@@ -178,12 +164,12 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   navigation: {
     height: 60,
     width: '100%',
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -191,7 +177,7 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     fontSize: 18,
-    color: '#fff',
+    color: Colors.white,
     paddingLeft: 10,
   },
   navIcons: {
@@ -231,14 +217,14 @@ const styles = StyleSheet.create({
   box: {
     height: 90,
     width: 90,
-    borderColor: '#fff',
+    borderColor: Colors.white,
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,
     borderRadius: 100,
   },
   boxText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 16,
     marginBottom: 10,
   },
@@ -249,7 +235,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   numberText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 35,
   },
   lineText: {
@@ -257,21 +243,21 @@ const styles = StyleSheet.create({
     fontSize: 35,
     marginLeft: 30,
     borderLeftWidth: 2,
-    borderLeftColor: '#D3D3D3',
+    borderLeftColor: Colors.lightGrayBg,
   },
   numbersText: {
-    color: '#fff',
+    color: Colors.white,
     paddingLeft: 10,
     fontSize: 35,
   },
   consultedText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 10,
   },
   dashboard: {
     height: 'auto',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 10,
     marginTop: 20,
   },
@@ -285,20 +271,20 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     width: '50%',
     paddingVertical: 12,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
-    borderBottomColor: '#1e1262',
+    borderBottomColor: Colors.darkPurple,
     borderBottomWidth: 2,
   },
   notSelectedButton: {
     marginRight: 5,
     width: '50%',
     paddingVertical: 12,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -306,12 +292,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   selectedTextColor: {
-    color: '#1e1262',
+    color: Colors.darkPurple,
     fontWeight: 'bold',
     fontSize: 16,
   },
   notSelectedTextColor: {
-    color: '#b0b0b0',
+    color: Colors.lightGrayText,
     fontSize: 16,
   },
   dashboardContainer: {
@@ -336,32 +322,16 @@ const styles = StyleSheet.create({
     padding: 2,
     borderRadius: 20,
     borderWidth: 0.1,
-    borderColor: '#D3D3D3',
+    borderColor: Colors.lightGrayBg,
     elevation: 3,
   },
   dashboardButtonText: {
-    color: '#8a8a8a',
+    color: Colors.darkGray,
     fontWeight: '500',
   },
-  //   footer:{
-  //     height: 50,
-  //     width: '100%',
-  //     backgroundColor:'#fff',
-  //     display:'flex',
-  //     flexDirection:'row',
-  //     alignItems:'center',
-  //     justifyContent:'center',
-  //     borderTopWidth:1.5,
-  //     borderTopColor:'#D3D3D3',
-  //   },
-  //   footerIcon:{
-  //     fontSize:30,
-  //     marginLeft:25,
-  //     marginRight:25,
-  //   },
 });
 
-export default Dashboard;
+export default Home;
 
 // scrolling function
 // bottom nav

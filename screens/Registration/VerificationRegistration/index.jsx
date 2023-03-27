@@ -11,10 +11,13 @@ import {FormNavigation, SaveButton} from '../../../components';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
+import {Colors} from '../../../constants/colors';
 
 const VerificationRegistration = () => {
   return (
-    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+    <LinearGradient
+      colors={[Colors.darkPurple, Colors.lightPurple]}
+      style={styles.gradient}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.breadCrumb}>
           <FormNavigation />
@@ -30,7 +33,7 @@ const VerificationRegistration = () => {
             <TextInput
               style={styles.mrnInput}
               placeholder="Enter Your MRN"
-              placeholderTextColor={'#d8d8d8'}
+              placeholderTextColor={Colors.placeHolderTextColor}
             />
           </View>
           <View style={styles.verificationDocumentsContainer}>
@@ -162,8 +165,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   inputContainer: {
-    backgroundColor: '#fff',
-    marginHorizontal: 6,
+    backgroundColor: Colors.white,
+    marginHorizontal: 10,
     marginVertical: 10,
     borderRadius: 20,
     padding: 18,
@@ -172,11 +175,11 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   verificationHeadingContainer: {
-    borderBottomColor: '#ededed',
+    borderBottomColor: Colors.lightBorderGray,
     borderBottomWidth: 1,
   },
   verificationHeading: {
-    color: '#000',
+    color: Colors.black,
     paddingBottom: 6,
     fontSize: 16,
     fontWeight: '500',
@@ -185,19 +188,19 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     display: 'flex',
     gap: 12,
-    borderBottomColor: '#ededed',
+    borderBottomColor: Colors.lightBorderGray,
     borderBottomWidth: 1,
   },
   mrnHeading: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 14,
     fontWeight: '400',
   },
   redColor: {
-    color: '#d95858',
+    color: Colors.lightRed,
   },
   mrnInput: {
-    borderColor: '#d8d8d8',
+    borderColor: Colors.placeHolderTextColor,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 16,
@@ -214,11 +217,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bulletPoint: {
-    color: '#8a8a8a',
+    color: Colors.darkGray,
     fontSize: 36,
   },
   bulletPointText: {
-    color: '#8a8a8a',
+    color: Colors.darkGray,
     fontSize: 14,
   },
   uploadContainer: {
@@ -232,19 +235,19 @@ const styles = StyleSheet.create({
     width: '50%',
   },
   documentName: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 12,
     fontWeight: '500',
     marginBottom: 10,
   },
   bracketText: {
-    color: '#c9c9c9',
+    color: Colors.placeHolderTextColor,
   },
   imageContainer: {
     height: 150,
     width: '95%',
     borderStyle: 'dashed',
-    borderColor: '#000',
+    borderColor: Colors.black,
     borderWidth: 1,
     borderRadius: 5,
     justifyContent: 'center',
