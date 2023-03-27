@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const CreateNewPackage = () => {
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <View>
         <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
           <View style={styles.navBackground}>
@@ -131,6 +131,10 @@ const CreateNewPackage = () => {
   );
 };
 const styles = StyleSheet.create({
+  container:{
+    height:'100%',
+    width:'100%',
+  },
   gradient: {
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
