@@ -125,12 +125,6 @@ const styles = StyleSheet.create({
         marginLeft:10,
         paddingLeft:10,
       },
-      buttons:{
-        display:'flex',
-        flexDirection:'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
       appButtons:{
         display:'flex',
         flexDirection:'row',

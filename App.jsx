@@ -9,10 +9,20 @@ import VerificationRegistration from './screens/Registration/VerificationRegistr
 import Dashboard from './screens/DashBoard/Dashboard';
 import Summary from './screens/DashBoard/Summary';
 import SummaryAppointment from './screens/DashBoard/SummaryAppointment';
+import MainAppointment from './screens/Appointements/MainAppointment';
+import AddAppointment from './screens/Appointements/AddAppointment';
+import SellPackage from './screens/Package/SellPackage';
+import CreateNewPackage from './screens/Package/CreateNewPackage';
+import Connect from './screens/Appointements/Connect';
+import MainProfilescreen from './screens/Profile/MainProfileScreen';
+import AddClinic from './screens/Clinic/AddClinic';
+import ClinicAppointmentDetails from './screens/Clinic/ClinicAppointmentDetails';
+
+
 const App = () => {
   return (
     <SafeAreaView>
-      {/* <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}> */}
+      <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
         {/* <PersonalDetailsRegistration /> */}
         {/* <MainRegistration /> */}
         {/* <Verification /> */}
@@ -21,19 +31,27 @@ const App = () => {
         {/* <VerificationRegistration /> */}
         {/* <Dashboard/> */}
         {/* <Summary/> */}
-        <SummaryAppointment/>
-      {/* </LinearGradient> */}
+        {/* <SummaryAppointment/> */}
+        {/* <MainAppointment/> */}
+        {/* <AddAppointment/> */}
+        {/* <SellPackage/> */}
+        {/* <CreateNewPackage/> */}
+        {/* <Connect/> */}
+        {/* <MainProfilescreen/> */}
+        {/* <AddClinic/> */}
+        <ClinicAppointmentDetails/>
+      </LinearGradient>
     </SafeAreaView>
   );
 };
 
-// const styles = StyleSheet.create({
-//   gradient: {
-//     height: '100%',
-//     width: '100%',
-//     padding: 10,
-//     position: 'relative',
-//   },
-// });
+const styles = StyleSheet.create({
+  gradient: {
+    height: '100%',
+    width: '100%',
+    padding: 10,
+    position: 'relative',
+  },
+});
 
 export default App;
