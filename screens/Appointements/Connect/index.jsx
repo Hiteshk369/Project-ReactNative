@@ -14,8 +14,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Connect = () => {
   return (
-    <KeyboardAvoidingView>
       <View style={styles.container}>
+        <View style={styles.wholeContainer}>
         <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
           <View style={styles.navBackground}>
             <MaterialIcons
@@ -25,6 +25,7 @@ const Connect = () => {
             />
             <Text style={styles.mainHeader}>CONNECT</Text>
           </View>
+          <View style={styles.inputContainer}>
           <View style={styles.nameInputHolder}>
             <TextInput
               placeholderTextColor={'#d3d3d3'}
@@ -36,12 +37,13 @@ const Connect = () => {
             The Room Id is a 10 Character alpha-numeric ID that can be found in
             the confirmation SMS/E-Mail/WhatsApp message.
           </Text>
+          </View>
         </LinearGradient>
+        </View>
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Save & Proceed</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
   );
 };
 
@@ -50,10 +52,14 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  wholeContainer:{
+    height:'75%'
+  },
   gradient: {
     height: '75%',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
+    position:'relative'
   },
   navBackground: {
     display: 'flex',
@@ -83,6 +89,9 @@ const styles = StyleSheet.create({
     width: '100%',
     color: '#606060',
   },
+  inputContainer:{
+    height:'75%'
+  },
   nameInputHolder: {
     width: '80%',
     display: 'flex',
@@ -105,6 +114,7 @@ const styles = StyleSheet.create({
   },
   buttonBackground: {
     // margin: 5,
+    height:'25%',
     margin:'2%',
     marginTop:'5%',
     width: '95%',
@@ -114,6 +124,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    position:'absolute',
+    bottom:0
   },
   buttonText: {
     fontSize: 15,
