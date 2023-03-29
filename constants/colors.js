@@ -1,4 +1,5 @@
 export const Colors = {
+
   darkPurple: '#1e1262',
   lightPurple: '#4d0d7e',
   white: '#fff',
@@ -16,3 +17,4 @@ export const Colors = {
   circleIcon: '#c8c8c8',
   lightRed: '#d95858',
 };
+

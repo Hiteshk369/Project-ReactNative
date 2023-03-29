@@ -55,6 +55,7 @@ const SummaryAppointment = () => {
 };
 
 const styles = StyleSheet.create({
+
   mainContainer: {
     position: 'relative',
     height: '100%',
@@ -169,5 +170,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
 
 export default SummaryAppointment;

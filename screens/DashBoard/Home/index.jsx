@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+
 import {Colors} from '../../../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,27 +17,36 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Home = () => {
   return (
+
     <View style={styles.mainContainer}>
+
       <View style={styles.navigation}>
         <Text style={styles.navHeader}>Prana</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
             name="notifications"
+
             color={Colors.white}
+
             style={styles.circleIcon}
           />
           <AntDesign
             name="questioncircle"
+
             color={Colors.white}
+
             style={styles.circleIcon}
           />
           <MaterialIcons
             name="settings"
+
             color={Colors.white}
+
             style={styles.circleIcon}
           />
         </View>
       </View>
+
 
       <ScrollView showsVerticalScrollIndicator={true} style={styles.container}>
         <View style={styles.Card}>
@@ -52,6 +62,7 @@ const Home = () => {
                 />
               </View>
               <Text style={styles.boxText}>Dr. Chandra Shekar</Text>
+
               <View style={styles.bottomText}>
                 <Text style={styles.numberText}>4 </Text>
                 <Text style={styles.consultedText}>Patients Consulted</Text>
@@ -65,6 +76,7 @@ const Home = () => {
 
         <View style={styles.dashboard}>
           <View style={styles.buttons}>
+
             <TouchableOpacity style={styles.selectedButton}>
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
@@ -150,12 +162,14 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
+
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
   mainContainer: {
     height: '100%',
     width: '100%',
@@ -165,11 +179,14 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: Colors.white,
+
   },
   navigation: {
     height: 60,
     width: '100%',
+
     backgroundColor: Colors.darkPurple,
+
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -177,7 +194,9 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     fontSize: 18,
+
     color: Colors.white,
+
     paddingLeft: 10,
   },
   navIcons: {
@@ -212,19 +231,25 @@ const styles = StyleSheet.create({
   doctorCard: {
     marginTop: 20,
     height: 220,
+
     width: 340,
+
   },
   box: {
     height: 90,
     width: 90,
+
     borderColor: Colors.white,
+
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,
     borderRadius: 100,
   },
   boxText: {
+
     color: Colors.white,
+
     fontSize: 16,
     marginBottom: 10,
   },
@@ -235,7 +260,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   numberText: {
+
     color: Colors.white,
+
     fontSize: 35,
   },
   lineText: {
@@ -243,14 +270,17 @@ const styles = StyleSheet.create({
     fontSize: 35,
     marginLeft: 30,
     borderLeftWidth: 2,
+
     borderLeftColor: Colors.lightGrayBg,
   },
   numbersText: {
     color: Colors.white,
+
     paddingLeft: 10,
     fontSize: 35,
   },
   consultedText: {
+
     color: Colors.white,
     fontSize: 10,
   },
@@ -258,6 +288,7 @@ const styles = StyleSheet.create({
     height: 'auto',
     width: '100%',
     backgroundColor: Colors.white,
+
     borderRadius: 10,
     marginTop: 20,
   },
@@ -267,6 +298,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   selectedButton: {
     marginLeft: 5,
     width: '50%',
@@ -285,10 +317,12 @@ const styles = StyleSheet.create({
     width: '50%',
     paddingVertical: 12,
     backgroundColor: Colors.white,
+
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+
     gap: 4,
   },
   selectedTextColor: {
@@ -329,6 +363,7 @@ const styles = StyleSheet.create({
     color: Colors.darkGray,
     fontWeight: '500',
   },
+
 });
 
 export default Home;
