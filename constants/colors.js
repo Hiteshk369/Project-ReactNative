@@ -1,4 +1,5 @@
 export const Colors = {
+
   darkPurple: '#1e1262',
   lightPurple: '#4d0d7e',
   white: '#fff',
@@ -19,3 +20,4 @@ export const Colors = {
   gray_700: '#606060',
   gray_800: '#8a8a8a',
 };
+
