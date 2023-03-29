@@ -11,8 +11,6 @@ import RegisterStack from './Navigation/RegisterStack';
 import HomeStack from './Navigation/HomeStack';
 
 
-import Summary from './screens/DashBoard/Summary';
-import SummaryAppointment from './screens/DashBoard/SummaryAppointment';
 import MainAppointment from './screens/Appointements/MainAppointment';
 import AddAppointment from './screens/Appointements/AddAppointment';
 import SellPackage from './screens/Package/SellPackage';
