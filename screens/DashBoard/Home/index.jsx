@@ -5,7 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+
+import {Colors} from '../../../constants/colors';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -15,39 +17,52 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Home = () => {
   return (
-    <View>
+
+    <View style={styles.mainContainer}>
+
       <View style={styles.navigation}>
         <Text style={styles.navHeader}>Prana</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
             name="notifications"
-            color="#fff"
+
+            color={Colors.white}
+
             style={styles.circleIcon}
           />
           <AntDesign
             name="questioncircle"
-            color="#fff"
+
+            color={Colors.white}
+
             style={styles.circleIcon}
           />
           <MaterialIcons
             name="settings"
-            color="#fff"
+
+            color={Colors.white}
+
             style={styles.circleIcon}
           />
         </View>
       </View>
 
-      <ScrollView
-        style={styles.container}>
+
+      <ScrollView showsVerticalScrollIndicator={true} style={styles.container}>
         <View style={styles.Card}>
           <View style={styles.doctorCard}>
             <LinearGradient
-              colors={['#1e1262', '#4d0d7e']}
+              colors={[Colors.darkPurple, Colors.lightPurple]}
               style={styles.gradient}>
               <View style={styles.box}>
-                <Fontisto name="doctor" color="#fff" style={styles.drIcon} />
+                <Fontisto
+                  name="doctor"
+                  color={Colors.white}
+                  style={styles.drIcon}
+                />
               </View>
-              <Text style={styles.boxText}>Dr.Chandra Shekar</Text>
+              <Text style={styles.boxText}>Dr. Chandra Shekar</Text>
+
               <View style={styles.bottomText}>
                 <Text style={styles.numberText}>4 </Text>
                 <Text style={styles.consultedText}>Patients Consulted</Text>
@@ -61,110 +76,117 @@ const Home = () => {
 
         <View style={styles.dashboard}>
           <View style={styles.buttons}>
-            <TouchableOpacity style={styles.buttonBackground}>
-              <Text style={styles.buttonText}>DASHBOARD</Text>
+
+            <TouchableOpacity style={styles.selectedButton}>
+              <FontAwesome name="circle-o" style={styles.selectedTextColor} />
+              <Text style={styles.selectedTextColor}>DASHBOARD</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonBackground}>
-              <Text>SUMMARY</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.dashButtons}>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Today's Dairy </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Online Consult</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Clinic visit</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.dashButtons}>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>View Calender</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Book Appointment</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Patient Details</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.dashButtons}>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Reports</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Earnings</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Health Feeds</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.dashButtons}>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>In Patient Hospitalization</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Community</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Services</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.dashButtons}>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Emergency</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Blood Locator</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.dashButton}>Lab Test</Text>
+            <TouchableOpacity style={styles.notSelectedButton}>
+              <FontAwesome
+                name="circle-o"
+                style={styles.notSelectedTextColor}
+              />
+              <Text style={styles.notSelectedTextColor}>SUMMARY</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.footer}>
-            <MaterialIcons
-                name="home"
-                color="#000"
-                style={styles.footerIcon}
-            />
-            <MaterialIcons
-                name="group"
-                color="#000"
-                style={styles.footerIcon}
-            />
-            <MaterialIcons
-                name="calendar-today"
-                color="#000"
-                style={styles.footerIcon}
-            />
-            <MaterialIcons
-                name="calendar-today"
-                color="#000"
-                style={styles.footerIcon}
-            />
-            <FontAwesome
-                name="user-circle-o"
-                color="#000"
-                style={styles.footerIcon}
-            />
+        <View style={styles.dashboardContainer}>
+          <View style={styles.dashboardRowContainer}>
+            <View style={styles.shadow}>
+              <TouchableOpacity style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Online Consult</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Clinic Visit</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.dashboardRowContainer}>
+            <View style={styles.shadow}>
+              <TouchableOpacity style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>View Calender</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>
+                Book
+                {'\n'}Appointment
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Patient Details</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.dashboardRowContainer}>
+            <View style={styles.shadow}>
+              <TouchableOpacity style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>Reports</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Earnings</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Health Feeds</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.dashboardRowContainer}>
+            <View style={styles.shadow}>
+              <TouchableOpacity style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>
+                  In patient{'\n'}Hospitalization
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Community</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Services</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.dashboardRowContainer}>
+            <View style={styles.shadow}>
+              <TouchableOpacity style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>Emergency</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Blood Locator</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Lab Test</Text>
+            </TouchableOpacity>
+          </View>
         </View>
+
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
+  mainContainer: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+  },
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
+
   },
   navigation: {
     height: 60,
     width: '100%',
-    backgroundColor: '#1e1262',
+
+    backgroundColor: Colors.darkPurple,
+
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -172,7 +194,9 @@ const styles = StyleSheet.create({
   },
   navHeader: {
     fontSize: 18,
-    color: '#fff',
+
+    color: Colors.white,
+
     paddingLeft: 10,
   },
   navIcons: {
@@ -207,19 +231,25 @@ const styles = StyleSheet.create({
   doctorCard: {
     marginTop: 20,
     height: 220,
-    width: 350,
+
+    width: 340,
+
   },
   box: {
     height: 90,
     width: 90,
-    borderColor: '#fff',
+
+    borderColor: Colors.white,
+
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,
     borderRadius: 100,
   },
   boxText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     fontSize: 16,
     marginBottom: 10,
   },
@@ -230,7 +260,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   numberText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     fontSize: 35,
   },
   lineText: {
@@ -238,22 +270,25 @@ const styles = StyleSheet.create({
     fontSize: 35,
     marginLeft: 30,
     borderLeftWidth: 2,
-    borderLeftColor: '#D3D3D3',
+
+    borderLeftColor: Colors.lightGrayBg,
   },
   numbersText: {
-    color: '#fff',
+    color: Colors.white,
+
     paddingLeft: 10,
     fontSize: 35,
   },
   consultedText: {
-    color: '#fff',
+
+    color: Colors.white,
     fontSize: 10,
-    paddingRight: 10,
   },
   dashboard: {
-    height: 450,
+    height: 'auto',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
+
     borderRadius: 10,
     marginTop: 20,
   },
@@ -263,61 +298,72 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonBackground: {
-    margin: 5,
-    width: '47%',
+
+  selectedButton: {
+    marginLeft: 5,
+    width: '50%',
     paddingVertical: 12,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 4,
+    borderBottomColor: Colors.darkPurple,
+    borderBottomWidth: 2,
   },
-  buttonText: {
-    color: '#1e1262',
+  notSelectedButton: {
+    marginRight: 5,
+    width: '50%',
+    paddingVertical: 12,
+    backgroundColor: Colors.white,
+
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    gap: 4,
+  },
+  selectedTextColor: {
+    color: Colors.darkPurple,
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 16,
   },
-  dashButton: {
-    margin: 5,
-    height: 110,
-    width: 90,
-    padding: 10,
-    paddingVertical: 30,
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    borderWidth: 0.5,
-    borderColor: '#D3D3D3',
-    elevation: 10,
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-    justifyContent: 'center',
+  notSelectedTextColor: {
+    color: Colors.lightGrayText,
+    fontSize: 16,
   },
-  dashButtons: {
-    display: 'flex',
+  dashboardContainer: {
+    width: '100%',
+    height: 'auto',
+    paddingVertical: 10,
+    marginBottom: 30,
+  },
+  dashboardRowContainer: {
     flexDirection: 'row',
+    width: '100%',
+    height: 110,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  dashboardButton: {
+    width: 90,
+    height: 100,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20,
-    padding: 5,
+    padding: 2,
+    borderRadius: 20,
+    borderWidth: 0.1,
+    borderColor: Colors.lightGrayBg,
+    elevation: 3,
   },
-    footer:{
-      height: 50,
-      width: '100%',
-      backgroundColor:'#fff',
-      display:'flex',
-      flexDirection:'row',
-      alignItems:'center',
-      justifyContent:'center',
-      borderTopWidth:1.5,
-      borderTopColor:'#D3D3D3',
-    },
-    footerIcon:{
-      fontSize:30,
-      marginLeft:25,
-      marginRight:25,
-    },
+  dashboardButtonText: {
+    color: Colors.darkGray,
+    fontWeight: '500',
+  },
+
 });
 
 export default Home;
