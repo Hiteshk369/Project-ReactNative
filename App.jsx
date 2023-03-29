@@ -6,7 +6,7 @@ import PersonalDetailsRegistration from './screens/Registration/PersonalDetailsR
 import OtpKey from './screens/OTP/OtpKey';
 import OtpVerification from './screens/OTP/OtpVerification';
 import VerificationRegistration from './screens/Registration/VerificationRegistration';
-import Dashboard from './screens/DashBoard/Dashboard';
+import Dashboard from './screens/DashBoard/Home';
 import Summary from './screens/DashBoard/Summary';
 import SummaryAppointment from './screens/DashBoard/SummaryAppointment';
 import MainAppointment from './screens/Appointements/MainAppointment';
@@ -17,12 +17,15 @@ import Connect from './screens/Appointements/Connect';
 import MainProfilescreen from './screens/Profile/MainProfileScreen';
 import AddClinic from './screens/Clinic/AddClinic';
 import ClinicAppointmentDetails from './screens/Clinic/ClinicAppointmentDetails';
+import OnlineConsultDetails from './screens/Clinic/OnlineConsultDetails';
+import CreateYourFeed from './screens/Clinic/CreateYourFeed';
+import DashBoardAmount from './screens/DashBoard/DashBoardAmount';
 
 
 const App = () => {
   return (
     <SafeAreaView>
-      <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+      {/* <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}> */}
         {/* <PersonalDetailsRegistration /> */}
         {/* <MainRegistration /> */}
         {/* <Verification /> */}
@@ -39,8 +42,11 @@ const App = () => {
         {/* <Connect/> */}
         {/* <MainProfilescreen/> */}
         {/* <AddClinic/> */}
-        <ClinicAppointmentDetails/>
-      </LinearGradient>
+        {/* <ClinicAppointmentDetails/> */}
+        {/* <OnlineConsultDetails/> */}
+        {/* <CreateYourFeed/> */}
+        <DashBoardAmount/>
+      {/* </LinearGradient> */}
     </SafeAreaView>
   );
 };

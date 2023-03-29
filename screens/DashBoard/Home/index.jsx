@@ -13,7 +13,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Dashboard = () => {
+const Home = () => {
   return (
     <View>
       <View style={styles.navigation}>
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Dashboard;
+export default Home;
 
 // scrolling function
 // bottom nav
