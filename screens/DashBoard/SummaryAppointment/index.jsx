@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: Colors.lightGrayBg,
+    borderBottomColor: Colors.gray_200,
   },
   notSelectedButton: {
     width: '50%',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   notSelectedButtonText: {
-    color: Colors.lightGrayText,
+    color: Colors.gray_500,
     fontSize: 16,
   },
   selectedButton: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.lightGrayBg,
+    borderBottomColor: Colors.gray_200,
     color: Colors.black,
   },
   boldText: {
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderTopWidth: 1,
-    borderTopColor: Colors.lightGrayBg,
-    borderBottomColor: Colors.lightGrayBg,
+    borderTopColor: Colors.gray_200,
+    borderBottomColor: Colors.gray_200,
   },
   text: {
     display: 'flex',
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 15,
     borderTopWidth: 1,
-    borderTopColor: Colors.lightGrayBg,
+    borderTopColor: Colors.gray_200,
     width: '100%',
   },
   appButtons: {

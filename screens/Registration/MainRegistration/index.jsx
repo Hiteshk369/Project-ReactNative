@@ -49,7 +49,7 @@ const MainRegistration = () => {
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                     placeholder="Dr. Umar"
                   />
                 </View>
@@ -57,7 +57,7 @@ const MainRegistration = () => {
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                     placeholder="Pulmonologist"
                   />
                 </View>
@@ -79,7 +79,7 @@ const MainRegistration = () => {
               <CheckBox
                 tintColors={{
                   true: Colors.lightPurple,
-                  false: Colors.borderGray,
+                  false: Colors.slate_300,
                 }}
                 onChange={() => setToggleCheckBox(!toggleCheckBox)}
                 value={toggleCheckBox}
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: Colors.borderGray,
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 6,
@@ -196,10 +196,10 @@ const styles = StyleSheet.create({
   },
   circleIcon: {
     fontSize: 15,
-    color: Colors.circleIcon,
+    color: Colors.slate_200,
   },
   input: {
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
   },
   clinicDetailsContainer: {
     width: '90%',
@@ -222,9 +222,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomColor: Colors.borderGray,
+    borderBottomColor: Colors.slate_300,
     borderWidth: 1.25,
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
     paddingBottom: 1,
     marginBottom: 8,
   },

@@ -93,12 +93,15 @@ const styles = StyleSheet.create({
     fontSize: 8,
     width: 60,
     height: 30,
+    fontWeight: '500',
     color: Colors.orange,
   },
   notActive: {
     fontSize: 8,
     width: 60,
     height: 30,
+    color: Colors.slate_200,
+    fontWeight: '500',
   },
 });
 

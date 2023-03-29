@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator();
 const RegisterStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="VerificationRegistration">
+      <Stack.Navigator initialRouteName="BankingDetailsRegistration">
         <Stack.Screen
           name="Registration"
           component={MainRegistration}
@@ -25,7 +25,7 @@ const RegisterStack = () => {
             headerStyle: {
               backgroundColor: Colors.darkPurple,
             },
-            headerTintColor: Colors.navigationHeaderBlueColor,
+            headerTintColor: Colors.lightBlue,
             headerTitleStyle: {
               fontWeight: 'normal',
             },

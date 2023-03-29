@@ -10,11 +10,7 @@ import RegisterStack from './Navigation/RegisterStack';
 import HomeStack from './Navigation/HomeStack';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <SummaryAppointment />
-    </SafeAreaView>
-  );
+  return <RegisterStack />;
 };
 
 export default App;

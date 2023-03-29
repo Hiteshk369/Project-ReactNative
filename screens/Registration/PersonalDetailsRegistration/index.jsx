@@ -27,7 +27,7 @@ const PersonalDetailsRegistration = () => {
                 <View style={styles.nameInputHolder}>
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                     style={styles.inputField}
                     placeholder="First name"
                   />
@@ -35,7 +35,7 @@ const PersonalDetailsRegistration = () => {
                 <View style={styles.nameInputHolder}>
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                     style={styles.inputField}
                     placeholder="Last name"
                   />
@@ -44,7 +44,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter your mail address"
                 />
@@ -52,7 +52,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter your gender"
                 />
@@ -60,7 +60,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter your date of birth"
                 />
@@ -68,7 +68,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter your headline"
                 />
@@ -76,7 +76,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter your contact number"
                 />
@@ -84,7 +84,7 @@ const PersonalDetailsRegistration = () => {
               <View style={styles.inputHolder}>
                 <FontAwesome name="circle-thin" style={styles.circleIcon} />
                 <TextInput
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.inputField}
                   placeholder="Enter contact for patients (optional)"
                 />
@@ -101,7 +101,7 @@ const PersonalDetailsRegistration = () => {
                   multiline={true}
                   numberOfLines={4}
                   placeholder="Enter your about us details here"
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.textAreaInput}
                 />
               </View>
@@ -117,7 +117,7 @@ const PersonalDetailsRegistration = () => {
                   <TextInput
                     style={styles.dropDownInput}
                     placeholder="Pulmonologist"
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                   />
                 </View>
                 <Entypo name="chevron-thin-down" color="black" />
@@ -128,7 +128,7 @@ const PersonalDetailsRegistration = () => {
                   multiline={true}
                   numberOfLines={4}
                   placeholder="Enter your about us details here"
-                  placeholderTextColor={Colors.placeHolderTextColor}
+                  placeholderTextColor={Colors.gray_100}
                   style={styles.textAreaInput}
                 />
               </View>
@@ -144,7 +144,7 @@ const PersonalDetailsRegistration = () => {
                   <TextInput
                     style={styles.dropDownInput}
                     placeholder="Pulmonologist"
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                   />
                 </View>
                 <Entypo name="chevron-thin-down" color="black" />
@@ -155,7 +155,7 @@ const PersonalDetailsRegistration = () => {
                   <TextInput
                     style={styles.dropDownInput}
                     placeholder="Pulmonologist"
-                    placeholderTextColor={Colors.placeHolderTextColor}
+                    placeholderTextColor={Colors.gray_100}
                   />
                 </View>
                 <Entypo name="chevron-thin-down" color="black" />
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     width: '100%',
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
   },
   nameInput: {
     display: 'flex',
@@ -239,10 +239,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: Colors.borderGray,
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
     paddingLeft: 15,
   },
   inputHolder: {
@@ -252,15 +252,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 5,
     alignItems: 'center',
-    borderColor: Colors.borderGray,
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
     paddingLeft: 15,
   },
   circleIcon: {
     fontSize: 15,
-    color: Colors.circleIcon,
+    color: Colors.slate_200,
   },
   subFormsHeading: {
     display: 'flex',
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: Colors.borderGray,
+    borderBottomColor: Colors.slate_300,
   },
   subForms: {
     backgroundColor: Colors.white,
@@ -281,12 +281,12 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   subFormsHeadingText: {
-    color: Colors.lightHeadingGray,
+    color: Colors.gray_600,
     fontWeight: '600',
     fontSize: 16,
   },
   textAreaContainer: {
-    borderColor: Colors.borderGray,
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
     display: 'flex',
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
   },
   textAreaInput: {
     textAlignVertical: 'top',
-    color: Colors.inputTextColor,
+    color: Colors.gray_700,
   },
   textAreaCircle: {
     fontSize: 15,
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 10,
     gap: 8,
-    borderColor: Colors.borderGray,
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     paddingHorizontal: 5,
     alignItems: 'center',
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
   },
   dropDownInput: {
     width: '90%',
-    color: Colors.lightHeadingGray,
+    color: Colors.gray_600,
   },
 });
 
