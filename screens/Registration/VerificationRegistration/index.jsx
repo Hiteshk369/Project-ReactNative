@@ -33,7 +33,7 @@ const VerificationRegistration = () => {
             <TextInput
               style={styles.mrnInput}
               placeholder="Enter Your MRN"
-              placeholderTextColor={Colors.placeHolderTextColor}
+              placeholderTextColor={Colors.gray_100}
             />
           </View>
           <View style={styles.verificationDocumentsContainer}>
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   verificationHeadingContainer: {
-    borderBottomColor: Colors.lightBorderGray,
+    borderBottomColor: Colors.slate_100,
     borderBottomWidth: 1,
   },
   verificationHeading: {
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     display: 'flex',
     gap: 12,
-    borderBottomColor: Colors.lightBorderGray,
+    borderBottomColor: Colors.slate_100,
     borderBottomWidth: 1,
   },
   mrnHeading: {
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     color: Colors.lightRed,
   },
   mrnInput: {
-    borderColor: Colors.placeHolderTextColor,
+    borderColor: Colors.gray_100,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 16,
@@ -217,11 +217,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bulletPoint: {
-    color: Colors.darkGray,
+    color: Colors.gray_800,
     fontSize: 36,
   },
   bulletPointText: {
-    color: Colors.darkGray,
+    color: Colors.gray_800,
     fontSize: 14,
   },
   uploadContainer: {
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   bracketText: {
-    color: Colors.placeHolderTextColor,
+    color: Colors.gray_100,
   },
   imageContainer: {
     height: 150,

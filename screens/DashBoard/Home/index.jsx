@@ -271,7 +271,8 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     borderLeftWidth: 2,
 
-    borderLeftColor: Colors.lightGrayBg,
+    borderLeftColor: Colors.gray_200,
+
   },
   numbersText: {
     color: Colors.white,
@@ -331,7 +332,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   notSelectedTextColor: {
-    color: Colors.lightGrayText,
+    color: Colors.gray_500,
     fontSize: 16,
   },
   dashboardContainer: {
@@ -356,11 +357,11 @@ const styles = StyleSheet.create({
     padding: 2,
     borderRadius: 20,
     borderWidth: 0.1,
-    borderColor: Colors.lightGrayBg,
+    borderColor: Colors.gray_200,
     elevation: 3,
   },
   dashboardButtonText: {
-    color: Colors.darkGray,
+    color: Colors.gray_800,
     fontWeight: '500',
   },
 

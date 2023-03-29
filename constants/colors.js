@@ -18,6 +18,7 @@ export const Colors = {
   gray_600: '#5a5a5a',
   gray_700: '#606060',
   gray_800: '#8a8a8a',
+
  
 // old color names
 //   darkPurple: '#1e1262',
@@ -36,5 +37,6 @@ export const Colors = {
 //   lightHeadingGray: '#5a5a5a',
 //   circleIcon: '#c8c8c8',
 //   lightRed: '#d95858',
+
 };
 

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   roundedTextInput: {
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: Colors.lightGrayBg,
+    backgroundColor: Colors.gray_200,
   },
   buttonBackground: {
     margin: 5,

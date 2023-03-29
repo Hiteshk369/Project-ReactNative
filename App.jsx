@@ -28,13 +28,9 @@ import DashBoardAmount from './screens/DashBoard/DashBoardAmount';
 
 
 const App = () => {
-  return (
-    <SafeAreaView>
 
-      <SummaryAppointment />
+  return <RegisterStack />;
 
-    </SafeAreaView>
-  );
 };
 
 
