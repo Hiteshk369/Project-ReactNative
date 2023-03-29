@@ -10,6 +10,7 @@ import {
   PersonalDetailsRegistration,
   VerificationRegistration,
   BankingDetailsRegistration,
+  ExperienceDetailsRegistration,
 } from '../screens/Registration';
 
 const Stack = createNativeStackNavigator();
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator();
 const RegisterStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BankingDetailsRegistration">
+      <Stack.Navigator initialRouteName="ExperienceDetailsRegistration">
         <Stack.Screen
           name="Registration"
           component={MainRegistration}
@@ -86,6 +87,26 @@ const RegisterStack = () => {
         <Stack.Screen
           name="BankingDetailsRegistration"
           component={BankingDetailsRegistration}
+          options={{
+            title: 'Registration',
+            headerStyle: {
+              backgroundColor: Colors.darkPurple,
+            },
+            headerTintColor: Colors.white,
+            headerTitleStyle: {
+              fontWeight: '300',
+            },
+            headerTitleAlign: 'center',
+            headerLeft: () => (
+              <TouchableOpacity>
+                <Entypo name="chevron-left" style={styles.backIcon} />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="ExperienceDetailsRegistration"
+          component={ExperienceDetailsRegistration}
           options={{
             title: 'Registration',
             headerStyle: {
