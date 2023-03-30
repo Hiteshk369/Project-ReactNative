@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import { Colors } from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -25,12 +26,12 @@ const AddAppointment = () => {
   return (
     <ScrollView>
       <View>
-        <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
           <View style={styles.navBackground}>
             {/* <View style={styles.leftText}> */}
             <MaterialIcons
               name="arrow-back-ios"
-              color="#fff"
+              color={Colors.white}
               style={styles.leftText}
             />
             <Text style={styles.leftText}>Add Appointment</Text>
@@ -38,13 +39,13 @@ const AddAppointment = () => {
             <View style={styles.divText}>
               <FontAwesome
                 name="video-camera"
-                color="#fff"
+                color={Colors.white}
                 style={styles.rightText}
               />
               <Text style={styles.rightText}>Video Consult</Text>
               <MaterialIcons
                 name="toggle-off"
-                color="#fff"
+                color={Colors.white}
                 style={styles.toggleIcon}
               />
             </View>
@@ -53,14 +54,14 @@ const AddAppointment = () => {
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="First name"
             />
           </View>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Last name"
             />
@@ -69,14 +70,14 @@ const AddAppointment = () => {
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Phone Number"
             />
           </View>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Male|Female|Other"
             />
@@ -89,23 +90,23 @@ const AddAppointment = () => {
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               placeholder="YYYY|MM|DD"
             />
             <AntDesign
               name="calendar"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.yearsDown}
             />
           </View>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               placeholder="Age          Years"
             />
             <FontAwesome
               name="angle-down"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.yearsDown}
             />
           </View>
@@ -113,7 +114,7 @@ const AddAppointment = () => {
         <View style={styles.nameInput}>
           <View style={styles.bigInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Chief Complaints"
             />
@@ -124,13 +125,13 @@ const AddAppointment = () => {
           <TouchableOpacity style={styles.laterText}>
             <AntDesign
               name="clockcircleo"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.clockIcon}
             />
             <Text style={styles.downText}>Later</Text>
             <FontAwesome
               name="angle-down"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.downIcon}
             />
           </TouchableOpacity>
@@ -157,7 +158,7 @@ const AddAppointment = () => {
           <Text style={styles.notifyHeadText}>Notify Patient via</Text>
           <View style={styles.notifyFlexText}>
             <CheckBox
-              tintColors={{true: '#4d0d7e', false: '#afafaf'}}
+              tintColors={{true: Colors.lightPurple, false: Colors.slate_300}}
               onChange={() => setToggleCheckBox(!toggleCheckBox)}
               value={toggleCheckBox}
             />
@@ -168,14 +169,14 @@ const AddAppointment = () => {
               style={styles.clockIcon}
             />
             <CheckBox
-              tintColors={{true: '#4d0d7e', false: '#afafaf'}}
+              tintColors={{true: Colors.lightPurple, false: Colors.slate_300}}
               onChange={() => setToggleCheckBox(!toggleCheckBox)}
               value={toggleCheckBox}
             />
             <Text style={styles.textColor}>SMS</Text>
             <MaterialIcons
               name="message"
-              color="#000"
+              color={Colors.black}
               style={styles.clockIcon}
             />
           </View>
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginLeft: '5%',
     fontSize: 16,
-    color: '#fff',
+    color: Colors.white,
   },
   rightText: {
     flexDirection: 'row',
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginLeft: '5%',
     fontSize: 16,
-    color: '#fff',
+    color: Colors.white,
   },
   toggleIcon: {
     alignItems: 'center',
@@ -228,7 +229,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     width: '100%',
-    color: '#606060',
+    color: Colors.gray_700,
   },
   nameInputHolder: {
     height: 42,
@@ -236,10 +237,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#afafaf',
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '3%',
     margin: '5%',
     marginBottom: '0%',
@@ -253,7 +254,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 130,
-    color: '#000',
+    color: Colors.black,
     margin: '3%',
     marginBottom: '0%',
     fontSize: 20,
@@ -268,10 +269,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#afafaf',
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '3%',
     margin: '5%',
     marginBottom: '0%',
@@ -281,17 +282,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: '10%',
-    backgroundColor: '#F7EEFF',
+    backgroundColor: Colors.purple_100,
     padding: '2%',
     paddingHorizontal: '5%',
-    // borderRadius:20,
     marginLeft: '2%',
     marginRight: '2%',
   },
   laterText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     padding: '2%',
     borderRadius: 10,
   },
@@ -301,11 +301,11 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 18,
-    color: '#000',
+    color: Colors.black,
   },
   downText: {
     fontSize: 15,
-    color: '#000',
+    color: Colors.black,
   },
   downIcon: {
     fontSize: 25,
@@ -316,21 +316,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 2,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: Colors.gray_200,
     gap: 30,
   },
   datesText: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '400',
   },
   colorText: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#4d0d7e',
+    color: Colors.lightPurple,
     paddingBottom: '1%',
     borderBottomWidth: 4,
-    borderBottomColor: '#4d0d7e',
+    borderBottomColor: Colors.lightPurple,
   },
   appText: {
     alignItems: 'center',
@@ -339,21 +339,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderBottomWidth: 2,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: Colors.gray_200,
   },
   appTimeText: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 14,
   },
   appointmenttimeText: {
-    color: '#4d0d7e',
+    color: Colors.lightPurple,
     fontSize: 14,
   },
   notifyContainer: {
     padding: '3%',
   },
   notifyHeadText: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: '5%',
@@ -364,14 +364,14 @@ const styles = StyleSheet.create({
     marginBottom:'2%'
   },
   textColor: {
-    color: '#000',
+    color: Colors.black,
     marginRight: '2%',
   },
   buttonBackground: {
     margin: 5,
     width: '98%',
     paddingVertical: 15,
-    backgroundColor: '#4d0d7e',
+    backgroundColor: Colors.lightPurple,
     borderRadius: 10,
     display: 'flex',
     alignItems: 'center',
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 export default AddAppointment;

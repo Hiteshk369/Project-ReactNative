@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import React from 'react'
 
 import LinearGradient from 'react-native-linear-gradient';
+import { Colors } from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -17,28 +18,28 @@ const MainAppointment = () => {
                 <View style={styles.navIcons}>   
                     <MaterialIcons
                         name="notifications"
-                        color="#fff"
+                        color={Colors.white}
                         style={styles.circleIcon}
                     />
                     <AntDesign
                         name="questioncircle"
-                        color="#fff"
+                        color={Colors.white}
                         style={styles.circleIcon}
                     />
                     <MaterialIcons
                         name="settings"
-                        color="#fff"
+                        color={Colors.white}
                         style={styles.circleIcon}
                     />
                 </View>
             </View>
             <View style={styles.Card}>
                 <View style={styles.doctorCard}>
-                    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}> 
+                    <LinearGradient colors={[Colors.darkPurple, Colors.lightPurple]} style={styles.gradient}> 
                         <View style={styles.box} >
                             <Fontisto
                                 name="doctor"
-                                color="#fff"
+                                color={Colors.white}
                                 style={styles.drIcon}
                             />                        
                         </View>
@@ -56,17 +57,17 @@ const MainAppointment = () => {
                 <Text style={styles.Text}>Your Appointments</Text>
                 <View style={styles.dashButtons}>
                     <TouchableOpacity >
-                    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradientButtons}> 
+                    <LinearGradient colors={[Colors.darkPurple, Colors.lightPurple]} style={styles.gradientButtons}> 
                             <Text style={styles.dashButton}>Mar 6th</Text>
                     </LinearGradient>
                     </TouchableOpacity>
                     <TouchableOpacity >
-                    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradientButtons}> 
+                    <LinearGradient colors={[Colors.darkPurple, Colors.lightPurple]} style={styles.gradientButtons}> 
                             <Text style={styles.dashButton}>Mar 7th</Text>
                     </LinearGradient>
                     </TouchableOpacity>
                     <TouchableOpacity >
-                    <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradientButtons}> 
+                    <LinearGradient colors={[Colors.darkPurple, Colors.lightPurple]} style={styles.gradientButtons}> 
                             <Text style={styles.dashButton}>Mar 8th</Text>
                     </LinearGradient>
                     </TouchableOpacity>
@@ -88,7 +89,7 @@ const MainAppointment = () => {
                     <Text style={styles.timeCard}>03:30 PM - 04:30 PM</Text>
                     <MaterialIcons
                         name="calendar-today"
-                        color="#000"
+                        color={Colors.black}
                         style={styles.calenderIcon}
                     />
                     <TouchableOpacity >
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     navigation:{
         height: 60,
         width: '100%',
-        backgroundColor:'#1e1262',
+        backgroundColor:Colors.darkPurple,
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
@@ -116,13 +117,13 @@ const styles = StyleSheet.create({
       },
       drHeader:{
         fontSize:20,
-        color: '#fff',
+        color: Colors.white,
         paddingLeft:95,
         paddingRight:50,
       },
       navHeader:{
         fontSize:15,
-        color:'#BEFF33',
+        color:Colors.lightgreen,
         paddingLeft:15,
       },
       navIcons:{
@@ -162,14 +163,14 @@ const styles = StyleSheet.create({
       box: {
         height: 90,
         width: 90,
-        borderColor: '#fff',
+        borderColor: Colors.white,
         borderWidth: 1,
         marginTop: 20,
         marginBottom: 15,
         borderRadius: 100,
       },
       boxText:{
-        color:'#fff',
+        color:Colors.white,
         fontSize:16,
         marginBottom: 10,
       },
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
       },
       numberText:{
-        color:'#fff',
+        color:Colors.white,
         fontSize:35,
       },
       lineText:{
@@ -188,27 +189,27 @@ const styles = StyleSheet.create({
         fontSize:35,
         marginLeft:30,
         borderLeftWidth:2,
-        borderLeftColor: '#D3D3D3',
+        borderLeftColor: Colors.gray_200,
       },
       numbersText:{
-        color:'#fff',
+        color:Colors.white,
         paddingLeft:10,
         fontSize:35,
       },
       consultedText:{
-        color:'#fff',
+        color:Colors.white,
         fontSize:10,
         paddingRight:10,
       },
       Text:{
-        color:'#000',
+        color: Colors.black,
         display:'flex',
         textAlign:'center',
         margin:15,
         fontSize:18
       },
       dashButton:{
-        color:'#fff',
+        color:Colors.white,
         height:70,
         width:70,
         display:'flex',
@@ -241,9 +242,9 @@ const styles = StyleSheet.create({
         margin:10
       },
       dashBigButton:{
-        color:'#000',
+        color:Colors.black ,
         borderRadius:20,
-        backgroundColor:'#fff',
+        backgroundColor:Colors.white,
         elevation:11,
         height:130,
         width:130,
@@ -254,11 +255,11 @@ const styles = StyleSheet.create({
         justifyContent:'center'
       },
       addButton:{
-        color:'#fff',
+        color:Colors.white,
         borderRadius:25,
         width:'30%',
         display:'flex',
-        backgroundColor:'#1e1262',
+        backgroundColor:Colors.darkPurple,
         textAlign:'center',
         marginLeft:130,
         padding:8,
@@ -272,15 +273,15 @@ const styles = StyleSheet.create({
         borderRadius:20,
         margin:15,
         borderWidth:1.5,
-        borderColor:'#D3D3D3'
+        borderColor:Colors.gray_200
       },
       nameCard:{
-        color:'#000',
+        color:Colors.black,
         fontSize:18,
         marginTop:10
       },
       timeCard:{
-        color:'#000',
+        color:Colors.black,
         fontWeight:300,
         fontSize:12,
       },
@@ -288,10 +289,10 @@ const styles = StyleSheet.create({
         fontSize:150,
       },
       cardButton:{
-        color:'#fff',
+        color:Colors.white,
         borderRadius:25,
         width:'30%',
-        backgroundColor:'#1e1262',
+        backgroundColor:Colors.darkPurple ,
         paddingHorizontal:15,
         paddingVertical:10,
         fontSize:15

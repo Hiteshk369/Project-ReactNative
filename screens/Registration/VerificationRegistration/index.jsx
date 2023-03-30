@@ -63,7 +63,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -76,7 +76,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -91,7 +91,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -104,7 +104,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -120,7 +120,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -133,7 +133,7 @@ const VerificationRegistration = () => {
                 <TouchableOpacity style={styles.imageContainer}>
                   <AntDesign
                     name="pluscircle"
-                    color={'#141261'}
+                    color={Colors.darkPurple}
                     style={styles.plusIcon}
                   />
                 </TouchableOpacity>
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f7f6fe',
+    backgroundColor: Colors.slate_400,
   },
   plusIcon: {
     fontSize: 25,

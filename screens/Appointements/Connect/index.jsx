@@ -9,6 +9,7 @@ import {
 import React, {Component} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
+import { Colors } from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -16,11 +17,11 @@ const Connect = () => {
   return (
       <View style={styles.container}>
         <View style={styles.wholeContainer}>
-        <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
           <View style={styles.navBackground}>
             <MaterialIcons
               name="arrow-back-ios"
-              color="#fff"
+              color={Colors.white}
               style={styles.backIcon}
             />
             <Text style={styles.mainHeader}>CONNECT</Text>
@@ -28,7 +29,7 @@ const Connect = () => {
           <View style={styles.inputContainer}>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Enter Room Id"
             />
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     marginLeft: '19%',
     fontSize: 28,
     fontWeight: '500',
-    color: '#fff',
+    color: Colors.white,
   },
   backIcon: {
     alignItems: 'center',
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   inputField: {
     fontSize: 18,
     width: '100%',
-    color: '#606060',
+    color: Colors.gray_700,
   },
   inputContainer:{
     height:'75%'
@@ -97,10 +98,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#afafaf',
+    borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 8,
-    color: '#d3d3d3',
+    color: Colors.gray_200,
     paddingLeft: '24%',
     margin: '10%',
     marginTop: '30%',
@@ -110,16 +111,15 @@ const styles = StyleSheet.create({
     paddingTop: '1%',
     paddingBottom: '0%',
     fontSize: 14,
-    color: '#D3D3D3',
+    color: Colors.gray_200,
   },
   buttonBackground: {
-    // margin: 5,
     height:'25%',
     margin:'2%',
     marginTop:'5%',
     width: '95%',
     paddingVertical: '5%',
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     borderRadius: 50,
     display: 'flex',
     alignItems: 'center',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 

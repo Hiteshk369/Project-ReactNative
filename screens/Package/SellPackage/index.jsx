@@ -14,16 +14,17 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import PhoneInput from 'react-native-phone-number-input';
+import { Colors } from '../../../constants/colors';
 
 const SellPackage = () => {
   return (
     <ScrollView>
       <View>
-        <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
           <View style={styles.navBackground}>
             <MaterialIcons
               name="arrow-back-ios"
-              color="#fff"
+              color={Colors.white}
               style={styles.backIcon}
             />
             <Text style={styles.leftText}>Sell Package</Text>
@@ -39,14 +40,14 @@ const SellPackage = () => {
       </View>
       <View style={styles.nameInputHolder}>
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.inputField}
           placeholder="Name"
         />
       </View>
       <View style={styles.nameInputHolder}>
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.inputField}
           placeholder="E-mail"
         />
@@ -54,17 +55,17 @@ const SellPackage = () => {
       <Text style={styles.consultationHeader}>Consultations</Text>
       <View style={styles.consultationInput}>
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.consultationinputField}
           placeholder="Text"
         />
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.consultationinputField}
           placeholder="Audio"
         />
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.consultationinputField}
           placeholder="Video"
         />
@@ -75,7 +76,7 @@ const SellPackage = () => {
       <Text style={styles.consultationHeader}>Validity (in days)</Text>
       <View style={styles.nameInputHolder}>
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.inputField}
           placeholder="30"
         />
@@ -87,17 +88,17 @@ const SellPackage = () => {
       <Text style={styles.consultationHeader}>Price</Text>
       <View style={styles.priceInput}>
         <TextInput
-          placeholderTextColor={'#000'}
+          placeholderTextColor={Colors.black}
           style={styles.priceInputField}
           placeholder="₹(INR)"
         />
         <FontAwesome
           name="angle-down"
-          color="#000"
+          color={Colors.black}
           style={styles.priceDropDown}
         />
         <TextInput
-          placeholderTextColor={'#d3d3d3'}
+          placeholderTextColor={Colors.gray_200}
           style={styles.amountInputField}
           placeholder="Amount"
         />
@@ -108,7 +109,7 @@ const SellPackage = () => {
       <TouchableOpacity style={styles.buttonBackground}>
         <MaterialIcons
           name="add-circle"
-          color="#fff"
+          color={Colors.white}
           style={styles.addButtonIcon}
         />
         <Text style={styles.buttonText}>Create New Package</Text>
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginLeft: '19%',
     fontSize: 20,
-    color: '#fff',
+    color: Colors.white,
   },
   backIcon: {
     alignItems: 'center',
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: 'white',
     borderBottomWidth: 1.5,
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
   },
   textContainer: {
     paddingVertical: 0,
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
   inputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
+    color: Colors.gray_700,
   },
   nameInputHolder: {
     height: 42,
@@ -174,9 +175,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginTop: '2%',
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     paddingTop: '5%',
     marginLeft: '4%',
     fontSize: 19,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '500',
   },
   consultationInput: {
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginLeft: '3%',
@@ -206,8 +207,8 @@ const styles = StyleSheet.create({
   consultationinputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
-    borderColor: '#D3D3D3',
+    color: Colors.gray_700,
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
   },
   consultationBottomText: {
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
     paddingTop: '1%',
     paddingBottom: '0%',
     fontSize: 11,
-    color: '#D3D3D3',
+    color: Colors.gray_200,
   },
   priceDropDown: {
     fontSize: 25,
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
   },
   priceInputField: {
     fontSize: 20,
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
     width: '30%',
   },
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginLeft: '3%',
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   },
   amountInputField: {
     fontSize: 16,
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
     width: '53%',
   },
@@ -252,7 +253,7 @@ const styles = StyleSheet.create({
     marginTop: '20%',
     width: '60%',
     paddingVertical: 15,
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',
     flexDirection: 'row',
@@ -263,7 +264,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
   addButtonIcon: {
     marginLeft: '0%',

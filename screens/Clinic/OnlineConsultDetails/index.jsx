@@ -20,7 +20,7 @@ const OnlineConsultDetails = () => {
                             <Text style={styles.activeText}>Active</Text>
                             <MaterialIcons
                                 name="toggle-on"
-                                color="#0077CD"
+                                color={Colors.blue_500}
                                 style={styles.toggleTopIcon}
                             />
                         </View>
@@ -31,25 +31,25 @@ const OnlineConsultDetails = () => {
                         <View style={styles.fromTwoInputHolder}>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="02:00 PM"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="08:00 PM"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
@@ -59,7 +59,7 @@ const OnlineConsultDetails = () => {
                             <Text style={styles.RightText}>Apply To All</Text>
                             <MaterialIcons
                                 name="toggle-on"
-                                color="#0077CD"
+                                color={Colors.blue_500}
                                 style={styles.togglIcon}
                             />
                         </View>
@@ -68,7 +68,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Monday</Text>
@@ -76,7 +76,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Tuesday</Text>
@@ -84,7 +84,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Wednesday</Text>
@@ -92,7 +92,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Thursday</Text>
@@ -102,7 +102,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Friday</Text>
@@ -110,7 +110,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Saturday</Text>
@@ -118,7 +118,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Sunday</Text>
@@ -132,25 +132,25 @@ const OnlineConsultDetails = () => {
                         <View style={styles.fromTwoInputHolder}>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="Select"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="Select"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
@@ -230,7 +230,7 @@ const OnlineConsultDetails = () => {
                             <View style={styles.additionalDaysText}>
                                 <Ionicons
                                     name="add-circle-outline"
-                                    color="#4d0d7e"
+                                    color={Colors.lightPurple}
                                     style={styles.circleaddIcon}
                                 />
                                 <Text style={styles.addDaysText}>
@@ -240,7 +240,7 @@ const OnlineConsultDetails = () => {
                             <View style={styles.additionalDaysText}>
                                 <Ionicons
                                     name="remove-circle-outline"
-                                    color="#4d0d7e"
+                                    color={Colors.lightPurple}
                                     style={styles.circleaddIcon}
                                 />
                                 <Text style={styles.addDaysText}>
@@ -271,7 +271,7 @@ const OnlineConsultDetails = () => {
                             <Text style={styles.activeText}>Active</Text>
                             <MaterialIcons
                                 name="toggle-on"
-                                color="#0077CD"
+                                color={Colors.blue_500}
                                 style={styles.toggleTopIcon}
                             />
                         </View>
@@ -282,25 +282,25 @@ const OnlineConsultDetails = () => {
                         <View style={styles.fromTwoInputHolder}>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="02:00 PM"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
                             <View style={styles.fromInputHolder}>
                                 <TextInput
-                                    placeholderTextColor={'#000'}
+                                    placeholderTextColor={Colors.black}
                                     style={styles.inputField}
                                     placeholder="08:00 PM"
                                 />
                                 <FontAwesome
                                     name="angle-down"
-                                    color="#000"
+                                    color={Colors.black}
                                     style={styles.timeDown}
                                 />
                             </View>
@@ -310,7 +310,7 @@ const OnlineConsultDetails = () => {
                             <Text style={styles.RightText}>Apply To All</Text>
                             <MaterialIcons
                                 name="toggle-on"
-                                color="#0077CD"
+                                color={Colors.blue_500}
                                 style={styles.togglIcon}
                             />
                         </View>
@@ -319,7 +319,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Monday</Text>
@@ -327,7 +327,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Tuesday</Text>
@@ -335,7 +335,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Wednesday</Text>
@@ -343,7 +343,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Thursday</Text>
@@ -353,7 +353,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Friday</Text>
@@ -361,7 +361,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Saturday</Text>
@@ -369,7 +369,7 @@ const OnlineConsultDetails = () => {
                                 <View style={styles.daysRowText}>
                                     <MaterialIcons
                                         name="check-circle"
-                                        color="#4d0d7e"
+                                        color={Colors.lightPurple}
                                         style={styles.circleIcon}
                                     />
                                     <Text style={styles.daysText}>Sunday</Text>
@@ -379,7 +379,7 @@ const OnlineConsultDetails = () => {
                         <View style={styles.additionalDaysText}>
                             <Ionicons
                                 name="add-circle-outline"
-                                color="#4d0d7e"
+                                color={Colors.lightPurple}
                                 style={styles.circleaddIcon}
                             />
                             <Text style={styles.addDaysText}>
@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
         height: 1360,
         width: '95%',
         borderRadius: 25,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.white,
     },
     receivingFlexText: {
         marginLeft: '4%',
@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
     },
     receivingText: {
         fontSize: 14,
-        color: '#000',
+        color: Colors.black,
         fontWeight: '800',
     },
     toggleTopIcon: {
@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
     inputField: {
         width: '100%',
         fontSize: 16,
-        color: '#606060',
+        color: Colors.gray_700,
     },
     fromInputHolder: {
         height: 45,
@@ -470,7 +470,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        borderColor: '#EDEEF1',
+        borderColor: Colors.gray_300,
         borderBottomWidth: 1.5,
         paddingLeft: '1%',
         margin: '5%',
@@ -521,7 +521,7 @@ const styles = StyleSheet.create({
     },
     daysText: {
         fontSize: 17,
-        color: '#000',
+        color: Colors.black,
         fontWeight: '400',
     },
     flexDaysText: {
@@ -540,7 +540,7 @@ const styles = StyleSheet.create({
     addDaysText: {
         fontSize: 13,
         fontWeight: '500',
-        color: '#4d0d7e',
+        color: Colors.lightPurple,
     },
     bgGray: {
         marginTop: '2%',
@@ -566,11 +566,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     bulletPoint: {
-        color: '#8a8a8a',
+        color: Colors.gray_800,
         fontSize: 36,
     },
     bulletPointText: {
-        color: '#8a8a8a',
+        color: Colors.gray_800,
         fontSize: 13,
         fontWeight: '600'
     },

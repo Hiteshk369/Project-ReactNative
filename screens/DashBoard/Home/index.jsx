@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {Colors} from '../../../constants/colors';
+import { Colors } from '../../../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
 

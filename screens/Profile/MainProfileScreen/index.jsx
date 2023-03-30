@@ -11,26 +11,27 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { Colors } from '../../../constants/colors';
 
 const MainProfilescreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View >
-        <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
           <View style={styles.navBackground}>
             <View style={styles.box}></View>
             <Text style={styles.nameText}>Umar</Text>
             <Text style={styles.numberText}>9866733112</Text>
           </View>
           <TouchableOpacity style={styles.buttonBackground}>
-            <MaterialIcons name="mode-edit" color="#fff" />
+            <MaterialIcons name="mode-edit" color={Colors.styles} />
             <Text style={styles.buttonText}>Edit Profile</Text>
           </TouchableOpacity>
         </LinearGradient>
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Activation Profile</Text>
@@ -38,7 +39,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Activation Profile</Text>
@@ -46,7 +47,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Add Clinic</Text>
@@ -54,7 +55,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Dashboard</Text>
@@ -62,7 +63,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Campaign</Text>
@@ -70,7 +71,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Sell Package/Create Package</Text>
@@ -78,7 +79,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Ask us a Question</Text>
@@ -86,7 +87,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Share Patient App</Text>
@@ -94,7 +95,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Change Password</Text>
@@ -102,7 +103,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Sync Patient Data</Text>
@@ -110,7 +111,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>About</Text>
@@ -118,7 +119,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Privacy Policy</Text>
@@ -126,7 +127,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Terms of Service</Text>
@@ -134,7 +135,7 @@ const MainProfilescreen = () => {
         <View style={styles.optionsTextConatiner}>
           <FontAwesome
             name="circle-thin"
-            color="#000"
+            color={Colors.black}
             style={styles.circleIcon}
           />
           <Text style={styles.optionsText}>Logout</Text>
@@ -164,22 +165,22 @@ const styles = StyleSheet.create({
   box: {
     height: 100,
     width: 100,
-    borderColor: '#1e1262',
-    backgroundColor: '#fff',
+    borderColor: Colors.darkPurple,
+    backgroundColor: Colors.white,
     borderWidth: 2,
     marginTop: '30%',
     // marginBottom: 15,
     borderRadius: 100,
   },
   nameText: {
-    color: '#000',
+    color: Colors.black,
     fontSize: 18,
     fontWeight: '600',
     marginBottom: '0%',
   },
   numberText: {
     marginBottom: '0%',
-    color: '#000',
+    color: Colors.black,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
     marginTop: '0%',
     width: '24%',
     paddingVertical: 5,
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     borderRadius: 50,
     display: 'flex',
     flexDirection: 'row',
@@ -199,13 +200,13 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 11,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
   optionsTextConatiner: {
     flexDirection: 'row',
     alignContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#d3d3d3',
+    borderBottomColor: Colors.gray_200,
     width: '92%',
     marginTop: '0%',
     marginLeft: '4%',
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
     marginLeft: '0%',
     fontSize: 16,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.black,
   },
 });
 
