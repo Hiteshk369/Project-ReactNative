@@ -11,13 +11,15 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
-const MainProfilescreen = () => {
+const MainProfileScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <View >
-        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
+      <View>
+        <LinearGradient
+          colors={[Colors.darkPurple, Colors.lightPurple]}
+          style={styles.gradient}>
           <View style={styles.navBackground}>
             <View style={styles.box}></View>
             <Text style={styles.nameText}>Umar</Text>
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     height: '14%',
-    marginBottom:'22%',
+    marginBottom: '22%',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
   },
@@ -227,4 +229,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainProfilescreen;
+export default MainProfileScreen;
