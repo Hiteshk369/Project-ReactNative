@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -17,36 +17,27 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Home = () => {
   return (
-
     <View style={styles.mainContainer}>
-
       <View style={styles.navigation}>
         <Text style={styles.navHeader}>Prana</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
             name="notifications"
-
             color={Colors.white}
-
             style={styles.circleIcon}
           />
           <AntDesign
             name="questioncircle"
-
             color={Colors.white}
-
             style={styles.circleIcon}
           />
           <MaterialIcons
             name="settings"
-
             color={Colors.white}
-
             style={styles.circleIcon}
           />
         </View>
       </View>
-
 
       <ScrollView showsVerticalScrollIndicator={true} style={styles.container}>
         <View style={styles.Card}>
@@ -76,7 +67,6 @@ const Home = () => {
 
         <View style={styles.dashboard}>
           <View style={styles.buttons}>
-
             <TouchableOpacity style={styles.selectedButton}>
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
@@ -162,14 +152,12 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
-
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-
   mainContainer: {
     height: '100%',
     width: '100%',
@@ -179,7 +167,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: Colors.white,
-
   },
   navigation: {
     height: 60,
@@ -233,7 +220,6 @@ const styles = StyleSheet.create({
     height: 220,
 
     width: 340,
-
   },
   box: {
     height: 90,
@@ -247,7 +233,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   boxText: {
-
     color: Colors.white,
 
     fontSize: 16,
@@ -260,7 +245,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   numberText: {
-
     color: Colors.white,
 
     fontSize: 35,
@@ -272,7 +256,6 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
 
     borderLeftColor: Colors.gray_200,
-
   },
   numbersText: {
     color: Colors.white,
@@ -281,7 +264,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   consultedText: {
-
     color: Colors.white,
     fontSize: 10,
   },
@@ -364,7 +346,6 @@ const styles = StyleSheet.create({
     color: Colors.gray_800,
     fontWeight: '500',
   },
-
 });
 
 export default Home;
