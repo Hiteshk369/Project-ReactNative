@@ -224,9 +224,7 @@ const styles = StyleSheet.create({
   box: {
     height: 90,
     width: 90,
-
     borderColor: Colors.white,
-
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,

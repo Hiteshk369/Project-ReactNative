@@ -3,16 +3,17 @@ export const Colors = {
   white: '#fff',
   black: '#000',
   orange: '#ff6f00',
-  red:'#ff0000',
-  
-  green:'#00ff00',
-  lightgreen:'#BEFF33',
+  red: '#ff0000',
+
+  green: '#00ff00',
+  lightgreen: '#BEFF33',
 
   lightPurple: '#4d0d7e',
-  purple_100:'#F7EEFF',
+  purple_100: '#F7EEFF',
+  purple_200: '#FAF4FE',
 
   blue: '#a9edfe',
-  blue_500:'#0077CD',
+  blue_500: '#0077CD',
   lightRed: '#d95858',
 
   slate_100: '#ededed',
@@ -29,24 +30,24 @@ export const Colors = {
   gray_700: '#606060',
   gray_800: '#8a8a8a',
 
- 
-// old color names
-//   darkPurple: '#1e1262',
-//   lightPurple: '#4d0d7e',
-//   white: '#fff',
-//   black: '#000',
-//   darkGray: '#8a8a8a',
-//   orange: '#ff6f00',
-//   navigationHeaderBlueColor: '#a9edfe',
-//   lightGrayText: '#b0b0b0',
-//   lightGrayBg: '#D3D3D3',
-//   placeHolderTextColor: '#d8d8d8',
-//   inputTextColor: '#606060',
-//   borderGray: '#afafaf',
-//   lightBorderGray: '#ededed',
-//   lightHeadingGray: '#5a5a5a',
-//   circleIcon: '#c8c8c8',
-//   lightRed: '#d95858',
+
+  // old color names
+  //   darkPurple: '#1e1262',
+  //   lightPurple: '#4d0d7e',
+  //   white: '#fff',
+  //   black: '#000',
+  //   darkGray: '#8a8a8a',
+  //   orange: '#ff6f00',
+  //   navigationHeaderBlueColor: '#a9edfe',
+  //   lightGrayText: '#b0b0b0',
+  //   lightGrayBg: '#D3D3D3',
+  //   placeHolderTextColor: '#d8d8d8',
+  //   inputTextColor: '#606060',
+  //   borderGray: '#afafaf',
+  //   lightBorderGray: '#ededed',
+  //   lightHeadingGray: '#5a5a5a',
+  //   circleIcon: '#c8c8c8',
+  //   lightRed: '#d95858',
 
 };
 

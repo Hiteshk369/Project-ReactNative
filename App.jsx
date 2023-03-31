@@ -1,4 +1,4 @@
-import {SafeAreaView} from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import OtpKey from './screens/OTP/OtpKey';
 import OtpVerification from './screens/OTP/OtpVerification';
@@ -22,13 +22,20 @@ import CreateYourFeed from './screens/Clinic/CreateYourFeed';
 import DashBoardAmount from './screens/DashBoard/DashBoardAmount';
 import FeedScreen from './screens/Clinic/FeedScreen';
 import Timeline from './screens/Profile/Timeline';
+import Selectpatient from './screens/PrescriptionScreen/Selectpatient';
+import PatientsList from './screens/PrescriptionScreen/PatientsList';
+import E_PrescriptionOptions from './components/E_PrescriptionOptions';
+import HandwrittenOptions from './components/HandwrittenOptions';
+import PatientsMain from './screens/PrescriptionScreen/PatientsMain';
+import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
+import { StepsIndicator } from './components';
+
 
 const App = () => {
   return (
     <HomeStack />
-
-    // <RegisterStack/>
   );
+
 };
 
 export default App;
