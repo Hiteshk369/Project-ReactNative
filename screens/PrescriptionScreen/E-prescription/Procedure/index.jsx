@@ -11,14 +11,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 
-const ChiefComplaints = () => {
+const Procedure = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="first" />
+              <StepsIndicator active="fifth" />
             </View>
           </View>
           <View style={styles.mainLayout}>
@@ -28,74 +28,72 @@ const ChiefComplaints = () => {
                 color={Colors.black}
                 style={styles.backIcon}
               />
-              <Text style={styles.headerText}>Cheif Complaints</Text>
+              <Text style={styles.headerText}>Procedure</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
-                placeholder="Search for Cheif Complaints"
+                placeholder="Search for Procedure"
               />
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cough</Text>
+                  <Text style={styles.suggestionsText}>Injection</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Fatigue</Text>
+                  <Text style={styles.suggestionsText}>Ecg</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Sore throat</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Headache</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Generalized ach...</Text>
+                  <Text style={styles.suggestionsText}>Endoscopy</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Dry cough</Text>
+                  <Text style={styles.suggestionsText}>Dressing</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cold</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    nasal congestion...
-                  </Text>
+                  <Text style={styles.suggestionsText}>Diet chart</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Loss of appetit...</Text>
+                  <Text style={styles.suggestionsText}>Spirometry</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Nausea...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Weakness</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Rhinitis</Text>
+                  <Text style={styles.suggestionsText}>Audiogram test</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Common cold</Text>
+                  <Text style={styles.suggestionsText}>Gastric lavage</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Tummy ache</Text>
+                  <Text style={styles.suggestionsText}>Cataract surger...</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Pain in throat</Text>
+                  <Text style={styles.suggestionsText}>Mri</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Ear wax removal</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Heart bypass su...</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Continuous gluc...</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Sutures</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Suture removal</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -108,7 +106,7 @@ const ChiefComplaints = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
-            <Text style={styles.nextButtonText}>Examination</Text>
+            <Text style={styles.nextButtonText}>Investigation</Text>
             <MaterialIcons
               name="navigate-next"
               color={Colors.black}
@@ -163,7 +161,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: Colors.purple_100,
+    backgroundColor: Colors.purple_200,
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
@@ -231,4 +229,4 @@ const styles = StyleSheet.create({
     gap: 5,
   },
 });
-export default ChiefComplaints;
+export default Procedure;
