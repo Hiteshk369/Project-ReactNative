@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {SaveButton} from '../../../components';
+import { Colors } from '../../../constants/colors';
 
 const AddClinic = () => {
   return (
@@ -12,7 +13,7 @@ const AddClinic = () => {
       <View style={styles.navBar}>
         <MaterialIcons
           name="arrow-back-ios"
-          color="#fff"
+          color= {Colors.white}
           style={styles.backIcon}
         />
         <Text style={styles.navText}>Add Clinic</Text>
@@ -21,7 +22,7 @@ const AddClinic = () => {
         <View style={styles.bgWhite}>
           <View style={styles.nameInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="Package Name"
             />
@@ -29,7 +30,7 @@ const AddClinic = () => {
           <Text style={styles.inputsHeader}>Address</Text>
           <View style={styles.addressInputHolder}>
             <TextInput
-              placeholderTextColor={'#C0C0C0'}
+              placeholderTextColor={Colors.gray_400}
               style={styles.addressInputField}
               placeholder="Selected address location"
             />
@@ -37,7 +38,7 @@ const AddClinic = () => {
           <Text style={styles.inputsHeader}>City</Text>
           <View style={styles.cityInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="City"
             />
@@ -46,38 +47,38 @@ const AddClinic = () => {
           <Text style={styles.inputsHeader}>Appointment Duration</Text>
           <View style={styles.cityInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="10 Mins"
             />
             <FontAwesome
               name="angle-down"
-              color="#000"
+              color={Colors.black}
               style={styles.timeDown}
             />
           </View>
           <View style={styles.fromTwoInputHolder}>
             <View style={styles.fromInputHolder}>
               <TextInput
-                placeholderTextColor={'#d3d3d3'}
+                placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="From"
               />
               <FontAwesome
                 name="angle-down"
-                color="#000"
+                color={Colors.black}
                 style={styles.timeDown}
               />
             </View>
             <View style={styles.fromInputHolder}>
               <TextInput
-                placeholderTextColor={'#d3d3d3'}
+                placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="To"
               />
               <FontAwesome
                 name="angle-down"
-                color="#000"
+                color={Colors.black}
                 style={styles.timeDown}
               />
             </View>
@@ -87,7 +88,7 @@ const AddClinic = () => {
             <Text style={styles.RightText}>Apply To All</Text>
             <MaterialIcons
               name="toggle-on"
-              color="#0077CD"
+              color={Colors.blue_500}
               style={styles.togglIcon}
             />
           </View>
@@ -96,7 +97,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Monday</Text>
@@ -104,7 +105,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Tuesday</Text>
@@ -112,7 +113,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Wednesday</Text>
@@ -120,7 +121,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Thursday</Text>
@@ -130,7 +131,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Friday</Text>
@@ -138,7 +139,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Saturday</Text>
@@ -146,7 +147,7 @@ const AddClinic = () => {
               <View style={styles.daysRowText}>
                 <FontAwesome
                   name="circle-thin"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Sunday</Text>
@@ -156,7 +157,7 @@ const AddClinic = () => {
           <View style={styles.additionalDaysText}>
             <Ionicons
               name="add-circle-outline"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.circleaddIcon}
             />
             <Text style={styles.addDaysText}>
@@ -167,13 +168,13 @@ const AddClinic = () => {
           <View style={styles.yesNoContainer}>
             <MaterialIcons
               name="radio-button-off"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.radioButtonIcon}
             />
             <Text style={styles.yesNoText}>Yes</Text>
             <MaterialIcons
               name="radio-button-on"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.radioButtonIcon}
             />
             <Text style={styles.yesNoText}>No</Text>
@@ -185,14 +186,14 @@ const AddClinic = () => {
           <View style={styles.fromTwoInputHolder}>
             <View style={styles.bgshadeInput}>
               <TextInput
-                placeholderTextColor={'#d3d3d3'}
+                placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="0"
               />
             </View>
             <View style={styles.bgshadeInput}>
               <TextInput
-                placeholderTextColor={'#d3d3d3'}
+                placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="70"
               />
@@ -202,13 +203,13 @@ const AddClinic = () => {
           <View style={styles.yesNoContainer}>
             <MaterialIcons
               name="radio-button-off"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.radioButtonIcon}
             />
             <Text style={styles.yesNoText}>Yes</Text>
             <MaterialIcons
               name="radio-button-on"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.radioButtonIcon}
             />
             <Text style={styles.yesNoText}>No</Text>
@@ -216,7 +217,7 @@ const AddClinic = () => {
           <Text style={styles.inputsHeader}>Select Gender</Text>
           <View style={styles.genderInputHolder}>
             <TextInput
-              placeholderTextColor={'#000'}
+              placeholderTextColor={Colors.black}
               style={styles.genderInputField}
               placeholder="Male"
             />
@@ -227,7 +228,7 @@ const AddClinic = () => {
           <Text style={styles.inputsHeader}>Mobile Number</Text>
           <View style={styles.cityInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder="+91"
             />
@@ -235,7 +236,7 @@ const AddClinic = () => {
           <View style={styles.addMoreText}>
             <Ionicons
               name="add-circle-outline"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.circleaddIcon}
             />
             <Text style={styles.addDaysText}>Add More</Text>
@@ -243,7 +244,7 @@ const AddClinic = () => {
           <Text style={styles.AddMoreBottomText}>LandLine</Text>
           <View style={styles.cityInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder=""
             />
@@ -251,7 +252,7 @@ const AddClinic = () => {
           <View style={styles.addMoreText}>
             <Ionicons
               name="add-circle-outline"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.circleaddIcon}
             />
             <Text style={styles.addDaysText}>Add More</Text>
@@ -259,7 +260,7 @@ const AddClinic = () => {
           <Text style={styles.AddMoreBottomText}>E-Mail</Text>
           <View style={styles.cityInputHolder}>
             <TextInput
-              placeholderTextColor={'#d3d3d3'}
+              placeholderTextColor={Colors.gray_200}
               style={styles.inputField}
               placeholder=""
             />
@@ -283,7 +284,7 @@ const styles = StyleSheet.create({
     gap: 100,
     padding: '4%',
     borderBottomWidth: 1,
-    borderBottomColor: '#d3d3d3',
+    borderBottomColor: Colors.gray_200,
   },
   backIcon: {
     alignItems: 'center',
@@ -293,7 +294,7 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontSize: 20,
-    color: '#fff',
+    color: Colors.white,
   },
   Card: {
     display: 'flex',
@@ -306,12 +307,12 @@ const styles = StyleSheet.create({
     height: 1460,
     width: 358,
     borderRadius: 25,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   inputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
+    color: Colors.gray_700,
   },
   nameInputHolder: {
     height: 45,
@@ -319,9 +320,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '5%',
     marginTop: '5%',
@@ -331,10 +332,10 @@ const styles = StyleSheet.create({
     height: 60,
     width: '90%',
     display: 'flex',
-    backgroundColor: '#EDEEF1',
+    backgroundColor: Colors.gray_300,
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
@@ -344,7 +345,7 @@ const styles = StyleSheet.create({
     margin: '5%',
     fontSize: 16,
     marginBottom: '0%',
-    color: '#d3d3d3',
+    color: Colors.gray_200,
   },
   addressInputField: {
     width: '100%',
@@ -357,7 +358,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     gap: 0,
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     margin: '5%',
     marginTop: '0%',
@@ -366,7 +367,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     fontSize: 17,
     fontWeight: '500',
-    color: '#000',
+    color: Colors.black,
   },
   timeDown: {
     fontSize: 25,
@@ -408,11 +409,11 @@ const styles = StyleSheet.create({
   },
   circleIcon: {
     fontSize: 20,
-    color: '#d3d3d3',
+    color: Colors.gray_200,
   },
   daysText: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '400',
   },
   additionalDaysText: {
@@ -428,7 +429,7 @@ const styles = StyleSheet.create({
   addDaysText: {
     fontSize: 13,
     fontWeight: '500',
-    color: '#4d0d7e',
+    color: Colors.lightPurple,
   },
   fromInputHolder: {
     height: 45,
@@ -436,7 +437,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
@@ -466,11 +467,11 @@ const styles = StyleSheet.create({
   bgshadeInput: {
     height: 45,
     width: '42%',
-    backgroundColor: '#EDEEF1',
+    backgroundColor: Colors.gray_300,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
@@ -487,10 +488,10 @@ const styles = StyleSheet.create({
     height: 45,
     width: '90%',
     display: 'flex',
-    backgroundColor: '#EDEEF1',
+    backgroundColor: Colors.gray_300,
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
@@ -515,7 +516,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     marginTop: '2%',
     marginBottom: '0%',
-    color: '#d3d3d3',
+    color: Colors.gray_200,
   },
 });
 

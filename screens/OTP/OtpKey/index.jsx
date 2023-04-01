@@ -1,4 +1,5 @@
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Colors} from '../../../constants/colors';
 
 import OTPTextView from 'react-native-otp-textinput';
 
@@ -19,7 +20,7 @@ const OtpKey = () => {
           containerStyle={styles.InputContainer}
           textInputStyle={styles.roundedTextInput}
           inputCount={5}
-          tintColor="#1e1262"
+          tintColor={Colors.darkPurple}
         />
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Submit</Text>
@@ -34,7 +35,7 @@ const OtpKey = () => {
 const styles = StyleSheet.create({
   inputFormContainer: {
     height: 700,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     marginHorizontal: 10,
     borderRadius: 25,
     marginBottom: 50,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000000',
+    color: Colors.black,
   },
   boxContainer: {
     display: 'flex',
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   box: {
     height: 125,
     width: 125,
-    borderColor: '#000',
+    borderColor: Colors.black,
     borderWidth: 1,
     marginTop: 60,
     marginBottom: 15,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   },
   keyText: {
     marginTop: 20,
-    color: '#000000',
+    color: Colors.black,
     fontSize: 18,
     alignItems: 'center',
     justifyContent: 'center',
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingLeft: 50,
     paddingRight: 50,
-    color: '#000000',
+    color: Colors.black,
   },
   InputContainer: {
     marginBottom: 20,
@@ -81,13 +82,13 @@ const styles = StyleSheet.create({
   roundedTextInput: {
     borderRadius: 10,
     borderWidth: 2,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: Colors.gray_200,
   },
   buttonBackground: {
     margin: 5,
     width: '36%',
     paddingVertical: 12,
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',
     alignItems: 'center',
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 

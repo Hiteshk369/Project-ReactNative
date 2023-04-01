@@ -5,16 +5,19 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+// import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from '../../../constants/colors';
+
 
 const CreateNewPackage = () => {
   return (
     <ScrollView style={styles.container}>
       <View>
-        <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
           <View style={styles.navBackground}>
             <MaterialIcons
               name="arrow-back-ios"
-              color="#fff"
+              color={Colors.white}
               style={styles.backIcon}
             />
             <Text style={styles.leftText}>Create New Package</Text>
@@ -24,20 +27,20 @@ const CreateNewPackage = () => {
           <Text style={styles.onlineText}>Patient will pay Online</Text>
           <MaterialIcons
             name="toggle-on"
-            color="#0077CD"
+            color={Colors.blue_500}
             style={styles.togglIcon}
           />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.inputField}
             placeholder="Package Name"
           />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.inputField}
             placeholder="Package Description"
           />
@@ -48,17 +51,17 @@ const CreateNewPackage = () => {
         <Text style={styles.validityHeader}>Validity</Text>
         <View style={styles.validityInput}>
           <TextInput
-            placeholderTextColor={'#000'}
+            placeholderTextColor={Colors.black}
             style={styles.validityDayInput}
             placeholder="Days"
           />
           <FontAwesome
             name="angle-down"
-            color="#000"
+            color={Colors}
             style={styles.validityDayDown}
           />
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.numberInputField}
             placeholder="Enter Number"
           />
@@ -70,17 +73,17 @@ const CreateNewPackage = () => {
         <Text style={styles.validityHeader}>Number Of Consultations</Text>
         <View style={styles.consultationInput}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.consultationinputField}
             placeholder="Text"
           />
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.consultationinputField}
             placeholder="Audio"
           />
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.consultationinputField}
             placeholder="Video"
           />
@@ -90,13 +93,13 @@ const CreateNewPackage = () => {
         </Text>
         <View style={styles.nameInputHolder}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.audioInputField}
             placeholder="10"
           />
           <FontAwesome
             name="angle-down"
-            color="#000"
+            color={Colors}
             style={styles.audioDayDown}
           />
         </View>
@@ -108,20 +111,20 @@ const CreateNewPackage = () => {
           <Text style={styles.onlineText}>Medicines Included ?</Text>
           <MaterialIcons
             name="toggle-off"
-            color="#d3d3d3"
+            color={Colors.gray_200}
             style={styles.togglIcon}
           />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.inputField}
             placeholder="MRP (Rs)"
           />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
-            placeholderTextColor={'#d3d3d3'}
+            placeholderTextColor={Colors.gray_200}
             style={styles.inputField}
             placeholder="Online Price (Rs)"
           />
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: '12%',
     fontSize: 20,
-    color: '#fff',
+    color: Colors.white,
   },
   backIcon: {
     alignItems: 'center',
@@ -165,7 +168,7 @@ const styles = StyleSheet.create({
     // paddingTop: '5%',
     // marginLeft: '4%',
     fontSize: 19,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '500',
   },
   onlineFlexText: {
@@ -183,7 +186,7 @@ const styles = StyleSheet.create({
   inputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
+    color: Colors.gray_700,
   },
   nameInputHolder: {
     height: 42,
@@ -191,9 +194,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginTop: '4%',
@@ -205,13 +208,13 @@ const styles = StyleSheet.create({
     paddingTop: '1%',
     paddingBottom: '0%',
     fontSize: 11,
-    color: '#D3D3D3',
+    color: Colors.gray_200,
   },
   validityHeader: {
     paddingTop: '5%',
     marginLeft: '4%',
     fontSize: 19,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '500',
   },
   validityDayDown: {
@@ -222,7 +225,7 @@ const styles = StyleSheet.create({
   validityDayInput: {
     fontSize: 18,
     fontWeight: '500',
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
     width: '30%',
   },
@@ -233,7 +236,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginLeft: '3%',
@@ -241,7 +244,7 @@ const styles = StyleSheet.create({
   },
   numberInputField: {
     fontSize: 16,
-    borderColor: '#D3D3D3',
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
     width: '53%',
   },
@@ -252,7 +255,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    color: '#606060',
+    color: Colors.gray_700,
     paddingLeft: '1%',
     margin: '4%',
     marginLeft: '3%',
@@ -261,15 +264,15 @@ const styles = StyleSheet.create({
   consultationinputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
-    borderColor: '#D3D3D3',
+    color: Colors.gray_700,
+    borderColor: Colors.gray_200,
     borderBottomWidth: 1.5,
   },
   audioHeader: {
     paddingTop: '5%',
     marginLeft: '4%',
     fontSize: 15,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '500',
   },
   audioInputField: {},
@@ -281,7 +284,7 @@ const styles = StyleSheet.create({
   audioInputField: {
     width: '93%',
     fontSize: 16,
-    color: '#606060',
+    color: Colors.gray_700,
   },
 });
 

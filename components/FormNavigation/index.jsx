@@ -1,4 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
+import {Colors} from '../../constants/colors';
 
 const FormNavigation = () => {
   const navItems = [
@@ -30,7 +31,7 @@ const FormNavigation = () => {
   ];
 
   return (
-    <View style={styles.navFlowContainer}>
+    <View style={styles.mainNavFlowContainer}>
       {navItems.map(item => (
         <View style={styles.navFlowContainer} key={item.id}>
           {item.id <= 4 ? (
@@ -60,6 +61,13 @@ const FormNavigation = () => {
 };
 
 const styles = StyleSheet.create({
+  mainNavFlowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   navFlowContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -69,7 +77,7 @@ const styles = StyleSheet.create({
   navCircle: {
     height: 50,
     width: 50,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 50,
   },
   navLine: {
@@ -77,7 +85,7 @@ const styles = StyleSheet.create({
     width: 20,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -85,12 +93,15 @@ const styles = StyleSheet.create({
     fontSize: 8,
     width: 60,
     height: 30,
-    color: '#ff6f00',
+    fontWeight: '500',
+    color: Colors.orange,
   },
   notActive: {
     fontSize: 8,
     width: 60,
     height: 30,
+    color: Colors.slate_200,
+    fontWeight: '500',
   },
 });
 

@@ -9,11 +9,11 @@ import { Colors } from '../../../constants/colors';
 const DashBoardAmount = () => {
     return (
         <ScrollView style={styles.container}>
-            <LinearGradient colors={['#1e1262', '#4d0d7e']} style={styles.gradient}>
+            <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
                 <View style={styles.navBackground}>
                     <MaterialIcons
                         name="arrow-back-ios"
-                        color="#fff"
+                        color={Colors.white}
                         style={styles.backIcon}
                     />
                     <Text style={styles.leftText}>Dashboard</Text>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: '2%',
         fontSize: 20,
-        color: '#fff',
+        color: Colors.white,
     },
     backIcon: {
         alignItems: 'center',
@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
         margin: '1%'
-        // backgroundColor:'#000'
     },
     daysButtonBackground: {
         display: 'flex',
@@ -226,7 +225,7 @@ const styles = StyleSheet.create({
         height: 180,
         width: '90%',
         borderRadius: 25,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.white,
         elevation: 5,
     },
     cardText: {

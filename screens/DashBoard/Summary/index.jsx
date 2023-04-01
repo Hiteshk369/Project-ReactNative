@@ -5,44 +5,39 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {Component} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 
-import CalendarStrip from 'react-native-slideable-calendar-strip';
+import {useState} from 'react';
+import {Colors} from '../../../constants/colors';
+
+import {WeekCalendar} from '../../../components';
+
+
+import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-// constructor(props) {
-//     super(props);
-//     this.state = {
-//     selectedStartDate: null,
-//     };
-//     this.onDateChange = this.onDateChange.bind(this);
-//     };
-//     onDateChange(date) {
-//     this.setState({
-//     selectedStartDate: date,
-//     });
-//     };
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Summary = () => {
-  // const { selectedStartDate } = this.state;
-  // const startDate = selectedStartDate ? selectedStartDate.toString() :
-  // '';
 
+  const [date, setDate] = useState(new Date());
   return (
     <ScrollView>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text>DASHBOARD</Text>
+        <TouchableOpacity style={styles.notSelectedButton}>
+          <FontAwesome style={styles.notSelectedButtonText} name="circle-o" />
+          <Text style={styles.notSelectedButtonText}>DASHBOARD</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.buttonText}>SUMMARY</Text>
+        <TouchableOpacity style={styles.selectedButton}>
+          <FontAwesome style={styles.selectedButtonText} name="circle-o" />
+          <Text style={styles.selectedButtonText}>SUMMARY</Text>
+
         </TouchableOpacity>
       </View>
       <View style={styles.headText}>
         <Text style={styles.boldText}>
-          Green Helth clinic, Kukatpally Housing Board
+
+          Green Health clinic, Kukatpally Housing Board
+
         </Text>
         <Text style={styles.addrText}>Kukatpally Housing Board</Text>
       </View>
@@ -55,26 +50,18 @@ const Summary = () => {
       </View>
 
       <View style={styles.container}>
-        <CalendarStrip
-          isEnglish
-          showWeekNumber
-          showEnglishLuna
-          // selectedDate={this.state.selectedDate} onPressDate={(date) => { this.setState({ selectedDate: date });
-          // }}
-          // onPressGoToday={(today) => { this.setState({ selectedDate: today });
-          // }}
-          // onSwipeDown={() => { alert('onSwipeDown');
-          // }}
-          markedDate={['2020-03-04', '2020-03-15', '2020-03-04', '2020-03-01']}
-          weekStartsOn={1}
-        />
+
+        <WeekCalendar date={date} onChange={newDate => setDate(newDate)} />
+
       </View>
 
       <View>
         <Text style={styles.text}>Summary</Text>
         <View style={styles.doctorCard}>
           <LinearGradient
-            colors={['#1e1262', '#4d0d7e']}
+
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+
             style={styles.gradient}>
             <View style={styles.cardText}>
               <View style={styles.innerText}>
@@ -101,7 +88,9 @@ const Summary = () => {
 
         <View style={styles.creditCard}>
           <LinearGradient
-            colors={['#1e1262', '#4d0d7e']}
+
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+
             style={styles.gradient}>
             <View style={styles.flexBox}>
               <Text style={styles.creditText}>Total Amount Credited </Text>
@@ -120,7 +109,9 @@ const Summary = () => {
         </View>
         <View style={styles.scoreCard}>
           <LinearGradient
-            colors={['#1e1262', '#4d0d7e']}
+
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+
             style={styles.gradient}>
             <View style={styles.scoreText}>
               <View style={styles.innerText}>
@@ -140,14 +131,18 @@ const Summary = () => {
         </View>
         <View style={styles.scoreCard}>
           <LinearGradient
-            colors={['#1e1262', '#4d0d7e']}
+
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+
             style={styles.gradient}>
             <View style={styles.scoreText}>
               <View style={styles.innerText}>
                 <Text style={styles.whiteText}>Consultations</Text>
                 <Text style={styles.zeroText}>0</Text>
                 <Text style={styles.countText}>
-                  Total amount to be transfered:0
+
+                  Total amount to be transferred:0
+
                 </Text>
               </View>
               <View style={styles.innerText}>
@@ -161,7 +156,9 @@ const Summary = () => {
         <Text style={styles.text}>Feedback from Patients</Text>
         <View style={styles.doctorCard}>
           <LinearGradient
-            colors={['#1e1262', '#4d0d7e']}
+
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+
             style={styles.gradient}>
             <View style={styles.cardText}>
               <View style={styles.innerText}>
@@ -202,7 +199,9 @@ const Summary = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+
+    backgroundColor: Colors.white,
+
     marginTop: 25,
   },
   buttons: {
@@ -211,41 +210,65 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: Colors.gray_200,
   },
-  buttonBackground: {
-    margin: 5,
-    width: '47%',
-    paddingVertical: 12,
-    backgroundColor: '#fff',
+  notSelectedButton: {
+    width: '50%',
+    backgroundColor: Colors.white,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 4,
+    paddingVertical: 14,
   },
-  buttonText: {
-    color: '#1e1262',
+  notSelectedButtonText: {
+    color: Colors.gray_500,
+    fontSize: 16,
+  },
+  selectedButton: {
+    width: '50%',
+    backgroundColor: Colors.white,
+
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    gap: 4,
+    borderBottomColor: Colors.darkPurple,
+    borderBottomWidth: 2,
+    paddingVertical: 14,
+  },
+  selectedButtonText: {
+    color: Colors.darkPurple,
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 16,
+
   },
   headText: {
     paddingHorizontal: 15,
     margin: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#D3D3D3',
-    color: '#000000',
+
+    borderBottomColor: Colors.gray_200,
+
+    color: Colors.black,
   },
   boldText: {
     fontWeight: '500',
-    color: '#000000',
+    color: Colors.black,
+
   },
   addrText: {
     fontSize: 12,
     marginTop: 5,
   },
   calenderText: {
-    color: '#000',
+
+    color: Colors.black,
+
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -258,9 +281,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     fontSize: 18,
-    color: '#000000',
+
+    color: Colors.black,
     marginLeft: 10,
     paddingLeft: 10,
+    fontWeight: '600',
+
   },
   doctorCard: {
     marginTop: 10,
@@ -271,7 +297,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     // padding: 10,
-    borderRadius: 10,
+
   },
   cardText: {
     display: 'flex',
@@ -281,7 +307,9 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     margin: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: '#D3D3D3',
+
+    borderBottomColor: Colors.gray_200,
+
   },
   innerText: {
     display: 'flex',
@@ -290,16 +318,21 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   whiteText: {
-    color: '#fff',
+
+    color: Colors.white,
     fontSize: 15,
   },
   bigText: {
-    color: '#87CEEB',
+
+    color: Colors.lightBlue,
+
     margin: 10,
     fontSize: 30,
   },
   rupText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     margin: 5,
     fontSize: 15,
   },
@@ -310,7 +343,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   finalText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     marginRight: 50,
     fontSize: 20,
   },
@@ -329,7 +364,9 @@ const styles = StyleSheet.create({
     padding: 22,
   },
   creditText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     fontSize: 18,
   },
   OverviewText: {
@@ -344,7 +381,10 @@ const styles = StyleSheet.create({
   },
   overviewText: {
     fontSize: 18,
-    color: '#000000',
+
+    color: Colors.black,
+    fontWeight: '600',
+
   },
   scoreCard: {
     marginBottom: 10,
@@ -353,7 +393,9 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 10,
-    color: '#000',
+
+    color: Colors.black,
+
   },
   scoreText: {
     display: 'flex',
@@ -364,21 +406,27 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   zeroText: {
-    color: '#87CEEB',
+
+    color: Colors.lightBlue,
+
     margin: 0,
     marginBottom: 0,
     fontSize: 30,
   },
   countText: {
     fontSize: 10,
-    color: '#D3D3D3',
+
+    color: Colors.gray_200,
+
     marginBottom: 10,
   },
   heartIcon: {
     fontSize: 35,
   },
   feedbackText: {
-    color: '#fff',
+
+    color: Colors.white,
+
     fontSize: 15,
     margin: 10,
     paddingTop: 20,

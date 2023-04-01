@@ -6,6 +6,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
 } from 'react-native';
+import {Colors} from '../../../constants/colors';
 
 import PhoneInput from 'react-native-phone-number-input';
 
@@ -43,7 +44,7 @@ const OtpVerification = () => {
 const styles = StyleSheet.create({
   inputFormContainer: {
     height: 700,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     marginHorizontal: 10,
     borderRadius: 25,
     marginBottom: 50,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   box: {
     height: 125,
     width: 125,
-    borderColor: '#000',
+    borderColor: Colors.black,
     borderWidth: 1,
     marginTop: 20,
     marginBottom: 15,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
     fontSize: 18,
-    color: '#000000',
+    color: Colors.black,
   },
   containerInput: {
     marginTop: 10,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     borderWidth: 1.5,
-    borderColor: '#1e1262',
+    borderColor: Colors.darkPurple,
   },
   textContainer: {
     paddingVertical: 0,
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     margin: 5,
     width: '36%',
     paddingVertical: 12,
-    backgroundColor: '#1e1262',
+    backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',
     alignItems: 'center',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 

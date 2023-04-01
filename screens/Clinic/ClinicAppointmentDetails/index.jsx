@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SaveButton } from '../../../components';
+import { Colors } from '../../../constants/colors';
 
 const ClinicAppointmentDetails = () => {
   return (
@@ -15,7 +16,7 @@ const ClinicAppointmentDetails = () => {
           <Text style={styles.HeaderText}>In-Clinic Timings</Text>
           <MaterialIcons
             name="add-circle"
-            color="#fff"
+            color={Colors.white}
             style={styles.circleNavIcon}
           />
           <Text style={styles.HeaderText}>Add Clinic</Text>
@@ -26,7 +27,7 @@ const ClinicAppointmentDetails = () => {
               <Text style={styles.cardTopText}>Green-health clinic</Text>
               <Entypo
                 name="chevron-thin-up"
-                color="#000"
+                color={Colors.black}
                 style={styles.upIcon}
               />
             </View>
@@ -43,13 +44,13 @@ const ClinicAppointmentDetails = () => {
             <Text style={styles.inputsHeader}>Appointment Duration</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
-                placeholderTextColor={'#000'}
+                placeholderTextColor={Colors.black}
                 style={styles.inputField}
                 placeholder="15 Mins"
               />
               <FontAwesome
                 name="angle-down"
-                color="#000"
+                color={Colors.black}
                 style={styles.timeDown}
               />
             </View>
@@ -60,25 +61,25 @@ const ClinicAppointmentDetails = () => {
             <View style={styles.fromTwoInputHolder}>
               <View style={styles.fromInputHolder}>
                 <TextInput
-                  placeholderTextColor={'#000'}
+                  placeholderTextColor={Colors.black}
                   style={styles.inputField}
                   placeholder="Open 24Hrs"
                 />
                 <FontAwesome
                   name="angle-down"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.timeDown}
                 />
               </View>
               <View style={styles.fromInputHolder}>
                 <TextInput
-                  placeholderTextColor={'#000'}
+                  placeholderTextColor={Colors.black}
                   style={styles.inputField}
                   placeholder="Open 24Hrs"
                 />
                 <FontAwesome
                   name="angle-down"
-                  color="#000"
+                  color={Colors.black}
                   style={styles.timeDown}
                 />
               </View>
@@ -88,7 +89,7 @@ const ClinicAppointmentDetails = () => {
               <Text style={styles.RightText}>Apply To All</Text>
               <MaterialIcons
                 name="toggle-on"
-                color="#0077CD"
+                color={Colors.blue_500}
                 style={styles.togglIcon}
               />
             </View>
@@ -97,7 +98,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Monday</Text>
@@ -105,7 +106,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Tuesday</Text>
@@ -113,7 +114,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Wednesday</Text>
@@ -121,7 +122,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Thursday</Text>
@@ -131,7 +132,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Friday</Text>
@@ -139,7 +140,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Saturday</Text>
@@ -147,7 +148,7 @@ const ClinicAppointmentDetails = () => {
               <View style={styles.daysRowText}>
                 <MaterialIcons
                   name="check-circle"
-                  color="#4d0d7e"
+                  color={Colors.lightPurple}
                   style={styles.circleIcon}
                 />
                 <Text style={styles.daysText}>Sunday</Text>
@@ -157,7 +158,7 @@ const ClinicAppointmentDetails = () => {
           <View style={styles.additionalDaysText}>
             <Ionicons
               name="add-circle-outline"
-              color="#4d0d7e"
+              color={Colors.lightPurple}
               style={styles.circleaddIcon}
             />
             <Text style={styles.addDaysText}>
@@ -167,7 +168,7 @@ const ClinicAppointmentDetails = () => {
           <Text style={styles.inputsHeader}>In-Clinic Consultation Fees *</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
-                placeholderTextColor={'#000'}
+                placeholderTextColor={Colors.black}
                 style={styles.inputField}
                 placeholder="₹450"
               />
@@ -193,7 +194,7 @@ const styles = StyleSheet.create({
   },
   HeaderText: {
     fontSize: 18,
-    color: '#fff',
+    color: Colors.white,
   },
   circleNavIcon: {
     marginLeft: '31%',
@@ -211,10 +212,10 @@ const styles = StyleSheet.create({
     height: 600,
     width: 358,
     borderRadius: 25,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   cardTopTextFlex: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: Colors.gray_200,
     flexDirection: 'row',
     // margin:'5%',
     alignItems: 'center',
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
   },
   cardTopText: {
     fontSize: 18,
-    color: '#000',
+    color: Colors.black,
     margin: '5%',
   },
   upIcon: {
@@ -237,7 +238,7 @@ const styles = StyleSheet.create({
   },
   onlineText: {
     fontSize: 14,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '800',
   },
   toggleTopIcon: {
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     fontSize: 16,
     marginBottom: '0%',
-    color: '#d3d3d3',
+    color: Colors.gray_200,
   },
   cityInputHolder: {
     height: 45,
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     gap: 0,
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     margin: '5%',
     marginTop: '0%',
@@ -269,7 +270,7 @@ const styles = StyleSheet.create({
   inputField: {
     width: '100%',
     fontSize: 16,
-    color: '#606060',
+    color: Colors.gray_700,
   },
   fromInputHolder: {
     height: 45,
@@ -277,7 +278,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#EDEEF1',
+    borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
@@ -336,7 +337,7 @@ const styles = StyleSheet.create({
   },
   daysText: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.black,
     fontWeight: '400',
   },
   additionalDaysText: {
@@ -352,7 +353,7 @@ const styles = StyleSheet.create({
   addDaysText: {
     fontSize: 13,
     fontWeight: '500',
-    color: '#4d0d7e',
+    color: Colors.lightPurple,
   },
 });
 
