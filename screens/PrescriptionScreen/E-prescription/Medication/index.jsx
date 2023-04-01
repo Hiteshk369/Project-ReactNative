@@ -11,15 +11,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 
-
-const ChiefComplaints = () => {
+const Medication = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="first" />
+              <StepsIndicator active="fourth" />
             </View>
           </View>
           <View style={styles.mainLayout}>
@@ -29,74 +28,53 @@ const ChiefComplaints = () => {
                 color={Colors.black}
                 style={styles.backIcon}
               />
-              <Text style={styles.headerText}>Cheif Complaints</Text>
+              <Text style={styles.headerText}>Medication</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
-                placeholder="Search for Cheif Complaints"
+                placeholder="Search for Medication"
               />
+              <Text style={styles.suggestionsHeader}>Recently used</Text>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>AZEE 500MG TAB</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>STAMLO BETA M T...</Text>
+                </TouchableOpacity>
+              </View>
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cough</Text>
+                  <Text style={styles.suggestionsText}>PAN-D CAP PR</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Fatigue</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Sore throat</Text>
+                  <Text style={styles.suggestionsText}>AZEE 500MG TAB</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Headache</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Generalized ach...</Text>
+                  <Text style={styles.suggestionsText}>STAMLO BETA M T...</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Dry cough</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cold</Text>
+                  <Text style={styles.suggestionsText}>MONTEK 8MG CAP</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    nasal congestion...
-                  </Text>
+                  <Text style={styles.suggestionsText}>MEDROL 8MG CAP</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Loss of appetit...</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Nausea...</Text>
+                  <Text style={styles.suggestionsText}>TELEKAST L TAB</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Weakness</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Rhinitis</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Common cold</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Tummy ache</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Pain in throat</Text>
+                  <Text style={styles.suggestionsText}>DOLO 650MG TAB</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -109,7 +87,7 @@ const ChiefComplaints = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
-            <Text style={styles.nextButtonText}>Examination</Text>
+            <Text style={styles.nextButtonText}>Procedure</Text>
             <MaterialIcons
               name="navigate-next"
               color={Colors.black}
@@ -164,7 +142,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: Colors.purple_100,
+    backgroundColor: Colors.purple_200,
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
@@ -175,16 +153,20 @@ const styles = StyleSheet.create({
     margin: '5%',
     marginTop: '13%',
     marginBottom: '2%',
+    // width: '50%',
   },
   suggestionsFlex: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     marginHorizontal: '5%',
     marginVertical: '2%',
-    alignItems: 'center',
+    // alignItems: 'center',
+    // width: '60%',
     justifyContent: 'flex-start',
     gap: 8,
   },
   suggestionsText: {
+    width: '60%',
+
     fontSize: 14,
     fontWeight: '300',
     borderWidth: 1,
@@ -232,4 +214,4 @@ const styles = StyleSheet.create({
     gap: 5,
   },
 });
-export default ChiefComplaints;
+export default Medication;
