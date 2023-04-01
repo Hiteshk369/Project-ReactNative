@@ -33,7 +33,7 @@ import { StepsIndicator } from './components';
 
 const App = () => {
   return (
-    <HomeStack />
+    <ChiefComplaints/>
   );
 
 };
