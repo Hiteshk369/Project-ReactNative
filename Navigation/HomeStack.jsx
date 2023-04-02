@@ -21,6 +21,7 @@ const CustomTabButton = ({children, onPress}) => (
       top: -15,
       justifyContent: 'center',
       alignItems: 'center',
+      zIndex: 10,
     }}
     onPress={onPress}>
     <View

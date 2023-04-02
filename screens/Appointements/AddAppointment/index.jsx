@@ -21,7 +21,9 @@ const AddAppointment = () => {
 
   return (
     <ScrollView>
+
       <View style={styles.mainContainer}>
+
         <LinearGradient
           colors={[Colors.darkPurple, Colors.lightPurple]}
           style={styles.gradient}>
@@ -179,7 +181,7 @@ const AddAppointment = () => {
             />
           </View>
           <TouchableOpacity style={styles.buttonBackground}>
-            <Text style={styles.buttonText}>Save & Proceed</Text>
+            <Text style={styles.buttonText}>Save Appointment</Text>
           </TouchableOpacity>
         </View>
       </View>

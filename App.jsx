@@ -22,22 +22,51 @@ import CreateYourFeed from './screens/Clinic/CreateYourFeed';
 import DashBoardAmount from './screens/DashBoard/DashBoardAmount';
 import FeedScreen from './screens/Clinic/FeedScreen';
 import Timeline from './screens/Profile/Timeline';
-import Selectpatient from './screens/PrescriptionScreen/Selectpatient';
-import PatientsList from './screens/PrescriptionScreen/PatientsList';
 import E_PrescriptionOptions from './components/E_PrescriptionOptions';
 import HandwrittenOptions from './components/HandwrittenOptions';
-import PatientsMain from './screens/PrescriptionScreen/PatientsMain';
 import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
 import {StepsIndicator} from './components';
-import TodaysAppointments from './screens/Appointements/TodaysAppointments';
+
+//import TodaysAppointments from './screens/Appointements/TodaysAppointments';
+
+//const App = () => {
+  //return (
+    //<SafeAreaView>
+      //<TodaysAppointments />
+   // </SafeAreaView>
+    // <HomeStack />
+  //);
+
+import {
+  Advice,
+  CheifComplaints,
+  Diagnosis,
+  DoctorNotes,
+  EmergencyInstructions,
+  Examination,
+  Findings,
+  Investigation,
+  Medication,
+  Procedure,
+  Prognosis,
+  ReferBy,
+  ReferTo,
+} from './screens/PrescriptionScreen/E-prescription';
+import {
+  EMR_Fields,
+  FollowUp,
+} from './screens/PrescriptionScreen/BottomThreeButtons';
+import {
+  PatientsList,
+  PatientsMain,
+  Preview,
+  Selectpatient,
+} from './screens/PrescriptionScreen';
+import {ConsultationCompleted, ConsultationMain} from './screens/Consultation';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <TodaysAppointments />
-    </SafeAreaView>
-    // <HomeStack />
-  );
+  return <ConsultationCompleted />;
+
 };
 
 export default App;

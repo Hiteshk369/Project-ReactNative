@@ -6,6 +6,9 @@ export const Colors = {
   red: '#ff0000',
 
   green: '#00ff00',
+  green_100: '#33FFB7',
+  green_200: '#01B896',
+  green_300: '#00B475',
   lightgreen: '#BEFF33',
 
   lightPurple: '#4d0d7e',
@@ -29,4 +32,5 @@ export const Colors = {
   gray_600: '#5a5a5a',
   gray_700: '#606060',
   gray_800: '#8a8a8a',
+
 };

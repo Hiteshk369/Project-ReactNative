@@ -1,4 +1,3 @@
-
 import {
   View,
   Text,
@@ -8,21 +7,18 @@ import {
   ScrollView,
 } from 'react-native';
 
-
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 
-
-
-const ChiefComplaints = () => {
+const Advice = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="first" />
+              <StepsIndicator active="seventh" />
             </View>
           </View>
           <View style={styles.mainLayout}>
@@ -32,74 +28,70 @@ const ChiefComplaints = () => {
                 color={Colors.black}
                 style={styles.backIcon}
               />
-              <Text style={styles.headerText}>Cheif Complaints</Text>
+              <Text style={styles.headerText}>Advice</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
-                placeholder="Search for Cheif Complaints"
+                placeholder="Search for Advice"
               />
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cough</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Fatigue</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Sore throat</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Headache</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Generalized ach...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Dry cough</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cold</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
                   <Text style={styles.suggestionsText}>
-                    nasal congestion...
+                    Drink more water, maintain...
                   </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Loss of appetit...</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Nausea...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Weakness</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Rhinitis</Text>
+                  <Text style={styles.suggestionsText}>
+                    Drink atleast 3 litres o...
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Common cold</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Tummy ache</Text>
+                  <Text style={styles.suggestionsText}>
+                    Encourage fluid intake in...
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.suggestionsFlex}>
                 <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Pain in throat</Text>
+                  <Text style={styles.suggestionsText}>Avoid oily food</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>
+                    Exercise regularly...
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>
+                    Eat green leafy vegetable...
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>
+                    Encourage intake of prote...
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>Eat more fruits</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.suggestionsFlex}>
+                <TouchableOpacity>
+                  <Text style={styles.suggestionsText}>
+                    Get 8 hours of sleep daily...
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -112,7 +104,7 @@ const ChiefComplaints = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
-            <Text style={styles.nextButtonText}>Examination</Text>
+            <Text style={styles.nextButtonText}>Findings</Text>
             <MaterialIcons
               name="navigate-next"
               color={Colors.black}
@@ -167,7 +159,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: Colors.purple_100,
+    backgroundColor: Colors.purple_200,
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
@@ -235,4 +227,4 @@ const styles = StyleSheet.create({
     gap: 5,
   },
 });
-export default ChiefComplaints;
+export default Advice;
