@@ -1,9 +1,13 @@
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Colors} from '../../constants/colors';
+import {useNavigation} from '@react-navigation/native';
 
-const SaveButton = () => {
+const SaveButton = ({nextScreen}) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.buttonBackground}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(nextScreen)}
+      style={styles.buttonBackground}>
       <Text style={styles.buttonText}>Save & Proceed</Text>
     </TouchableOpacity>
   );

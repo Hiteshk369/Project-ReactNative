@@ -91,14 +91,14 @@ const HomeStack = () => {
           }}
         />
         <Tab.Screen
-          name="Queue"
+          name="HealthTube"
           component={FeedScreen}
           options={{
             headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <Feather name="calendar" style={styles.icon} />
-                <Text style={styles.iconText}>Queue</Text>
+                <Text style={styles.iconText}>Health Tube</Text>
               </View>
             ),
           }}

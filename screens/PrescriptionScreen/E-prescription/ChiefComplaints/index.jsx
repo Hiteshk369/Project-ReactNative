@@ -1,3 +1,4 @@
+
 import {
   View,
   Text,
@@ -7,9 +8,11 @@ import {
   ScrollView,
 } from 'react-native';
 
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+
 
 
 const ChiefComplaints = () => {

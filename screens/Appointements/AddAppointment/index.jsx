@@ -18,14 +18,12 @@ import CheckBox from '@react-native-community/checkbox';
 
 const AddAppointment = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  // constructor(props){
-  //     super(props);
-  //     this.state = {date:"2016-05-15"}
-  //   }
 
   return (
     <ScrollView>
-      <View>
+
+      <View style={styles.mainContainer}>
+
         <LinearGradient
           colors={[Colors.darkPurple, Colors.lightPurple]}
           style={styles.gradient}>
@@ -144,7 +142,7 @@ const AddAppointment = () => {
           style={styles.scrollDate}>
           <View style={styles.dateText}>
             <Text style={styles.colorText}>Today</Text>
-            <Text style={styles.datesText}>Toorrow</Text>
+            <Text style={styles.datesText}>Tomorrow</Text>
             <Text style={styles.datesText}>5th Mar</Text>
             <Text style={styles.datesText}>6th Mar</Text>
             <Text style={styles.datesText}>7th Mar</Text>
@@ -191,6 +189,9 @@ const AddAppointment = () => {
   );
 };
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: Colors.white,
+  },
   gradient: {
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
@@ -201,6 +202,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: '25%',
     marginBottom: '5%',
+    width: '70%',
   },
   leftText: {
     flexDirection: 'row',
@@ -339,7 +341,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: '10%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
     borderBottomWidth: 2,
     borderBottomColor: Colors.gray_200,
   },
