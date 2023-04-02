@@ -9,7 +9,7 @@ const StepsIndicator = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.flexBox}>
-        <View style={styles.bigBox}></View>
+        <View style={styles.bigBox} />
         <TouchableOpacity>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />

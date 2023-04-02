@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -26,7 +26,9 @@ const AddAppointment = () => {
   return (
     <ScrollView>
       <View>
-        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
+        <LinearGradient
+          colors={[Colors.darkPurple, Colors.lightPurple]}
+          style={styles.gradient}>
           <View style={styles.navBackground}>
             {/* <View style={styles.leftText}> */}
             <MaterialIcons
@@ -181,7 +183,7 @@ const AddAppointment = () => {
             />
           </View>
           <TouchableOpacity style={styles.buttonBackground}>
-            <Text style={styles.buttonText}>Save & Proceed</Text>
+            <Text style={styles.buttonText}>Save Appointment</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -361,7 +363,7 @@ const styles = StyleSheet.create({
   notifyFlexText: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom:'2%'
+    marginBottom: '2%',
   },
   textColor: {
     color: Colors.black,
