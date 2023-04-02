@@ -1,14 +1,23 @@
-import { Text, View, ScrollView, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
-import React, { Component } from 'react'
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import React, {Component} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const PatientsList = () => {
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient colors={[Colors.darkPurple, Colors.lightPurple]} style={styles.gradient}>
+      <LinearGradient
+        colors={[Colors.darkPurple, Colors.lightPurple]}
+        style={styles.gradient}>
         <View style={styles.navHeader}>
           <MaterialIcons
             name="arrow-back-ios"
@@ -28,10 +37,11 @@ const PatientsList = () => {
           <TextInput
             placeholderTextColor={Colors.gray_200}
             style={styles.searchInputField}
-            placeholder="Search" />
+            placeholder="Search"
+          />
         </View>
         <View style={styles.patientsContainer}>
-          <Text style={styles.patientsHeader} >Recent patients</Text>
+          <Text style={styles.patientsHeader}>Recent patients</Text>
           <View style={styles.patientsBorder}>
             <View style={styles.profiles}>
               <View style={styles.box}></View>
@@ -46,7 +56,7 @@ const PatientsList = () => {
           <View style={styles.namesText}>
             <View style={styles.box}></View>
             <View style={styles.flexText}>
-              <Text style={styles.nameText}>Sandeep R Reddy      M/32Y</Text>
+              <Text style={styles.nameText}>Sandeep R Reddy M/32Y</Text>
               <Text>8919797512</Text>
               {/* <Text>M/32Y</Text> */}
             </View>
@@ -58,18 +68,18 @@ const PatientsList = () => {
             color={Colors.white}
             style={styles.addIcon}
           />
-          <Text style={styles.buttonText}>  Add Appointment</Text>
+          <Text style={styles.buttonText}> Add Appointment</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: Colors.gray_300
+    backgroundColor: Colors.gray_300,
   },
   gradient: {
     height: 140,
@@ -94,8 +104,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 18,
   },
-  bodyContainer: {
-  },
+  bodyContainer: {},
   searchContainer: {
     flexDirection: 'row',
     backgroundColor: Colors.white,
@@ -122,13 +131,13 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontWeight: '500',
     marginHorizontal: '7%',
-    marginTop: '5%'
+    marginTop: '5%',
   },
   patientsBorder: {
     flexDirection: 'row',
     margin: '5%',
     borderBottomWidth: 1,
-    borderBottomColor: Colors.slate_100
+    borderBottomColor: Colors.slate_100,
   },
   box: {
     height: 40,
@@ -147,16 +156,16 @@ const styles = StyleSheet.create({
   profiles: {
     alignItems: 'center',
     marginHorizontal: '2%',
-    marginBottom: '5%'
+    marginBottom: '5%',
   },
   sText: {
     marginHorizontal: '5%',
     fontSize: 25,
     fontWeight: '500',
-    color: Colors.darkPurple
+    color: Colors.darkPurple,
   },
   namesText: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   flexText: {
     // flexDirection: 'row'
@@ -164,7 +173,7 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 15,
     fontWeight: '500',
-    color: Colors.black
+    color: Colors.black,
   },
   buttonBackground: {
     margin: '5%',
@@ -176,7 +185,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   buttonText: {
     fontSize: 13,
@@ -185,7 +194,7 @@ const styles = StyleSheet.create({
   },
   addIcon: {
     fontSize: 25,
-  }
-})
+  },
+});
 
-export default PatientsList
+export default PatientsList;
