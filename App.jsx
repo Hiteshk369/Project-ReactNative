@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import OtpKey from './screens/OTP/OtpKey';
 import OtpVerification from './screens/OTP/OtpVerification';
@@ -28,14 +28,16 @@ import E_PrescriptionOptions from './components/E_PrescriptionOptions';
 import HandwrittenOptions from './components/HandwrittenOptions';
 import PatientsMain from './screens/PrescriptionScreen/PatientsMain';
 import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
-import { StepsIndicator } from './components';
-
+import {StepsIndicator} from './components';
+import TodaysAppointments from './screens/Appointements/TodaysAppointments';
 
 const App = () => {
   return (
-    <HomeStack />
+    <SafeAreaView>
+      <TodaysAppointments />
+    </SafeAreaView>
+    // <HomeStack />
   );
-
 };
 
 export default App;

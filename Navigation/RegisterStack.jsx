@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 const RegisterStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ExperienceDetailsRegistration">
+      <Stack.Navigator initialRouteName="Registration">
         <Stack.Screen
           name="Registration"
           component={MainRegistration}
@@ -26,7 +26,7 @@ const RegisterStack = () => {
             headerStyle: {
               backgroundColor: Colors.darkPurple,
             },
-            headerTintColor: Colors.lightBlue,
+            headerTintColor: Colors.blue,
             headerTitleStyle: {
               fontWeight: 'normal',
             },
@@ -97,11 +97,11 @@ const RegisterStack = () => {
               fontWeight: '300',
             },
             headerTitleAlign: 'center',
-            headerLeft: () => (
-              <TouchableOpacity>
-                <Entypo name="chevron-left" style={styles.backIcon} />
-              </TouchableOpacity>
-            ),
+            // headerLeft: () => (
+            //   <TouchableOpacity>
+            //     <Entypo name="chevron-left" style={styles.backIcon} />
+            //   </TouchableOpacity>
+            // ),
           }}
         />
         <Stack.Screen

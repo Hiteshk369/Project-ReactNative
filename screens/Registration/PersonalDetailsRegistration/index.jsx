@@ -161,7 +161,9 @@ const PersonalDetailsRegistration = () => {
                 <Entypo name="chevron-thin-down" color="black" />
               </View>
             </View>
-            <SaveButton />
+            <View style={styles.saveButtonContainer}>
+              <SaveButton nextScreen="VerificationRegistration" />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -325,6 +327,9 @@ const styles = StyleSheet.create({
   dropDownInput: {
     width: '90%',
     color: Colors.gray_600,
+  },
+  saveButtonContainer: {
+    marginBottom: 30,
   },
 });
 

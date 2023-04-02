@@ -96,7 +96,7 @@ const BankingDetailsRegistration = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.saveButton}>
-          <SaveButton />
+          <SaveButton nextScreen="ExperienceDetailsRegistration" />
         </View>
       </ScrollView>
     </LinearGradient>
