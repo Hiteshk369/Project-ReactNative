@@ -33,10 +33,10 @@ import TodaysAppointments from './screens/Appointements/TodaysAppointments';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <TodaysAppointments />
-    </SafeAreaView>
-    // <HomeStack />
+    // <SafeAreaView>
+    //   <DashBoardAmount />
+    // </SafeAreaView>
+    <HomeStack />
   );
 };
 

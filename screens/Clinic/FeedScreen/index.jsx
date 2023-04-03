@@ -14,11 +14,11 @@ const FeedScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View>
-        <LinearGradient
+        {/* <LinearGradient
           colors={[Colors.darkPurple, Colors.lightPurple]}
           style={styles.gradient}>
           <Text style={styles.leftText}>Dr.Prana</Text>
-        </LinearGradient>
+        </LinearGradient> */}
         <View style={styles.darkScreen}></View>
         <Text style={styles.darkScreenText}>Health Minute</Text>
         <View style={styles.darkScreen}></View>

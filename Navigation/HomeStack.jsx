@@ -1,4 +1,4 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -12,8 +12,91 @@ import {StyleSheet} from 'react-native';
 import Patients from '../FakeData/Patients';
 import FeedScreen from '../screens/Clinic/FeedScreen';
 import SelectPatient from '../FakeData/SelectPatient';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import MainAppointment from '../screens/Appointements/MainAppointment';
+import TodaysAppointments from '../screens/Appointements/TodaysAppointments';
+import AddAppointment from '../screens/Appointements/AddAppointment';
 
+import {
+  CustomAddAppointmentHeader,
+  CustomDashBoardHeader,
+  CustomHealthFeedHeader,
+} from '../utils/HeaderButtons';
+import DashBoardAmount from '../screens/DashBoard/DashBoardAmount';
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const HomeNav = () => {
+  const navigation = useNavigation();
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MainAppointment"
+        component={MainAppointment}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OnlineConsult"
+        component={TodaysAppointments}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ClinicVisit"
+        component={TodaysAppointments}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookAppointment"
+        component={AddAppointment}
+        options={{
+          header: props => (
+            <CustomAddAppointmentHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="DashBoardAmount"
+        component={DashBoardAmount}
+        options={{
+          header: props => (
+            <CustomDashBoardHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="HealthFeed"
+        component={FeedScreen}
+        options={{
+          header: props => (
+            <CustomHealthFeedHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      {/* <Stack.Screen
+        name="DashBoard"
+        component={DashBoardAmount}
+        options={{
+          header: props => (
+            <CustomAddAppointmentHeader {...props} navigation={navigation} />
+          ),
+        }}
+      /> */}
+    </Stack.Navigator>
+  );
+};
 
 const CustomTabButton = ({children, onPress}) => (
   <TouchableOpacity
@@ -40,7 +123,7 @@ const HomeStack = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="HomeNav"
         screenOptions={({route}) => ({
           tabBarShowLabel: false,
           tabBarStyle: {
@@ -51,8 +134,8 @@ const HomeStack = () => {
           },
         })}>
         <Tab.Screen
-          name="Home"
-          component={Home}
+          name="HomeNav"
+          component={HomeNav}
           options={{
             headerShown: false,
             tabBarIcon: ({focused}) => (
