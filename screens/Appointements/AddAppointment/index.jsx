@@ -21,6 +21,7 @@ const AddAppointment = () => {
 
   return (
     <ScrollView>
+
       <View style={styles.mainContainer}>
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
@@ -152,7 +153,7 @@ const AddAppointment = () => {
             />
           </View>
           <TouchableOpacity style={styles.buttonBackground}>
-            <Text style={styles.buttonText}>Save & Proceed</Text>
+            <Text style={styles.buttonText}>Save Appointment</Text>
           </TouchableOpacity>
         </View>
       </View>

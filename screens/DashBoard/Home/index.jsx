@@ -232,7 +232,6 @@ const styles = StyleSheet.create({
   doctorCard: {
     marginTop: 20,
     height: 220,
-
     width: 340,
   },
   box: {
@@ -258,7 +257,6 @@ const styles = StyleSheet.create({
   },
   numberText: {
     color: Colors.white,
-
     fontSize: 35,
   },
   lineText: {
