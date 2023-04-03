@@ -1,5 +1,5 @@
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../constants/colors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,6 +13,7 @@ import {appointmentData} from '../../../constants/appointmentData';
 const TodaysAppointments = () => {
   const [date, setDate] = useState(new Date());
   const [day, setDay] = useState(date.getDate());
+
   useEffect(() => {
     setDay(date.getDate());
     console.log(day);
@@ -108,7 +109,7 @@ const TodaysAppointments = () => {
             </View>
           </ScrollView>
           <View style={styles.appointmentsContainer}>
-            {appointmentData.map(
+            {/* {appointmentData.map(
               data =>
                 data.day === day && (
                   <View
@@ -124,7 +125,29 @@ const TodaysAppointments = () => {
                     />
                   </View>
                 ),
-            )}
+            )} */}
+            {appointmentData
+              .filter(data => data.day === day)
+              .map(data =>
+                data ? (
+                  <View
+                    style={styles.consultationCardContainer}
+                    key={data.whatsappNumber}>
+                    <ConsultationCard
+                      appointmentStartTime={data.appointmentStartTime}
+                      appointmentEndTime={data.appointmentEndTime}
+                      name={data.name}
+                      age={data.age}
+                      gender={data.gender}
+                      whatsappNumber={data.whatsappNumber}
+                    />
+                  </View>
+                ) : (
+                  <Text style={{color: Colors.black}}>
+                    No appointments found
+                  </Text>
+                ),
+              )}
 
             <TouchableOpacity style={styles.addAppointmentButton}>
               <View style={styles.rowContainer}>
@@ -260,8 +283,6 @@ const styles = StyleSheet.create({
   },
   appointmentsContainer: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     position: 'relative',
     gap: 10,
   },
@@ -284,7 +305,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 8,
-    bottom: '10%',
+    bottom: '25%',
     right: '4%',
   },
   addAppointmentButtonText: {

@@ -27,16 +27,6 @@ import HandwrittenOptions from './components/HandwrittenOptions';
 import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
 import {StepsIndicator} from './components';
 
-//import TodaysAppointments from './screens/Appointements/TodaysAppointments';
-
-//const App = () => {
-  //return (
-    //<SafeAreaView>
-      //<TodaysAppointments />
-   // </SafeAreaView>
-    // <HomeStack />
-  //);
-
 import {
   Advice,
   CheifComplaints,
@@ -66,7 +56,11 @@ import {ConsultationCompleted, ConsultationMain} from './screens/Consultation';
 
 const App = () => {
   return <ConsultationCompleted />;
-
 };
+
+//const App = () => {
+  //return (
+   //<HomeStack />
+ // );
 
 export default App;

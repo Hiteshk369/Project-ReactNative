@@ -85,14 +85,20 @@ const Home = () => {
         <View style={styles.dashboardContainer}>
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
-              <TouchableOpacity style={styles.dashboardButton}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('MainAppointment')}
+                style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.dashboardButton}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('OnlineConsult')}
+              style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Online Consult</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.dashboardButton}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ClinicVisit')}
+              style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Clinic Visit</Text>
             </TouchableOpacity>
           </View>
@@ -102,7 +108,9 @@ const Home = () => {
                 <Text style={styles.dashboardButtonText}>View Calender</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.dashboardButton}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('BookAppointment')}
+              style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>
                 Book
                 {'\n'}Appointment
@@ -114,14 +122,18 @@ const Home = () => {
           </View>
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
-              <TouchableOpacity style={styles.dashboardButton}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DashBoardAmount')}
+                style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Reports</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Earnings</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.dashboardButton}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('HealthFeed')}
+              style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Health Feeds</Text>
             </TouchableOpacity>
           </View>

@@ -23,34 +23,6 @@ const AddAppointment = () => {
     <ScrollView>
 
       <View style={styles.mainContainer}>
-
-        <LinearGradient
-          colors={[Colors.darkPurple, Colors.lightPurple]}
-          style={styles.gradient}>
-          <View style={styles.navBackground}>
-            {/* <View style={styles.leftText}> */}
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.leftText}
-            />
-            <Text style={styles.leftText}>Add Appointment</Text>
-            {/* </View> */}
-            <View style={styles.divText}>
-              <FontAwesome
-                name="video-camera"
-                color={Colors.white}
-                style={styles.rightText}
-              />
-              <Text style={styles.rightText}>Video Consult</Text>
-              <MaterialIcons
-                name="toggle-off"
-                color={Colors.white}
-                style={styles.toggleIcon}
-              />
-            </View>
-          </View>
-        </LinearGradient>
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
             <TextInput
@@ -191,45 +163,6 @@ const AddAppointment = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.white,
-  },
-  gradient: {
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
-  },
-  navBackground: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '25%',
-    marginBottom: '5%',
-    width: '70%',
-  },
-  leftText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginLeft: '5%',
-    fontSize: 16,
-    color: Colors.white,
-  },
-  rightText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginLeft: '5%',
-    fontSize: 16,
-    color: Colors.white,
-  },
-  toggleIcon: {
-    alignItems: 'center',
-    marginLeft: '2%',
-    marginTop: '2%',
-    fontSize: 35,
-  },
-  divText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: '6%',
   },
   inputField: {
     width: '100%',
