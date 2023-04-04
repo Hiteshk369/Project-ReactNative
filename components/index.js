@@ -4,7 +4,9 @@ import WeekCalendar from './WeekCalender';
 import E_PrescriptionOptions from './E_PrescriptionOptions';
 import HandwrittenOptions from './HandwrittenOptions';
 import StepsIndicator from './StepsIndicator';
+import PatientsData from './PatientsData';
 import ConsultationCard from './ConsultationCard';
+
 export {
   FormNavigation,
   SaveButton,
@@ -12,5 +14,6 @@ export {
   E_PrescriptionOptions,
   HandwrittenOptions,
   StepsIndicator,
+  PatientsData,
   ConsultationCard,
 };

@@ -74,7 +74,7 @@ const AddAppointment = () => {
           <View style={styles.nameInputHolder}>
             <TextInput
               placeholderTextColor={Colors.gray_200}
-              placeholder="Age          Years"
+              placeholder="Age{'          '}Years"
             />
             <FontAwesome
               name="angle-down"
