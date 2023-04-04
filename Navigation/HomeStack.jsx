@@ -23,6 +23,7 @@ import {
   CustomHealthFeedHeader,
 } from '../utils/HeaderButtons';
 import DashBoardAmount from '../screens/DashBoard/DashBoardAmount';
+import CreateYourFeed from '../screens/Clinic/CreateYourFeed';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -85,15 +86,17 @@ const HomeNav = () => {
           ),
         }}
       />
-      {/* <Stack.Screen
-        name="DashBoard"
-        component={DashBoardAmount}
+      <Stack.Screen
+        name="CreateYourFeed"
+        component={CreateYourFeed}
         options={{
-          header: props => (
-            <CustomAddAppointmentHeader {...props} navigation={navigation} />
-          ),
+          headerStyle: {
+            backgroundColor: Colors.darkPurple,
+          },
+          headerTitleAlign: 'center',
+          headerTintColor: Colors.white,
         }}
-      /> */}
+      />
     </Stack.Navigator>
   );
 };

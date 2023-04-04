@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {Component} from 'react';
 
 import {Colors} from '../../../constants/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -13,53 +12,52 @@ import Entypo from 'react-native-vector-icons/Entypo';
 const CreateYourFeed = () => {
   return (
     <ScrollView style={styles.container}>
-      <View>
-        <View style={styles.Card}>
-          <View style={styles.bgWhite}>
-            <View style={styles.cardAlignment}>
-              <View style={styles.box} />
-              <Text style={styles.addText}>Add Pictures</Text>
-              <Text style={styles.addDownText}>
-                {' '}
-                Please add minimum 5 or maximum 10 {'\n'}picture to be displayed
-                on your public profile.
+      <View style={styles.Card}>
+        <View style={styles.bgWhite}>
+          <View style={styles.cardAlignment}>
+            <View style={styles.box} />
+            <Text style={styles.addText}>Add Pictures</Text>
+            <Text style={styles.addDownText}>
+              {' '}
+              Please add minimum 5 or maximum 10 {'\n'}picture to be displayed
+              on your public profile.
+            </Text>
+            <TouchableOpacity style={styles.buttonBackground}>
+              <Text style={styles.buttonText}>
+                Getting Started
+                <Entypo
+                  name="chevron-thin-right"
+                  color={Colors.lightPurple}
+                  style={styles.rightIcon}
+                />
               </Text>
-              <TouchableOpacity style={styles.buttonBackground}>
-                <Text style={styles.buttonText}>
-                  Getting Started
-                  <Entypo
-                    name="chevron-thin-right"
-                    color={Colors.lightPurple}
-                    style={styles.rightIcon}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-        <View style={styles.Card}>
-          <View style={styles.bgWhite}>
-            <View style={styles.cardAlignment}>
-              <View style={styles.box} />
-              <Text style={styles.addText}>Add Short Videos</Text>
-              <Text style={styles.addDownText}>
-                You can add upto 10 short videos,each video{'\n'} of maximum one
-                minute length.
-              </Text>
-              <TouchableOpacity style={styles.buttonBackground}>
-                <Text style={styles.buttonText}>
-                  Getting Started
-                  <Entypo
-                    name="chevron-thin-right"
-                    color={Colors.lightPurple}
-                    style={styles.rightIcon}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
+      <View style={styles.Card}>
+        <View style={styles.bgWhite}>
+          <View style={styles.cardAlignment}>
+            <View style={styles.box} />
+            <Text style={styles.addText}>Add Short Videos</Text>
+            <Text style={styles.addDownText}>
+              You can add upto 10 short videos,each video{'\n'} of maximum one
+              minute length.
+            </Text>
+            <TouchableOpacity style={styles.buttonBackground}>
+              <Text style={styles.buttonText}>
+                Getting Started
+                <Entypo
+                  name="chevron-thin-right"
+                  color={Colors.lightPurple}
+                  style={styles.rightIcon}
+                />
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+      <View style={{paddingBottom: '20%'}} />
     </ScrollView>
   );
 };
@@ -68,6 +66,8 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    paddingTop: '10%',
+    backgroundColor: Colors.darkPurple,
   },
   Card: {
     display: 'flex',
