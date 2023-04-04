@@ -10,7 +10,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {ConsultationCard} from '../../../components';
 import {appointmentData} from '../../../constants/appointmentData';
 
-const TodaysAppointments = () => {
+const TodaysAppointments = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [day, setDay] = useState(date.getDate());
 
@@ -149,7 +149,9 @@ const TodaysAppointments = () => {
                 ),
               )}
 
-            <TouchableOpacity style={styles.addAppointmentButton}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('BookAppointment')}
+              style={styles.addAppointmentButton}>
               <View style={styles.rowContainer}>
                 <AntDesign name="pluscircle" style={styles.plusIcon} />
                 <Text style={styles.addAppointmentButtonText}>

@@ -1,5 +1,4 @@
 import {Text, View, ScrollView, StyleSheet, TextInput} from 'react-native';
-import React, {Component} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';

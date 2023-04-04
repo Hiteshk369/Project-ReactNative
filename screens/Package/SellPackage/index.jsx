@@ -6,32 +6,16 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {Component} from 'react';
+import {Colors} from '../../../constants/colors';
 
-import LinearGradient from 'react-native-linear-gradient';
+import PhoneInput from 'react-native-phone-number-input';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-import PhoneInput from 'react-native-phone-number-input';
-import { Colors } from '../../../constants/colors';
-
-const SellPackage = () => {
+const SellPackage = ({navigation}) => {
   return (
     <ScrollView>
-      <View>
-        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
-          <View style={styles.navBackground}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.backIcon}
-            />
-            <Text style={styles.leftText}>Sell Package</Text>
-            <Text style={styles.leftText}>Send</Text>
-          </View>
-        </LinearGradient>
-      </View>
       <View style={styles.containerInput}>
         <PhoneInput
           containerStyle={styles.phoneNumberView}
@@ -106,7 +90,10 @@ const SellPackage = () => {
       <Text style={styles.consultationBottomText}>
         Patients will receive instructions to make payment by SMS and email
       </Text>
-      <TouchableOpacity style={styles.buttonBackground}>
+      <View style={styles.marginBottom} />
+      <TouchableOpacity
+        onPressIn={() => navigation.navigate('CreatePackage')}
+        style={styles.buttonBackground}>
         <MaterialIcons
           name="add-circle"
           color={Colors.white}
@@ -119,39 +106,12 @@ const SellPackage = () => {
 };
 
 const styles = StyleSheet.create({
-  gradient: {
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
-  },
-  navBackground: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '25%',
-    marginBottom: '5%',
-  },
-  leftText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginLeft: '19%',
-    fontSize: 20,
-    color: Colors.white,
-  },
-  backIcon: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginLeft: '8%',
-    fontSize: 25,
-    fontWeight: '600',
-  },
-
   containerInput: {
-    marginTop: 10,
-    // marginBottom: 1,
+    marginTop: 40,
     flexDirection: 'row',
     paddingHorizontal: 12,
     alignItems: 'center',
+    position: 'relative',
   },
   phoneNumberView: {
     width: '99%',
@@ -248,11 +208,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     width: '53%',
   },
+  marginBottom: {
+    marginBottom: '40%',
+  },
   buttonBackground: {
-    marginLeft: '37%',
-    marginTop: '20%',
-    width: '60%',
-    paddingVertical: 15,
+    width: '50%',
+    paddingVertical: 10,
     backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',
@@ -260,6 +221,9 @@ const styles = StyleSheet.create({
     gap: 5,
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'absolute',
+    bottom: 40,
+    right: 20,
   },
   buttonText: {
     fontSize: 15,
@@ -269,8 +233,6 @@ const styles = StyleSheet.create({
   addButtonIcon: {
     marginLeft: '0%',
     fontSize: 25,
-    gap: 0,
-    padding: 0,
   },
 });
 

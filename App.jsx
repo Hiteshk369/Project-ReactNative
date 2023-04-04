@@ -1,7 +1,6 @@
 import RegisterStack from './Navigation/RegisterStack';
 import HomeStack from './Navigation/HomeStack';
 
-
 // import E_PrescriptionOptions from './components/E_PrescriptionOptions';
 // import HandwrittenOptions from './components/HandwrittenOptions';
 // import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
@@ -64,13 +63,12 @@ import {
   MainAppointment,
 } from './screens/Appointements';
 
-const App = () => {
-  return <MainAppointment />;
-};
+// const App = () => {
+//   return <MainAppointment />;
+// };
 
-//const App = () => {
-  //return (
-   //<HomeStack />
- // );
+const App = () => {
+  return <HomeStack />;
+};
 
 export default App;
