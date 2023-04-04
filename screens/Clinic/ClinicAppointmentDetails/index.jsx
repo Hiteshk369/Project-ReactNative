@@ -5,8 +5,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SaveButton } from '../../../components';
-import { Colors } from '../../../constants/colors';
+import {SaveButton} from '../../../components';
+import {Colors} from '../../../constants/colors';
 
 const ClinicAppointmentDetails = () => {
   return (
@@ -94,78 +94,80 @@ const ClinicAppointmentDetails = () => {
               />
             </View>
             <View style={styles.daysRow}>
-            <View style={styles.daysColumn}>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Monday</Text>
+              <View style={styles.daysColumn}>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Monday</Text>
+                </View>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Tuesday</Text>
+                </View>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Wednesday</Text>
+                </View>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Thursday</Text>
+                </View>
               </View>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Tuesday</Text>
-              </View>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Wednesday</Text>
-              </View>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Thursday</Text>
+              <View style={styles.daysColumn}>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Friday</Text>
+                </View>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Saturday</Text>
+                </View>
+                <View style={styles.daysRowText}>
+                  <MaterialIcons
+                    name="check-circle"
+                    color={Colors.lightPurple}
+                    style={styles.circleIcon}
+                  />
+                  <Text style={styles.daysText}>Sunday</Text>
+                </View>
               </View>
             </View>
-            <View style={styles.daysColumn}>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Friday</Text>
-              </View>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Saturday</Text>
-              </View>
-              <View style={styles.daysRowText}>
-                <MaterialIcons
-                  name="check-circle"
-                  color={Colors.lightPurple}
-                  style={styles.circleIcon}
-                />
-                <Text style={styles.daysText}>Sunday</Text>
-              </View>
+            <View style={styles.additionalDaysText}>
+              <Ionicons
+                name="add-circle-outline"
+                color={Colors.lightPurple}
+                style={styles.circleaddIcon}
+              />
+              <Text style={styles.addDaysText}>
+                Add additional days and timings
+              </Text>
             </View>
-          </View>
-          <View style={styles.additionalDaysText}>
-            <Ionicons
-              name="add-circle-outline"
-              color={Colors.lightPurple}
-              style={styles.circleaddIcon}
-            />
-            <Text style={styles.addDaysText}>
-              Add additional days and timings
+            <Text style={styles.inputsHeader}>
+              In-Clinic Consultation Fees *
             </Text>
-          </View>
-          <Text style={styles.inputsHeader}>In-Clinic Consultation Fees *</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
                 placeholderTextColor={Colors.black}
@@ -174,7 +176,7 @@ const ClinicAppointmentDetails = () => {
               />
             </View>
           </View>
-            <SaveButton/>
+          <SaveButton />
         </View>
       </View>
     </ScrollView>

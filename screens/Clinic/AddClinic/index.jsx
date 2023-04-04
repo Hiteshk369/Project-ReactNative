@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {SaveButton} from '../../../components';
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
 const AddClinic = () => {
   return (
@@ -13,7 +13,7 @@ const AddClinic = () => {
       <View style={styles.navBar}>
         <MaterialIcons
           name="arrow-back-ios"
-          color= {Colors.white}
+          color={Colors.white}
           style={styles.backIcon}
         />
         <Text style={styles.navText}>Add Clinic</Text>

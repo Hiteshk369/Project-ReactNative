@@ -154,7 +154,7 @@ const ExperienceDetailsRegistration = () => {
             </View>
           </View>
           <View style={styles.saveButtonContainer}>
-            <SaveButton />
+            <SaveButton nextScreen="Home" />
           </View>
         </View>
       </ScrollView>

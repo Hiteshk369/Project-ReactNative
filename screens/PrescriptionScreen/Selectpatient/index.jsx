@@ -17,6 +17,7 @@ import {E_PrescriptionOptions, HandwrittenOptions} from '../../../components';
 const Selectpatient = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState('prescription');
   const [dropdown, setdropdown] = useState('withOutDropDown');
+
   return (
     <ScrollView style={styles.container}>
       <LinearGradient

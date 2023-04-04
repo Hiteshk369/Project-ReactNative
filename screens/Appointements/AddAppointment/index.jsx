@@ -18,41 +18,11 @@ import CheckBox from '@react-native-community/checkbox';
 
 const AddAppointment = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  // constructor(props){
-  //     super(props);
-  //     this.state = {date:"2016-05-15"}
-  //   }
 
   return (
     <ScrollView>
-      <View>
-        <LinearGradient
-          colors={[Colors.darkPurple, Colors.lightPurple]}
-          style={styles.gradient}>
-          <View style={styles.navBackground}>
-            {/* <View style={styles.leftText}> */}
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.leftText}
-            />
-            <Text style={styles.leftText}>Add Appointment</Text>
-            {/* </View> */}
-            <View style={styles.divText}>
-              <FontAwesome
-                name="video-camera"
-                color={Colors.white}
-                style={styles.rightText}
-              />
-              <Text style={styles.rightText}>Video Consult</Text>
-              <MaterialIcons
-                name="toggle-off"
-                color={Colors.white}
-                style={styles.toggleIcon}
-              />
-            </View>
-          </View>
-        </LinearGradient>
+
+      <View style={styles.mainContainer}>
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
             <TextInput
@@ -144,7 +114,7 @@ const AddAppointment = () => {
           style={styles.scrollDate}>
           <View style={styles.dateText}>
             <Text style={styles.colorText}>Today</Text>
-            <Text style={styles.datesText}>Toorrow</Text>
+            <Text style={styles.datesText}>Tomorrow</Text>
             <Text style={styles.datesText}>5th Mar</Text>
             <Text style={styles.datesText}>6th Mar</Text>
             <Text style={styles.datesText}>7th Mar</Text>
@@ -191,43 +161,8 @@ const AddAppointment = () => {
   );
 };
 const styles = StyleSheet.create({
-  gradient: {
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
-  },
-  navBackground: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '25%',
-    marginBottom: '5%',
-  },
-  leftText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginLeft: '5%',
-    fontSize: 16,
-    color: Colors.white,
-  },
-  rightText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginLeft: '5%',
-    fontSize: 16,
-    color: Colors.white,
-  },
-  toggleIcon: {
-    alignItems: 'center',
-    marginLeft: '2%',
-    marginTop: '2%',
-    fontSize: 35,
-  },
-  divText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: '6%',
+  mainContainer: {
+    backgroundColor: Colors.white,
   },
   inputField: {
     width: '100%',
@@ -339,7 +274,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: '10%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
     borderBottomWidth: 2,
     borderBottomColor: Colors.gray_200,
   },

@@ -142,7 +142,7 @@ const VerificationRegistration = () => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <SaveButton />
+          <SaveButton nextScreen={'BankingDetailsRegistration'} />
         </View>
       </ScrollView>
     </LinearGradient>
