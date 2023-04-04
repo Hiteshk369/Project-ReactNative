@@ -14,7 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
-const MainAppointment = () => {
+const MainAppointment = ({navigation}) => {
   return (
     <ScrollView showsHorizontalScrollIndicator={false} style={styles.container}>
       <View>
@@ -94,7 +94,8 @@ const MainAppointment = () => {
             <Text style={styles.dashBigButton}>Next Up</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('BookAppointment')}>
           <Text style={styles.addButton}>Add New +</Text>
         </TouchableOpacity>
         <Text style={styles.Text}>Your Calender</Text>

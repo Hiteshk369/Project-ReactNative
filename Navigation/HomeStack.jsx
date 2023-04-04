@@ -1,29 +1,39 @@
+import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
+import {Colors} from '../constants/colors';
+
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+
 import Home from '../screens/DashBoard/Home';
-import {Colors} from '../constants/colors';
-import {TouchableOpacity, View} from 'react-native';
-import {Text} from 'react-native';
+
 import MainProfileScreen from '../screens/Profile/MainProfileScreen';
-import {StyleSheet} from 'react-native';
+
 import Patients from '../FakeData/Patients';
 import FeedScreen from '../screens/Clinic/FeedScreen';
 import SelectPatient from '../FakeData/SelectPatient';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import MainAppointment from '../screens/Appointements/MainAppointment';
-import TodaysAppointments from '../screens/Appointements/TodaysAppointments';
-import AddAppointment from '../screens/Appointements/AddAppointment';
 
 import {
   CustomAddAppointmentHeader,
+  CustomCreatePackageHeader,
+  CustomCreateYourFeedHeader,
   CustomDashBoardHeader,
   CustomHealthFeedHeader,
+  CustomSellPackageHeader,
 } from '../utils/HeaderButtons';
 import DashBoardAmount from '../screens/DashBoard/DashBoardAmount';
 import CreateYourFeed from '../screens/Clinic/CreateYourFeed';
+import {AddClinic} from '../screens/Clinic';
+import {
+  AddAppointment,
+  MainAppointment,
+  TodaysAppointments,
+} from '../screens/Appointements';
+import {CreateNewPackage, SellPackage} from '../screens/Package';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -90,11 +100,34 @@ const HomeNav = () => {
         name="CreateYourFeed"
         component={CreateYourFeed}
         options={{
-          headerStyle: {
-            backgroundColor: Colors.darkPurple,
-          },
-          headerTitleAlign: 'center',
-          headerTintColor: Colors.white,
+          header: props => (
+            <CustomCreateYourFeedHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="AddClinic"
+        component={AddClinic}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SellPackage"
+        component={SellPackage}
+        options={{
+          header: props => (
+            <CustomSellPackageHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="CreatePackage"
+        component={CreateNewPackage}
+        options={{
+          header: props => (
+            <CustomCreatePackageHeader {...props} navigation={navigation} />
+          ),
         }}
       />
     </Stack.Navigator>
@@ -180,7 +213,7 @@ const HomeStack = () => {
           name="HealthTube"
           component={FeedScreen}
           options={{
-            headerShown: false,
+            header: props => <CustomHealthFeedHeader {...props} />,
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <Feather name="calendar" style={styles.icon} />
