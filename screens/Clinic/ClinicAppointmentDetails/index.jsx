@@ -1,11 +1,17 @@
-import {Text, View, ScrollView, StyleSheet, TextInput} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import React, {Component} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {SaveButton} from '../../../components';
 import {Colors} from '../../../constants/colors';
 
 const ClinicAppointmentDetails = () => {
@@ -176,7 +182,11 @@ const ClinicAppointmentDetails = () => {
               />
             </View>
           </View>
-          <SaveButton />
+          <TouchableOpacity
+            onPress={() => navigation.navigate(nextScreen)}
+            style={styles.buttonBackground}>
+            <Text style={styles.buttonText}>Save & Proceed</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -187,19 +197,21 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.darkPurple,
   },
   Header: {
     marginHorizontal: '2%',
     marginVertical: '3%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   HeaderText: {
     fontSize: 18,
     color: Colors.white,
   },
   circleNavIcon: {
-    marginLeft: '31%',
+    marginLeft: '28%',
     marginRight: '2%',
     fontSize: 18,
   },
@@ -211,8 +223,8 @@ const styles = StyleSheet.create({
   bgWhite: {
     marginTop: '2%',
     marginBottom: '5%',
-    height: 600,
-    width: 358,
+    height: '80%',
+    width: '90%',
     borderRadius: 25,
     backgroundColor: Colors.white,
   },
@@ -252,10 +264,10 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     fontSize: 16,
     marginBottom: '0%',
-    color: Colors.gray_200,
+    color: Colors.gray_500,
   },
   cityInputHolder: {
-    height: 45,
+    // height: 45,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     gap: 0,
@@ -275,7 +287,7 @@ const styles = StyleSheet.create({
     color: Colors.gray_700,
   },
   fromInputHolder: {
-    height: 45,
+    // height: 45,
     width: '38%',
     display: 'flex',
     flexDirection: 'row',
@@ -293,12 +305,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 100,
     marginTop: '3%',
-    marginBottom: '0%',
   },
   bgShadeHeader: {
+    color: Colors.gray_500,
     flexDirection: 'row',
     marginHorizontal: '6%',
-    marginBottom: '0%',
   },
   daysFlexText: {
     paddingTop: '5%',
@@ -356,6 +367,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '500',
     color: Colors.lightPurple,
+  },
+  buttonBackground: {
+    margin: '5%',
+    width: '90%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
 

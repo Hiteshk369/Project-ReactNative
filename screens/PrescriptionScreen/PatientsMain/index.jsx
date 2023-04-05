@@ -33,11 +33,7 @@ const PatientsMain = () => {
               color={Colors.black}
               style={styles.backIcon}
             />
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
+            <View style={styles.circleNav} />
             <View>
               <Text style={styles.navText}>Rajesh Kanna</Text>
               <Text style={{color: Colors.gray_600}}>28 Yrs Male</Text>
@@ -56,25 +52,48 @@ const PatientsMain = () => {
             />
           </View>
         </View>
-        <TouchableOpacity onPress={() => setViewMore(!viewMore)}>
-          <View>
+        {viewMore && (
+          <View style={styles.profileDownCard}>
+            <View style={styles.circleTop} />
+            <View style={styles.flexText}>
+              <View style={styles.smallCircleTop} />
+              <Text style={styles.cardText}>Medical Background</Text>
+              <View style={styles.rightContainer}>
+                <MaterialIcons
+                  name="add"
+                  color={Colors.lightGrayBg}
+                  style={styles.addIcon}
+                />
+                <Text style={styles.rightCardText}>Add</Text>
+              </View>
+            </View>
+            <View style={styles.flexText}>
+              <View style={styles.smallCircleTop} />
+              <Text style={styles.cardText}>Past Prescriptions</Text>
+              <View style={styles.rightNumberContainer}>
+                <Text style={styles.rightNumberText}>(0)</Text>
+              </View>
+            </View>
+          </View>
+        )}
+        <TouchableOpacity onPressIn={() => setViewMore(!viewMore)}>
+          {viewMore ? (
+            <FontAwesome
+              name="angle-up"
+              color={Colors.black}
+              style={styles.arrowDown}
+            />
+          ) : (
             <FontAwesome
               name="angle-down"
               color={Colors.black}
               style={styles.arrowDown}
             />
-          </View>
+          )}
         </TouchableOpacity>
-        {viewMore && (
-          //do it here
-          <View>
-            <Text style={{color: Colors.gray_600}}>Medical Background</Text>
-            <Text style={{color: Colors.gray_600}}>Past Prescriptions</Text>
-          </View>
-        )}
       </LinearGradient>
       <View style={styles.buttons}>
-        <TouchableOpacity onPress={() => setToggleCheckBox('prescription')}>
+        <TouchableOpacity onPressIn={() => setToggleCheckBox('prescription')}>
           <Text
             style={
               toggleCheckBox === 'prescription'
@@ -84,7 +103,7 @@ const PatientsMain = () => {
             E-prescription
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setToggleCheckBox('handwritten')}>
+        <TouchableOpacity onPressIn={() => setToggleCheckBox('handwritten')}>
           <Text
             style={
               toggleCheckBox === 'handwritten'
@@ -115,19 +134,18 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   activeBg: {
     backgroundColor: Colors.white,
   },
   notActiveBg: {
-    backgroundColor: '#7f7f7f',
+    backgroundColor: Colors.gray_800,
   },
   gradient: {
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
-    borderBottomWidth: 5,
     width: '100%',
-    borderBottomColor: Colors.gray_300,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
@@ -140,7 +158,7 @@ const styles = StyleSheet.create({
   },
   leftText: {
     flexDirection: 'row',
-    margin: '3%',
+    marginHorizontal: '3%',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 10,
@@ -148,8 +166,12 @@ const styles = StyleSheet.create({
   backIcon: {
     fontSize: 25,
   },
-  circleIcon: {
-    fontSize: 50,
+  circleNav: {
+    height: 45,
+    width: 45,
+    borderWidth: 1,
+    borderRadius: 100,
+    borderColor: Colors.black,
   },
   navText: {
     fontSize: 18,
@@ -166,6 +188,72 @@ const styles = StyleSheet.create({
   arrowDown: {
     justifyContent: 'center',
     fontSize: 35,
+  },
+  profileDownCard: {
+    height: 160,
+    width: '90%',
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+  },
+  circleTop: {
+    height: 50,
+    width: 50,
+    marginLeft: '42%',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 100,
+    borderColor: Colors.black,
+    marginBottom: '2%',
+  },
+  flexText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: '2%',
+  },
+  smallCircleTop: {
+    height: 30,
+    width: 30,
+    // alignItems: 'flex-start',
+    // justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 100,
+    borderColor: Colors.darkPurple,
+    marginHorizontal: '3%',
+  },
+  cardText: {
+    // marginHorizontal: '5%',
+    fontSize: 18,
+    color: Colors.darkPurple,
+  },
+  rightContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '15%',
+    paddingHorizontal: '2%',
+    backgroundColor: Colors.purple_100,
+    borderRadius: 10,
+  },
+  addIcon: {
+    fontSize: 18,
+    color: Colors.darkPurple,
+  },
+  rightCardText: {
+    fontSize: 16,
+    color: Colors.darkPurple,
+  },
+  rightNumberContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '24%',
+    paddingHorizontal: '2%',
+    backgroundColor: Colors.purple_100,
+    borderRadius: 10,
+  },
+  rightNumberText: {
+    fontSize: 16,
+    color: Colors.darkPurple,
   },
   buttons: {
     display: 'flex',

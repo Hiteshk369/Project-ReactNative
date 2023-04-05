@@ -9,15 +9,17 @@ import {
 import React, {Component} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../../../constants/colors';
+import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Connect = () => {
   return (
-      <View style={styles.container}>
-        <View style={styles.wholeContainer}>
-        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
+    <View style={styles.container}>
+      <View style={styles.wholeContainer}>
+        <LinearGradient
+          colors={[Colors.darkPurple, Colors.lightPurple]}
+          style={styles.gradient}>
           <View style={styles.navBackground}>
             <MaterialIcons
               name="arrow-back-ios"
@@ -27,24 +29,25 @@ const Connect = () => {
             <Text style={styles.mainHeader}>CONNECT</Text>
           </View>
           <View style={styles.inputContainer}>
-          <View style={styles.nameInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder="Enter Room Id"
-            />
-          </View>
-          <Text style={styles.idBottomText}>
-            The Room Id is a 10 Character alpha-numeric ID that can be found in
-            the confirmation SMS/E-Mail/WhatsApp message.
-          </Text>
+            <View style={styles.nameInputHolder}>
+              <TextInput
+                placeholderTextColor={Colors.gray_200}
+                style={styles.inputField}
+                placeholder="Enter Room Id"
+              />
+            </View>
+            <Text style={styles.idBottomText}>
+              The Room Id is a 10 Character alpha-numeric{'\n'}
+              {'     '}ID that can be found in the confirmation {'\n'}
+              {'          '}SMS/E-Mail/WhatsApp message.
+            </Text>
           </View>
         </LinearGradient>
-        </View>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.buttonText}>Save & Proceed</Text>
-        </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.buttonBackground}>
+        <Text style={styles.buttonText}>Click To Proceed</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -53,14 +56,14 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  wholeContainer:{
-    height:'75%'
+  wholeContainer: {
+    // height: '85%',
   },
   gradient: {
-    height: '75%',
+    height: '90%',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
-    position:'relative'
+    position: 'relative',
   },
   navBackground: {
     display: 'flex',
@@ -90,8 +93,8 @@ const styles = StyleSheet.create({
     width: '100%',
     color: Colors.gray_700,
   },
-  inputContainer:{
-    height:'75%'
+  inputContainer: {
+    // height: '75%',
   },
   nameInputHolder: {
     width: '80%',
@@ -107,16 +110,13 @@ const styles = StyleSheet.create({
     marginTop: '30%',
   },
   idBottomText: {
-    padding: '12%',
+    paddingHorizontal: '13%',
     paddingTop: '1%',
-    paddingBottom: '0%',
     fontSize: 14,
     color: Colors.gray_200,
   },
   buttonBackground: {
-    height:'25%',
-    margin:'2%',
-    marginTop:'5%',
+    margin: '2%',
     width: '95%',
     paddingVertical: '5%',
     backgroundColor: Colors.darkPurple,
@@ -124,8 +124,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    position:'absolute',
-    bottom:0
   },
   buttonText: {
     fontSize: 15,

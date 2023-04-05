@@ -1,13 +1,15 @@
 import RegisterStack from './Navigation/RegisterStack';
 import HomeStack from './Navigation/HomeStack';
 
-// import E_PrescriptionOptions from './components/E_PrescriptionOptions';
-// import HandwrittenOptions from './components/HandwrittenOptions';
+
+import E_PrescriptionOptions from './components/E_PrescriptionOptions';
+import HandwrittenOptions from './components/HandwrittenOptions';
+
 // import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
 import {PatientsData, StepsIndicator} from './components';
 import {
   Advice,
-  CheifComplaints,
+  ChiefComplaints,
   Diagnosis,
   DoctorNotes,
   EmergencyInstructions,
@@ -61,14 +63,16 @@ import {
   AddAppointment,
   Connect,
   MainAppointment,
+  TodaysAppointments,
 } from './screens/Appointements';
+import {SafeAreaView} from 'react-native';
 
 // const App = () => {
 //   return <MainAppointment />;
 // };
 
 const App = () => {
-  return <HomeStack />;
+  return <AddInVoice />;
 };
 
 export default App;

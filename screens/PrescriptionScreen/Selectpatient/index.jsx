@@ -47,7 +47,7 @@ const Selectpatient = () => {
         </View>
       </LinearGradient>
       <View style={styles.buttons}>
-        <TouchableOpacity onPress={() => setToggleCheckBox('prescription')}>
+        <TouchableOpacity onPressIn={() => setToggleCheckBox('prescription')}>
           <Text
             style={
               toggleCheckBox === 'prescription'
@@ -57,7 +57,7 @@ const Selectpatient = () => {
             E-prescription
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setToggleCheckBox('handwritten')}>
+        <TouchableOpacity onPressIn={() => setToggleCheckBox('handwritten')}>
           <Text
             style={
               toggleCheckBox === 'handwritten'
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   gradient: {
     height: 150,

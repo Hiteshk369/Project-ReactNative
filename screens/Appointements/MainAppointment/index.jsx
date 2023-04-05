@@ -17,7 +17,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 const MainAppointment = ({navigation}) => {
   return (
     <ScrollView showsHorizontalScrollIndicator={false} style={styles.container}>
-      <View>
+      <View style={styles.bgColor}>
         <View style={styles.navigation}>
           <Text style={styles.navHeader}>PRANA</Text>
           <Text style={styles.drHeader}>Docter</Text>
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   navigation: {
     height: 60,
@@ -128,18 +129,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   drHeader: {
+    marginHorizontal: '5%',
+    marginLeft: '17%',
     fontSize: 20,
     color: Colors.white,
-    paddingLeft: 95,
-    paddingRight: 50,
+    textAlign: 'center',
   },
   navHeader: {
     fontSize: 15,
     color: Colors.lightgreen,
-    paddingLeft: 15,
+    paddingLeft: '5%',
   },
   navIcons: {
     display: 'flex',
@@ -147,11 +149,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   circleIcon: {
-    padding: 8,
+    paddingHorizontal: '2%',
     fontSize: 23,
   },
   drIcon: {
-    padding: 16,
+    padding: '17%',
     display: 'flex',
     alignItems: 'center',
     fontSize: 62,
@@ -164,7 +166,6 @@ const styles = StyleSheet.create({
   gradient: {
     height: '100%',
     width: '100%',
-    padding: 10,
     borderRadius: 30,
     display: 'flex',
     alignItems: 'center',
@@ -172,21 +173,20 @@ const styles = StyleSheet.create({
   doctorCard: {
     marginTop: 20,
     height: 220,
-    width: 350,
+    width: '90%',
   },
   box: {
     height: 90,
     width: 90,
     borderColor: Colors.white,
     borderWidth: 1,
-    marginTop: 20,
-    marginBottom: 15,
+    marginVertical: '5%',
     borderRadius: 100,
   },
   boxText: {
     color: Colors.white,
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: '5%',
   },
   bottomText: {
     display: 'flex',
@@ -201,31 +201,30 @@ const styles = StyleSheet.create({
   lineText: {
     textAlign: 'center',
     fontSize: 35,
-    marginLeft: 30,
+    marginLeft: '10%',
     borderLeftWidth: 2,
     borderLeftColor: Colors.gray_200,
   },
   numbersText: {
     color: Colors.white,
-    paddingLeft: 10,
+    paddingLeft: '3%',
     fontSize: 35,
   },
   consultedText: {
     color: Colors.white,
     fontSize: 10,
-    paddingRight: 10,
   },
   Text: {
     color: Colors.black,
-    display: 'flex',
     textAlign: 'center',
-    margin: 15,
+    marginTop: '5%',
     fontSize: 18,
+    fontWeight: '500',
   },
   dashButton: {
     color: Colors.white,
-    height: 70,
-    width: 70,
+    height: 80,
+    width: 80,
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
@@ -236,11 +235,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '5%',
     gap: 20,
-    padding: 5,
   },
   gradientButtons: {
-    padding: 10,
     borderRadius: 20,
     display: 'flex',
     flexDirection: 'row',
@@ -252,16 +250,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 30,
-    padding: 20,
-    margin: 10,
+    margin: '5%',
   },
   dashBigButton: {
     color: Colors.black,
     borderRadius: 20,
     backgroundColor: Colors.white,
     elevation: 11,
-    height: 130,
-    width: 130,
+    height: 140,
+    width: 140,
     padding: 15,
     display: 'flex',
     alignItems: 'center',
@@ -275,24 +272,24 @@ const styles = StyleSheet.create({
     display: 'flex',
     backgroundColor: Colors.darkPurple,
     textAlign: 'center',
-    marginLeft: 130,
-    padding: 8,
-    fontSize: 15,
+    marginLeft: '35%',
+    padding: '2%',
+    fontSize: 13,
   },
   calenderCard: {
     display: 'flex',
     alignItems: 'center',
-    width: '92%',
+    width: '90%',
     height: 250,
     borderRadius: 20,
-    margin: 15,
+    margin: '5%',
     borderWidth: 1.5,
     borderColor: Colors.gray_200,
   },
   nameCard: {
     color: Colors.black,
     fontSize: 18,
-    marginTop: 10,
+    marginTop: '2%',
   },
   timeCard: {
     color: Colors.black,
@@ -305,13 +302,11 @@ const styles = StyleSheet.create({
   cardButton: {
     color: Colors.white,
     borderRadius: 25,
-    width: '30%',
     backgroundColor: Colors.darkPurple,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    fontSize: 15,
+    textAlign: 'center',
+    paddingHorizontal: '6%',
+    paddingVertical: '2%',
+    fontSize: 13,
   },
 });
 export default MainAppointment;
-
-//calender

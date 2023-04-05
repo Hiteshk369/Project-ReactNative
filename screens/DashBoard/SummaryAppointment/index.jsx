@@ -26,14 +26,13 @@ const SummaryAppointment = () => {
         </Text>
         <Text style={styles.addrText}>Kukatpally Housing Board</Text>
       </View>
-      <View style={styles.calenderText}>
-        <Text>March 2023</Text>
-        <Entypo name="chevron-thin-down" color="black" />
-        <Text>Today</Text>
-        <Text>Week</Text>
-        <Text>Custom</Text>
+      <View style={styles.calenderContainer}>
+        <Text style={styles.calenderText}>March 2023</Text>
+        <Entypo name="chevron-thin-down" color={Colors.black} />
+        <Text style={styles.calenderText}>Today</Text>
+        <Text style={styles.calenderText}>Week</Text>
+        <Text style={styles.calenderText}>Custom</Text>
       </View>
-
       <View style={styles.container}>
         <WeekCalendar date={date} onChange={newDate => setDate(newDate)} />
       </View>
@@ -55,15 +54,14 @@ const SummaryAppointment = () => {
 };
 
 const styles = StyleSheet.create({
-
   mainContainer: {
     position: 'relative',
     height: '100%',
+    backgroundColor: Colors.white,
   },
   container: {
     backgroundColor: Colors.white,
-    marginTop: 25,
-    marginHorizontal: 10,
+    marginTop: '5%',
   },
   buttons: {
     display: 'flex',
@@ -81,8 +79,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
-    paddingTop: 16,
-    paddingBottom: 10,
+    paddingVertical: '3%',
   },
   notSelectedButtonText: {
     color: Colors.gray_500,
@@ -98,8 +95,7 @@ const styles = StyleSheet.create({
     gap: 4,
     borderBottomColor: Colors.darkPurple,
     borderBottomWidth: 2,
-    paddingTop: 16,
-    paddingBottom: 10,
+    paddingVertical: '3%',
   },
   selectedButtonText: {
     color: Colors.darkPurple,
@@ -107,9 +103,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   headText: {
-    paddingHorizontal: 15,
-    padding: 10,
-    paddingBottom: 10,
+    paddingHorizontal: '3%',
+    margin: '2%',
+    paddingBottom: '2%',
     borderBottomWidth: 1,
     borderBottomColor: Colors.gray_200,
     color: Colors.black,
@@ -120,7 +116,15 @@ const styles = StyleSheet.create({
   },
   addrText: {
     fontSize: 12,
-    marginTop: 5,
+    marginTop: '1%',
+  },
+  calenderContainer: {
+    color: Colors.black,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: '5%',
   },
   calenderText: {
     color: Colors.black,
@@ -128,13 +132,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginLeft: 20,
-    marginRight: 25,
-    marginTop: 10,
+  },
+  text: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '1%',
+    fontSize: 18,
+    color: Colors.black,
+    marginLeft: '5%',
+    fontWeight: '600',
   },
   appText: {
-    marginBottom: 10,
-    paddingBottom: 10,
+    marginBottom: '5%',
+    paddingBottom: '3%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderTopColor: Colors.gray_200,
@@ -143,11 +153,10 @@ const styles = StyleSheet.create({
   text: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: '3%',
     fontSize: 14,
     color: Colors.black,
-    marginLeft: 10,
-    paddingLeft: 10,
+    marginLeft: '5%',
     fontWeight: '500',
   },
   bookButtonsContainer: {
@@ -158,18 +167,19 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   appButtons: {
-    marginHorizontal: 20,
+    marginHorizontal: '8%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginVertical: '3%',
   },
   appButtonText: {
-    paddingTop: 10,
+    // paddingVertical: '4%',
+    // marginVertical: '4%',
     color: Colors.darkPurple,
     fontSize: 14,
     fontWeight: '700',
   },
 });
-
 
 export default SummaryAppointment;

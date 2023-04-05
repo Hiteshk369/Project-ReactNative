@@ -1,4 +1,3 @@
-
 import {
   View,
   Text,
@@ -8,16 +7,13 @@ import {
   ScrollView,
 } from 'react-native';
 
-
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 
-
-
 const ChiefComplaints = () => {
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
@@ -130,6 +126,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     flex: 1,
+    backgroundColor: Colors.white,
   },
   rowContainer: {
     flexDirection: 'row',

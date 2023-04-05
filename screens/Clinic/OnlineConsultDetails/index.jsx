@@ -6,13 +6,11 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {Component} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../../constants/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {SaveButton} from '../../../components';
 
 const OnlineConsultDetails = () => {
   return (

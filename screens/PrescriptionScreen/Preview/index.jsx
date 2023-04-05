@@ -1,5 +1,12 @@
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -7,8 +14,14 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../../constants/colors';
 
 const Preview = () => {
+  const [download, setDownload] = useState(false);
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={
+        download === true
+          ? [styles.container, styles.notActiveBg]
+          : [styles.container, styles.activeBg]
+      }>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
@@ -27,11 +40,13 @@ const Preview = () => {
               color={Colors.white}
               style={styles.toggleIcon}
             />
-            <AntDesign
-              name="download"
-              color={Colors.white}
-              style={styles.toggleIcon}
-            />
+            <TouchableOpacity onPressIn={() => setDownload(!download)}>
+              <AntDesign
+                name="download"
+                color={Colors.white}
+                style={styles.toggleIcon}
+              />
+            </TouchableOpacity>
             <MaterialIcons
               name="share"
               color={Colors.white}
@@ -40,6 +55,27 @@ const Preview = () => {
           </View>
         </View>
       </LinearGradient>
+      {download && (
+        <View style={styles.downloadContainer}>
+          <Text style={styles.downloadHeader}>Sharing Prescription</Text>
+          <View style={styles.pdfFlex}>
+            <Text style={styles.pdfText}>PDF</Text>
+            <MaterialIcons
+              name="check-circle"
+              color={Colors.green_300}
+              style={styles.pdfCircleIcon}
+            />
+          </View>
+          <View style={styles.bar}>
+            <View style={styles.colorBar}></View>
+          </View>
+          <View style={styles.downloadingContainer}>
+            <Text style={styles.downloadingText}>
+              Downloading Prescription... 40%
+            </Text>
+          </View>
+        </View>
+      )}
       <View style={styles.mainContainer}>
         <View style={styles.flexContainer}>
           <Text style={styles.bigText}>Select preferred languages:</Text>
@@ -66,6 +102,13 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
+  },
+  activeBg: {
+    backgroundColor: Colors.white,
+  },
+  notActiveBg: {
+    backgroundColor: Colors.gray_800,
   },
   gradient: {
     height: 140,
@@ -98,6 +141,56 @@ const styles = StyleSheet.create({
   toggleIcon: {
     alignItems: 'center',
     fontSize: 28,
+  },
+  downloadContainer: {
+    height: '10%',
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 20,
+    // paddingVertical: '15%',
+    marginVertical: '15%',
+    backgroundColor: Colors.white,
+  },
+  downloadHeader: {
+    margin: '5%',
+    fontSize: 18,
+    fontWeight: '500',
+    color: Colors.black,
+  },
+  pdfFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  pdfText: {
+    fontSize: 18,
+    marginHorizontal: '5%',
+  },
+  pdfCircleIcon: {
+    fontSize: 18,
+  },
+  bar: {
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    // marginHorizontal: '5%',
+    margin: '5%',
+    borderRadius: 100,
+    backgroundColor: Colors.gray_100,
+  },
+  colorBar: {
+    borderWidth: 5,
+    borderColor: Colors.green_300,
+    // marginHorizontal: '5%',
+    // margin: '5%',
+    width: '40%',
+    borderRadius: 100,
+  },
+  downloadingContainer: {
+    alignItems: 'center',
+  },
+  downloadingText: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: Colors.black,
   },
   mainContainer: {
     backgroundColor: Colors.purple_100,

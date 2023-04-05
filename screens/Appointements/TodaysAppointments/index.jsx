@@ -1,10 +1,15 @@
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {StyleSheet} from 'react-native';
 import {Colors} from '../../../constants/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {WeekCalendar} from '../../../components';
-import {Pressable} from 'react-native';
 import {windowHeight, windowWidth} from '../../../FakeData/Dimensions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {ConsultationCard} from '../../../components';
@@ -51,7 +56,7 @@ const TodaysAppointments = ({navigation}) => {
           </View>
           <View style={styles.buttonGroup}>
             <Pressable
-              onPress={() => setActive('dashboard')}
+              onPressIn={() => setActive('dashboard')}
               style={
                 active === 'dashboard'
                   ? styles.selectedButton
@@ -67,7 +72,7 @@ const TodaysAppointments = ({navigation}) => {
               </Text>
             </Pressable>
             <Pressable
-              onPress={() => setActive('summary')}
+              onPressIn={() => setActive('summary')}
               style={
                 active === 'summary'
                   ? styles.selectedButton
@@ -200,10 +205,11 @@ const styles = StyleSheet.create({
   },
   appointmentText: {
     fontSize: 11,
-    marginLeft: 40,
+    marginLeft: '15%',
+    color: Colors.white,
   },
   weekCalendar: {
-    marginTop: 8,
+    marginTop: '3%',
     backgroundColor: Colors.white,
     borderRadius: 10,
   },
@@ -304,7 +310,7 @@ const styles = StyleSheet.create({
   addAppointmentButton: {
     position: 'absolute',
     backgroundColor: Colors.darkPurple,
-    paddingHorizontal: 16,
+    paddingHorizontal: '5%',
     paddingVertical: 8,
     borderRadius: 8,
     bottom: '25%',
