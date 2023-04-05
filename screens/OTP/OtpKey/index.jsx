@@ -1,93 +1,108 @@
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {Colors} from '../../../constants/colors';
 
-import OTPTextView from 'react-native-otp-textinput';
+import PhoneInput from 'react-native-phone-number-input';
 
-const OtpKey = () => {
+const OtpVerification = () => {
   return (
-    <View style={styles.inputFormContainer}>
-      <View>
-        <Text style={styles.headerContainer}>You're Almost there!</Text>
-      </View>
-      <View style={styles.boxContainer}>
-        <View style={styles.box} />
-        <Text style={styles.keyText}>Key in OTP Code</Text>
-        <Text style={styles.otpText}>
-          You'll receive an OTP code in SMS.Please fill in the OTP to verify
-          your identity.
-        </Text>
-        <OTPTextView
-          containerStyle={styles.InputContainer}
-          textInputStyle={styles.roundedTextInput}
-          inputCount={5}
-          tintColor={Colors.darkPurple}
-        />
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <Text style={styles.buttonText}>Cancel</Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.inputFormContainer}>
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={50}
+          behavior={'padding'}
+          style={styles.containerAvoidingView}>
+          <View style={styles.boxContainer}>
+            <View style={styles.box} />
+          </View>
+          <Text style={styles.textTitle}>OTP Verification</Text>
+          <Text style={styles.textSmallTitle}>
+            We will send you the{' '}
+            <Text style={{fontWeight: 'bold'}}>One Time Password</Text>
+            {'\n'}
+            {'                   '}on this Mobile Number
+          </Text>
+          <View style={styles.containerInput}>
+            <PhoneInput
+              containerStyle={styles.phoneNumberView}
+              textContainerStyle={styles.textContainer}
+            />
+          </View>
+          <TouchableOpacity style={styles.buttonBackground}>
+            <Text style={styles.buttonText}>Get Otp</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  inputFormContainer: {
-    height: 700,
-    backgroundColor: Colors.white,
-    marginHorizontal: 10,
-    borderRadius: 25,
-    marginBottom: 50,
-    marginTop: 50,
+  container: {
+    width: '100%',
+    height: '100%',
   },
-  headerContainer: {
-    marginTop: 50,
-    marginLeft: 95,
+  inputFormContainer: {
+    height: '100%',
+    width: '94%',
+    backgroundColor: Colors.white,
+    marginHorizontal: '3%',
+    borderRadius: 25,
+    marginVertical: '20%',
+  },
+  containerAvoidingView: {
     alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: Colors.black,
+    paddingVertical: '20%',
   },
   boxContainer: {
-    display: 'flex',
     alignItems: 'center',
   },
   box: {
-    height: 125,
-    width: 125,
+    height: 200,
+    width: 200,
     borderColor: Colors.black,
     borderWidth: 1,
-    marginTop: 60,
-    marginBottom: 15,
-    borderRadius: 100,
+    marginVertical: '5%',
   },
-  keyText: {
-    marginTop: 20,
-    color: Colors.black,
+  textTitle: {
+    marginVertical: '2%',
+    paddingHorizontal: '5%',
     fontSize: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  otpText: {
-    padding: 20,
-    paddingLeft: 50,
-    paddingRight: 50,
+    fontWeight: '500',
     color: Colors.black,
   },
-  InputContainer: {
-    marginBottom: 20,
+  textSmallTitle: {
+    marginVertical: '5%',
+    paddingHorizontal: '11%',
+    fontSize: 15,
+    fontWeight: '400',
+    color: Colors.black,
   },
-  roundedTextInput: {
+  containerInput: {
+    marginVertical: '5%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  phoneNumberView: {
+    width: '90%',
+    height: 50,
+    backgroundColor: 'white',
     borderRadius: 10,
-    borderWidth: 2,
-    backgroundColor: Colors.gray_200,
+    borderWidth: 1.5,
+    borderColor: Colors.darkPurple,
+  },
+  textContainer: {
+    paddingVertical: '0%',
+    borderRadius: 10,
   },
   buttonBackground: {
-    margin: 5,
-    width: '36%',
-    paddingVertical: 12,
+    margin: '5%',
+    width: '50%',
+    paddingVertical: '3%',
     backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',
@@ -101,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OtpKey;
+export default OtpVerification;

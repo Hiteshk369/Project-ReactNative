@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -21,7 +20,6 @@ const AddAppointment = () => {
 
   return (
     <ScrollView>
-
       <View style={styles.mainContainer}>
         <View style={styles.nameInput}>
           <View style={styles.nameInputHolder}>
@@ -74,7 +72,7 @@ const AddAppointment = () => {
           <View style={styles.nameInputHolder}>
             <TextInput
               placeholderTextColor={Colors.gray_200}
-              placeholder="Age{'          '}Years"
+              placeholder="Age          Years"
             />
             <FontAwesome
               name="angle-down"
@@ -163,6 +161,9 @@ const AddAppointment = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.white,
+    // height: '95%',
+    // width: '96%',
+    margin: '2%',
   },
   inputField: {
     width: '100%',
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
   },
   yearsDown: {
     fontSize: 25,
-    marginLeft: '10%',
+    marginLeft: '5%',
   },
   bigInputHolder: {
     height: 42,
@@ -248,6 +249,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: '3%',
   },
+  scrollDate: {
+    width: '100%',
+  },
   dateText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -293,11 +297,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     marginBottom: '5%',
+    marginLeft: '3%',
   },
   notifyFlexText: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: '2%',
+    marginLeft: '2%',
   },
   textColor: {
     color: Colors.black,

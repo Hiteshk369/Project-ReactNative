@@ -21,44 +21,36 @@ const DashBoardAmount = () => {
           <Text style={styles.leftText}>Dashboard</Text>
         </View>
       </LinearGradient> */}
-      <View style={styles.alignContainer}>
-        <View style={styles.timeContainer}>
-          <View style={styles.daysFlexMarginButton}>
-            <View style={styles.daysFlexButton}>
-              <Pressable style={styles.activeDayButtonBackground}>
-                <Text style={styles.activeDayButtonText}>Today</Text>
-              </Pressable>
-              <Pressable style={styles.daysButtonBackground}>
-                <Text style={styles.daysButtonText}>Yesterday</Text>
-              </Pressable>
-              <Pressable style={styles.daysButtonBackground}>
-                <Text style={styles.daysButtonText}>Last Week</Text>
-              </Pressable>
-            </View>
-          </View>
+      <View style={styles.topButtons}>
+        <View style={styles.columnButtons}>
+          <Pressable style={styles.activeDayButtonBackground}>
+            <Text style={styles.activeDayButtonText}>Today</Text>
+          </Pressable>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Current Month</Text>
+          </Pressable>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Last FY</Text>
+          </Pressable>
         </View>
-        <View style={styles.timeContainer}>
-          <View style={styles.daysFlexButton}>
-            <Pressable style={styles.daysButtonBackground}>
-              <Text style={styles.daysButtonText}>Currrent Month</Text>
-            </Pressable>
-            <Pressable style={styles.daysButtonBackground}>
-              <Text style={styles.daysButtonText}>Last Month</Text>
-            </Pressable>
-            <Pressable style={styles.daysButtonBackground}>
-              <Text style={styles.daysButtonText}>Current FY</Text>
-            </Pressable>
-          </View>
+        <View style={styles.columnButtons}>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Yesterday</Text>
+          </Pressable>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Last Month</Text>
+          </Pressable>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Select Range</Text>
+          </Pressable>
         </View>
-        <View style={styles.timeContainer}>
-          <View style={styles.daysThirdFlexButton}>
-            <Pressable style={styles.daysButtonBackground}>
-              <Text style={styles.daysButtonText}>Last FY</Text>
-            </Pressable>
-            <Pressable style={styles.daysButtonBackground}>
-              <Text style={styles.daysButtonText}>Select Range</Text>
-            </Pressable>
-          </View>
+        <View style={styles.columnButtons}>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Last Week</Text>
+          </Pressable>
+          <Pressable style={styles.daysButtonBackground}>
+            <Text style={styles.daysButtonText}>Current FY</Text>
+          </Pressable>
         </View>
       </View>
       <View style={styles.Card}>
@@ -114,6 +106,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   gradient: {
     borderBottomLeftRadius: 40,
@@ -141,10 +134,13 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '600',
   },
-  alignContainer: {
-    marginTop: '5%',
-    alignItems: 'center',
+  topButtons: {
+    // width: '90%',
+    margin: '5%',
+    flexDirection: 'row',
+    gap: 10,
   },
+
   timeContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -152,17 +148,17 @@ const styles = StyleSheet.create({
     margin: '1%',
   },
   daysButtonBackground: {
-    display: 'flex',
-    flexDirection: 'row',
+    elevation: 5,
     alignItems: 'center',
     backgroundColor: Colors.white,
     justifyContent: 'center',
     borderRadius: 10,
-    elevation: 5,
+  },
+  columnButtons: {
+    gap: 15,
   },
   activeDayButtonBackground: {
-    display: 'flex',
-    flexDirection: 'row',
+    // width: '80%',
     alignItems: 'center',
     backgroundColor: Colors.lightPurple,
     justifyContent: 'center',
@@ -171,13 +167,16 @@ const styles = StyleSheet.create({
   activeDayButtonText: {
     color: Colors.white,
     fontSize: 13,
-    margin: '7%',
+    paddingVertical: '2%',
+    // margin: '7%',
+    // paddingHorizontal: '5%',
   },
   daysButtonText: {
     color: Colors.black,
     fontSize: 13,
-    margin: '7%',
+    paddingVertical: '2%',
     marginHorizontal: '5%',
+    // margin: '7%',
   },
   daysFlexButton: {
     width: '90%',

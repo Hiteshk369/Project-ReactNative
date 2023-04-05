@@ -1,4 +1,3 @@
-import {React} from 'react';
 import {
   TouchableOpacity,
   View,
@@ -12,8 +11,8 @@ import PhoneInput from 'react-native-phone-number-input';
 
 const OtpVerification = () => {
   return (
-    <View style={styles.inputFormContainer}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.inputFormContainer}>
         <KeyboardAvoidingView
           keyboardVerticalOffset={50}
           behavior={'padding'}
@@ -21,11 +20,12 @@ const OtpVerification = () => {
           <View style={styles.boxContainer}>
             <View style={styles.box} />
           </View>
-          <Text style={styles.textTitle}>{'OTP Verification'}</Text>
-          <Text style={styles.textTitle}>
+          <Text style={styles.textTitle}>OTP Verification</Text>
+          <Text style={styles.textSmallTitle}>
             We will send you the{' '}
-            <Text style={{fontWeight: 'bold'}}>One Time Password</Text> on this
-            Mobile Number
+            <Text style={{fontWeight: 'bold'}}>One Time Password</Text>
+            {'\n'}
+            {'                   '}on this Mobile Number
           </Text>
           <View style={styles.containerInput}>
             <PhoneInput
@@ -42,47 +42,49 @@ const OtpVerification = () => {
   );
 };
 const styles = StyleSheet.create({
-  inputFormContainer: {
-    height: 700,
-    backgroundColor: Colors.white,
-    marginHorizontal: 10,
-    borderRadius: 25,
-    marginBottom: 50,
-    marginTop: 50,
-  },
   container: {
-    display: 'flex',
+    width: '100%',
+    height: '100%',
+  },
+  inputFormContainer: {
+    height: '100%',
+    width: '94%',
+    backgroundColor: Colors.white,
+    marginHorizontal: '3%',
+    borderRadius: 25,
+    marginVertical: '20%',
   },
   containerAvoidingView: {
-    display: 'flex',
     alignItems: 'center',
-    padding: 10,
+    paddingVertical: '20%',
   },
   boxContainer: {
-    display: 'flex',
     alignItems: 'center',
   },
   box: {
-    height: 125,
-    width: 125,
+    height: 200,
+    width: 200,
     borderColor: Colors.black,
     borderWidth: 1,
-    marginTop: 20,
-    marginBottom: 15,
-    borderRadius: 100,
+    marginVertical: '5%',
   },
   textTitle: {
-    marginBottom: 20,
-    marginTop: 20,
-    paddingHorizontal: 20,
+    marginVertical: '2%',
+    paddingHorizontal: '5%',
     fontSize: 18,
+    fontWeight: '500',
+    color: Colors.black,
+  },
+  textSmallTitle: {
+    marginVertical: '5%',
+    paddingHorizontal: '11%',
+    fontSize: 15,
+    fontWeight: '400',
     color: Colors.black,
   },
   containerInput: {
-    marginTop: 10,
-    marginBottom: 15,
+    marginVertical: '5%',
     flexDirection: 'row',
-    paddingHorizontal: 12,
     alignItems: 'center',
   },
   phoneNumberView: {
@@ -94,13 +96,13 @@ const styles = StyleSheet.create({
     borderColor: Colors.darkPurple,
   },
   textContainer: {
-    paddingVertical: 0,
+    paddingVertical: '0%',
     borderRadius: 10,
   },
   buttonBackground: {
-    margin: 5,
-    width: '36%',
-    paddingVertical: 12,
+    margin: '5%',
+    width: '50%',
+    paddingVertical: '3%',
     backgroundColor: Colors.darkPurple,
     borderRadius: 10,
     display: 'flex',

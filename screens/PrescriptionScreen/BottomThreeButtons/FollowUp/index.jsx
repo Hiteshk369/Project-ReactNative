@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -18,6 +18,7 @@ import CheckBox from '@react-native-community/checkbox';
 
 const FollowUp = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [isClicked, setisClicked] = useState(false);
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
@@ -105,9 +106,35 @@ const FollowUp = () => {
           <Text style={styles.slotLeftText}>Time</Text>
           <Text style={styles.slotLeftLightText}>(optional)</Text>
         </View>
-        <View style={styles.slotRightContainer}>
-          <Text style={styles.slotRightText}>Select slot</Text>
-        </View>
+        <TouchableOpacity
+          style={styles.slotRightText}
+          onPressIn={() => {
+            setisClicked(!isClicked);
+          }}>
+          {isClicked ? (
+            <Text style={styles.selectSlotText}>Hide slot</Text>
+          ) : (
+            <Text style={styles.selectSlotText}>Select slot</Text>
+          )}
+        </TouchableOpacity>
+      </View>
+      <View style={styles.slotRightContainer}>
+        <TouchableOpacity
+          onPressIn={() => {
+            setisClicked(!isClicked);
+          }}>
+          {isClicked ? (
+            <View style={styles.slotFlex}>
+              <View style={styles.circle} />
+              <View style={styles.selectSlotContainer}>
+                <Text style={styles.fullText}>Slot Full !</Text>
+                <Text style={styles.fullLightText}>
+                  No empty slots found on this date{'\n'}Try another date.
+                </Text>
+              </View>
+            </View>
+          ) : null}
+        </TouchableOpacity>
       </View>
       <View style={styles.card}>
         <TextInput
@@ -292,11 +319,18 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 15,
   },
+  slotFlex: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    margin: '5%',
+    marginTop: '0%',
+  },
   slotFlexContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     margin: '5%',
-    marginVertical: '10%',
+    marginTop: '10%',
   },
   slotLeftContainer: {
     flexDirection: 'row',
@@ -311,9 +345,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.gray_400,
   },
+  selectSlotText: {
+    alignSelf: 'flex-end',
+    color: Colors.darkPurple,
+    fontWeight: '500',
+  },
+  selectSlotContainer: {
+    marginHorizontal: '5%',
+  },
+  fullText: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: Colors.black,
+  },
+  fullLightText: {
+    fontSize: 13,
+  },
   slotRightContainer: {
     flexDirection: 'row',
-    gap: 5,
+    // gap: 5,
     marginHorizontal: '5%',
   },
   slotRightText: {

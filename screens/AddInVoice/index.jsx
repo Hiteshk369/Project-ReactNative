@@ -7,12 +7,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../constants/colors';
 
 const AddInVoice = () => {
+  const [dropdown, setDropdown] = useState(false);
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
@@ -84,15 +86,34 @@ const AddInVoice = () => {
         <View style={styles.leftFlexText}>
           <View style={styles.smallCircle} />
           <View style={styles.boxBottomFlex}>
-            <Text style={styles.boxText}>Consultation</Text>
-            <MaterialIcons
-              name="keyboard-arrow-down"
-              color={Colors.black}
-              style={styles.dropDown}
-            />
+            <TouchableOpacity
+              style={styles.rightDropDown}
+              onPressIn={() => setDropdown(!dropdown)}>
+              <Text style={styles.boxText}>Consultation</Text>
+              {dropdown ? (
+                <MaterialIcons
+                  name="keyboard-arrow-up"
+                  color={Colors.black}
+                  style={styles.dropDown}
+                />
+              ) : (
+                <MaterialIcons
+                  name="keyboard-arrow-down"
+                  color={Colors.black}
+                  style={styles.dropDown}
+                />
+              )}
+            </TouchableOpacity>
           </View>
         </View>
       </View>
+      {dropdown ? (
+        <View style={styles.dropDownArea}>
+          <Text style={styles.boxText}>Consultation</Text>
+          <Text style={styles.boxLText}>Procedure</Text>
+          <Text style={styles.boxLText}>Miscellaneous</Text>
+        </View>
+      ) : null}
       <View style={styles.smallflexContainer}>
         <View style={styles.leftFlexText}>
           <View style={styles.smallCircle} />
@@ -276,11 +297,44 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.black,
     paddingHorizontal: '5%',
+    paddingRight: '6%',
     paddingVertical: '3%',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  boxLText: {
+    fontSize: 18,
+    color: Colors.gray_400,
+    paddingHorizontal: '5%',
+    paddingRight: '6%',
+    paddingVertical: '3%',
+    borderRadius: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  rightDropDown: {
+    flexDirection: 'row',
+    // marginLeft: '2%',
+  },
+  dropUp: {
+    fontSize: 35,
+    marginLeft: '35%',
   },
   dropDown: {
     fontSize: 35,
     marginLeft: '35%',
+  },
+  dropDownArea: {
+    flexDirection: 'column',
+    width: '70%',
+    height: '12%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    alignSelf: 'flex-end',
+    marginTop: '2%',
+    paddingVertical: '1%',
+    marginRight: '10%',
   },
   boxLightText: {
     fontSize: 18,
@@ -289,7 +343,7 @@ const styles = StyleSheet.create({
     color: Colors.gray_100,
   },
   buttonsBottomText: {
-    marginLeft: '50%',
+    marginLeft: '45%',
     marginVertical: '2%',
     fontSize: 15,
     fontWeight: '400',

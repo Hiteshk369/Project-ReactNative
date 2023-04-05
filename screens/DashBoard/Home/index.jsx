@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.navigation}>
-        <Text style={styles.navHeader}>Prana</Text>
+        <Text style={styles.navHeader}>PRANA</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
             name="notifications"
@@ -185,20 +185,16 @@ const styles = StyleSheet.create({
   navigation: {
     height: 60,
     width: '100%',
-
     backgroundColor: Colors.darkPurple,
-
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   navHeader: {
-    fontSize: 18,
-
-    color: Colors.white,
-
-    paddingLeft: 10,
+    fontSize: 15,
+    color: Colors.lightgreen,
+    paddingLeft: '5%',
   },
   navIcons: {
     display: 'flex',
@@ -245,7 +241,6 @@ const styles = StyleSheet.create({
   },
   boxText: {
     color: Colors.white,
-
     fontSize: 16,
     marginBottom: 10,
   },
@@ -264,12 +259,10 @@ const styles = StyleSheet.create({
     fontSize: 35,
     marginLeft: 30,
     borderLeftWidth: 2,
-
     borderLeftColor: Colors.gray_200,
   },
   numbersText: {
     color: Colors.white,
-
     paddingLeft: 10,
     fontSize: 35,
   },
@@ -281,7 +274,6 @@ const styles = StyleSheet.create({
     height: 'auto',
     width: '100%',
     backgroundColor: Colors.white,
-
     borderRadius: 10,
     marginTop: 20,
   },
@@ -309,12 +301,10 @@ const styles = StyleSheet.create({
     width: '50%',
     paddingVertical: 12,
     backgroundColor: Colors.white,
-
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-
     gap: 4,
   },
   selectedTextColor: {
@@ -335,17 +325,17 @@ const styles = StyleSheet.create({
   dashboardRowContainer: {
     flexDirection: 'row',
     width: '100%',
-    height: 110,
+    // height: '17%',
+    marginTop: '3%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
   dashboardButton: {
-    width: 90,
-    height: 100,
-    display: 'flex',
+    width: 100,
+    height: 110,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 2,
+    padding: '1%',
     borderRadius: 20,
     borderWidth: 0.1,
     borderColor: Colors.gray_200,
@@ -358,6 +348,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-// scrolling function
-// bottom nav
