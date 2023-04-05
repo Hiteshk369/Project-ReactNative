@@ -1,34 +1,21 @@
 import {ScrollView, Text, View, StyleSheet, TextInput} from 'react-native';
-import React, {Component} from 'react';
+import {Colors} from '../../../constants/colors';
 
 import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-// import { Colors } from 'react-native/Libraries/NewAppScreen';
-import {Colors} from '../../../constants/colors';
-
 
 const CreateNewPackage = () => {
   return (
     <ScrollView style={styles.container}>
       <View>
-        <LinearGradient colors={[Colors.darkPurple,Colors.lightPurple]} style={styles.gradient}>
-          <View style={styles.navBackground}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.backIcon}
-            />
-            <Text style={styles.leftText}>Create New Package</Text>
-          </View>
-        </LinearGradient>
         <View style={styles.onlineFlexText}>
           <Text style={styles.onlineText}>Patient will pay Online</Text>
           <MaterialIcons
             name="toggle-on"
             color={Colors.blue_500}
-            style={styles.togglIcon}
+            style={styles.toggleIcon}
           />
         </View>
         <View style={styles.nameInputHolder}>
@@ -74,17 +61,17 @@ const CreateNewPackage = () => {
         <View style={styles.consultationInput}>
           <TextInput
             placeholderTextColor={Colors.gray_200}
-            style={styles.consultationinputField}
+            style={styles.consultationInputField}
             placeholder="Text"
           />
           <TextInput
             placeholderTextColor={Colors.gray_200}
-            style={styles.consultationinputField}
+            style={styles.consultationInputField}
             placeholder="Audio"
           />
           <TextInput
             placeholderTextColor={Colors.gray_200}
-            style={styles.consultationinputField}
+            style={styles.consultationInputField}
             placeholder="Video"
           />
         </View>
@@ -112,7 +99,7 @@ const CreateNewPackage = () => {
           <MaterialIcons
             name="toggle-off"
             color={Colors.gray_200}
-            style={styles.togglIcon}
+            style={styles.toggleIcon}
           />
         </View>
         <View style={styles.nameInputHolder}>
@@ -129,14 +116,15 @@ const CreateNewPackage = () => {
             placeholder="Online Price (Rs)"
           />
         </View>
+        <View style={styles.marginBottom} />
       </View>
     </ScrollView>
   );
 };
 const styles = StyleSheet.create({
-  container:{
-    height:'100%',
-    width:'100%',
+  container: {
+    height: '100%',
+    width: '100%',
   },
   gradient: {
     borderBottomLeftRadius: 40,
@@ -178,7 +166,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  togglIcon: {
+  toggleIcon: {
     fontSize: 45,
     marginLeft: '15%',
     fontWeight: '600',
@@ -261,7 +249,7 @@ const styles = StyleSheet.create({
     marginLeft: '3%',
     marginBottom: '0%',
   },
-  consultationinputField: {
+  consultationInputField: {
     width: '100%',
     fontSize: 16,
     color: Colors.gray_700,
@@ -275,7 +263,6 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontWeight: '500',
   },
-  audioInputField: {},
   audioDayDown: {
     fontSize: 25,
     gap: 0,
@@ -285,6 +272,9 @@ const styles = StyleSheet.create({
     width: '93%',
     fontSize: 16,
     color: Colors.gray_700,
+  },
+  marginBottom: {
+    marginBottom: '40%',
   },
 });
 

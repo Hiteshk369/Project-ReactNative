@@ -9,23 +9,22 @@ import React, {Component} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
+import {useNavigation} from '@react-navigation/native';
 
 const FeedScreen = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView style={styles.container}>
       <View>
-        {/* <LinearGradient
-          colors={[Colors.darkPurple, Colors.lightPurple]}
-          style={styles.gradient}>
-          <Text style={styles.leftText}>Dr.Prana</Text>
-        </LinearGradient> */}
-        <View style={styles.darkScreen}></View>
+        <View style={styles.darkScreen} />
         <Text style={styles.darkScreenText}>Health Minute</Text>
-        <View style={styles.darkScreen}></View>
+        <View style={styles.darkScreen} />
         <Text style={styles.darkScreenTextSmall}>
           India : surge in high-grade.................
         </Text>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('CreateYourFeed')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Create Your Feed</Text>
         </TouchableOpacity>
       </View>

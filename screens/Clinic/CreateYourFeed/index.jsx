@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 import {Colors} from '../../../constants/colors';
@@ -75,6 +76,8 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    paddingTop: '10%',
+    backgroundColor: Colors.darkPurple,
   },
   Card: {
     display: 'flex',
