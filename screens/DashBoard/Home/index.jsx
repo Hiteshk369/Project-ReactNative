@@ -14,10 +14,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useNavigation} from '@react-navigation/native';
 
-const Home = () => {
-  const navigation = useNavigation();
+const Home = ({navigation}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.navigation}>
@@ -73,7 +71,9 @@ const Home = () => {
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.notSelectedButton}>
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('Summary')}
+              style={styles.notSelectedButton}>
               <FontAwesome
                 name="circle-o"
                 style={styles.notSelectedTextColor}
@@ -86,7 +86,7 @@ const Home = () => {
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('MainAppointment')}
+                onPressIn={() => navigation.navigate('MainAppointment')}
                 style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
               </TouchableOpacity>

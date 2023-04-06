@@ -16,12 +16,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Summary = () => {
+const Summary = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   return (
     <ScrollView style={styles.mainContainer}>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.notSelectedButton}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Home')}
+          style={styles.notSelectedButton}>
           <FontAwesome style={styles.notSelectedButtonText} name="circle-o" />
           <Text style={styles.notSelectedButtonText}>DASHBOARD</Text>
         </TouchableOpacity>
@@ -241,6 +243,7 @@ const styles = StyleSheet.create({
   addrText: {
     fontSize: 12,
     marginTop: '1%',
+    color: Colors.gray_700,
   },
   calenderContainer: {
     color: Colors.black,

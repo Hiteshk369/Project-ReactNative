@@ -71,19 +71,19 @@ export const CustomHealthFeedHeader = ({navigation}) => (
   </View>
 );
 
-export const CustomCreateYourFeedHeader = ({navigation}) => (
+export const CustomRectangleHeader = ({navigation, name, navTo}) => (
   <View style={styles.bgPurple}>
     <View style={styles.rectangleHeader}>
       <TouchableOpacity
         style={styles.leftText}
-        onPress={() => navigation.navigate('HealthFeed')}>
+        onPress={() => navigation.navigate(`${navTo}`)}>
         <MaterialIcons
           name="arrow-back-ios"
           color={Colors.white}
           style={styles.backIcon}
         />
       </TouchableOpacity>
-      <Text style={styles.headerText}>Create Your Feed</Text>
+      <Text style={styles.headerText}>{name}</Text>
     </View>
   </View>
 );

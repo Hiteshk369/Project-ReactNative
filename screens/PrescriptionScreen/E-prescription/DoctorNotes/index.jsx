@@ -11,24 +11,27 @@ import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const DoctorNotes = () => {
+const DoctorNotes = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="second" />
+              <StepsIndicator active="null" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('ReferBy')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Doctor Notes</Text>
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>Notes</Text>

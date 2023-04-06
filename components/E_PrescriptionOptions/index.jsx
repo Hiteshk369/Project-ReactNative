@@ -5,28 +5,31 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Colors} from '../../constants/colors';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import CheckBox from '@react-native-community/checkbox';
+import {Pressable} from 'react-native';
 
-const E_PrescriptionOptions = () => {
+const E_PrescriptionOptions = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   return (
     <ScrollView style={styles.container}>
       <View>
         <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
+          <Pressable
+            style={styles.bodyLeftText}
+            onPressIn={() => navigation.navigate('ChiefComplaints')}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleIcon}
             />
             <Text style={styles.bodyTextFlex}> Chief Complaints</Text>
-          </View>
+          </Pressable>
           <View style={styles.bodyRightText}>
             <MaterialIcons
               name="add"
@@ -36,14 +39,16 @@ const E_PrescriptionOptions = () => {
           </View>
         </View>
         <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
+          <Pressable
+            onPressIn={() => navigation.navigate('Examination')}
+            style={styles.bodyLeftText}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleIcon}
             />
             <Text style={styles.bodyTextFlex}> Examinations</Text>
-          </View>
+          </Pressable>
           <View style={styles.bodyRightText}>
             <MaterialIcons
               name="add"

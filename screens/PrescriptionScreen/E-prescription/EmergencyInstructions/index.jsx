@@ -10,8 +10,9 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const EmergencyInstructions = () => {
+const EmergencyInstructions = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -23,11 +24,13 @@ const EmergencyInstructions = () => {
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('Findings')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>EmergencyInstructions</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
@@ -99,7 +102,9 @@ const EmergencyInstructions = () => {
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prognosis')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Prognosis</Text>
             <MaterialIcons
@@ -163,10 +168,11 @@ const styles = StyleSheet.create({
   },
   suggestionsHeader: {
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: '600',
     margin: '5%',
     marginTop: '13%',
     marginBottom: '2%',
+    color: Colors.gray_500,
   },
   suggestionsFlex: {
     flexDirection: 'row',
@@ -178,9 +184,10 @@ const styles = StyleSheet.create({
   },
   suggestionsText: {
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: '500',
     borderWidth: 1,
-    borderColor: Colors.gray_100,
+    borderColor: Colors.gray_400,
+    color: Colors.gray_400,
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,

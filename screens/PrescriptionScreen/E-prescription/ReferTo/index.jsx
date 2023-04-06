@@ -10,8 +10,9 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const ReferTo = () => {
+const ReferTo = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -23,11 +24,13 @@ const ReferTo = () => {
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('Prognosis')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Refer To</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
@@ -49,7 +52,9 @@ const ReferTo = () => {
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('ReferBy')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Referred By</Text>
             <MaterialIcons

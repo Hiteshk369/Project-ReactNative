@@ -1,81 +1,79 @@
 import {Text, View, ScrollView, StyleSheet} from 'react-native';
 import React, {Component} from 'react';
 import {Colors} from '../../constants/colors';
-import {TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 
-const StepsIndicator = () => {
-  const [active, setActive] = useState('first');
+const StepsIndicator = ({active}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.flexBox}>
         <View style={styles.bigBox} />
-        <TouchableOpacity>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            {active === 'first' && <View style={styles.line} />}
+            {active === 'one' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setActive('second')}>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            {active === 'second' && <View style={styles.line} />}
+            {active === 'two' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'three' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'four' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'five' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'six' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'seven' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'eight' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'nine' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'ten' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </View>
+        <View>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
-            <View style={styles.line} />
+            {active === 'eleven' && <View style={styles.line} />}
           </View>
-        </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );

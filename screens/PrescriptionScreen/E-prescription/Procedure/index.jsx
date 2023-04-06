@@ -10,24 +10,27 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const Procedure = () => {
+const Procedure = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="fifth" />
+              <StepsIndicator active="five" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPress={() => navigation.navigate('Medication')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Procedure</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
@@ -104,7 +107,9 @@ const Procedure = () => {
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Investigation')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Investigation</Text>
             <MaterialIcons
@@ -167,11 +172,12 @@ const styles = StyleSheet.create({
     paddingLeft: '5%',
   },
   suggestionsHeader: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: '500',
     margin: '5%',
     marginTop: '13%',
     marginBottom: '2%',
+    color: Colors.gray_500,
   },
   suggestionsFlex: {
     flexDirection: 'row',
@@ -183,9 +189,10 @@ const styles = StyleSheet.create({
   },
   suggestionsText: {
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: '500',
     borderWidth: 1,
-    borderColor: Colors.gray_100,
+    borderColor: Colors.gray_400,
+    color: Colors.gray_400,
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,

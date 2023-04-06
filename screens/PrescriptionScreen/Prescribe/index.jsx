@@ -4,19 +4,17 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {E_PrescriptionOptions, HandwrittenOptions} from '../../../components';
-// import {Prescription} from '../../../components';
 
-const Selectpatient = () => {
+const Prescribe = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState('prescription');
-  const [dropdown, setdropdown] = useState('withOutDropDown');
 
   return (
     <ScrollView style={styles.container}>
@@ -25,25 +23,25 @@ const Selectpatient = () => {
         style={styles.gradient}>
         <View style={styles.navBackground}>
           <View style={styles.leftText}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.black}
-              style={styles.backIcon}
-            />
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.leftText}>Select Patient</Text>
+            <Pressable
+              onPressIn={() => navigation.navigate('Home')}
+              style={styles.leftText}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.black}
+                style={styles.backIcon}
+              />
+            </Pressable>
+            <View style={styles.circleNav} />
+            <Pressable onPressIn={() => navigation.navigate('PatientsList')}>
+              <Text style={styles.leftText}>Select Patient</Text>
+            </Pressable>
           </View>
-          <View style={styles.rightText}>
-            <MaterialIcons
-              name="more-vert"
-              color={Colors.black}
-              style={styles.moreIcon}
-            />
-          </View>
+          <MaterialIcons
+            name="more-vert"
+            color={Colors.black}
+            style={styles.moreIcon}
+          />
         </View>
       </LinearGradient>
       <View style={styles.buttons}>
@@ -75,9 +73,9 @@ const Selectpatient = () => {
             : styles.headerButton
         }>
         {toggleCheckBox === 'prescription' ? (
-          <E_PrescriptionOptions />
+          <E_PrescriptionOptions navigation={navigation} />
         ) : (
-          <HandwrittenOptions />
+          <HandwrittenOptions navigation={navigation} />
         )}
       </View>
     </ScrollView>
@@ -96,6 +94,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40,
     borderBottomWidth: 2,
     borderBottomColor: Colors.gray_100,
+    elevation: 3,
   },
   navBackground: {
     flexDirection: 'row',
@@ -111,28 +110,20 @@ const styles = StyleSheet.create({
     gap: 10,
     color: Colors.black,
   },
-  rightText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    // marginLeft: '5%',
-    fontSize: 16,
-    gap: 20,
-    color: Colors.white,
-  },
   backIcon: {
     fontSize: 25,
   },
-  circleIcon: {
-    fontSize: 45,
+  circleNav: {
+    height: 45,
+    width: 45,
+    borderWidth: 1,
+    borderRadius: 100,
+    borderColor: Colors.black,
   },
   navText: {
     fontSize: 18,
     color: Colors.black,
     fontWeight: '500',
-  },
-  rightText: {
-    marginLeft: '26%',
   },
   moreIcon: {
     fontSize: 35,
@@ -151,18 +142,22 @@ const styles = StyleSheet.create({
     width: '77%',
     fontSize: 18,
     marginLeft: '10%',
-    paddingVertical: 12,
+    paddingTop: 12,
+    paddingBottom: 8,
     color: Colors.darkPurple,
     borderBottomColor: Colors.darkPurple,
-    borderBottomWidth: 2,
+    borderBottomWidth: 3,
+    fontWeight: '600',
   },
   notselectedButton: {
     marginLeft: '10%',
     fontSize: 18,
-    paddingVertical: 12,
+    paddingTop: 12,
+    paddingBottom: 8,
     color: Colors.gray_700,
     width: '77%',
+    fontWeight: '600',
   },
 });
 
-export default Selectpatient;
+export default Prescribe;

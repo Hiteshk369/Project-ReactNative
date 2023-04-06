@@ -6,25 +6,15 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {Component} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '../../../constants/colors';
-import {SaveButton} from '../../../components';
 
-const AddClinic = () => {
+const AddClinic = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.navBar}>
-        <MaterialIcons
-          name="arrow-back-ios"
-          color={Colors.white}
-          style={styles.backIcon}
-        />
-        <Text style={styles.navText}>Add Clinic</Text>
-      </View>
       <View style={styles.Card}>
         <View style={styles.bgWhite}>
           <View style={styles.nameInputHolder}>
@@ -96,7 +86,7 @@ const AddClinic = () => {
             <MaterialIcons
               name="toggle-on"
               color={Colors.blue_500}
-              style={styles.togglIcon}
+              style={styles.toggleIcon}
             />
           </View>
           <View style={styles.daysRow}>
@@ -165,7 +155,7 @@ const AddClinic = () => {
             <Ionicons
               name="add-circle-outline"
               color={Colors.lightPurple}
-              style={styles.circleaddIcon}
+              style={styles.circleAddIcon}
             />
             <Text style={styles.addDaysText}>
               Add additional days and timings
@@ -191,14 +181,14 @@ const AddClinic = () => {
             <Text style={styles.bgShadeHeader}>To</Text>
           </View>
           <View style={styles.fromTwoInputHolder}>
-            <View style={styles.bgshadeInput}>
+            <View style={styles.bgShadeInput}>
               <TextInput
                 placeholderTextColor={Colors.black}
                 style={styles.inputField}
                 placeholder="0"
               />
             </View>
-            <View style={styles.bgshadeInput}>
+            <View style={styles.bgShadeInput}>
               <TextInput
                 placeholderTextColor={Colors.black}
                 style={styles.inputField}
@@ -244,7 +234,7 @@ const AddClinic = () => {
             <Ionicons
               name="add-circle-outline"
               color={Colors.lightPurple}
-              style={styles.circleaddIcon}
+              style={styles.circleAddIcon}
             />
             <Text style={styles.addDaysText}>Add More</Text>
           </View>
@@ -260,7 +250,7 @@ const AddClinic = () => {
             <Ionicons
               name="add-circle-outline"
               color={Colors.lightPurple}
-              style={styles.circleaddIcon}
+              style={styles.circleAddIcon}
             />
             <Text style={styles.addDaysText}>Add More</Text>
           </View>
@@ -274,7 +264,7 @@ const AddClinic = () => {
           </View>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate(nextScreen)}
+          onPressIn={() => navigation.navigate('ClinicAppointmentDetails')}
           style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Save & Proceed</Text>
         </TouchableOpacity>
@@ -402,7 +392,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
   },
-  togglIcon: {
+  toggleIcon: {
     marginLeft: '4%',
     fontSize: 35,
   },
@@ -436,7 +426,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     alignItems: 'center',
   },
-  circleaddIcon: {
+  circleAddIcon: {
     fontSize: 22,
   },
   addDaysText: {
@@ -477,7 +467,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
     marginBottom: '0%',
   },
-  bgshadeInput: {
+  bgShadeInput: {
     height: 45,
     width: '42%',
     backgroundColor: Colors.gray_300,

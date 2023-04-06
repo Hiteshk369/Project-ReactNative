@@ -55,6 +55,22 @@ const Preview = () => {
           </View>
         </View>
       </LinearGradient>
+      <View style={styles.mainContainer}>
+        <View style={styles.flexContainer}>
+          <Text style={styles.bigText}>Select preferred languages:</Text>
+          <View style={styles.flexText}>
+            <Text style={styles.colorText}>English</Text>
+            <FontAwesome
+              name="angle-down"
+              color={Colors.darkPurple}
+              style={styles.dropDown}
+            />
+          </View>
+        </View>
+        <Text style={styles.smallText}>
+          Only Medication instructions will be changed to select language
+        </Text>
+      </View>
       {download && (
         <View style={styles.downloadContainer}>
           <Text style={styles.downloadHeader}>Sharing Prescription</Text>
@@ -76,22 +92,6 @@ const Preview = () => {
           </View>
         </View>
       )}
-      <View style={styles.mainContainer}>
-        <View style={styles.flexContainer}>
-          <Text style={styles.bigText}>Select preferred languages:</Text>
-          <View style={styles.flexText}>
-            <Text style={styles.colorText}>English</Text>
-            <FontAwesome
-              name="angle-down"
-              color={Colors.darkPurple}
-              style={styles.dropDown}
-            />
-          </View>
-        </View>
-        <Text style={styles.smallText}>
-          Only Medication instructions will be changed to select language
-        </Text>
-      </View>
       <View style={styles.whiteBox} />
       <View style={styles.whiteBox} />
     </ScrollView>
@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
   },
   smallText: {
     fontSize: 12,
+    color: Colors.gray_700,
   },
   colorText: {
     fontSize: 17,
