@@ -6,24 +6,26 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {Component} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Pressable} from 'react-native';
 
-const PatientsList = () => {
+const PatientsList = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
         <View style={styles.navHeader}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            color={Colors.white}
-            style={styles.backIcon}
-          />
+          <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.backIcon}
+            />
+          </Pressable>
           <Text style={styles.navText}> Select a patient to prescribe</Text>
         </View>
       </LinearGradient>
@@ -43,10 +45,10 @@ const PatientsList = () => {
         <View style={styles.patientsContainer}>
           <Text style={styles.patientsHeader}>Recent patients</Text>
           <View style={styles.patientsBorder}>
-            <View style={styles.profiles}>
+            <Pressable style={styles.profiles}>
               <View style={styles.box}></View>
               <Text style={styles.boxText}>Rajesh</Text>
-            </View>
+            </Pressable>
             <View style={styles.profiles}>
               <View style={styles.box}></View>
               <Text style={styles.boxText}>Sandeep R</Text>

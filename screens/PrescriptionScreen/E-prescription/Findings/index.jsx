@@ -11,24 +11,27 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {TextInput} from 'react-native';
+import {Pressable} from 'react-native';
 
-const Findings = () => {
+const Findings = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="Eight" />
+              <StepsIndicator active="eight" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('Advice')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Findings</Text>
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>Notes</Text>
@@ -46,7 +49,9 @@ const Findings = () => {
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('EmergencyInstructions')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Emergency Instructions</Text>
             <MaterialIcons
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7%',
   },
   boxText: {
-    color: Colors.gray_200,
+    color: Colors.gray_700,
     margin: '7%',
     fontWeight: '500',
   },

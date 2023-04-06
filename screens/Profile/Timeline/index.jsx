@@ -1,11 +1,17 @@
-import {Text, View, ScrollView, StyleSheet} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import React, {Component} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
-const Timeline = () => {
+const Timeline = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -13,11 +19,15 @@ const Timeline = () => {
           colors={[Colors.darkPurple, Colors.lightPurple]}
           style={styles.gradient}>
           <View style={styles.navHeader}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.backIcon}
-            />
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('Profile')}
+              style={styles.leftText}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.white}
+                style={styles.backIcon}
+              />
+            </TouchableOpacity>
             <Text style={styles.leftText}>Timeline</Text>
           </View>
           <View style={styles.navText}>

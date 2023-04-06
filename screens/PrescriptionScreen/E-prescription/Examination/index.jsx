@@ -4,30 +4,35 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import React from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {TextInput} from 'react-native';
 
-const Examination = () => {
+const Examination = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="second" />
+              <StepsIndicator active="two" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable
+                onPressIn={() => navigation.navigate('ChiefComplaints')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Examination</Text>
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>On-Examination notes</Text>
@@ -53,7 +58,9 @@ const Examination = () => {
         <TouchableOpacity style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Diagnosis')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Diagnosis</Text>
             <MaterialIcons

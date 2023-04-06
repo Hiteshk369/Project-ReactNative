@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {Component} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -14,7 +13,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '../../../constants/colors';
 
-const ClinicAppointmentDetails = () => {
+const ClinicAppointmentDetails = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -39,7 +38,7 @@ const ClinicAppointmentDetails = () => {
             </View>
             <View style={styles.onlineFlexText}>
               <Text style={styles.onlineText}>
-                Enabled for receving appointments
+                Enabled for receiving appointments
               </Text>
               <MaterialIcons
                 name="toggle-on"
@@ -96,7 +95,7 @@ const ClinicAppointmentDetails = () => {
               <MaterialIcons
                 name="toggle-on"
                 color={Colors.blue_500}
-                style={styles.togglIcon}
+                style={styles.toggleIcon}
               />
             </View>
             <View style={styles.daysRow}>
@@ -165,7 +164,7 @@ const ClinicAppointmentDetails = () => {
               <Ionicons
                 name="add-circle-outline"
                 color={Colors.lightPurple}
-                style={styles.circleaddIcon}
+                style={styles.circleAddIcon}
               />
               <Text style={styles.addDaysText}>
                 Add additional days and timings
@@ -183,7 +182,7 @@ const ClinicAppointmentDetails = () => {
             </View>
           </View>
           <TouchableOpacity
-            onPress={() => navigation.navigate(nextScreen)}
+            onPressIn={() => navigation.navigate('OnlineConsultDetails')}
             style={styles.buttonBackground}>
             <Text style={styles.buttonText}>Save & Proceed</Text>
           </TouchableOpacity>
@@ -327,7 +326,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
   },
-  togglIcon: {
+  toggleIcon: {
     marginLeft: '4%',
     fontSize: 35,
   },
@@ -360,7 +359,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     alignItems: 'center',
   },
-  circleaddIcon: {
+  circleAddIcon: {
     fontSize: 22,
   },
   addDaysText: {
