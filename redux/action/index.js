@@ -1,0 +1,9 @@
+export const actionType = () => {
+  return {
+    SET_USER: 'SET_USER',
+    SET_CHIEF_COMPLAINTS: 'SET_CHIEF_COMPLAINTS',
+    SET_DIAGNOSIS: 'SET_DIAGNOSIS',
+    SET_PROCEDURE: 'SET_PROCEDURE',
+    SET_INVESTIGATION: 'SET_INVESTIGATION',
+  };
+};

@@ -12,7 +12,11 @@ import Feather from 'react-native-vector-icons/Feather';
 import Patients from '../FakeData/Patients';
 
 import {Home, Summary, DashBoardAmount} from '../screens/DashBoard';
-import {PatientsList, Prescribe} from '../screens/PrescriptionScreen';
+import {
+  PatientsList,
+  PatientsMain,
+  Prescribe,
+} from '../screens/PrescriptionScreen';
 import {MainProfileScreen, Timeline} from '../screens/Profile';
 import {
   AddAppointment,
@@ -204,6 +208,13 @@ const HomeNav = () => {
       <Stack.Screen
         name="PatientsList"
         component={PatientsList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PatientsMain"
+        component={PatientsMain}
         options={{
           headerShown: false,
         }}

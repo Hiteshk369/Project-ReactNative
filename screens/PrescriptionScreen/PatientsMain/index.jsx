@@ -12,10 +12,15 @@ import {Colors} from '../../../constants/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {E_PrescriptionOptions, HandwrittenOptions} from '../../../components';
+import {useSelector} from 'react-redux';
+import {Pressable} from 'react-native';
 
-const PatientsMain = () => {
+const PatientsMain = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState('prescription');
   const [viewMore, setViewMore] = useState(false);
+
+  const patientName = useSelector(state => state.patientReducer.user);
+
   return (
     <ScrollView
       style={
@@ -28,14 +33,16 @@ const PatientsMain = () => {
         style={styles.gradient}>
         <View style={styles.navHeader}>
           <View style={styles.leftText}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.black}
-              style={styles.backIcon}
-            />
+            <Pressable onPressIn={() => navigation.navigate('PatientsList')}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.black}
+                style={styles.backIcon}
+              />
+            </Pressable>
             <View style={styles.circleNav} />
             <View>
-              <Text style={styles.navText}>Rajesh Kanna</Text>
+              <Text style={styles.navText}>{patientName}</Text>
               <Text style={{color: Colors.gray_600}}>28 Yrs Male</Text>
             </View>
           </View>

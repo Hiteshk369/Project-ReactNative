@@ -11,8 +11,92 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {useState} from 'react';
+import {useEffect} from 'react';
+
+const suggestions = [
+  {
+    id: 1,
+    name: 'Injection',
+  },
+  {
+    id: 2,
+    name: 'Ecg',
+  },
+  {
+    id: 3,
+    name: 'Endoscopy',
+  },
+  {
+    id: 4,
+    name: 'Dressing',
+  },
+  {
+    id: 5,
+    name: 'Diet shart',
+  },
+  {
+    id: 6,
+    name: 'Spirometry',
+  },
+  {
+    id: 7,
+    name: 'Audiogram test',
+  },
+  {
+    id: 8,
+    name: 'Gastric lavage',
+  },
+  {
+    id: 9,
+    name: 'Cataract surgery',
+  },
+  {
+    id: 10,
+    name: 'Mri',
+  },
+  {
+    id: 11,
+    name: 'Ear wax removal',
+  },
+  {
+    id: 12,
+    name: 'Heart bypass surgery',
+  },
+  {
+    id: 13,
+    name: 'Continuous glucose',
+  },
+  {
+    id: 14,
+    name: 'Sutures',
+  },
+  {
+    id: 15,
+    name: 'Suture removal',
+  },
+];
 
 const Procedure = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [items, setItems] = useState([]);
+
+  const updateItemsProcedure = data => {
+    if (items.includes(data)) {
+      setItems(items.filter(item => item !== data));
+    } else {
+      setItems([...items, data]);
+    }
+  };
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_DIAGNOSIS',
+      diagnosis: items,
+    });
+  }, [items, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -37,67 +121,128 @@ const Procedure = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Procedure"
               />
+              {items.length > 0 && (
+                <View
+                  style={{
+                    width: '90%',
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 6,
+                  }}>
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 14,
+                        color: Colors.darkPurple,
+                      }}>
+                      Added
+                    </Text>
+                    <Pressable onPressIn={() => setItems([])}>
+                      <Text
+                        style={{
+                          fontWeight: '600',
+                          fontSize: 14,
+                          color: Colors.red,
+                        }}>
+                        Clear All
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {items.map((data, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        marginTop: 6,
+                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}>
+                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          {data}
+                        </Text>
+                      </View>
+                      <Pressable onPressIn={() => updateItemsProcedure(data)}>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          x
+                        </Text>
+                      </Pressable>
+                    </View>
+                  ))}
+                  <View
+                    style={{
+                      borderColor: Colors.gray_400,
+                      borderWidth: 1,
+                      marginTop: 12,
+                    }}
+                  />
+                </View>
+              )}
+
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Injection</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Ecg</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Endoscopy</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Dressing</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Diet chart</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Spirometry</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Audiogram test</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Gastric lavage</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cataract surger...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Mri</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Ear wax removal</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Heart bypass su...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Continuous gluc...</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Sutures</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Suture removal</Text>
-                </TouchableOpacity>
+              {/* check from here */}
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginHorizontal: '5%',
+                  gap: 10,
+                  marginVertical: '2%',
+                }}>
+                {suggestions.map(suggestion => (
+                  <TouchableOpacity
+                    onPressIn={() => updateItemsProcedure(suggestion.name)}
+                    key={suggestion.id}
+                    style={
+                      items.includes(suggestion.name)
+                        ? styles.activeSuggestionsText
+                        : {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.gray_400,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                    }>
+                    <Text
+                      style={
+                        items.includes(suggestion.name)
+                          ? {
+                              color: Colors.darkPurple,
+                              fontWeight: '500',
+                              maxWidth: 110,
+                              overflow: 'hidden',
+                            }
+                          : {
+                              color: Colors.gray_400,
+                              fontWeight: '500',
+                              maxWidth: 110,
+                              overflow: 'hidden',
+                            }
+                      }
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {suggestion.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </View>
@@ -196,6 +341,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,
+  },
+  activeSuggestionsText: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.lightPurple,
+    backgroundColor: Colors.purple_100,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
   },
   buttonsFlex: {
     flexDirection: 'row',
