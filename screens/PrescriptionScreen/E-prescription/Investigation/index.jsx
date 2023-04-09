@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
@@ -81,6 +81,9 @@ const suggestions = [
 const Investigation = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const investigationItems = useSelector(
+    state => state.prescriptionReducer.investigation,
+  );
 
   const updateItemsInvestigation = data => {
     if (items.includes(data)) {
@@ -91,10 +94,12 @@ const Investigation = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_INVESTIGATION',
-      investigation: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_INVESTIGATION',
+        investigation: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -121,7 +126,7 @@ const Investigation = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Investigation"
               />
-              {items.length > 0 && (
+              {investigationItems.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -153,7 +158,7 @@ const Investigation = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {investigationItems.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -207,7 +212,7 @@ const Investigation = ({navigation}) => {
                     onPressIn={() => updateItemsInvestigation(suggestion.name)}
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      investigationItems.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -223,7 +228,7 @@ const Investigation = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        investigationItems.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

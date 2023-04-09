@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Pressable,
 } from 'react-native';
 import {useState} from 'react';
 
@@ -16,7 +17,7 @@ import {Colors} from '../../../../constants/colors';
 
 import CheckBox from '@react-native-community/checkbox';
 
-const FollowUp = () => {
+const FollowUp = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [isClicked, setisClicked] = useState(false);
   return (
@@ -26,11 +27,13 @@ const FollowUp = () => {
         style={styles.gradient}>
         <View style={styles.navBackground}>
           <View style={styles.leftText}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.leftText}
-            />
+            <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.white}
+                style={styles.leftText}
+              />
+            </Pressable>
             <Text style={styles.leftText}>Add Followup</Text>
           </View>
           <View style={styles.rightText}>
@@ -176,7 +179,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: Colors.gray_300,
+    backgroundColor: Colors.white,
   },
   gradient: {
     height: 140,
@@ -231,7 +234,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.black,
     borderWidth: 1,
     borderRadius: 100,
-    backgroundColor: Colors.gray_300,
+    backgroundColor: Colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -278,7 +281,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
     borderWidth: 0.1,
-    borderColor: Colors.gray_200,
+    borderColor: Colors.white,
     elevation: 1,
   },
   ButtonText: {
@@ -414,8 +417,8 @@ const styles = StyleSheet.create({
     width: '40%',
     marginVertical: '5%',
     paddingVertical: '4%',
-    backgroundColor: Colors.gray_300,
-    borderWidth: 1,
+    backgroundColor: Colors.white,
+    borderWidth: 2,
     borderColor: Colors.darkPurple,
     borderRadius: 50,
     flexDirection: 'row',
@@ -438,11 +441,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  activeButtonText: {
-    fontSize: 15,
-    color: Colors.white,
-    alignItems: 'center',
   },
 });
 

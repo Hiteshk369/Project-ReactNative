@@ -14,17 +14,22 @@ import {TextInput} from 'react-native';
 import {Pressable} from 'react-native';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Findings = ({navigation}) => {
   const [findingsNotes, setFindingsNotes] = useState('');
   const dispatch = useDispatch();
+  const findingsItems = useSelector(
+    state => state.prescriptionReducer.findings,
+  );
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_FINDINGS',
-      findings: findingsNotes,
-    });
+    if (findingsNotes !== '') {
+      dispatch({
+        type: 'SET_FINDINGS',
+        findings: findingsNotes,
+      });
+    }
   }, [findingsNotes, dispatch]);
 
   return (
@@ -49,7 +54,7 @@ const Findings = ({navigation}) => {
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>Notes</Text>
                 <TextInput
-                  value={findingsNotes}
+                  value={findingsItems}
                   onChangeText={text => setFindingsNotes(text)}
                   multiline={true}
                   numberOfLines={4}

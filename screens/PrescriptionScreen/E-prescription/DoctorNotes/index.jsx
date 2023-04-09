@@ -12,20 +12,24 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const DoctorNotes = ({navigation}) => {
   const [doctorNotes, setDoctorNotes] = useState('');
   const dispatch = useDispatch();
-  const handleChange = text => {
-    setDoctorNotes(text);
-  };
+  const doctorNotesItems = useSelector(
+    state => state.prescriptionReducer.doctorNotes,
+  );
+
   useEffect(() => {
-    dispatch({
-      type: 'SET_DOCTOR_NOTES',
-      doctorNotes: doctorNotes,
-    });
+    if (doctorNotes !== '') {
+      dispatch({
+        type: 'SET_DOCTOR_NOTES',
+        doctorNotes: doctorNotes,
+      });
+    }
   }, [doctorNotes, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -48,8 +52,8 @@ const DoctorNotes = ({navigation}) => {
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>Notes</Text>
                 <TextInput
-                  value={doctorNotes}
-                  onChangeText={handleChange}
+                  value={doctorNotesItems}
+                  onChangeText={text => setDoctorNotes(text)}
                   multiline={true}
                   numberOfLines={5}
                   placeholderTextColor={Colors.gray_200}

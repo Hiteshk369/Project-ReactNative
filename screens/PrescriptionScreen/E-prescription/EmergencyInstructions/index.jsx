@@ -12,7 +12,7 @@ import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
 import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 
 const suggestions = [
@@ -53,6 +53,9 @@ const suggestions = [
 const EmergencyInstructions = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const emergencyInstructions = useSelector(
+    state => state.prescriptionReducer.emergencyInstructions,
+  );
 
   const updateItemsEmergencyInstructions = data => {
     if (items.includes(data)) {
@@ -63,10 +66,12 @@ const EmergencyInstructions = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_EMERGENCY_INSTRUCTIONS',
-      emergencyInstructions: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_EMERGENCY_INSTRUCTIONS',
+        emergencyInstructions: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -93,7 +98,7 @@ const EmergencyInstructions = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for EmergencyInstructions"
               />
-              {items.length > 0 && (
+              {emergencyInstructions.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -125,7 +130,7 @@ const EmergencyInstructions = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {emergencyInstructions.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -183,7 +188,7 @@ const EmergencyInstructions = ({navigation}) => {
                     }
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      emergencyInstructions.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -199,7 +204,7 @@ const EmergencyInstructions = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        emergencyInstructions.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

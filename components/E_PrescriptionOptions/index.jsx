@@ -361,14 +361,16 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
           </View>
         ))}
         <View style={styles.bottomContainer}>
-          <View style={styles.bottomText}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('EditEMR')}
+            style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleColorIcon}
             />
             <Text style={styles.bottomTextColor}> Edit EMR</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
@@ -377,14 +379,16 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
             />
             <Text style={styles.bottomTextColor}> Attachments</Text>
           </View>
-          <View style={styles.bottomText}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('FollowUp')}
+            style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleColorIcon}
             />
             <Text style={styles.bottomTextColor}> Followup</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.checkBox}>
           <CheckBox

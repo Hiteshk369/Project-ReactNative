@@ -12,19 +12,22 @@ import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
 import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const ReferTo = ({navigation}) => {
   const [doctorName, setDoctorName] = useState('');
   const [details, setDetails] = useState('');
+  const referToItems = useSelector(state => state.prescriptionReducer.referTo);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_REFER_TO',
-      referTo: [doctorName, details],
-    });
+    if (doctorName !== '' && details !== '') {
+      dispatch({
+        type: 'SET_REFER_TO',
+        referTo: [doctorName, details],
+      });
+    }
   }, [doctorName, details, dispatch]);
 
   return (
@@ -48,7 +51,7 @@ const ReferTo = ({navigation}) => {
               <Text style={styles.headerText}>Refer To</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
-                value={doctorName}
+                value={referToItems[0]}
                 onChangeText={text => setDoctorName(text)}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
@@ -56,7 +59,7 @@ const ReferTo = ({navigation}) => {
               />
               <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
               <TextInput
-                value={details}
+                value={referToItems[1]}
                 onChangeText={text => setDetails(text)}
                 multiline={true}
                 numberOfLines={4}

@@ -64,7 +64,10 @@ const PatientsMain = ({navigation}) => {
             <View style={styles.circleTop} />
             <View style={styles.flexText}>
               <View style={styles.smallCircleTop} />
-              <Text style={styles.cardText}>Medical Background</Text>
+              <Pressable
+                onPressIn={() => navigation.navigate('MedicalHistory')}>
+                <Text style={styles.cardText}>Medical Background</Text>
+              </Pressable>
               <View style={styles.rightContainer}>
                 <MaterialIcons
                   name="add"

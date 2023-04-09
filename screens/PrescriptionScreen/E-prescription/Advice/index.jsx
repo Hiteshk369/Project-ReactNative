@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 
 const suggestions = [
@@ -56,6 +56,7 @@ const suggestions = [
 const Advice = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const adviceItems = useSelector(state => state.prescriptionReducer.advice);
 
   const updateItemsAdvice = data => {
     if (items.includes(data)) {
@@ -66,10 +67,12 @@ const Advice = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_ADVICE',
-      advice: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_ADVICE',
+        advice: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -96,7 +99,7 @@ const Advice = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Advice"
               />
-              {items.length > 0 && (
+              {adviceItems.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -128,7 +131,7 @@ const Advice = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {adviceItems.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -181,7 +184,7 @@ const Advice = ({navigation}) => {
                     onPressIn={() => updateItemsAdvice(suggestion.name)}
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      adviceItems.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -197,7 +200,7 @@ const Advice = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        adviceItems.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

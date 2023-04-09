@@ -12,19 +12,22 @@ import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
 import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const ReferBy = ({navigation}) => {
   const [doctorName, setDoctorName] = useState('');
   const [details, setDetails] = useState('');
+  const referByItems = useSelector(state => state.prescriptionReducer.referBy);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_REFER_BY',
-      referBy: [doctorName, details],
-    });
+    if (doctorName !== '' && details !== '') {
+      dispatch({
+        type: 'SET_REFER_BY',
+        referBy: [doctorName, details],
+      });
+    }
   }, [doctorName, details, dispatch]);
   return (
     <ScrollView>
@@ -47,7 +50,7 @@ const ReferBy = ({navigation}) => {
               <Text style={styles.headerText}>Refer By</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
-                value={doctorName}
+                value={referByItems[0]}
                 onChangeText={text => setDoctorName(text)}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
@@ -55,7 +58,7 @@ const ReferBy = ({navigation}) => {
               />
               <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
               <TextInput
-                value={details}
+                value={referByItems[1]}
                 onChangeText={text => setDetails(text)}
                 multiline={true}
                 numberOfLines={4}

@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 
 const suggestions = [
@@ -80,6 +80,9 @@ const suggestions = [
 const Diagnosis = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const diagnosisItems = useSelector(
+    state => state.prescriptionReducer.diagnosis,
+  );
 
   const updateItemsDiagnosis = data => {
     if (items.includes(data)) {
@@ -90,10 +93,12 @@ const Diagnosis = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_DIAGNOSIS',
-      diagnosis: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_DIAGNOSIS',
+        diagnosis: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -120,7 +125,7 @@ const Diagnosis = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Diagnosis"
               />
-              {items.length > 0 && (
+              {diagnosisItems.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -152,7 +157,7 @@ const Diagnosis = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {diagnosisItems.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -205,7 +210,7 @@ const Diagnosis = ({navigation}) => {
                     onPressIn={() => updateItemsDiagnosis(suggestion.name)}
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      diagnosisItems.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -221,7 +226,7 @@ const Diagnosis = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        diagnosisItems.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

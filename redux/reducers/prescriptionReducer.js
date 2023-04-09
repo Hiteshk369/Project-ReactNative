@@ -1,17 +1,17 @@
 export const initialState = {
   chiefComplaints: [],
-  examinations: [],
+  examinations: '',
   diagnosis: [],
   medication: [],
   procedure: [],
   investigation: [],
   advice: [],
-  findings: [],
+  findings: '',
   emergencyInstructions: [],
   prognosis: [],
   referTo: [],
   referBy: [],
-  doctorNotes: [],
+  doctorNotes: '',
 };
 
 const prescriptionReducer = (state = initialState, action) => {

@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
@@ -81,6 +81,9 @@ const suggestions = [
 const Procedure = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const procedureItems = useSelector(
+    state => state.prescriptionReducer.procedure,
+  );
 
   const updateItemsProcedure = data => {
     if (items.includes(data)) {
@@ -91,10 +94,12 @@ const Procedure = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_PROCEDURE',
-      procedure: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_PROCEDURE',
+        procedure: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -121,7 +126,7 @@ const Procedure = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Procedure"
               />
-              {items.length > 0 && (
+              {procedureItems.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -153,7 +158,7 @@ const Procedure = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {procedureItems.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -193,7 +198,6 @@ const Procedure = ({navigation}) => {
               )}
 
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              {/* check from here */}
               <View
                 style={{
                   flexDirection: 'row',
@@ -207,7 +211,7 @@ const Procedure = ({navigation}) => {
                     onPressIn={() => updateItemsProcedure(suggestion.name)}
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      procedureItems.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -223,7 +227,7 @@ const Procedure = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        procedureItems.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

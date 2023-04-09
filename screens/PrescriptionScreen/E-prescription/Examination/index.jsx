@@ -14,17 +14,22 @@ import {Colors} from '../../../../constants/colors';
 import {TextInput} from 'react-native';
 import {useState} from 'react';
 import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Examination = ({navigation}) => {
   const [examinationNotes, setExaminationNotes] = useState('');
   const dispatch = useDispatch();
+  const examinationItems = useSelector(
+    state => state.prescriptionReducer.examinations,
+  );
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_EXAMINATIONS',
-      examinations: examinationNotes,
-    });
+    if (examinationNotes !== '') {
+      dispatch({
+        type: 'SET_EXAMINATIONS',
+        examinations: examinationNotes,
+      });
+    }
   }, [examinationNotes, dispatch]);
 
   return (
@@ -51,7 +56,7 @@ const Examination = ({navigation}) => {
                 <Text style={styles.boxHeader}>On-Examination notes</Text>
                 <TextInput
                   onChangeText={text => setExaminationNotes(text)}
-                  value={examinationNotes}
+                  value={examinationItems}
                   multiline={true}
                   numberOfLines={4}
                   placeholderTextColor={Colors.gray_200}

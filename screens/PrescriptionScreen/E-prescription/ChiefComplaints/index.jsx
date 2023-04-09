@@ -11,7 +11,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 
 const suggestions = [
@@ -80,6 +80,9 @@ const suggestions = [
 const ChiefComplaints = ({navigation}) => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
+  const chiefComplaintsItems = useSelector(
+    state => state.prescriptionReducer.chiefComplaints,
+  );
 
   const updateItemsChiefComplaints = data => {
     if (items.includes(data)) {
@@ -90,10 +93,12 @@ const ChiefComplaints = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_CHIEF_COMPLAINTS',
-      chiefComplaints: items,
-    });
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_CHIEF_COMPLAINTS',
+        chiefComplaints: items,
+      });
+    }
   }, [items, dispatch]);
 
   return (
@@ -120,7 +125,7 @@ const ChiefComplaints = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Chief Complaints"
               />
-              {items.length > 0 && (
+              {chiefComplaintsItems.length > 0 && (
                 <View
                   style={{
                     width: '90%',
@@ -152,7 +157,7 @@ const ChiefComplaints = ({navigation}) => {
                       </Text>
                     </Pressable>
                   </View>
-                  {items.map((data, index) => (
+                  {chiefComplaintsItems.map((data, index) => (
                     <View
                       key={index}
                       style={{
@@ -207,7 +212,7 @@ const ChiefComplaints = ({navigation}) => {
                     }
                     key={suggestion.id}
                     style={
-                      items.includes(suggestion.name)
+                      chiefComplaintsItems.includes(suggestion.name)
                         ? styles.activeSuggestionsText
                         : {
                             alignItems: 'center',
@@ -223,7 +228,7 @@ const ChiefComplaints = ({navigation}) => {
                     }>
                     <Text
                       style={
-                        items.includes(suggestion.name)
+                        chiefComplaintsItems.includes(suggestion.name)
                           ? {
                               color: Colors.darkPurple,
                               fontWeight: '500',

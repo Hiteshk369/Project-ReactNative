@@ -54,6 +54,19 @@ import {
   CustomHealthFeedHeader,
   CustomSellPackageHeader,
 } from '../utils/HeaderButtons';
+import {
+  Allergies,
+  FamilyHistory,
+  HabitHistory,
+  Immunization,
+  MedicalHistory,
+  OngoingMedication,
+  Surgeries,
+} from '../screens/PatientsHistory';
+import {
+  EMR_Fields,
+  FollowUp,
+} from '../screens/PrescriptionScreen/BottomThreeButtons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -324,6 +337,69 @@ const PrescribeNav = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="EditEMR"
+        component={EMR_Fields}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FollowUp"
+        component={FollowUp}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MedicalHistory"
+        component={MedicalHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FamilyHistory"
+        component={FamilyHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OngoingMedication"
+        component={OngoingMedication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Allergies"
+        component={Allergies}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HabitHistory"
+        component={HabitHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Surgeries"
+        component={Surgeries}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Immunization"
+        component={Immunization}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -495,6 +571,24 @@ const getTabBarVisibility = route => {
     case 'ReferBy':
       return 'none';
     case 'DoctorNotes':
+      return 'none';
+    case 'EditEMR':
+      return 'none';
+    case 'FollowUp':
+      return 'none';
+    case 'MedicalHistory':
+      return 'none';
+    case 'FamilyHistory':
+      return 'none';
+    case 'OngoingMedication':
+      return 'none';
+    case 'Allergies':
+      return 'none';
+    case 'HabitHistory':
+      return 'none';
+    case 'Surgeries':
+      return 'none';
+    case 'Immunization':
       return 'none';
     default:
       return 'flex';
