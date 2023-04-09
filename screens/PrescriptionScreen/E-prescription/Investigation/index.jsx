@@ -248,7 +248,9 @@ const Investigation = ({navigation}) => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity

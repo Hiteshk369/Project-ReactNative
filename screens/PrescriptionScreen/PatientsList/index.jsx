@@ -22,6 +22,7 @@ const PatientsList = ({navigation}) => {
     });
     navigation.navigate('PatientsMain');
   };
+
   return (
     <ScrollView style={styles.container}>
       <LinearGradient

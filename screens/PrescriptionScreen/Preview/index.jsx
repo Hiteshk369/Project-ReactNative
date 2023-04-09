@@ -83,7 +83,7 @@ const Preview = () => {
             />
           </View>
           <View style={styles.bar}>
-            <View style={styles.colorBar}></View>
+            <View style={styles.colorBar} />
           </View>
           <View style={styles.downloadingContainer}>
             <Text style={styles.downloadingText}>

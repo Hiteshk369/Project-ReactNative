@@ -68,7 +68,7 @@ const Advice = ({navigation}) => {
   useEffect(() => {
     dispatch({
       type: 'SET_ADVICE',
-      diagnosis: items,
+      advice: items,
     });
   }, [items, dispatch]);
 
@@ -222,7 +222,9 @@ const Advice = ({navigation}) => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity

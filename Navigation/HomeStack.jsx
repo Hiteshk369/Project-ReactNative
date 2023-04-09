@@ -394,15 +394,16 @@ const HomeStack = () => {
         <Tab.Screen
           name="Prescribe"
           component={PrescribeNav}
-          options={{
+          options={({route}) => ({
             headerShown: false,
+            tabBarStyle: {display: getTabBarVisibility(route)},
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <Text style={{color: Colors.white}}>Px</Text>
               </View>
             ),
             tabBarButton: props => <CustomTabButton {...props} />,
-          }}
+          })}
         />
         <Tab.Screen
           name="HealthTube"

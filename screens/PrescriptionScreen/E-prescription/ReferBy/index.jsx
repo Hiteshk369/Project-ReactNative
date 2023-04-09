@@ -11,8 +11,21 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 const ReferBy = ({navigation}) => {
+  const [doctorName, setDoctorName] = useState('');
+  const [details, setDetails] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_REFER_BY',
+      referBy: [doctorName, details],
+    });
+  }, [doctorName, details, dispatch]);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -34,12 +47,18 @@ const ReferBy = ({navigation}) => {
               <Text style={styles.headerText}>Refer By</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
+                value={doctorName}
+                onChangeText={text => setDoctorName(text)}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="Dr. Name"
               />
-              <Text style={styles.inputHeader}>Details</Text>
+              <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
               <TextInput
+                value={details}
+                onChangeText={text => setDetails(text)}
+                multiline={true}
+                numberOfLines={4}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder=" "
@@ -49,7 +68,9 @@ const ReferBy = ({navigation}) => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -106,6 +127,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     fontSize: 18,
     color: Colors.black,
+    marginTop: '1%',
   },
   inputHeader: {
     fontSize: 15,
@@ -114,12 +136,18 @@ const styles = StyleSheet.create({
     marginTop: '5%',
   },
   inputField: {
-    fontSize: 18,
-    paddingLeft: '7%',
+    fontSize: 16,
+    paddingHorizontal: '5%',
+    paddingVertical: '2%',
     marginHorizontal: '5%',
     borderWidth: 1,
     borderColor: Colors.gray_100,
     borderRadius: 10,
+    textAlignVertical: 'top',
+    color: Colors.gray_700,
+  },
+  mt: {
+    marginTop: '10%',
   },
   buttonsFlex: {
     flexDirection: 'row',
