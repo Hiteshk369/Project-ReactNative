@@ -11,8 +11,67 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+
+const suggestions = [
+  {
+    id: 1,
+    name: 'Drink more water, maintain',
+  },
+  {
+    id: 2,
+    name: 'Drink at least 3 litres of water',
+  },
+  {
+    id: 3,
+    name: 'Encourage fluid intake in',
+  },
+  {
+    id: 4,
+    name: 'Avoid oily food',
+  },
+  {
+    id: 5,
+    name: 'Exercise regularly',
+  },
+  {
+    id: 6,
+    name: 'Eat green leafy vegetables',
+  },
+  {
+    id: 7,
+    name: 'Encourage intake of proteins',
+  },
+  {
+    id: 8,
+    name: 'Eat more fruits',
+  },
+  {
+    id: 9,
+    name: 'Get 8 hours of sleep daily',
+  },
+];
 
 const Advice = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [items, setItems] = useState([]);
+
+  const updateItemsAdvice = data => {
+    if (items.includes(data)) {
+      setItems(items.filter(item => item !== data));
+    } else {
+      setItems([...items, data]);
+    }
+  };
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_ADVICE',
+      diagnosis: items,
+    });
+  }, [items, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -37,65 +96,126 @@ const Advice = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Advice"
               />
+              {items.length > 0 && (
+                <View
+                  style={{
+                    width: '90%',
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 6,
+                  }}>
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 14,
+                        color: Colors.darkPurple,
+                      }}>
+                      Added
+                    </Text>
+                    <Pressable onPressIn={() => setItems([])}>
+                      <Text
+                        style={{
+                          fontWeight: '600',
+                          fontSize: 14,
+                          color: Colors.red,
+                        }}>
+                        Clear All
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {items.map((data, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        marginTop: 6,
+                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}>
+                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          {data}
+                        </Text>
+                      </View>
+                      <Pressable onPressIn={() => updateItemsAdvice(data)}>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          x
+                        </Text>
+                      </Pressable>
+                    </View>
+                  ))}
+                  <View
+                    style={{
+                      borderColor: Colors.gray_400,
+                      borderWidth: 1,
+                      marginTop: 12,
+                    }}
+                  />
+                </View>
+              )}
+
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Drink more water, maintain...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Drink atleast 3 litres o...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Encourage fluid intake in...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Avoid oily food</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Exercise regularly...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Eat green leafy vegetable...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Encourage intake of prote...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Eat more fruits</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Get 8 hours of sleep daily...
-                  </Text>
-                </TouchableOpacity>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginHorizontal: '5%',
+                  gap: 10,
+                  marginVertical: '2%',
+                }}>
+                {suggestions.map(suggestion => (
+                  <TouchableOpacity
+                    onPressIn={() => updateItemsAdvice(suggestion.name)}
+                    key={suggestion.id}
+                    style={
+                      items.includes(suggestion.name)
+                        ? styles.activeSuggestionsText
+                        : {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.gray_400,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                    }>
+                    <Text
+                      style={
+                        items.includes(suggestion.name)
+                          ? {
+                              color: Colors.darkPurple,
+                              fontWeight: '500',
+                              overflow: 'hidden',
+                            }
+                          : {
+                              color: Colors.gray_400,
+                              fontWeight: '500',
+                              maxWidth: 220,
+                              overflow: 'hidden',
+                            }
+                      }
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {suggestion.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </View>
@@ -194,6 +314,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,
+  },
+  activeSuggestionsText: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.lightPurple,
+    backgroundColor: Colors.purple_100,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
   },
   buttonsFlex: {
     flexDirection: 'row',

@@ -61,7 +61,7 @@ const Stack = createNativeStackNavigator();
 const HomeNav = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -201,6 +201,20 @@ const HomeNav = () => {
       <Stack.Screen
         name="Timeline"
         component={Timeline}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const PrescribeNav = () => {
+  return (
+    <Stack.Navigator initialRouteName="Prescribe">
+      <Stack.Screen
+        name="Prescribe"
+        component={Prescribe}
         options={{
           headerShown: false,
         }}
@@ -379,7 +393,7 @@ const HomeStack = () => {
         />
         <Tab.Screen
           name="Prescribe"
-          component={Prescribe}
+          component={PrescribeNav}
           options={{
             headerShown: false,
             tabBarIcon: ({focused}) => (

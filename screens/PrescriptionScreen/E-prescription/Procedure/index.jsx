@@ -92,8 +92,8 @@ const Procedure = ({navigation}) => {
 
   useEffect(() => {
     dispatch({
-      type: 'SET_DIAGNOSIS',
-      diagnosis: items,
+      type: 'SET_PROCEDURE',
+      procedure: items,
     });
   }, [items, dispatch]);
 

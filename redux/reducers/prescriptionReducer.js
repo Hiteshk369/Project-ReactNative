@@ -3,6 +3,9 @@ export const initialState = {
   diagnosis: [],
   procedure: [],
   investigation: [],
+  advice: [],
+  emergencyInstructions: [],
+  prognosis: [],
 };
 
 const prescriptionReducer = (state = initialState, action) => {
@@ -26,6 +29,21 @@ const prescriptionReducer = (state = initialState, action) => {
       return {
         ...state,
         investigation: action.investigation,
+      };
+    case 'SET_ADVICE':
+      return {
+        ...state,
+        advice: action.advice,
+      };
+    case 'SET_EMERGENCY_INSTRUCTIONS':
+      return {
+        ...state,
+        emergencyInstructions: action.emergencyInstructions,
+      };
+    case 'SET_PROGNOSIS':
+      return {
+        ...state,
+        prognosis: action.prognosis,
       };
     default:
       return state;

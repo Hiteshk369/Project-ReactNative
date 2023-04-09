@@ -92,8 +92,8 @@ const Investigation = ({navigation}) => {
 
   useEffect(() => {
     dispatch({
-      type: 'SET_DIAGNOSIS',
-      diagnosis: items,
+      type: 'SET_INVESTIGATION',
+      investigation: items,
     });
   }, [items, dispatch]);
 
