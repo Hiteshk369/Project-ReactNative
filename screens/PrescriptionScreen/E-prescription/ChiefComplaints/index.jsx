@@ -11,8 +11,96 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+
+const suggestions = [
+  {
+    id: 1,
+    name: 'Cough',
+  },
+  {
+    id: 2,
+    name: 'Fatigue',
+  },
+  {
+    id: 3,
+    name: 'Sore throat',
+  },
+  {
+    id: 4,
+    name: 'Headache',
+  },
+  {
+    id: 5,
+    name: 'Generalized aches',
+  },
+  {
+    id: 6,
+    name: 'Dry cough',
+  },
+  {
+    id: 7,
+    name: 'Cold',
+  },
+  {
+    id: 8,
+    name: 'Nasal congestion',
+  },
+  {
+    id: 9,
+    name: 'Loss of appetite',
+  },
+  {
+    id: 10,
+    name: 'Nausea',
+  },
+  {
+    id: 11,
+    name: 'Weakness',
+  },
+  {
+    id: 12,
+    name: 'Rhinitis',
+  },
+  {
+    id: 13,
+    name: 'Common cold',
+  },
+  {
+    id: 14,
+    name: 'Tummy ache',
+  },
+  {
+    id: 15,
+    name: 'Pain in throat',
+  },
+];
 
 const ChiefComplaints = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [items, setItems] = useState([]);
+  const chiefComplaintsItems = useSelector(
+    state => state.prescriptionReducer.chiefComplaints,
+  );
+
+  const updateItemsChiefComplaints = data => {
+    if (items.includes(data)) {
+      setItems(items.filter(item => item !== data));
+    } else {
+      setItems([...items, data]);
+    }
+  };
+
+  useEffect(() => {
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_CHIEF_COMPLAINTS',
+        chiefComplaints: items,
+      });
+    }
+  }, [items, dispatch]);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container}>
@@ -37,76 +125,138 @@ const ChiefComplaints = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Chief Complaints"
               />
+              {chiefComplaintsItems.length > 0 && (
+                <View
+                  style={{
+                    width: '90%',
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 6,
+                  }}>
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 14,
+                        color: Colors.darkPurple,
+                      }}>
+                      Added
+                    </Text>
+                    <Pressable onPressIn={() => setItems([])}>
+                      <Text
+                        style={{
+                          fontWeight: '600',
+                          fontSize: 14,
+                          color: Colors.red,
+                        }}>
+                        Clear All
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {chiefComplaintsItems.map((data, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        marginTop: 6,
+                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}>
+                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          {data}
+                        </Text>
+                      </View>
+                      <Pressable
+                        onPressIn={() => updateItemsChiefComplaints(data)}>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          x
+                        </Text>
+                      </Pressable>
+                    </View>
+                  ))}
+                  <View
+                    style={{
+                      borderColor: Colors.gray_400,
+                      borderWidth: 1,
+                      marginTop: 12,
+                    }}
+                  />
+                </View>
+              )}
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cough</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Fatigue</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Sore throat</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Headache</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Generalized ach...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Dry cough</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Cold</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    nasal congestion...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Loss of appetit...</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Nausea...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Weakness</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Rhinitis</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Common cold</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Tummy ache</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>Pain in throat</Text>
-                </TouchableOpacity>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginHorizontal: '5%',
+                  gap: 10,
+                  marginVertical: '2%',
+                }}>
+                {suggestions.map(suggestion => (
+                  <TouchableOpacity
+                    onPressIn={() =>
+                      updateItemsChiefComplaints(suggestion.name)
+                    }
+                    key={suggestion.id}
+                    style={
+                      chiefComplaintsItems.includes(suggestion.name)
+                        ? styles.activeSuggestionsText
+                        : {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.gray_400,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                    }>
+                    <Text
+                      style={
+                        chiefComplaintsItems.includes(suggestion.name)
+                          ? {
+                              color: Colors.darkPurple,
+                              fontWeight: '500',
+                              maxWidth: 125,
+                              overflow: 'hidden',
+                            }
+                          : {
+                              color: Colors.gray_400,
+                              fontWeight: '500',
+                              maxWidth: 110,
+                              overflow: 'hidden',
+                            }
+                      }
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {suggestion.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </View>
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -199,6 +349,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,
+  },
+  activeSuggestionsText: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.lightPurple,
+    backgroundColor: Colors.purple_100,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
   },
   buttonsFlex: {
     flexDirection: 'row',

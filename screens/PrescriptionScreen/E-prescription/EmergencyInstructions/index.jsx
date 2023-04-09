@@ -11,8 +11,69 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+
+const suggestions = [
+  {
+    id: 1,
+    name: 'In case of emergency call',
+  },
+  {
+    id: 2,
+    name: 'Book you follow-up appointment',
+  },
+  {
+    id: 3,
+    name: 'Disease require prolonged',
+  },
+  {
+    id: 4,
+    name: 'If you notice any allergy',
+  },
+  {
+    id: 5,
+    name: 'Medically compromised patient',
+  },
+  {
+    id: 6,
+    name: 'Critically ill patient',
+  },
+  {
+    id: 7,
+    name: 'Patient is allergic to',
+  },
+  {
+    id: 8,
+    name: 'This prescription is not',
+  },
+];
 
 const EmergencyInstructions = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [items, setItems] = useState([]);
+  const emergencyInstructions = useSelector(
+    state => state.prescriptionReducer.emergencyInstructions,
+  );
+
+  const updateItemsEmergencyInstructions = data => {
+    if (items.includes(data)) {
+      setItems(items.filter(item => item !== data));
+    } else {
+      setItems([...items, data]);
+    }
+  };
+
+  useEffect(() => {
+    if (items.length > 0) {
+      dispatch({
+        type: 'SET_EMERGENCY_INSTRUCTIONS',
+        emergencyInstructions: items,
+      });
+    }
+  }, [items, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -37,69 +98,140 @@ const EmergencyInstructions = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for EmergencyInstructions"
               />
+              {emergencyInstructions.length > 0 && (
+                <View
+                  style={{
+                    width: '90%',
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 6,
+                  }}>
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 14,
+                        color: Colors.darkPurple,
+                      }}>
+                      Added
+                    </Text>
+                    <Pressable onPressIn={() => setItems([])}>
+                      <Text
+                        style={{
+                          fontWeight: '600',
+                          fontSize: 14,
+                          color: Colors.red,
+                        }}>
+                        Clear All
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {emergencyInstructions.map((data, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        marginTop: 6,
+                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}>
+                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          {data}
+                        </Text>
+                      </View>
+                      <Pressable
+                        onPressIn={() =>
+                          updateItemsEmergencyInstructions(data)
+                        }>
+                        <Text
+                          style={{color: Colors.gray_700, fontWeight: '500'}}>
+                          x
+                        </Text>
+                      </Pressable>
+                    </View>
+                  ))}
+                  <View
+                    style={{
+                      borderColor: Colors.gray_400,
+                      borderWidth: 1,
+                      marginTop: 12,
+                    }}
+                  />
+                </View>
+              )}
+
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    In case of emergency call...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    ook your follow-up appoi...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Disease require prolonged...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    If you notice any allergy...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Medically compromised pat...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Critically ill patient...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    Patient is allergic to...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>
-                    This prescription is not...
-                  </Text>
-                </TouchableOpacity>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginHorizontal: '5%',
+                  gap: 10,
+                  marginVertical: '2%',
+                }}>
+                {suggestions.map(suggestion => (
+                  <TouchableOpacity
+                    onPressIn={() =>
+                      updateItemsEmergencyInstructions(suggestion.name)
+                    }
+                    key={suggestion.id}
+                    style={
+                      emergencyInstructions.includes(suggestion.name)
+                        ? styles.activeSuggestionsText
+                        : {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.gray_400,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                    }>
+                    <Text
+                      style={
+                        emergencyInstructions.includes(suggestion.name)
+                          ? {
+                              color: Colors.darkPurple,
+                              fontWeight: '500',
+                              overflow: 'hidden',
+                            }
+                          : {
+                              color: Colors.gray_400,
+                              fontWeight: '500',
+                              maxWidth: 200,
+                              overflow: 'hidden',
+                            }
+                      }
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {suggestion.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </View>
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -191,6 +323,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,
+  },
+  activeSuggestionsText: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.lightPurple,
+    backgroundColor: Colors.purple_100,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
   },
   buttonsFlex: {
     flexDirection: 'row',

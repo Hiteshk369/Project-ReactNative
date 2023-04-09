@@ -11,8 +11,25 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 const ReferTo = ({navigation}) => {
+  const [doctorName, setDoctorName] = useState('');
+  const [details, setDetails] = useState('');
+  const referToItems = useSelector(state => state.prescriptionReducer.referTo);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (doctorName !== '' && details !== '') {
+      dispatch({
+        type: 'SET_REFER_TO',
+        referTo: [doctorName, details],
+      });
+    }
+  }, [doctorName, details, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -34,12 +51,18 @@ const ReferTo = ({navigation}) => {
               <Text style={styles.headerText}>Refer To</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
+                value={referToItems[0]}
+                onChangeText={text => setDoctorName(text)}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="Dr. Name"
               />
-              <Text style={styles.inputHeader}>Details</Text>
+              <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
               <TextInput
+                value={referToItems[1]}
+                onChangeText={text => setDetails(text)}
+                multiline={true}
+                numberOfLines={4}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder=" "
@@ -49,7 +72,9 @@ const ReferTo = ({navigation}) => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -106,6 +131,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     fontSize: 18,
     color: Colors.black,
+    marginTop: '1%',
   },
   inputHeader: {
     fontSize: 15,
@@ -113,13 +139,19 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
     marginTop: '5%',
   },
+  mt: {
+    marginTop: '10%',
+  },
   inputField: {
-    fontSize: 18,
-    paddingLeft: '7%',
+    fontSize: 16,
+    paddingHorizontal: '5%',
+    paddingVertical: '2%',
     marginHorizontal: '5%',
     borderWidth: 1,
-    borderColor: Colors.gray_100,
+    borderColor: Colors.gray_200,
     borderRadius: 10,
+    textAlignVertical: 'top',
+    color: Colors.gray_700,
   },
   buttonsFlex: {
     flexDirection: 'row',

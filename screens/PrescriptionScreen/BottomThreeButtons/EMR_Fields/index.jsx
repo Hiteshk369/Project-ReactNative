@@ -11,19 +11,22 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const EMR_Fields = () => {
+const EMR_Fields = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
         <View style={styles.navHeader}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            color={Colors.white}
-            style={styles.backIcon}
-          />
+          <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.backIcon}
+            />
+          </Pressable>
           <Text style={styles.navText}>Customize Fields</Text>
         </View>
       </LinearGradient>
@@ -365,7 +368,7 @@ const EMR_Fields = () => {
           </View>
         </View>
       </View>
-      <View style={styles.leftSmallFlex}>
+      <View style={styles.elevationContainer}>
         <TouchableOpacity style={styles.bottomButtonsBackground}>
           <Text style={styles.buttonText}>Set default</Text>
         </TouchableOpacity>
@@ -381,7 +384,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: Colors.gray_300,
+    backgroundColor: Colors.white,
   },
   gradient: {
     height: 140,
@@ -437,7 +440,7 @@ const styles = StyleSheet.create({
   buttonBackground: {
     // width: '62%',
     paddingVertical: '4%',
-    backgroundColor: Colors.gray_300,
+    backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: Colors.darkPurple,
     borderRadius: 50,
@@ -489,6 +492,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   boxText: {
+    fontWeight: '500',
     fontSize: 16,
     color: Colors.black,
   },
@@ -500,13 +504,21 @@ const styles = StyleSheet.create({
     fontSize: 25,
     justifyContent: 'flex-end',
   },
+  elevationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopColor: Colors.gray_100,
+    borderTopWidth: 0.5,
+    elevation: 0.5,
+  },
   bottomButtonsBackground: {
+    marginTop: 20,
     width: '40%',
     marginBottom: '5%',
     marginHorizontal: '5%',
     paddingVertical: '4%',
-    backgroundColor: Colors.gray_300,
-    borderWidth: 1,
+    backgroundColor: Colors.white,
+    borderWidth: 2,
     borderColor: Colors.darkPurple,
     borderRadius: 50,
     flexDirection: 'row',
@@ -514,6 +526,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeBottomButtonsBackground: {
+    marginTop: 20,
     width: '40%',
     marginBottom: '5%',
     marginHorizontal: '5%',

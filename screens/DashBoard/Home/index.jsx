@@ -84,20 +84,19 @@ const Home = ({navigation}) => {
         </View>
         <View style={styles.dashboardContainer}>
           <View style={styles.dashboardRowContainer}>
-            <View style={styles.shadow}>
-              <TouchableOpacity
-                onPressIn={() => navigation.navigate('MainAppointment')}
-                style={styles.dashboardButton}>
-                <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
-              </TouchableOpacity>
-            </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('OnlineConsult')}
+              onPressIn={() => navigation.navigate('MainAppointment')}
+              style={styles.dashboardButton}>
+              <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('OnlineConsult')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Online Consult</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('ClinicVisit')}
+              onPressIn={() => navigation.navigate('ClinicVisit')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Clinic Visit</Text>
             </TouchableOpacity>
@@ -109,7 +108,7 @@ const Home = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('BookAppointment')}
+              onPressIn={() => navigation.navigate('BookAppointment')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>
                 Book

@@ -12,7 +12,11 @@ import Feather from 'react-native-vector-icons/Feather';
 import Patients from '../FakeData/Patients';
 
 import {Home, Summary, DashBoardAmount} from '../screens/DashBoard';
-import {PatientsList, Prescribe} from '../screens/PrescriptionScreen';
+import {
+  PatientsList,
+  PatientsMain,
+  Prescribe,
+} from '../screens/PrescriptionScreen';
 import {MainProfileScreen, Timeline} from '../screens/Profile';
 import {
   AddAppointment,
@@ -50,6 +54,19 @@ import {
   CustomHealthFeedHeader,
   CustomSellPackageHeader,
 } from '../utils/HeaderButtons';
+import {
+  Allergies,
+  FamilyHistory,
+  HabitHistory,
+  Immunization,
+  MedicalHistory,
+  OngoingMedication,
+  Surgeries,
+} from '../screens/PatientsHistory';
+import {
+  EMR_Fields,
+  FollowUp,
+} from '../screens/PrescriptionScreen/BottomThreeButtons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -57,7 +74,7 @@ const Stack = createNativeStackNavigator();
 const HomeNav = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -201,9 +218,30 @@ const HomeNav = () => {
           headerShown: false,
         }}
       />
+    </Stack.Navigator>
+  );
+};
+
+const PrescribeNav = () => {
+  return (
+    <Stack.Navigator initialRouteName="Prescribe">
+      <Stack.Screen
+        name="Prescribe"
+        component={Prescribe}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="PatientsList"
         component={PatientsList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PatientsMain"
+        component={PatientsMain}
         options={{
           headerShown: false,
         }}
@@ -299,6 +337,69 @@ const HomeNav = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="EditEMR"
+        component={EMR_Fields}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FollowUp"
+        component={FollowUp}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MedicalHistory"
+        component={MedicalHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FamilyHistory"
+        component={FamilyHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OngoingMedication"
+        component={OngoingMedication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Allergies"
+        component={Allergies}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HabitHistory"
+        component={HabitHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Surgeries"
+        component={Surgeries}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Immunization"
+        component={Immunization}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -368,16 +469,17 @@ const HomeStack = () => {
         />
         <Tab.Screen
           name="Prescribe"
-          component={Prescribe}
-          options={{
+          component={PrescribeNav}
+          options={({route}) => ({
             headerShown: false,
+            tabBarStyle: {display: getTabBarVisibility(route)},
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <Text style={{color: Colors.white}}>Px</Text>
               </View>
             ),
             tabBarButton: props => <CustomTabButton {...props} />,
-          }}
+          })}
         />
         <Tab.Screen
           name="HealthTube"
@@ -469,6 +571,24 @@ const getTabBarVisibility = route => {
     case 'ReferBy':
       return 'none';
     case 'DoctorNotes':
+      return 'none';
+    case 'EditEMR':
+      return 'none';
+    case 'FollowUp':
+      return 'none';
+    case 'MedicalHistory':
+      return 'none';
+    case 'FamilyHistory':
+      return 'none';
+    case 'OngoingMedication':
+      return 'none';
+    case 'Allergies':
+      return 'none';
+    case 'HabitHistory':
+      return 'none';
+    case 'Surgeries':
+      return 'none';
+    case 'Immunization':
       return 'none';
     default:
       return 'flex';
