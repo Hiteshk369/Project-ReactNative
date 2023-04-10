@@ -5,14 +5,132 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
+import {useState} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {Colors} from '../../../constants/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+const fromOptions = [
+  {
+    id: 1,
+    name: '01:00 Am',
+  },
+  {
+    id: 2,
+    name: '02:00 Am',
+  },
+  {
+    id: 3,
+    name: '03:00 Am',
+  },
+  {
+    id: 4,
+    name: '04:00 Am',
+  },
+  {
+    id: 5,
+    name: '05:00 Am',
+  },
+  {
+    id: 6,
+    name: '06:00 Am',
+  },
+  {
+    id: 7,
+    name: '07:00 Am',
+  },
+  {
+    id: 8,
+    name: '08:00 Am',
+  },
+  {
+    id: 9,
+    name: '09:00 Am',
+  },
+  {
+    id: 10,
+    name: '10:00 Am',
+  },
+  {
+    id: 11,
+    name: '11:00 Am',
+  },
+  {
+    id: 12,
+    name: '12:00 Am',
+  },
+];
+
+const toOptions = [
+  {
+    id: 1,
+    name: '01:00 Am',
+  },
+  {
+    id: 2,
+    name: '02:00 Am',
+  },
+  {
+    id: 3,
+    name: '03:00 Am',
+  },
+  {
+    id: 4,
+    name: '04:00 Am',
+  },
+  {
+    id: 5,
+    name: '05:00 Am',
+  },
+  {
+    id: 6,
+    name: '06:00 Am',
+  },
+  {
+    id: 7,
+    name: '07:00 Am',
+  },
+  {
+    id: 8,
+    name: '08:00 Am',
+  },
+  {
+    id: 9,
+    name: '09:00 Am',
+  },
+  {
+    id: 10,
+    name: '10:00 Am',
+  },
+  {
+    id: 11,
+    name: '11:00 Am',
+  },
+  {
+    id: 12,
+    name: '12:00 Am',
+  },
+];
+
 const OnlineConsultDetails = () => {
+  const [toggleIcon, setToggleIcon] = useState(false);
+  const [toggleIcon2, setToggleIcon2] = useState(false);
+  const [toggleIcon3, setToggleIcon3] = useState(false);
+  const [toggleIcon4, setToggleIcon4] = useState(false);
+  const [toggleIcon5, setToggleIcon5] = useState(false);
+  const [fromDropdown, setFromDropdown] = useState(false);
+  const [fromOption, setFromOption] = useState('Select');
+  const [toDropdown, setToDropdown] = useState(false);
+  const [toOption, setToOption] = useState('Select');
+  const [fromDropdown2, setFromDropdown2] = useState(false);
+  const [fromOption2, setFromOption2] = useState('Select');
+  const [toDropdown2, setToDropdown2] = useState(false);
+  const [toOption2, setToOption2] = useState('Select');
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -21,11 +139,21 @@ const OnlineConsultDetails = () => {
             <View style={styles.receivingFlexText}>
               <Text style={styles.receivingText}>Instant Online consult</Text>
               <Text style={styles.activeText}>Active</Text>
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.toggleTopIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
+                {toggleIcon ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.bgShadeHeaderContainer}>
               <Text style={styles.bgShadeHeader}>From</Text>
@@ -33,38 +161,104 @@ const OnlineConsultDetails = () => {
             </View>
             <View style={styles.fromTwoInputHolder}>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="02:00 PM"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setFromDropdown(!fromDropdown)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {fromOption}
+                  </Text>
+                  {fromDropdown ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="08:00 PM"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setToDropdown(!toDropdown)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {toOption}
+                  </Text>
+                  {toDropdown ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
             </View>
+            {fromDropdown ? (
+              <View style={styles.fromDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={fromOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.fromDropDownText}
+                          onPressIn={() => {
+                            setFromOption(item.name);
+                            setFromDropdown(false);
+                          }}>
+                          <Text style={styles.fromDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
+            {toDropdown ? (
+              <View style={styles.toDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={toOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.toDropDownText}
+                          onPressIn={() => {
+                            setToOption(item.name);
+                            setToDropdown(false);
+                          }}>
+                          <Text style={styles.toDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.togglIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon2(!toggleIcon2)}>
+                {toggleIcon2 ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -134,38 +328,104 @@ const OnlineConsultDetails = () => {
             </View>
             <View style={styles.fromTwoInputHolder}>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="Select"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setFromDropdown2(!fromDropdown2)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {fromOption2}
+                  </Text>
+                  {fromDropdown2 ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="Select"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setToDropdown2(!toDropdown2)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {toOption2}
+                  </Text>
+                  {toDropdown2 ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
             </View>
+            {fromDropdown2 ? (
+              <View style={styles.fromDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={fromOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.fromDropDownText}
+                          onPressIn={() => {
+                            setFromOption2(item.name);
+                            setFromDropdown2(false);
+                          }}>
+                          <Text style={styles.fromDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
+            {toDropdown2 ? (
+              <View style={styles.toDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={toOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.toDropDownText}
+                          onPressIn={() => {
+                            setToOption2(item.name);
+                            setToDropdown2(false);
+                          }}>
+                          <Text style={styles.toDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <MaterialIcons
-                name="toggle-off"
-                color={Colors.lightGrayBg}
-                style={styles.togglIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon3(!toggleIcon3)}>
+                {toggleIcon3 ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -276,11 +536,21 @@ const OnlineConsultDetails = () => {
             <View style={styles.receivingFlexText}>
               <Text style={styles.receivingText}>Scheduled Online consult</Text>
               <Text style={styles.activeMiddleText}>Active</Text>
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.toggleTopIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon4(!toggleIcon4)}>
+                {toggleIcon4 ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.bgShadeHeaderContainer}>
               <Text style={styles.bgShadeHeader}>From</Text>
@@ -315,11 +585,21 @@ const OnlineConsultDetails = () => {
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.togglIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon5(!toggleIcon5)}>
+                {toggleIcon5 ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -436,7 +716,6 @@ const styles = StyleSheet.create({
   },
   bgWhite: {
     marginTop: '2%',
-    // marginBottom: '5%',
     marginHorizontal: '5%',
     height: '95%',
     width: '90%',
@@ -495,17 +774,91 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
     margin: '5%',
+    marginBottom: '0%',
     marginTop: '1%',
   },
   fromTwoInputHolder: {
     flexDirection: 'row',
   },
 
-  daysFlexText: {
-    paddingTop: '5%',
-    marginLeft: '5%',
+  rightDropDown: {
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    fontSize: 18,
+    color: Colors.black,
+    fontWeight: '500',
+  },
+  dropDownArea: {
+    width: '90%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    alignSelf: 'center',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 312,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  textLightInput: {
+    fontSize: 15,
+    color: Colors.black,
+  },
+  fromDropDownArea: {
+    width: '38%',
+    justifyContent: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    paddingVertical: '1%',
+    marginLeft: '5%',
+  },
+  fromDropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 305,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  fromDropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  toDropDownArea: {
+    width: '38%',
+    justifyContent: 'space-between',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    marginLeft: '53%',
+  },
+  toDropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 305,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  toDropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  daysFlexText: {
+    paddingTop: '5%',
+    marginHorizontal: '5%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   LeftText: {
     marginRight: '10%',
@@ -524,7 +877,7 @@ const styles = StyleSheet.create({
     fontSize: 45,
   },
   daysRow: {
-    marginHorizontal: '4%',
+    marginHorizontal: '7%',
     flexDirection: 'row',
     gap: 40,
   },
@@ -582,8 +935,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '80%',
     marginHorizontal: '5%',
-    marginVertical: '3%',
-    marginBottom: '0%',
+    // marginVertical: '3%',
     gap: 10,
     alignItems: 'center',
   },
@@ -606,8 +958,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.purple_100,
   },
   bgGraySmall: {
-    marginTop: '2%',
-    marginBottom: '5%',
+    marginTop: '5%',
+    // marginBottom: '5%',
     height: 130,
     width: '90%',
     borderRadius: 25,
@@ -618,12 +970,11 @@ const styles = StyleSheet.create({
     // marginTop: '5%',
     // marginBottom: '5%',
     width: '90%',
-    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
-    marginLeft: '5%',
   },
   buttonBackground: {
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
     marginBottom: '15%',
     width: '98%',
     paddingVertical: 15,
@@ -640,7 +991,7 @@ const styles = StyleSheet.create({
   },
   bottomSmallCard: {
     marginHorizontal: '5%',
-    height: '8%',
+    height: '10%',
     width: '90%',
     borderRadius: 15,
     borderWidth: 1,

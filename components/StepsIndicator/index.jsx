@@ -16,7 +16,7 @@ const StepsIndicator = () => {
             {active === 'first' && <View style={styles.line} />}
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setActive('second')}>
+        <TouchableOpacity onPressIn={() => setActive('second')}>
           <View style={styles.rowContainer}>
             <View style={styles.smallBox} />
             {active === 'second' && <View style={styles.line} />}

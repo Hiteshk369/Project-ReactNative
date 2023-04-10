@@ -6,7 +6,7 @@ const SaveButton = ({nextScreen}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(nextScreen)}
+      onPressIn={() => navigation.navigate(nextScreen)}
       style={styles.buttonBackground}>
       <Text style={styles.buttonText}>Save & Proceed</Text>
     </TouchableOpacity>

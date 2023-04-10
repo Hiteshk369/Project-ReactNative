@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
@@ -13,10 +14,27 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../constants/colors';
 
+const dropDownOptions = [
+  {
+    id: 1,
+    name: 'Consultation',
+  },
+  {
+    id: 2,
+    name: 'Procedure',
+  },
+  {
+    id: 3,
+    name: 'Miscellaneous',
+  },
+];
+
 const AddInVoice = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [selectOption, setSelectOption] = useState('Consultation');
+  const [data, setData] = useState(dropDownOptions);
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView nestedScrollEnabled={true} style={styles.container}>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
@@ -89,7 +107,7 @@ const AddInVoice = () => {
             <TouchableOpacity
               style={styles.rightDropDown}
               onPressIn={() => setDropdown(!dropdown)}>
-              <Text style={styles.boxText}>Consultation</Text>
+              <Text style={styles.boxText}>{selectOption}</Text>
               {dropdown ? (
                 <MaterialIcons
                   name="keyboard-arrow-up"
@@ -109,9 +127,23 @@ const AddInVoice = () => {
       </View>
       {dropdown ? (
         <View style={styles.dropDownArea}>
-          <Text style={styles.boxText}>Consultation</Text>
-          <Text style={styles.boxLText}>Procedure</Text>
-          <Text style={styles.boxLText}>Miscellaneous</Text>
+          <ScrollView horizontal={true} showsVerticalScrollIndicator={false}>
+            <FlatList
+              data={data}
+              renderItem={({item, index}) => {
+                return (
+                  <TouchableOpacity
+                    style={styles.dropDownText}
+                    onPressIn={() => {
+                      setSelectOption(item.name);
+                      setDropdown(false);
+                    }}>
+                    <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          </ScrollView>
         </View>
       ) : null}
       <View style={styles.smallflexContainer}>
@@ -242,7 +274,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 50,
-    marginHorizontal: '3%',
+    marginHorizontal: '2%',
     // marginVertical: '3%',
     marginTop: '3%',
     paddingBottom: '3%',
@@ -253,12 +285,11 @@ const styles = StyleSheet.create({
   leftFlexText: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
   smallCircle: {
     height: 35,
     width: 35,
-    marginLeft: '8%',
     marginHorizontal: '5%',
     alignItems: 'center',
     borderColor: Colors.black,
@@ -267,7 +298,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   rightFlexText: {
-    justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -280,18 +310,20 @@ const styles = StyleSheet.create({
   smallflexContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: '5%',
     // marginHorizontal: '4%',
   },
   boxBottomFlex: {
-    // paddingHorizontal: '3%',
-    // marginTop: '9%',
-    flexDirection: 'row',
+    width: '75%',
+    height: 50,
+    borderRadius: 5,
     borderWidth: 1,
     borderColor: Colors.gray_100,
-    borderRadius: 5,
-    width: '73%',
+    flexDirection: 'row',
+    alignSelf: 'center',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   boxText: {
     fontSize: 18,
@@ -299,30 +331,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     paddingRight: '6%',
     paddingVertical: '3%',
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.gray_100,
-  },
-  boxLText: {
-    fontSize: 18,
-    color: Colors.gray_400,
-    paddingHorizontal: '5%',
-    paddingRight: '6%',
-    paddingVertical: '3%',
-    borderRadius: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.gray_100,
   },
   rightDropDown: {
+    width: '100%',
     flexDirection: 'row',
-    // marginLeft: '2%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  inputLeftText: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  inputRightText: {
+    alignItems: 'center',
   },
   dropUp: {
     fontSize: 35,
-    marginLeft: '35%',
+    alignSelf: 'flex-end',
+    // marginLeft: '35%',
   },
   dropDown: {
     fontSize: 35,
-    marginLeft: '35%',
+    // alignSelf: 'flex-end',
+    // marginLeft: '35%',
   },
   dropDownArea: {
     flexDirection: 'column',
@@ -334,7 +365,19 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginTop: '2%',
     paddingVertical: '1%',
-    marginRight: '10%',
+    marginRight: '9%',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 273,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
   },
   boxLightText: {
     fontSize: 18,
@@ -352,6 +395,7 @@ const styles = StyleSheet.create({
   smallFlexContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   rupee: {
     fontSize: 18,
@@ -396,6 +440,7 @@ const styles = StyleSheet.create({
   },
   buttonBackground: {
     marginHorizontal: '10%',
+    margin: '5%',
     width: '80%',
     paddingVertical: 15,
     backgroundColor: Colors.darkPurple,

@@ -49,7 +49,7 @@ const specializationOptions = [
   },
 ];
 
-const ExperienceDetailsRegistration = () => {
+const ExperienceEducation = () => {
   const [instituteDropdown, setInstituteDropdown] = useState(false);
   const [instituteOption, setInstituteOption] = useState(
     'Select Your Institute',
@@ -301,9 +301,12 @@ const ExperienceDetailsRegistration = () => {
               </View>
             </View>
           </View>
-          <View style={styles.saveButtonContainer}>
+          {/* <View style={styles.saveButtonContainer}>
             <SaveButton nextScreen="Home" />
-          </View>
+          </View> */}
+          <TouchableOpacity style={styles.bottomButtonBackground}>
+            <Text style={styles.bottomButtonText}>Save & Proceed</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </LinearGradient>
@@ -490,10 +493,27 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: '1%',
   },
-  saveButtonContainer: {
+  //   saveButtonContainer: {
+  //     width: '90%',
+  //     alignSelf: 'center',
+  //     marginBottom: '15%',
+  //   },
+  bottomButtonBackground: {
+    marginVertical: '10%',
+    marginBottom: '20%',
     width: '90%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
     alignSelf: 'center',
-    marginBottom: '15%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
-export default ExperienceDetailsRegistration;
+export default ExperienceEducation;

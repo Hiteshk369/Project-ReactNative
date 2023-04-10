@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import {Colors} from '../../../constants/colors';
+import {useState} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -15,12 +16,14 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import Summary from '../Summary';
 
 const Home = () => {
   const navigation = useNavigation();
+  const [dashBoard, setDashBoard] = useState('dashboard');
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.navigation}>
+      <View style={styles.navigationHeader}>
         <Text style={styles.navHeader}>PRANA</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
@@ -69,7 +72,9 @@ const Home = () => {
 
         <View style={styles.dashboard}>
           <View style={styles.buttons}>
-            <TouchableOpacity style={styles.selectedButton}>
+            <TouchableOpacity
+              onPressIn={() => setDashBoard('dashBoard')}
+              style={styles.selectedButton}>
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
             </TouchableOpacity>
@@ -86,18 +91,18 @@ const Home = () => {
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('MainAppointment')}
+                onPressIn={() => navigation.navigate('MainAppointment')}
                 style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('OnlineConsult')}
+              onPressIn={() => navigation.navigate('OnlineConsult')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Online Consult</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('ClinicVisit')}
+              onPressIn={() => navigation.navigate('ClinicVisit')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Clinic Visit</Text>
             </TouchableOpacity>
@@ -109,7 +114,7 @@ const Home = () => {
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('BookAppointment')}
+              onPressIn={() => navigation.navigate('BookAppointment')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>
                 Book
@@ -123,7 +128,7 @@ const Home = () => {
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('DashBoardAmount')}
+                onPressIn={() => navigation.navigate('DashBoardAmount')}
                 style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Reports</Text>
               </TouchableOpacity>
@@ -132,7 +137,7 @@ const Home = () => {
               <Text style={styles.dashboardButtonText}>Earnings</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('HealthFeed')}
+              onPressIn={() => navigation.navigate('HealthFeed')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Health Feeds</Text>
             </TouchableOpacity>
@@ -182,7 +187,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.white,
   },
-  navigation: {
+  navigationHeader: {
     height: 60,
     width: '100%',
     backgroundColor: Colors.darkPurple,

@@ -1,22 +1,71 @@
-import {ScrollView, Text, View, StyleSheet, TextInput} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import {Colors} from '../../../constants/colors';
-
-import LinearGradient from 'react-native-linear-gradient';
+import {useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+const daysOptions = [
+  {
+    id: 1,
+    name: '1',
+  },
+  {
+    id: 2,
+    name: '2',
+  },
+];
+const timeOptions = [
+  {
+    id: 1,
+    name: '10 Min',
+  },
+  {
+    id: 2,
+    name: '30 Min',
+  },
+  {
+    id: 3,
+    name: '1 Hr',
+  },
+];
 
 const CreateNewPackage = () => {
+  const [toggleIcon, setToggleIcon] = useState(false);
+  const [toggleIcon2, setToggleIcon2] = useState(false);
+  const [daysDropdown, setDaysDropdown] = useState(false);
+  const [daysOption, setDaysOption] = useState('Days');
+  const [timeDropdown, setTimeDropdown] = useState(false);
+  const [timeOption, setTimeOption] = useState('10');
+
   return (
     <ScrollView style={styles.container}>
-      <View>
+      <View style={styles.mainContainer}>
         <View style={styles.onlineFlexText}>
           <Text style={styles.onlineText}>Patient will pay Online</Text>
-          <MaterialIcons
-            name="toggle-on"
-            color={Colors.blue_500}
-            style={styles.toggleIcon}
-          />
+          <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
+            {toggleIcon ? (
+              <MaterialIcons
+                name="toggle-on"
+                color={Colors.blue_500}
+                style={styles.toggleTopIcon}
+              />
+            ) : (
+              <MaterialIcons
+                name="toggle-off"
+                color={Colors.black}
+                style={styles.toggleTopIcon}
+              />
+            )}
+          </TouchableOpacity>
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
@@ -37,22 +86,48 @@ const CreateNewPackage = () => {
         </Text>
         <Text style={styles.validityHeader}>Validity</Text>
         <View style={styles.validityInput}>
-          <TextInput
-            placeholderTextColor={Colors.black}
-            style={styles.validityDayInput}
-            placeholder="Days"
-          />
-          <FontAwesome
-            name="angle-down"
-            color={Colors}
-            style={styles.validityDayDown}
-          />
+          <TouchableOpacity
+            style={styles.rightDropDown}
+            onPressIn={() => setDaysDropdown(!daysDropdown)}>
+            <Text style={styles.textInput}>
+              {'  '}
+              {daysOption}
+            </Text>
+            {daysDropdown ? (
+              <Entypo name="chevron-thin-up" color="black" />
+            ) : (
+              <Entypo name="chevron-thin-down" color="black" />
+            )}
+          </TouchableOpacity>
           <TextInput
             placeholderTextColor={Colors.gray_200}
             style={styles.numberInputField}
             placeholder="Enter Number"
           />
         </View>
+        {daysDropdown ? (
+          <View style={styles.dropDownArea}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <FlatList
+                data={daysOptions}
+                renderItem={({item, index}) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.dropDownText}
+                      onPressIn={() => {
+                        setDaysOption(item.name);
+                        setDaysDropdown(false);
+                      }}>
+                      <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </ScrollView>
+          </View>
+        ) : null}
         <Text style={styles.descriptionText}>
           You should provide validity in days,weeks or months for this package
           Do not forget to provide number of days,weeks or months
@@ -79,28 +154,64 @@ const CreateNewPackage = () => {
           Audio/Video call duration (In Mins)
         </Text>
         <View style={styles.nameInputHolder}>
-          <TextInput
-            placeholderTextColor={Colors.gray_200}
-            style={styles.audioInputField}
-            placeholder="10"
-          />
-          <FontAwesome
-            name="angle-down"
-            color={Colors}
-            style={styles.audioDayDown}
-          />
+          <TouchableOpacity
+            style={styles.bigDropDown}
+            onPressIn={() => setTimeDropdown(!timeDropdown)}>
+            <Text style={styles.textInput}>
+              {'  '}
+              {timeOption}
+            </Text>
+            {timeDropdown ? (
+              <Entypo name="chevron-thin-up" color="black" />
+            ) : (
+              <Entypo name="chevron-thin-down" color="black" />
+            )}
+          </TouchableOpacity>
         </View>
+        {timeDropdown ? (
+          <View style={styles.dropDownArea}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <FlatList
+                data={timeOptions}
+                renderItem={({item, index}) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.dropDownText}
+                      onPressIn={() => {
+                        setTimeOption(item.name);
+                        setTimeDropdown(false);
+                      }}>
+                      <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </ScrollView>
+          </View>
+        ) : null}
         <Text style={styles.descriptionText}>
           Not applicable is the default value for this package you can change
           the call duration as per your convenience
         </Text>
         <View style={styles.onlineFlexText}>
           <Text style={styles.onlineText}>Medicines Included ?</Text>
-          <MaterialIcons
-            name="toggle-off"
-            color={Colors.gray_200}
-            style={styles.toggleIcon}
-          />
+          <TouchableOpacity onPressIn={() => setToggleIcon2(!toggleIcon2)}>
+            {toggleIcon2 ? (
+              <MaterialIcons
+                name="toggle-on"
+                color={Colors.blue_500}
+                style={styles.toggleTopIcon}
+              />
+            ) : (
+              <MaterialIcons
+                name="toggle-off"
+                color={Colors.black}
+                style={styles.toggleTopIcon}
+              />
+            )}
+          </TouchableOpacity>
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
@@ -126,6 +237,9 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  mainContainer: {
+    marginHorizontal: '5%',
+  },
   gradient: {
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
@@ -141,14 +255,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: '12%',
+    // marginLeft: '12%',
     fontSize: 20,
     color: Colors.white,
   },
   backIcon: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginLeft: '8%',
+    // marginLeft: '8%',
     fontSize: 25,
     fontWeight: '600',
   },
@@ -159,16 +273,18 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontWeight: '500',
   },
+  toggleTopIcon: {
+    fontSize: 45,
+  },
   onlineFlexText: {
     paddingTop: '5%',
-    marginLeft: '4%',
-    gap: 50,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   toggleIcon: {
     fontSize: 45,
-    marginLeft: '15%',
+    // marginLeft: '15%',
     fontWeight: '600',
   },
   inputField: {
@@ -178,7 +294,7 @@ const styles = StyleSheet.create({
   },
   nameInputHolder: {
     height: 42,
-    width: '93%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -186,13 +302,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     color: Colors.gray_700,
     paddingLeft: '1%',
-    margin: '4%',
     marginTop: '4%',
-    marginLeft: '3%',
     marginBottom: '0%',
   },
   descriptionText: {
-    padding: '5%',
     paddingTop: '1%',
     paddingBottom: '0%',
     fontSize: 11,
@@ -200,15 +313,13 @@ const styles = StyleSheet.create({
   },
   validityHeader: {
     paddingTop: '5%',
-    marginLeft: '4%',
+    // marginLeft: '4%',
     fontSize: 19,
     color: Colors.black,
     fontWeight: '500',
   },
   validityDayDown: {
     fontSize: 25,
-    gap: 0,
-    padding: 0,
   },
   validityDayInput: {
     fontSize: 18,
@@ -226,27 +337,74 @@ const styles = StyleSheet.create({
     gap: 10,
     color: Colors.gray_700,
     paddingLeft: '1%',
-    margin: '4%',
-    marginLeft: '3%',
+    // margin: '4%',
+    marginVertical: '3%',
+    // marginBottom: '0%',
+  },
+  rightDropDown: {
+    width: '30%',
+    paddingBottom: '3%',
+    marginVertical: '2%',
     marginBottom: '0%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_200,
+  },
+  bigDropDown: {
+    width: '100%',
+    paddingBottom: '3%',
+    marginVertical: '2%',
+    marginBottom: '0%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    fontSize: 15,
+    color: Colors.black,
   },
   numberInputField: {
     fontSize: 16,
     borderColor: Colors.gray_200,
-    borderBottomWidth: 1.5,
-    width: '53%',
+    borderBottomWidth: 1,
+    width: '65%',
+  },
+  dropDownArea: {
+    flexDirection: 'column',
+    width: '30%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    // alignSelf: 'center',
+    paddingVertical: '1%',
+    // marginLeft: '4%',
+    // marginTop: '35%',
+    // position: 'absolute',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 350,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
   },
   consultationInput: {
     height: 42,
-    width: '30%',
+    width: '31%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
     color: Colors.gray_700,
     paddingLeft: '1%',
-    margin: '4%',
-    marginLeft: '3%',
+    // margin: '4%',
+    marginVertical: '3%',
     marginBottom: '0%',
   },
   consultationInputField: {
@@ -254,11 +412,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.gray_700,
     borderColor: Colors.gray_200,
-    borderBottomWidth: 1.5,
+    borderBottomWidth: 1,
   },
   audioHeader: {
     paddingTop: '5%',
-    marginLeft: '4%',
+    // marginLeft: '4%',
     fontSize: 15,
     color: Colors.black,
     fontWeight: '500',
@@ -269,7 +427,9 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   audioInputField: {
-    width: '93%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     fontSize: 16,
     color: Colors.gray_700,
   },

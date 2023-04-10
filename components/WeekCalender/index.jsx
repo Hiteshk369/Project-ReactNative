@@ -27,7 +27,7 @@ const WeekCalendar = ({date, onChange}) => {
           <View style={styles.weekDayItem} key={weekDay.formatted}>
             <Text style={styles.weekDayText}>{weekDay.formatted}</Text>
             <TouchableOpacity
-              onPress={() => onChange(weekDay.date)}
+              onPressIn={() => onChange(weekDay.date)}
               style={touchable}>
               <Text style={textStyles}>{weekDay.day}</Text>
             </TouchableOpacity>

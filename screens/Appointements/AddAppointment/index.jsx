@@ -5,6 +5,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
 import {Colors} from '../../../constants/colors';
@@ -12,10 +13,36 @@ import {Colors} from '../../../constants/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import CheckBox from '@react-native-community/checkbox';
 
+const ageOptions = [
+  {
+    id: 1,
+    name: '2001',
+  },
+  {
+    id: 2,
+    name: '2002',
+  },
+];
+const timeOptions = [
+  {
+    id: 1,
+    name: 'Later',
+  },
+  {
+    id: 2,
+    name: 'Today',
+  },
+];
+
 const AddAppointment = () => {
+  const [ageDropdown, setAgeDropdown] = useState(false);
+  const [ageOption, setAgeOption] = useState('Age           Years');
+  const [timeDropdown, setTimeDropdown] = useState(false);
+  const [timeOption, setTimeOption] = useState(' ');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   return (
@@ -61,7 +88,7 @@ const AddAppointment = () => {
           <View style={styles.nameInputHolder}>
             <TextInput
               placeholderTextColor={Colors.gray_200}
-              placeholder="YYYY|MM|DD"
+              placeholder="DD|MM|YYYY"
             />
             <AntDesign
               name="calendar"
@@ -70,17 +97,44 @@ const AddAppointment = () => {
             />
           </View>
           <View style={styles.nameInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              placeholder="Age          Years"
-            />
-            <FontAwesome
-              name="angle-down"
-              color={Colors.lightPurple}
-              style={styles.yearsDown}
-            />
+            <TouchableOpacity
+              style={styles.rightDropDown}
+              onPressIn={() => setAgeDropdown(!ageDropdown)}>
+              <Text style={styles.textInput}>
+                {'  '}
+                {ageOption}
+              </Text>
+              {ageDropdown ? (
+                <Entypo name="chevron-thin-up" color="black" />
+              ) : (
+                <Entypo name="chevron-thin-down" color="black" />
+              )}
+            </TouchableOpacity>
           </View>
         </View>
+        {ageDropdown ? (
+          <View style={styles.dropDownArea}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <FlatList
+                data={ageOptions}
+                renderItem={({item, index}) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.dropDownText}
+                      onPressIn={() => {
+                        setAgeOption(item.name);
+                        setAgeDropdown(false);
+                      }}>
+                      <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </ScrollView>
+          </View>
+        ) : null}
         <View style={styles.nameInput}>
           <View style={styles.bigInputHolder}>
             <TextInput
@@ -99,13 +153,44 @@ const AddAppointment = () => {
               style={styles.clockIcon}
             />
             <Text style={styles.downText}>Later</Text>
-            <FontAwesome
-              name="angle-down"
-              color={Colors.lightPurple}
-              style={styles.downIcon}
-            />
+            <TouchableOpacity
+              style={styles.rightDropDown}
+              onPressIn={() => setTimeDropdown(!timeDropdown)}>
+              <Text style={styles.textInput}>
+                {'  '}
+                {timeOption}
+              </Text>
+              {timeDropdown ? (
+                <Entypo name="chevron-thin-up" color="black" />
+              ) : (
+                <Entypo name="chevron-thin-down" color="black" />
+              )}
+            </TouchableOpacity>
           </TouchableOpacity>
         </View>
+        {timeDropdown ? (
+          <View style={styles.dropDownArea}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <FlatList
+                data={timeOptions}
+                renderItem={({item, index}) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.dropDownText}
+                      onPressIn={() => {
+                        setTimeOption(item.name);
+                        setTimeDropdown(false);
+                      }}>
+                      <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </ScrollView>
+          </View>
+        ) : null}
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -201,6 +286,39 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: '5%',
   },
+  rightDropDown: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 5,
+  },
+  textInput: {
+    fontSize: 15,
+    color: Colors.black,
+  },
+  dropDownArea: {
+    flexDirection: 'column',
+    width: '40%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    alignSelf: 'flex-end',
+    paddingVertical: '1%',
+    marginRight: '6%',
+    // marginTop: '35%',
+    // position: 'absolute',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 350,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
   bigInputHolder: {
     height: 42,
     width: '90%',
@@ -228,6 +346,7 @@ const styles = StyleSheet.create({
   },
   laterText: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.white,
     padding: '2%',

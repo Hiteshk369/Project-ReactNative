@@ -13,7 +13,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
-const VerificationRegistration = () => {
+const Verification = () => {
   return (
     <LinearGradient
       colors={[Colors.darkPurple, Colors.lightPurple]}
@@ -125,25 +125,15 @@ const VerificationRegistration = () => {
                   />
                 </TouchableOpacity>
               </View>
-              <View style={styles.documentContainer}>
-                <Text style={styles.documentName}>
-                  MBBS Certificate
-                  <Text style={styles.redColor}>*</Text>
-                </Text>
-                <TouchableOpacity style={styles.imageContainer}>
-                  <AntDesign
-                    name="pluscircle"
-                    color={Colors.darkPurple}
-                    style={styles.plusIcon}
-                  />
-                </TouchableOpacity>
-              </View>
             </View>
           </View>
         </View>
-        <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.bottomButtonBackground}>
+          <Text style={styles.bottomButtonText}>Verify</Text>
+        </TouchableOpacity>
+        {/* <View style={styles.buttonContainer}>
           <SaveButton nextScreen={'BankingDetailsRegistration'} />
-        </View>
+        </View> */}
       </ScrollView>
     </LinearGradient>
   );
@@ -256,11 +246,27 @@ const styles = StyleSheet.create({
   plusIcon: {
     fontSize: 25,
   },
-  buttonContainer: {
+  //   buttonContainer: {
+  //     width: '90%',
+  //     alignSelf: 'center',
+  //     marginBottom: '15%',
+  //   },
+  bottomButtonBackground: {
+    marginVertical: '10%',
     width: '90%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
+    display: 'flex',
     alignSelf: 'center',
-    marginBottom: '15%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
 
-export default VerificationRegistration;
+export default Verification;

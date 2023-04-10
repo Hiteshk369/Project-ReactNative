@@ -23,6 +23,7 @@ export const Colors = {
   slate_200: '#c8c8c8',
   slate_300: '#afafaf',
   slate_400: '#f7f6fe',
+  slate_500: '#9c9c9c',
 
   gray_100: '#d8d8d8',
   gray_200: '#D3D3D3',
@@ -32,5 +33,4 @@ export const Colors = {
   gray_600: '#5a5a5a',
   gray_700: '#606060',
   gray_800: '#8a8a8a',
-
 };

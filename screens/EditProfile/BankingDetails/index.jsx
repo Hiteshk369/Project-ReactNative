@@ -26,7 +26,7 @@ const accountTypeOptions = [
   },
 ];
 
-const BankingDetailsRegistration = () => {
+const BankingDetails = () => {
   const [accountTypeDropdown, setAccountTypeDropdown] = useState(false);
   const [accountTypeOption, setAccountTypeOption] = useState(
     'Select Account Type',
@@ -146,9 +146,12 @@ const BankingDetailsRegistration = () => {
             <Text style={styles.uploadFileText}>UploadFile</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.saveButton}>
+        {/* <View style={styles.saveButton}>
           <SaveButton nextScreen="ExperienceDetailsRegistration" />
-        </View>
+        </View> */}
+        <TouchableOpacity style={styles.bottomButtonBackground}>
+          <Text style={styles.bottomButtonText}>Update</Text>
+        </TouchableOpacity>
       </ScrollView>
     </LinearGradient>
   );
@@ -271,11 +274,27 @@ const styles = StyleSheet.create({
     color: Colors.slate_200,
     fontSize: 18,
   },
-  saveButton: {
+  //   saveButton: {
+  //     width: '90%',
+  //     alignSelf: 'center',
+  //     marginBottom: '15%',
+  //   },
+  bottomButtonBackground: {
+    marginVertical: '10%',
     width: '90%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
     alignSelf: 'center',
-    marginBottom: '15%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
 
-export default BankingDetailsRegistration;
+export default BankingDetails;

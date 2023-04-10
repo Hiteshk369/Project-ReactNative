@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 
 import {useState} from 'react';
@@ -16,7 +17,24 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+const timeOptions = [
+  {
+    id: 1,
+    name: '10 Min',
+  },
+  {
+    id: 2,
+    name: '30 Min',
+  },
+  {
+    id: 3,
+    name: '1 hr',
+  },
+];
+
 const Summary = () => {
+  const [timeDropdown, setTimeDropdown] = useState(false);
+  const [timeOption, setTimeOption] = useState('All');
   const [date, setDate] = useState(new Date());
   return (
     <ScrollView style={styles.mainContainer}>
@@ -88,14 +106,52 @@ const Summary = () => {
         <View style={styles.OverviewText}>
           <Text style={styles.overviewText}>Profile Overview</Text>
           <View style={styles.allFlexText}>
-            <Text style={styles.overviewText}>All</Text>
-            <Entypo
-              style={styles.overviewText}
-              name="chevron-thin-down"
-              color="black"
-            />
+            <TouchableOpacity
+              style={styles.rightDropDown}
+              onPressIn={() => setTimeDropdown(!timeDropdown)}>
+              <Text style={styles.textInput}>
+                {'  '}
+                {timeOption}
+              </Text>
+              {timeDropdown ? (
+                <Entypo
+                  name="chevron-thin-up"
+                  color="black"
+                  style={styles.overviewText}
+                />
+              ) : (
+                <Entypo
+                  name="chevron-thin-down"
+                  color="black"
+                  style={styles.overviewText}
+                />
+              )}
+            </TouchableOpacity>
           </View>
         </View>
+        {timeDropdown ? (
+          <View style={styles.dropDownArea}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <FlatList
+                data={timeOptions}
+                renderItem={({item, index}) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.dropDownText}
+                      onPressIn={() => {
+                        setTimeOption(item.name);
+                        setTimeDropdown(false);
+                      }}>
+                      <Text style={styles.dropDownTextColor}>{item.name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </ScrollView>
+          </View>
+        ) : null}
         <View style={styles.scoreCard}>
           <LinearGradient
             colors={[Colors.darkPurple, Colors.lightPurple]}
@@ -356,12 +412,47 @@ const styles = StyleSheet.create({
     gap: 30,
     marginLeft: '5%',
     marginBottom: '4%',
+    position: 'relative',
   },
   allFlexText: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
     marginRight: '3%',
+  },
+  rightDropDown: {
+    flexDirection: 'row',
+    marginLeft: '3%',
+    alignItems: 'center',
+    gap: 8,
+  },
+  textInput: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: Colors.black,
+  },
+  dropDownArea: {
+    width: '30%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    alignSelf: 'flex-end',
+    marginRight: '5%',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 120,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  textLightInput: {
+    fontSize: 15,
+    color: Colors.slate_300,
   },
   overviewText: {
     fontSize: 18,
@@ -376,13 +467,12 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 10,
     color: Colors.black,
-    marginRight: '2%',
+    marginRight: '5%',
   },
   scoreText: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 0,
     marginHorizontal: '5%',
   },
   zeroText: {

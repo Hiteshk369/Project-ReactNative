@@ -12,7 +12,7 @@ export const CustomAddAppointmentHeader = ({navigation}) => (
       <View style={styles.navBackground}>
         <TouchableOpacity
           style={styles.leftText}
-          onPress={() => navigation.navigate('Home')}>
+          onPressIn={() => navigation.navigate('Home')}>
           <MaterialIcons
             name="arrow-back-ios"
             style={styles.backIcon}
@@ -46,7 +46,7 @@ export const CustomDashBoardHeader = ({navigation}) => (
       <View style={styles.navBackground}>
         <TouchableOpacity
           style={styles.leftText}
-          onPress={() => navigation.navigate('Home')}>
+          onPressIn={() => navigation.navigate('Home')}>
           <MaterialIcons
             name="arrow-back-ios"
             color={Colors.white}
@@ -76,7 +76,7 @@ export const CustomCreateYourFeedHeader = ({navigation}) => (
     <View style={styles.rectangleHeader}>
       <TouchableOpacity
         style={styles.leftText}
-        onPress={() => navigation.navigate('HealthFeed')}>
+        onPressIn={() => navigation.navigate('HealthFeed')}>
         <MaterialIcons
           name="arrow-back-ios"
           color={Colors.white}
