@@ -11,9 +11,9 @@ import {Colors} from '../../../constants/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const HabitHistory = () => {
+const HabitHistory = ({navigation}) => {
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <PatientsData />
       <View style={styles.bgShade}>
         <View style={styles.bgShadeFlex}>
@@ -36,7 +36,9 @@ const HabitHistory = () => {
         </View>
       </View>
       <View style={styles.buttonRight}>
-        <TouchableOpacity style={styles.bottomButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Allergies')}
+          style={styles.bottomButtonBackground}>
           <AntDesign
             name="doubleleft"
             color={Colors.lightPurple}
@@ -44,7 +46,9 @@ const HabitHistory = () => {
           />
           <Text style={styles.bottomButtonText}>Allergies</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Surgeries')}
+          style={styles.bottomButtonBackground}>
           <Text style={styles.bottomButtonText}>Surgeries</Text>
           <AntDesign
             name="doubleright"
@@ -61,6 +65,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   bgShade: {
     height: 200,
@@ -83,15 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.black,
   },
-  suggestionsContainer: {
-    marginHorizontal: '8%',
-    paddingTop: '40%',
-  },
-  suggestionsText: {
-    fontSize: 14,
-    color: Colors.gray_800,
-  },
-
   suggestionsContainer: {
     marginHorizontal: '8%',
     paddingTop: '40%',

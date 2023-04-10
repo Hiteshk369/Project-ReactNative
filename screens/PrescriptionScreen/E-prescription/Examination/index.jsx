@@ -4,34 +4,61 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import React from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {TextInput} from 'react-native';
+import {useState} from 'react';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-const Examination = () => {
+const Examination = ({navigation}) => {
+  const [examinationNotes, setExaminationNotes] = useState('');
+  const dispatch = useDispatch();
+  const examinationItems = useSelector(
+    state => state.prescriptionReducer.examinations,
+  );
+
+  useEffect(() => {
+    if (examinationNotes !== '') {
+      dispatch({
+        type: 'SET_EXAMINATIONS',
+        examinations: examinationNotes,
+      });
+    }
+  }, [examinationNotes, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="second" />
+              <StepsIndicator active="two" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable
+                onPressIn={() => navigation.navigate('ChiefComplaints')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Examination</Text>
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>On-Examination notes</Text>
                 <TextInput
+                  onChangeText={text => setExaminationNotes(text)}
+                  value={examinationItems}
+                  multiline={true}
+                  numberOfLines={4}
                   placeholderTextColor={Colors.gray_200}
                   style={styles.boxText}
                   placeholder="Type Here...."
@@ -50,10 +77,14 @@ const Examination = () => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Diagnosis')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Diagnosis</Text>
             <MaterialIcons
@@ -124,9 +155,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7%',
   },
   boxText: {
-    color: Colors.gray_200,
-    margin: '7%',
+    color: Colors.gray_700,
+    margin: '5%',
+    textAlignVertical: 'top',
     fontWeight: '500',
+    fontSize: 16,
   },
   bottomFlex: {
     flexDirection: 'row',

@@ -15,10 +15,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import {useNavigation} from '@react-navigation/native';
 import Summary from '../Summary';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const navigation = useNavigation();
   const [dashBoard, setDashBoard] = useState('dashboard');
   return (
@@ -78,7 +79,9 @@ const Home = () => {
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.notSelectedButton}>
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('Summary')}
+              style={styles.notSelectedButton}>
               <FontAwesome
                 name="circle-o"
                 style={styles.notSelectedTextColor}

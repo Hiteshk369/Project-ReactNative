@@ -12,10 +12,10 @@ import {Colors} from '../../../constants/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const PatientsHistory = () => {
+const PatientsHistory = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
-      <PatientsData />
+      <PatientsData navigation={navigation} />
       <View style={styles.bgShade}>
         <View style={styles.bgShadeFlex}>
           <Entypo name="dot-single" color={Colors.black} style={styles.dot} />
@@ -41,7 +41,9 @@ const PatientsHistory = () => {
         </View>
       </View>
       <View style={styles.buttonRight}>
-        <TouchableOpacity style={styles.bottomButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('FamilyHistory')}
+          style={styles.bottomButtonBackground}>
           <Text style={styles.bottomButtonText}>Family History</Text>
           <AntDesign
             name="doubleright"
@@ -58,6 +60,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   bgShade: {
     height: 200,

@@ -95,14 +95,16 @@ const MainProfileScreen = ({navigation}) => {
         />
         <Text style={styles.optionsText}>Change Password</Text>
       </View>
-      <View style={styles.optionsTextContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Timeline')}
+        style={styles.optionsTextContainer}>
         <FontAwesome
           name="circle-thin"
           color={Colors.black}
           style={styles.circleIcon}
         />
         <Text style={styles.optionsText}>Sync Patient Data</Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.optionsTextContainer}>
         <FontAwesome
           name="circle-thin"

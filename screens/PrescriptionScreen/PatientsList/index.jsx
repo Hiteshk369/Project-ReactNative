@@ -6,24 +6,36 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {Component} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Pressable} from 'react-native';
+import {useDispatch} from 'react-redux';
 
-const PatientsList = () => {
+const PatientsList = ({navigation}) => {
+  const dispatch = useDispatch();
+  const dispatchData = name => {
+    dispatch({
+      type: 'SET_USER',
+      user: name,
+    });
+    navigation.navigate('PatientsMain');
+  };
+
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
         <View style={styles.navHeader}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            color={Colors.white}
-            style={styles.backIcon}
-          />
+          <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.backIcon}
+            />
+          </Pressable>
           <Text style={styles.navText}> Select a patient to prescribe</Text>
         </View>
       </LinearGradient>
@@ -43,14 +55,18 @@ const PatientsList = () => {
         <View style={styles.patientsContainer}>
           <Text style={styles.patientsHeader}>Recent patients</Text>
           <View style={styles.patientsBorder}>
-            <View style={styles.profiles}>
+            <Pressable
+              style={styles.profiles}
+              onPressIn={() => dispatchData('Rajesh')}>
               <View style={styles.box}></View>
               <Text style={styles.boxText}>Rajesh</Text>
-            </View>
-            <View style={styles.profiles}>
+            </Pressable>
+            <Pressable
+              style={styles.profiles}
+              onPressIn={() => dispatchData('Sandeep R')}>
               <View style={styles.box}></View>
               <Text style={styles.boxText}>Sandeep R</Text>
-            </View>
+            </Pressable>
           </View>
           <Text style={styles.sText}>S</Text>
           <View style={styles.namesText}>

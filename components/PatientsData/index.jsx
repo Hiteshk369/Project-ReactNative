@@ -3,8 +3,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../constants/colors';
+import {TouchableOpacity} from 'react-native';
 
-const PatientsData = () => {
+const PatientsData = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
@@ -12,11 +13,14 @@ const PatientsData = () => {
         style={styles.gradient}>
         <View style={styles.navBackground}>
           <View style={styles.Flex}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.leftText}
-            />
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('Prescribe')}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.white}
+                style={styles.leftText}
+              />
+            </TouchableOpacity>
             <Text style={styles.leftText}>Sandeep R Reddy</Text>
             <Text style={styles.leftText}>Save</Text>
           </View>
@@ -25,35 +29,35 @@ const PatientsData = () => {
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={styles.horizontalContainer}>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>Medical{'\n'}History</Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}> Family {'\n'}History</Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>
               {'  '}Ongoing {'\n'}Medication
             </Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>Allergies</Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>
               {'  '}Habit{'\n'}History
             </Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>Surgeries</Text>
           </View>
           <View style={styles.columnText}>
-            <View style={styles.bigCircle} />
+            <View style={styles.innerCircle} />
             <Text style={styles.circleText}>Immunization</Text>
           </View>
         </View>
@@ -66,6 +70,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
   },
   gradient: {
     borderBottomLeftRadius: 40,
@@ -109,7 +114,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
   },
-  bigCircle: {
+  outerCircle: {
+    height: 58,
+    width: 58,
+    borderColor: Colors.black,
+    borderWidth: 2,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerCircle: {
     height: 50,
     width: 50,
     borderColor: Colors.black,

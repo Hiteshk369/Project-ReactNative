@@ -14,7 +14,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '../../../constants/colors';
-import {SaveButton} from '../../../components';
 
 const timeOptions = [
   {
@@ -133,7 +132,7 @@ const toOptions = [
   },
 ];
 
-const AddClinic = () => {
+const AddClinic = ({navigation}) => {
   const [timeDropdown, setTimeDropdown] = useState(false);
   const [timeOption, setTimeOption] = useState('10 mins');
   const [fromDropdown, setFromDropdown] = useState(false);
@@ -543,16 +542,78 @@ const AddClinic = () => {
               />
             </View>
           </View>
-
-          {/* <View style={styles.saveButtonContainer}>
-            <SaveButton nextScreen="ClinicAppointmentDetails" />
-          </View> */}
-          <TouchableOpacity
-            // onPressIn={() => navigation.navigate(nextScreen)}
-            style={styles.buttonBackground}>
-            <Text style={styles.buttonText}>Save & Proceed</Text>
-          </TouchableOpacity>
+          <Text style={styles.inputsHeader}>Gender Restriction</Text>
+          <View style={styles.yesNoContainer}>
+            <MaterialIcons
+              name="radio-button-off"
+              color={Colors.lightPurple}
+              style={styles.radioButtonIcon}
+            />
+            <Text style={styles.yesNoText}>Yes</Text>
+            <MaterialIcons
+              name="radio-button-on"
+              color={Colors.lightPurple}
+              style={styles.radioButtonIcon}
+            />
+            <Text style={styles.yesNoText}>No</Text>
+          </View>
+          <Text style={styles.inputsHeader}>Select Gender</Text>
+          <View style={styles.genderInputHolder}>
+            <TextInput
+              placeholderTextColor={Colors.black}
+              style={styles.genderInputField}
+              placeholder="Male"
+            />
+          </View>
+          <Text style={styles.mainHeader}>
+            Appointment Confirmation Details
+          </Text>
+          <Text style={styles.inputsHeader}>Mobile Number</Text>
+          <View style={styles.cityInputHolder}>
+            <TextInput
+              placeholderTextColor={Colors.gray_200}
+              style={styles.inputField}
+              placeholder="+91"
+            />
+          </View>
+          <View style={styles.addMoreText}>
+            <Ionicons
+              name="add-circle-outline"
+              color={Colors.lightPurple}
+              style={styles.circleAddIcon}
+            />
+            <Text style={styles.addDaysText}>Add More</Text>
+          </View>
+          <Text style={styles.AddMoreBottomText}>LandLine</Text>
+          <View style={styles.cityInputHolder}>
+            <TextInput
+              placeholderTextColor={Colors.gray_200}
+              style={styles.inputField}
+              placeholder=""
+            />
+          </View>
+          <View style={styles.addMoreText}>
+            <Ionicons
+              name="add-circle-outline"
+              color={Colors.lightPurple}
+              style={styles.circleAddIcon}
+            />
+            <Text style={styles.addDaysText}>Add More</Text>
+          </View>
+          <Text style={styles.AddMoreBottomText}>E-Mail</Text>
+          <View style={styles.cityInputHolder}>
+            <TextInput
+              placeholderTextColor={Colors.gray_200}
+              style={styles.inputField}
+              placeholder=""
+            />
+          </View>
         </View>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('ClinicAppointmentDetails')}
+          style={styles.buttonBackground}>
+          <Text style={styles.buttonText}>Save & Proceed</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -753,6 +814,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   toggleIcon: {
+    marginLeft: '4%',
     fontSize: 35,
   },
   daysRow: {
@@ -785,7 +847,7 @@ const styles = StyleSheet.create({
     // marginHorizontal: '2%',
     alignItems: 'center',
   },
-  circleaddIcon: {
+  circleAddIcon: {
     fontSize: 22,
   },
   addDaysText: {
@@ -835,7 +897,7 @@ const styles = StyleSheet.create({
     // marginHorizontal: '6%',
     marginBottom: '0%',
   },
-  bgshadeInput: {
+  bgShadeInput: {
     height: 45,
     width: '42%',
     backgroundColor: Colors.gray_300,

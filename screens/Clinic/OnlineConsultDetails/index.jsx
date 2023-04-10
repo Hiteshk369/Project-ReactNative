@@ -117,7 +117,7 @@ const toOptions = [
   },
 ];
 
-const OnlineConsultDetails = () => {
+const OnlineConsultDetails = ({navigation}) => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [toggleIcon2, setToggleIcon2] = useState(false);
   const [toggleIcon3, setToggleIcon3] = useState(false);
@@ -155,9 +155,17 @@ const OnlineConsultDetails = () => {
                 )}
               </TouchableOpacity>
             </View>
-            <View style={styles.bgShadeHeaderContainer}>
-              <Text style={styles.bgShadeHeader}>From</Text>
-              <Text style={styles.bgShadeHeader}>To</Text>
+            <View style={styles.fromInputHolder}>
+              <TextInput
+                placeholderTextColor={Colors.black}
+                style={styles.inputField}
+                placeholder="08:00 PM"
+              />
+              <FontAwesome
+                name="angle-down"
+                color={Colors.black}
+                style={styles.timeDown}
+              />
             </View>
             <View style={styles.fromTwoInputHolder}>
               <View style={styles.fromInputHolder}>
@@ -494,43 +502,25 @@ const OnlineConsultDetails = () => {
                 <Ionicons
                   name="add-circle-outline"
                   color={Colors.lightPurple}
-                  style={styles.circleaddIcon}
+                  style={styles.circleIcon}
                 />
-                <Text style={styles.addDaysText}>
-                  Add additional days {'\n'} and timings
-                </Text>
+                <Text style={styles.daysText}>Friday</Text>
               </View>
-              <View style={styles.additionalDaysText}>
-                <Ionicons
-                  name="remove-circle-outline"
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
                   color={Colors.lightPurple}
-                  style={styles.circleaddIcon}
+                  style={styles.circleIcon}
                 />
-                <Text style={styles.addDaysText}>Remove timings</Text>
+                <Text style={styles.daysText}>Saturday</Text>
               </View>
-            </View>
-            <View style={styles.smallCard}>
-              <View style={styles.bgGray}>
-                <View style={styles.bulletPointContainer}>
-                  <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                  <Text style={styles.bulletPointText}>
-                    Allows patient to connect instantly with available
-                    practitioner
-                  </Text>
-                </View>
-                <View style={styles.bulletPointContainer}>
-                  <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                  <Text style={styles.bulletPointText}>
-                    Fees is standard for all practitioner for the selected
-                    speciality
-                  </Text>
-                </View>
-                <View style={styles.bulletPointContainer}>
-                  <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                  <Text style={styles.bulletPointText}>
-                    Fees for your Specialization Pulmonologist ₹100/-
-                  </Text>
-                </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Sunday</Text>
               </View>
             </View>
             <View style={styles.receivingFlexText}>
@@ -552,34 +542,61 @@ const OnlineConsultDetails = () => {
                 )}
               </TouchableOpacity>
             </View>
-            <View style={styles.bgShadeHeaderContainer}>
-              <Text style={styles.bgShadeHeader}>From</Text>
-              <Text style={styles.bgShadeHeader}>To</Text>
+            <View style={styles.fromInputHolder}>
+              <TextInput
+                placeholderTextColor={Colors.black}
+                style={styles.inputField}
+                placeholder="Select"
+              />
+              <FontAwesome
+                name="angle-down"
+                color={Colors.black}
+                style={styles.timeDown}
+              />
             </View>
-            <View style={styles.fromTwoInputHolder}>
-              <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="12:00 AM"
-                />
+          </View>
+          <View style={styles.daysFlexText}>
+            <Text style={styles.LeftText}>Days of Practice</Text>
+            <Text style={styles.RightText}>Apply To All</Text>
+            <MaterialIcons
+              name="toggle-off"
+              color={Colors.lightGrayBg}
+              style={styles.togglIcon}
+            />
+          </View>
+          <View style={styles.daysRow}>
+            <View style={styles.daysColumn}>
+              <View style={styles.daysRowText}>
                 <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
                 />
+                <Text style={styles.daysText}>Monday</Text>
               </View>
-              <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="06:00 AM"
-                />
+              <View style={styles.daysRowText}>
                 <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
                 />
+                <Text style={styles.daysText}>Tuesday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <FontAwesome
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Wednesday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <FontAwesome
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Thursday</Text>
               </View>
             </View>
             <View style={styles.daysFlexText}>
@@ -636,33 +653,25 @@ const OnlineConsultDetails = () => {
                   <Text style={styles.daysText}>Thursday</Text>
                 </View>
               </View>
-              <View style={styles.daysColumn}>
-                <View style={styles.daysRowText}>
-                  <MaterialIcons
-                    name="check-circle"
-                    color={Colors.lightPurple}
-                    style={styles.circleIcon}
-                  />
-                  <Text style={styles.daysText}>Friday</Text>
-                </View>
-                <View style={styles.daysRowText}>
-                  <MaterialIcons
-                    name="check-circle"
-                    color={Colors.lightPurple}
-                    style={styles.circleIcon}
-                  />
-                  <Text style={styles.daysText}>Saturday</Text>
-                </View>
-                <View style={styles.daysRowText}>
-                  <MaterialIcons
-                    name="check-circle"
-                    color={Colors.lightPurple}
-                    style={styles.circleIcon}
-                  />
-                  <Text style={styles.daysText}>Sunday</Text>
-                </View>
+              <View style={styles.daysRowText}>
+                <FontAwesome
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Saturday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <FontAwesome
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Sunday</Text>
               </View>
             </View>
+          </View>
+          <View style={styles.flexDaysText}>
             <View style={styles.additionalDaysText}>
               <Ionicons
                 name="add-circle-outline"
@@ -670,31 +679,186 @@ const OnlineConsultDetails = () => {
                 style={styles.circleaddIcon}
               />
               <Text style={styles.addDaysText}>
-                Add additional days and timings
+                Add additional days {'\n'} and timings
               </Text>
             </View>
-            <View style={styles.bottomSmallCard}>
-              <View style={styles.bgGraySmall}>
-                <View style={styles.bulletPointContainer}>
-                  <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-                  <Text style={styles.bulletPointText}>
-                    Allows patient to book slot for online consultation in
-                    advance with the selected practitioner
-                  </Text>
-                </View>
-                <View style={styles.bulletPointContainer}>
-                  <Text style={styles.bulletPointText}>
-                    {'       '}Online Consultation Fees* {'\n'}
-                    {'       '}₹ 500
-                  </Text>
-                </View>
+            <View style={styles.additionalDaysText}>
+              <Ionicons
+                name="remove-circle-outline"
+                color={Colors.lightPurple}
+                style={styles.circleaddIcon}
+              />
+              <Text style={styles.addDaysText}>Remove timings</Text>
+            </View>
+          </View>
+          <View style={styles.smallCard}>
+            <View style={styles.bgGray}>
+              <View style={styles.bulletPointContainer}>
+                <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                <Text style={styles.bulletPointText}>
+                  Allows patient to connect instantly with available
+                  practitioner
+                </Text>
+              </View>
+              <View style={styles.bulletPointContainer}>
+                <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                <Text style={styles.bulletPointText}>
+                  Fees is standard for all practitioner for the selected
+                  speciality
+                </Text>
+              </View>
+              <View style={styles.bulletPointContainer}>
+                <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                <Text style={styles.bulletPointText}>
+                  Fees for your Specialization Pulmonologist ₹100/-
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.receivingFlexText}>
+            <Text style={styles.receivingText}>Scheduled Online consult</Text>
+            <Text style={styles.activeMiddleText}>Active</Text>
+            <MaterialIcons
+              name="toggle-on"
+              color={Colors.blue_500}
+              style={styles.toggleTopIcon}
+            />
+          </View>
+          <View style={styles.bgShadeHeaderContainer}>
+            <Text style={styles.bgShadeHeader}>From</Text>
+            <Text style={styles.bgShadeHeader}>To</Text>
+          </View>
+          <View style={styles.fromTwoInputHolder}>
+            <View style={styles.fromInputHolder}>
+              <TextInput
+                placeholderTextColor={Colors.black}
+                style={styles.inputField}
+                placeholder="12:00 AM"
+              />
+              <FontAwesome
+                name="angle-down"
+                color={Colors.black}
+                style={styles.timeDown}
+              />
+            </View>
+            <View style={styles.fromInputHolder}>
+              <TextInput
+                placeholderTextColor={Colors.black}
+                style={styles.inputField}
+                placeholder="06:00 AM"
+              />
+              <FontAwesome
+                name="angle-down"
+                color={Colors.black}
+                style={styles.timeDown}
+              />
+            </View>
+          </View>
+          <View style={styles.daysFlexText}>
+            <Text style={styles.LeftText}>Days of Practice</Text>
+            <Text style={styles.RightText}>Apply To All</Text>
+            <MaterialIcons
+              name="toggle-on"
+              color={Colors.blue_500}
+              style={styles.togglIcon}
+            />
+          </View>
+          <View style={styles.daysRow}>
+            <View style={styles.daysColumn}>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Monday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Tuesday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Wednesday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Thursday</Text>
+              </View>
+            </View>
+            <View style={styles.daysColumn}>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Friday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Saturday</Text>
+              </View>
+              <View style={styles.daysRowText}>
+                <MaterialIcons
+                  name="check-circle"
+                  color={Colors.lightPurple}
+                  style={styles.circleIcon}
+                />
+                <Text style={styles.daysText}>Sunday</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.additionalDaysText}>
+            <Ionicons
+              name="add-circle-outline"
+              color={Colors.lightPurple}
+              style={styles.circleaddIcon}
+            />
+            <Text style={styles.addDaysText}>
+              Add additional days and timings
+            </Text>
+          </View>
+          <View style={styles.bottomSmallCard}>
+            <View style={styles.bgGraySmall}>
+              <View style={styles.bulletPointContainer}>
+                <Text style={styles.bulletPoint}>{'\u2022'}</Text>
+                <Text style={styles.bulletPointText}>
+                  Allows patient to book slot for online consultation in advance
+                  with the selected practitioner
+                </Text>
+              </View>
+              <View style={styles.bulletPointContainer}>
+                <Text style={styles.bulletPointText}>
+                  {'       '}Online Consultation Fees* {'\n'}
+                  {'       '}₹ 500
+                </Text>
               </View>
             </View>
           </View>
         </View>
       </View>
+
       <View style={styles.saveButton}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Home')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Save & Proceed</Text>
         </TouchableOpacity>
       </View>
@@ -968,7 +1132,6 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     // marginTop: '5%',
-    // marginBottom: '5%',
     width: '90%',
     alignSelf: 'center',
     justifyContent: 'center',

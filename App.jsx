@@ -25,12 +25,7 @@ import {
   EMR_Fields,
   FollowUp,
 } from './screens/PrescriptionScreen/BottomThreeButtons';
-import {
-  PatientsList,
-  PatientsMain,
-  Preview,
-  Selectpatient,
-} from './screens/PrescriptionScreen';
+
 import {ConsultationCompleted, ConsultationMain} from './screens/Consultation';
 import AddInVoice from './screens/AddInVoice';
 import {
@@ -73,12 +68,18 @@ import {
   Verification,
 } from './screens/EditProfile';
 
-// const App = () => {
-//   return <MainAppointment />;
-// };
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
+store.subscribe(() => store.getState());
 
 const App = () => {
-  return <Preview />;
+  console.log(store);
+  return (
+    <Provider store={store}>
+      <HomeStack />
+    </Provider>
+  );
 };
 
 export default App;

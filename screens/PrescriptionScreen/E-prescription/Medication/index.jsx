@@ -10,24 +10,27 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
 
-const Medication = () => {
+const Medication = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="fourth" />
+              <StepsIndicator active="four" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('Diagnosis')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Medication</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
@@ -82,10 +85,14 @@ const Medication = () => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Procedure')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Procedure</Text>
             <MaterialIcons
@@ -148,11 +155,12 @@ const styles = StyleSheet.create({
     paddingLeft: '5%',
   },
   suggestionsHeader: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 14,
+    fontWeight: '600',
     margin: '5%',
     marginTop: '13%',
     marginBottom: '2%',
+    color: Colors.gray_500,
     // width: '50%',
   },
   suggestionsFlex: {
@@ -166,11 +174,11 @@ const styles = StyleSheet.create({
   },
   suggestionsText: {
     width: '60%',
-
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: '500',
     borderWidth: 1,
-    borderColor: Colors.gray_100,
+    borderColor: Colors.gray_400,
+    color: Colors.gray_400,
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,
