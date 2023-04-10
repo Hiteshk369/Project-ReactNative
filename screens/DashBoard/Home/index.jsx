@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import {Colors} from '../../../constants/colors';
+import {useState} from 'react';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -15,10 +16,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import {useNavigation} from '@react-navigation/native';
+import Summary from '../Summary';
+
 const Home = ({navigation}) => {
+  const navigation = useNavigation();
+  const [dashBoard, setDashBoard] = useState('dashboard');
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.navigation}>
+      <View style={styles.navigationHeader}>
         <Text style={styles.navHeader}>PRANA</Text>
         <View style={styles.navIcons}>
           <MaterialIcons
@@ -67,7 +73,9 @@ const Home = ({navigation}) => {
 
         <View style={styles.dashboard}>
           <View style={styles.buttons}>
-            <TouchableOpacity style={styles.selectedButton}>
+            <TouchableOpacity
+              onPressIn={() => setDashBoard('dashBoard')}
+              style={styles.selectedButton}>
               <FontAwesome name="circle-o" style={styles.selectedTextColor} />
               <Text style={styles.selectedTextColor}>DASHBOARD</Text>
             </TouchableOpacity>
@@ -84,12 +92,13 @@ const Home = ({navigation}) => {
         </View>
         <View style={styles.dashboardContainer}>
           <View style={styles.dashboardRowContainer}>
-            <TouchableOpacity
-              onPressIn={() => navigation.navigate('MainAppointment')}
-              style={styles.dashboardButton}>
-              <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
-            </TouchableOpacity>
-
+            <View style={styles.shadow}>
+              <TouchableOpacity
+                onPressIn={() => navigation.navigate('MainAppointment')}
+                style={styles.dashboardButton}>
+                <Text style={styles.dashboardButtonText}>Today's Dairy</Text>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity
               onPressIn={() => navigation.navigate('OnlineConsult')}
               style={styles.dashboardButton}>
@@ -122,7 +131,7 @@ const Home = ({navigation}) => {
           <View style={styles.dashboardRowContainer}>
             <View style={styles.shadow}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('DashBoardAmount')}
+                onPressIn={() => navigation.navigate('DashBoardAmount')}
                 style={styles.dashboardButton}>
                 <Text style={styles.dashboardButtonText}>Reports</Text>
               </TouchableOpacity>
@@ -131,7 +140,7 @@ const Home = ({navigation}) => {
               <Text style={styles.dashboardButtonText}>Earnings</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate('HealthFeed')}
+              onPressIn={() => navigation.navigate('HealthFeed')}
               style={styles.dashboardButton}>
               <Text style={styles.dashboardButtonText}>Health Feeds</Text>
             </TouchableOpacity>
@@ -181,7 +190,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.white,
   },
-  navigation: {
+  navigationHeader: {
     height: 60,
     width: '100%',
     backgroundColor: Colors.darkPurple,

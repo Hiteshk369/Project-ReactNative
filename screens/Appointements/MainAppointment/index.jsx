@@ -95,7 +95,7 @@ const MainAppointment = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('BookAppointment')}>
+          onPressIn={() => navigation.navigate('BookAppointment')}>
           <Text style={styles.addButton}>Add New +</Text>
         </TouchableOpacity>
         <Text style={styles.Text}>Your Calender</Text>

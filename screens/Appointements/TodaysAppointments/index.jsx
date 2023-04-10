@@ -155,7 +155,7 @@ const TodaysAppointments = ({navigation}) => {
               )}
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('BookAppointment')}
+              onPressIn={() => navigation.navigate('BookAppointment')}
               style={styles.addAppointmentButton}>
               <View style={styles.rowContainer}>
                 <AntDesign name="pluscircle" style={styles.plusIcon} />

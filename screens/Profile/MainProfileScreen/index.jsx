@@ -36,7 +36,7 @@ const MainProfileScreen = ({navigation}) => {
         <Text style={styles.optionsText}>Activate Profile</Text>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('AddClinic')}
+        onPressIn={() => navigation.navigate('AddClinic')}
         style={styles.optionsTextContainer}>
         <FontAwesome
           name="circle-thin"

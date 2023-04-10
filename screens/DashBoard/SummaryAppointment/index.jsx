@@ -37,7 +37,7 @@ const SummaryAppointment = () => {
         <WeekCalendar date={date} onChange={newDate => setDate(newDate)} />
       </View>
       <View style={styles.appText}>
-        <Text style={styles.text}>No Appointments for Sun, 05 March 2023</Text>
+        <Text style={styles.Text}>No Appointments for Sun, 05 March 2023</Text>
       </View>
       <View style={styles.bookButtonsContainer}>
         <View style={styles.appButtons}>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.gray_200,
     borderBottomColor: Colors.gray_200,
   },
-  text: {
+  Text: {
     display: 'flex',
     alignItems: 'center',
     marginTop: '3%',

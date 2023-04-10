@@ -5,7 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  FlatList,
 } from 'react-native';
+import React, {useState} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -13,7 +15,131 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '../../../constants/colors';
 
+const timeOptions = [
+  {
+    id: 1,
+    name: '10 Min',
+  },
+  {
+    id: 2,
+    name: '30 Min',
+  },
+  {
+    id: 3,
+    name: '1 hr',
+  },
+];
+
+const fromOptions = [
+  {
+    id: 1,
+    name: '01:00 Am',
+  },
+  {
+    id: 2,
+    name: '02:00 Am',
+  },
+  {
+    id: 3,
+    name: '03:00 Am',
+  },
+  {
+    id: 4,
+    name: '04:00 Am',
+  },
+  {
+    id: 5,
+    name: '05:00 Am',
+  },
+  {
+    id: 6,
+    name: '06:00 Am',
+  },
+  {
+    id: 7,
+    name: '07:00 Am',
+  },
+  {
+    id: 8,
+    name: '08:00 Am',
+  },
+  {
+    id: 9,
+    name: '09:00 Am',
+  },
+  {
+    id: 10,
+    name: '10:00 Am',
+  },
+  {
+    id: 11,
+    name: '11:00 Am',
+  },
+  {
+    id: 12,
+    name: '12:00 Am',
+  },
+];
+
+const toOptions = [
+  {
+    id: 1,
+    name: '01:00 Am',
+  },
+  {
+    id: 2,
+    name: '02:00 Am',
+  },
+  {
+    id: 3,
+    name: '03:00 Am',
+  },
+  {
+    id: 4,
+    name: '04:00 Am',
+  },
+  {
+    id: 5,
+    name: '05:00 Am',
+  },
+  {
+    id: 6,
+    name: '06:00 Am',
+  },
+  {
+    id: 7,
+    name: '07:00 Am',
+  },
+  {
+    id: 8,
+    name: '08:00 Am',
+  },
+  {
+    id: 9,
+    name: '09:00 Am',
+  },
+  {
+    id: 10,
+    name: '10:00 Am',
+  },
+  {
+    id: 11,
+    name: '11:00 Am',
+  },
+  {
+    id: 12,
+    name: '12:00 Am',
+  },
+];
 const ClinicAppointmentDetails = ({navigation}) => {
+  const [timeDropdown, setTimeDropdown] = useState(false);
+  const [timeOption, setTimeOption] = useState('15 mins');
+  const [toggleIcon, setToggleIcon] = useState(false);
+  const [toggleIcon2, setToggleIcon2] = useState(false);
+  const [fromDropdown, setFromDropdown] = useState(false);
+  const [fromOption, setFromOption] = useState('Open 24Hrs');
+  const [toDropdown, setToDropdown] = useState(false);
+  const [toOption, setToOption] = useState('Open 24Hrs');
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -40,63 +166,175 @@ const ClinicAppointmentDetails = ({navigation}) => {
               <Text style={styles.onlineText}>
                 Enabled for receiving appointments
               </Text>
-              <MaterialIcons
-                name="toggle-on"
-                color="#0077CD"
-                style={styles.toggleTopIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
+                {toggleIcon ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <Text style={styles.inputsHeader}>Appointment Duration</Text>
             <View style={styles.cityInputHolder}>
-              <TextInput
-                placeholderTextColor={Colors.black}
-                style={styles.inputField}
-                placeholder="15 Mins"
-              />
-              <FontAwesome
-                name="angle-down"
-                color={Colors.black}
-                style={styles.timeDown}
-              />
+              <TouchableOpacity
+                style={styles.rightDropDown}
+                onPressIn={() => setTimeDropdown(!timeDropdown)}>
+                <Text style={styles.textInput}>
+                  {'  '}
+                  {timeOption}
+                </Text>
+                {timeDropdown ? (
+                  <Entypo
+                    name="chevron-thin-up"
+                    color="black"
+                    style={styles.upIcon}
+                  />
+                ) : (
+                  <Entypo
+                    name="chevron-thin-down"
+                    color="black"
+                    style={styles.upIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
+            {timeDropdown ? (
+              <View style={styles.dropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={timeOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.dropDownText}
+                          onPressIn={() => {
+                            setTimeOption(item.name);
+                            setTimeDropdown(false);
+                          }}>
+                          <Text style={styles.dropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
             <View style={styles.bgShadeHeaderContainer}>
               <Text style={styles.bgShadeHeader}>From</Text>
               <Text style={styles.bgShadeHeader}>To</Text>
             </View>
             <View style={styles.fromTwoInputHolder}>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="Open 24Hrs"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setFromDropdown(!fromDropdown)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {fromOption}
+                  </Text>
+                  {fromDropdown ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
               <View style={styles.fromInputHolder}>
-                <TextInput
-                  placeholderTextColor={Colors.black}
-                  style={styles.inputField}
-                  placeholder="Open 24Hrs"
-                />
-                <FontAwesome
-                  name="angle-down"
-                  color={Colors.black}
-                  style={styles.timeDown}
-                />
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setToDropdown(!toDropdown)}>
+                  <Text style={styles.textLightInput}>
+                    {'  '}
+                    {toOption}
+                  </Text>
+                  {toDropdown ? (
+                    <Entypo name="chevron-thin-up" color="black" />
+                  ) : (
+                    <Entypo name="chevron-thin-down" color="black" />
+                  )}
+                </TouchableOpacity>
               </View>
             </View>
+            {fromDropdown ? (
+              <View style={styles.fromDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={fromOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.fromDropDownText}
+                          onPressIn={() => {
+                            setFromOption(item.name);
+                            setFromDropdown(false);
+                          }}>
+                          <Text style={styles.fromDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
+            {toDropdown ? (
+              <View style={styles.toDropDownArea}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}>
+                  <FlatList
+                    data={toOptions}
+                    renderItem={({item, index}) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.toDropDownText}
+                          onPressIn={() => {
+                            setToOption(item.name);
+                            setToDropdown(false);
+                          }}>
+                          <Text style={styles.toDropDownTextColor}>
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
+                </ScrollView>
+              </View>
+            ) : null}
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.toggleIcon}
-              />
+              <TouchableOpacity onPressIn={() => setToggleIcon2(!toggleIcon2)}>
+                {toggleIcon2 ? (
+                  <MaterialIcons
+                    name="toggle-on"
+                    color={Colors.blue_500}
+                    style={styles.toggleTopIcon}
+                  />
+                ) : (
+                  <MaterialIcons
+                    name="toggle-off"
+                    color={Colors.black}
+                    style={styles.toggleTopIcon}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -215,13 +453,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   Card: {
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   bgWhite: {
     marginTop: '2%',
     marginBottom: '5%',
+    alignSelf: 'center',
+    margin: '5%',
     height: '80%',
     width: '90%',
     borderRadius: 25,
@@ -230,8 +469,8 @@ const styles = StyleSheet.create({
   cardTopTextFlex: {
     backgroundColor: Colors.gray_200,
     flexDirection: 'row',
-    // margin:'5%',
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -241,13 +480,14 @@ const styles = StyleSheet.create({
     margin: '5%',
   },
   upIcon: {
-    marginLeft: '35%',
     fontSize: 20,
+    margin: '5%',
   },
   onlineFlexText: {
-    marginLeft: '4%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: '5%',
   },
   onlineText: {
     fontSize: 14,
@@ -256,7 +496,6 @@ const styles = StyleSheet.create({
   },
   toggleTopIcon: {
     fontSize: 45,
-    marginLeft: '18%',
   },
   inputsHeader: {
     margin: '5%',
@@ -276,6 +515,78 @@ const styles = StyleSheet.create({
     margin: '5%',
     marginTop: '0%',
   },
+  rightDropDown: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    fontSize: 18,
+    color: Colors.black,
+    fontWeight: '500',
+  },
+  dropDownArea: {
+    width: '90%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    alignSelf: 'center',
+  },
+  dropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 312,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  dropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  textLightInput: {
+    fontSize: 15,
+    color: Colors.slate_300,
+  },
+  fromDropDownArea: {
+    width: '38%',
+    justifyContent: 'center',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    paddingVertical: '1%',
+    marginLeft: '5%',
+  },
+  fromDropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 305,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  fromDropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
+  toDropDownArea: {
+    width: '38%',
+    justifyContent: 'space-between',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.gray_100,
+    marginLeft: '53%',
+  },
+  toDropDownText: {
+    paddingHorizontal: '5%',
+    paddingVertical: 10.6,
+    width: 305,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray_100,
+  },
+  toDropDownTextColor: {
+    color: Colors.slate_500,
+    fontSize: 16,
+  },
   timeDown: {
     fontSize: 25,
     marginRight: '2%',
@@ -286,7 +597,7 @@ const styles = StyleSheet.create({
     color: Colors.gray_700,
   },
   fromInputHolder: {
-    // height: 45,
+    height: 45,
     width: '38%',
     display: 'flex',
     flexDirection: 'row',
@@ -294,7 +605,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingLeft: '1%',
-    margin: '5%',
+    marginHorizontal: '5%',
     marginTop: '1%',
   },
   fromTwoInputHolder: {
@@ -311,18 +622,18 @@ const styles = StyleSheet.create({
     marginHorizontal: '6%',
   },
   daysFlexText: {
-    paddingTop: '5%',
-    marginLeft: '5%',
+    marginHorizontal: '5%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   LeftText: {
-    marginRight: '10%',
+    marginRight: '15%',
     fontSize: 15,
     fontWeight: '500',
   },
   RightText: {
-    marginLeft: '15%',
+    // marginLeft: '15%',
     fontSize: 15,
     fontWeight: '500',
   },

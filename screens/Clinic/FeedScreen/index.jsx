@@ -23,7 +23,7 @@ const FeedScreen = () => {
           India : surge in high-grade.................
         </Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CreateYourFeed')}
+          onPressIn={() => navigation.navigate('CreateYourFeed')}
           style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Create Your Feed</Text>
         </TouchableOpacity>

@@ -49,7 +49,7 @@ const MainRegistration = () => {
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={Colors.gray_100}
+                    placeholderTextColor={Colors.black}
                     placeholder="Dr. Umar"
                   />
                 </View>
@@ -57,7 +57,7 @@ const MainRegistration = () => {
                   <FontAwesome name="circle-thin" style={styles.circleIcon} />
                   <TextInput
                     style={styles.input}
-                    placeholderTextColor={Colors.gray_100}
+                    placeholderTextColor={Colors.black}
                     placeholder="Pulmonologist"
                   />
                 </View>
@@ -92,7 +92,7 @@ const MainRegistration = () => {
             </View>
             <View style={styles.nextButtonContainer}>
               <TouchableOpacity
-                onPress={() =>
+                onPressIn={() =>
                   navigation.navigate('PersonalDetailsRegistration')
                 }
                 style={styles.nextButton}>
@@ -114,37 +114,44 @@ const styles = StyleSheet.create({
   },
   container: {
     height: '100%',
-    width: '100%',
-    paddingTop: 20,
+    width: '90%',
+    margin: '5%',
+    // paddingTop: '5%',
   },
   headingContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: '5%',
   },
   heading: {
     fontSize: 28,
     fontWeight: '600',
+    color: Colors.white,
+    alignSelf: 'center',
   },
   description: {
-    marginTop: 10,
-    width: '52%',
+    marginTop: '4%',
+    // width: '52%',
     fontSize: 13,
     fontWeight: '300',
+    color: Colors.white,
+    alignSelf: 'center',
   },
   descriptionTwo: {
-    width: '25%',
+    alignSelf: 'center',
+    // width: '25%',
     fontSize: 13,
     fontWeight: '300',
+    color: Colors.white,
   },
   inputFormContainer: {
     height: 'auto',
     backgroundColor: Colors.white,
-    marginHorizontal: 10,
+    // marginHorizontal: '3%',
     borderRadius: 25,
-    marginBottom: 80,
+    marginBottom: '15%',
   },
   boxContainer: {
     display: 'flex',
@@ -155,28 +162,29 @@ const styles = StyleSheet.create({
     width: 125,
     borderColor: Colors.black,
     borderWidth: 1,
-    marginTop: 20,
-    marginBottom: 15,
-    borderRadius: 100,
+    marginTop: '8%',
+    marginBottom: '4%',
+    // borderRadius: 100,
   },
   greetingContainer: {
-    marginBottom: 15,
+    marginBottom: '5%',
     display: 'flex',
     alignItems: 'center',
   },
   greeting: {
     color: Colors.black,
-    fontSize: 16,
+    fontSize: 17,
+    alignSelf: 'center',
     fontWeight: '700',
   },
   greetingDescription: {
     color: Colors.black,
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '400',
   },
   InputFieldContainer: {
     width: '90%',
-    marginTop: 8,
+    marginTop: '4%',
     display: 'flex',
     flexDirection: 'column',
     alignContent: 'center',
@@ -190,13 +198,13 @@ const styles = StyleSheet.create({
     borderColor: Colors.slate_300,
     borderWidth: 1,
     borderRadius: 5,
-    paddingHorizontal: 6,
+    paddingHorizontal: '5%',
     gap: 8,
-    marginBottom: 20,
+    marginBottom: '8%',
   },
   circleIcon: {
     fontSize: 15,
-    color: Colors.slate_200,
+    color: Colors.black,
   },
   input: {
     color: Colors.gray_700,
@@ -208,30 +216,27 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: 16,
     fontWeight: '700',
-    marginBottom: 8,
-    marginHorizontal: 15,
+    marginBottom: '4%',
+    marginHorizontal: '5%',
   },
   clinicName: {
     color: Colors.black,
     fontSize: 13,
     fontWeight: '400',
-    marginHorizontal: 15,
+    marginHorizontal: '5%',
   },
   clinicInput: {
-    marginHorizontal: 15,
-    borderTopWidth: 0,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
+    marginHorizontal: '5%',
     borderBottomColor: Colors.slate_300,
-    borderWidth: 1.25,
+    borderBottomWidth: 1.25,
     color: Colors.gray_700,
-    paddingBottom: 1,
-    marginBottom: 8,
+    paddingBottom: '1%',
+    marginBottom: '3%',
   },
   referralTextContainer: {
     display: 'flex',
     flexDirection: 'row',
-    marginHorizontal: 15,
+    marginHorizontal: '5%',
     alignItems: 'center',
   },
   referralName: {
@@ -245,8 +250,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   privacyPolicyContainer: {
-    marginTop: 4,
-    marginHorizontal: 15,
+    marginTop: '2%',
+    marginHorizontal: '5%',
     display: 'flex',
     flexDirection: 'row',
     color: Colors.black,
@@ -263,18 +268,18 @@ const styles = StyleSheet.create({
   nextButtonContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: 40,
-    marginTop: 6,
+    marginBottom: '8%',
+    marginTop: '3%',
   },
   nextButton: {
     width: '70%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
-    marginTop: 10,
+    paddingVertical: '3%',
+    marginVertical: '5%',
     backgroundColor: Colors.lightPurple,
-    borderRadius: 20,
+    borderRadius: 30,
   },
   nextText: {
     color: Colors.white,

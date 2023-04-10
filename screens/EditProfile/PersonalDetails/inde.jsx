@@ -11,6 +11,7 @@ import {useState} from 'react';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {FormNavigation, SaveButton} from '../../../components';
 import LinearGradient from 'react-native-linear-gradient';
@@ -45,7 +46,7 @@ const yourWebsiteOptions = [
   },
 ];
 
-const PersonalDetailsRegistration = () => {
+const PersonalDetails = () => {
   const [specializationDropdown, setSpecializationDropdown] = useState(false);
   const [specializationOption, setSpecializationOption] =
     useState('Pulmonologist');
@@ -61,7 +62,10 @@ const PersonalDetailsRegistration = () => {
         showsHorizontalScrollIndicator={false}
         style={styles.container}>
         <View style={styles.uploadImage} />
-        <Entypo name="camera" style={styles.cameraImage} />
+        <TouchableOpacity style={styles.buttonBackground}>
+          <MaterialIcons name="mode-edit" color={'white'} />
+          <Text style={styles.buttonText}>Edit Profile</Text>
+        </TouchableOpacity>
         <View style={styles.wholeContainer}>
           <View style={styles.breadCrumb}>
             <FormNavigation />
@@ -305,9 +309,12 @@ const PersonalDetailsRegistration = () => {
                 </View>
               ) : null}
             </View>
-            <View style={styles.saveButtonContainer}>
+            {/* <View style={styles.saveButtonContainer}>
               <SaveButton nextScreen="VerificationRegistration" />
-            </View>
+            </View> */}
+            <TouchableOpacity style={styles.bottomButtonBackground}>
+              <Text style={styles.bottomButtonText}>Update</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -319,14 +326,14 @@ const styles = StyleSheet.create({
   gradient: {
     height: '100%',
     width: '100%',
-    position: 'relative',
+    // position: 'relative',
   },
   container: {
     height: '100%',
     width: '100%',
   },
   wholeContainer: {
-    height: '100%',
+    height: 1500,
   },
   uploadImage: {
     width: 100,
@@ -340,12 +347,25 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     zIndex: 50,
   },
-  cameraImage: {
+  buttonBackground: {
     position: 'absolute',
-    top: '16%',
+    top: '19%',
     alignSelf: 'center',
     zIndex: 100,
     fontSize: 20,
+    color: Colors.white,
+    backgroundColor: Colors.darkPurple,
+    marginBottom: '4%',
+    width: '25%',
+    paddingVertical: 2,
+    borderRadius: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 11,
+    fontWeight: '600',
     color: Colors.white,
   },
   breadCrumb: {
@@ -358,14 +378,14 @@ const styles = StyleSheet.create({
     gap: 20,
     position: 'relative',
     width: '90%',
-    height: '100%',
+    height: '90%',
     marginHorizontal: '5%',
   },
   personalDetailsForm: {
     paddingTop: '30%',
     backgroundColor: Colors.white,
     borderRadius: 10,
-    height: 'auto',
+    height: '36%',
     marginTop: '15%',
     padding: '3%',
     display: 'flex',
@@ -508,6 +528,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: '15%',
   },
+  bottomButtonBackground: {
+    marginVertical: '10%',
+    width: '98%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
+  },
 });
 
-export default PersonalDetailsRegistration;
+export default PersonalDetails;
