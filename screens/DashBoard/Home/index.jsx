@@ -16,11 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-import {useNavigation} from '@react-navigation/native';
-import Summary from '../Summary';
-
 const Home = ({navigation}) => {
-  const navigation = useNavigation();
   const [dashBoard, setDashBoard] = useState('dashboard');
   return (
     <View style={styles.mainContainer}>
