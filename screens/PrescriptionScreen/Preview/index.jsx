@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Modal,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
@@ -12,7 +13,6 @@ import {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../../constants/colors';
 
 const languageOptions = [
@@ -55,6 +55,43 @@ const Preview = () => {
               color={Colors.white}
               style={styles.toggleIcon}
             />
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={download}
+              onRequestClose={() => {
+                setDownload(!download);
+              }}>
+              <TouchableOpacity
+                style={
+                  download === true
+                    ? [styles.container, styles.notActiveBg]
+                    : [styles.container, styles.activeBg]
+                }
+                onPressIn={() => setDownload(!download)}>
+                <View style={styles.downloadContainer}>
+                  <Text style={styles.downloadHeader}>
+                    Sharing Prescription
+                  </Text>
+                  <View style={styles.pdfFlex}>
+                    <Text style={styles.pdfText}>PDF</Text>
+                    <MaterialIcons
+                      name="check-circle"
+                      color={Colors.green_300}
+                      style={styles.pdfCircleIcon}
+                    />
+                  </View>
+                  <View style={styles.bar}>
+                    <View style={styles.colorBar} />
+                  </View>
+                  <View style={styles.downloadingContainer}>
+                    <Text style={styles.downloadingText}>
+                      Downloading Prescription... 40%
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </Modal>
             <TouchableOpacity onPressIn={() => setDownload(!download)}>
               <AntDesign
                 name="download"
@@ -203,11 +240,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 28,
   },
+  buttonClose: {},
   downloadContainer: {
-    height: '10%',
+    height: 'auto',
     width: '90%',
     alignSelf: 'center',
+    justifyContent: 'center',
+    marginTop: '80%',
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.gray_200,
     // paddingVertical: '15%',
     marginVertical: '15%',
     backgroundColor: Colors.white,
@@ -252,6 +294,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
     color: Colors.black,
+    marginBottom: '5%',
   },
   mainContainer: {
     backgroundColor: Colors.purple_100,

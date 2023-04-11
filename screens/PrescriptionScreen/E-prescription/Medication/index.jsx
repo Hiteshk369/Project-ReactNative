@@ -5,14 +5,17 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from 'react-native';
+import {useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {StepsIndicator} from '../../../../components';
+import {MedicationOptions, StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
 
 const Medication = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -39,7 +42,22 @@ const Medication = ({navigation}) => {
               />
               <Text style={styles.suggestionsHeader}>Recently used</Text>
               <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={modalVisible}
+                  onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                  }}>
+                  <TouchableOpacity
+                    // style={[styles.button, styles.buttonClose]}
+                    onPressIn={() => setModalVisible(!modalVisible)}>
+                    <MedicationOptions />
+                  </TouchableOpacity>
+                </Modal>
+                <TouchableOpacity
+                  // style={[styles.button, styles.buttonOpen]}
+                  onPressIn={() => setModalVisible(true)}>
                   <Text style={styles.suggestionsText}>AZEE 500MG TAB</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>

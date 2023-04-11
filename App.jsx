@@ -5,7 +5,7 @@ import E_PrescriptionOptions from './components/E_PrescriptionOptions';
 import HandwrittenOptions from './components/HandwrittenOptions';
 
 // import ChiefComplaints from './screens/PrescriptionScreen/E-prescription/ChiefComplaints';
-import {PatientsData, StepsIndicator} from './components';
+import {MedicationOptions, PatientsData, StepsIndicator} from './components';
 import {
   Advice,
   ChiefComplaints,

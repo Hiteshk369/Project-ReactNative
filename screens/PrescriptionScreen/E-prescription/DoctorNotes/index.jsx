@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     paddingVertical: '5%',
     paddingHorizontal: '7%',
+    color: Colors.darkPurple,
   },
   boxText: {
     color: Colors.gray_700,
