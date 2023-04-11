@@ -28,7 +28,7 @@ const ReferTo = () => {
                 color={Colors.black}
                 style={styles.backIcon}
               />
-              <Text style={styles.headerText}>Refer To</Text>
+              <Text style={styles.headerText}>Referred To</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
                 placeholderTextColor={Colors.gray_200}
@@ -107,14 +107,16 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginBottom: '3%',
     marginTop: '5%',
+    color: Colors.gray_500,
   },
   inputField: {
     fontSize: 18,
-    paddingLeft: '7%',
+    paddingLeft: '3%',
     marginHorizontal: '5%',
     borderWidth: 1,
     borderColor: Colors.gray_100,
     borderRadius: 10,
+    color: Colors.black,
   },
   buttonsFlex: {
     flexDirection: 'row',
