@@ -6,33 +6,56 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
-const DoctorNotes = () => {
+const DoctorNotes = ({navigation}) => {
+  const [doctorNotes, setDoctorNotes] = useState('');
+  const dispatch = useDispatch();
+  const doctorNotesItems = useSelector(
+    state => state.prescriptionReducer.doctorNotes,
+  );
+
+  useEffect(() => {
+    if (doctorNotes !== '') {
+      dispatch({
+        type: 'SET_DOCTOR_NOTES',
+        doctorNotes: doctorNotes,
+      });
+    }
+  }, [doctorNotes, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <View style={styles.sideBar}>
             <View style={styles.leftFull}>
-              <StepsIndicator active="second" />
+              <StepsIndicator active="null" />
             </View>
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
+              <Pressable onPressIn={() => navigation.navigate('ReferBy')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
               <Text style={styles.headerText}>Doctor Notes</Text>
               <View style={styles.boxContainer}>
                 <Text style={styles.boxHeader}>Notes</Text>
                 <TextInput
+                  value={doctorNotesItems}
+                  onChangeText={text => setDoctorNotes(text)}
+                  multiline={true}
+                  numberOfLines={5}
                   placeholderTextColor={Colors.gray_200}
                   style={styles.boxText}
                   placeholder="Type Here...."
@@ -42,7 +65,9 @@ const DoctorNotes = () => {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={styles.nextButtonBackground}>
+      <TouchableOpacity
+        onPressIn={() => navigation.navigate('Prescribe')}
+        style={styles.nextButtonBackground}>
         <View style={styles.nextButtonFlex}>
           <Text style={styles.nextButtonText}>Preview</Text>
         </View>
@@ -108,9 +133,11 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
   },
   boxText: {
-    color: Colors.gray_200,
-    margin: '7%',
+    color: Colors.gray_700,
+    margin: '5%',
+    textAlignVertical: 'top',
     fontWeight: '500',
+    fontSize: 16,
   },
   bottomFlex: {
     flexDirection: 'row',

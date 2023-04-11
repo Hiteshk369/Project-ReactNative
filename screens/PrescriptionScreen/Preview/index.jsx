@@ -111,6 +111,43 @@ const Preview = () => {
         <View style={styles.flexContainer}>
           <Text style={styles.bigText}>Select preferred languages:</Text>
           <View style={styles.flexText}>
+            <Text style={styles.colorText}>English</Text>
+            <FontAwesome
+              name="angle-down"
+              color={Colors.darkPurple}
+              style={styles.dropDown}
+            />
+          </View>
+        </View>
+        <Text style={styles.smallText}>
+          Only Medication instructions will be changed to select language
+        </Text>
+      </View>
+      {download && (
+        <View style={styles.downloadContainer}>
+          <Text style={styles.downloadHeader}>Sharing Prescription</Text>
+          <View style={styles.pdfFlex}>
+            <Text style={styles.pdfText}>PDF</Text>
+            <MaterialIcons
+              name="check-circle"
+              color={Colors.green_300}
+              style={styles.pdfCircleIcon}
+            />
+          </View>
+          <View style={styles.bar}>
+            <View style={styles.colorBar} />
+          </View>
+          <View style={styles.downloadingContainer}>
+            <Text style={styles.downloadingText}>
+              Downloading Prescription... 40%
+            </Text>
+          </View>
+        </View>
+      )}
+      <View style={styles.mainContainer}>
+        <View style={styles.flexContainer}>
+          <Text style={styles.bigText}>Select preferred languages:</Text>
+          <View style={styles.flexText}>
             <TouchableOpacity
               style={styles.rightDropDown}
               onPressIn={() => setLanguageDropdown(!languageDropdown)}>
@@ -316,6 +353,7 @@ const styles = StyleSheet.create({
   },
   smallText: {
     fontSize: 12,
+    color: Colors.gray_700,
   },
   colorText: {
     fontSize: 17,

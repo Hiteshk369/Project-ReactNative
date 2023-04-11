@@ -1,6 +1,6 @@
 import PatientsList from './PatientsList';
 import PatientsMain from './PatientsMain';
-import Selectpatient from './Selectpatient';
+import Prescribe from './Prescribe';
 import Preview from './Preview';
 
-export {PatientsList, PatientsMain, Selectpatient, Preview};
+export {PatientsList, PatientsMain, Prescribe, Preview};

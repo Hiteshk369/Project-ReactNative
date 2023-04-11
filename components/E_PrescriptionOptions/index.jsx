@@ -5,250 +5,372 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Colors} from '../../constants/colors';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import CheckBox from '@react-native-community/checkbox';
+import {Pressable} from 'react-native';
+import {useSelector} from 'react-redux';
 
-const E_PrescriptionOptions = () => {
+const E_PrescriptionOptions = ({navigation, screen}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
+  const chiefComplaintsItems = useSelector(
+    state => state.prescriptionReducer.chiefComplaints,
+  );
+  const examinationItems = useSelector(
+    state => state.prescriptionReducer.examinations,
+  );
+  const diagnosisItems = useSelector(
+    state => state.prescriptionReducer.diagnosis,
+  );
+  const medicationItems = useSelector(
+    state => state.prescriptionReducer.medication,
+  );
+  const procedureItems = useSelector(
+    state => state.prescriptionReducer.procedure,
+  );
+  const investigationItems = useSelector(
+    state => state.prescriptionReducer.investigation,
+  );
+  const adviceItems = useSelector(state => state.prescriptionReducer.advice);
+  const findingsItems = useSelector(
+    state => state.prescriptionReducer.findings,
+  );
+  const emergencyInstructionsItems = useSelector(
+    state => state.prescriptionReducer.emergencyInstructions,
+  );
+  const prognosisItems = useSelector(
+    state => state.prescriptionReducer.prognosis,
+  );
+  const referToItems = useSelector(state => state.prescriptionReducer.referTo);
+  const referByItems = useSelector(state => state.prescriptionReducer.referBy);
+  const doctorNotesItems = useSelector(
+    state => state.prescriptionReducer.doctorNotes,
+  );
+
+  const PrescribeOptions = [
+    {
+      id: 1,
+      name: 'Chief Complaints',
+      data: chiefComplaintsItems,
+      navigator: 'ChiefComplaints',
+    },
+    {
+      id: 2,
+      name: 'Examinations',
+      data: examinationItems,
+      navigator: 'Examination',
+    },
+    {
+      id: 3,
+      name: 'Diagnosis',
+      data: diagnosisItems,
+      navigator: 'Diagnosis',
+    },
+    {
+      id: 4,
+      name: 'Medication',
+      data: medicationItems,
+      navigator: 'Medication',
+    },
+    {
+      id: 5,
+      name: 'Procedure',
+      data: procedureItems,
+      navigator: 'Procedure',
+    },
+    {
+      id: 6,
+      name: 'Investigation',
+      data: investigationItems,
+      navigator: 'Investigation',
+    },
+    {
+      id: 7,
+      name: 'Advice',
+      data: adviceItems,
+      navigator: 'Advice',
+    },
+    {
+      id: 8,
+      name: 'Findings',
+      data: findingsItems,
+      navigator: 'Findings',
+    },
+    {
+      id: 9,
+      name: 'Emergency Instructions',
+      data: emergencyInstructionsItems,
+      navigator: 'EmergencyInstructions',
+    },
+    {
+      id: 10,
+      name: 'Prognosis',
+      data: prognosisItems,
+      navigator: 'Prognosis',
+    },
+    {
+      id: 11,
+      name: 'Refer To',
+      data: referToItems,
+      navigator: 'ReferTo',
+    },
+    {
+      id: 12,
+      name: 'Referred By',
+      data: referByItems,
+      navigator: 'ReferBy',
+    },
+    {
+      id: 13,
+      name: 'Doctor Notes',
+      data: doctorNotesItems,
+      navigator: 'DoctorNotes',
+    },
+  ];
+
   return (
     <ScrollView style={styles.container}>
-      <View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Chief Complaints</Text>
+      <View style={{marginHorizontal: '5%'}}>
+        {PrescribeOptions.map(option => (
+          <View
+            key={option.id}
+            style={{
+              flexDirection: 'column',
+              borderBottomColor: Colors.gray_400,
+              borderBottomWidth: 1,
+              paddingVertical: '3%',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingHorizontal: '5%',
+                justifyContent: 'space-between',
+              }}>
+              <View
+                style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
+                <FontAwesome
+                  name="circle-thin"
+                  color={Colors.lightGrayBg}
+                  style={styles.circleColorIcon}
+                />
+                <Pressable
+                  onPressIn={() => navigation.navigate(option.navigator)}>
+                  <Text
+                    style={{
+                      color: Colors.black,
+                      fontWeight: '500',
+                      fontSize: 16,
+                    }}>
+                    {option.name}
+                  </Text>
+                </Pressable>
+              </View>
+              <View>
+                {option.data.length > 0 ? (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 5,
+                    }}>
+                    <Pressable
+                      onPressIn={() => navigation.navigate('ChiefComplaints')}
+                      style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: 20,
+                        width: 20,
+                        backgroundColor: Colors.purple_100,
+                        borderRadius: 50,
+                      }}>
+                      <MaterialIcons
+                        name="edit"
+                        color={Colors.lightGrayBg}
+                        style={{
+                          color: Colors.darkPurple,
+                          fontSize: 13,
+                        }}
+                      />
+                    </Pressable>
+                    <View
+                      style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: 20,
+                        width: 20,
+                        backgroundColor: '#ffe0e0',
+                        borderRadius: 50,
+                      }}>
+                      <Text
+                        style={{
+                          color: Colors.lightRed,
+                          fontSize: 12,
+                          fontWeight: 'bold',
+                        }}>
+                        X
+                      </Text>
+                    </View>
+                  </View>
+                ) : (
+                  <MaterialIcons
+                    name="add"
+                    color={Colors.lightGrayBg}
+                    style={styles.addIcon}
+                  />
+                )}
+              </View>
+            </View>
+            {option.data.length > 0 &&
+              (option.name === 'Chief Complaints' ||
+                option.name === 'Diagnosis' ||
+                option.name === 'Procedure' ||
+                option.name === 'Investigation' ||
+                option.name === 'Advice' ||
+                option.name === 'Emergency Instructions' ||
+                option.name === 'Prognosis') && (
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    paddingHorizontal: '12%',
+                    marginTop: '1%',
+                    marginBottom: '3%',
+                  }}>
+                  {option.data.map((data, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        marginTop: 3,
+                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 8,
+                        }}>
+                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                        <Text
+                          style={{color: Colors.gray_800, fontWeight: '500'}}>
+                          {data}
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              )}
+            {option.data.length > 0 && option.name === 'Examinations' && (
+              <View
+                style={{
+                  flexDirection: 'column',
+                  paddingHorizontal: '12%',
+                  marginTop: '1%',
+                  marginBottom: '3%',
+                }}>
+                <Text>On examination notes</Text>
+                <View
+                  style={{
+                    marginTop: 3,
+                    marginLeft: 2,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 8,
+                    }}>
+                    <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                    <Text style={{color: Colors.gray_600, fontWeight: '500'}}>
+                      {option.data}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            )}
+            {option.data.length > 0 &&
+              (option.name === 'Findings' ||
+                option.name === 'Doctor Notes') && (
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    paddingHorizontal: '12%',
+                    marginTop: '1%',
+                    marginBottom: '3%',
+                  }}>
+                  <View
+                    style={{
+                      marginTop: 3,
+                      marginLeft: 2,
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}>
+                      <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                      <Text style={{color: Colors.gray_600, fontWeight: '500'}}>
+                        {option.data}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              )}
+            {option.data.length > 0 &&
+              (option.name === 'Refer To' || option.name === 'Referred By') && (
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    paddingHorizontal: '12%',
+                    marginTop: '1%',
+                    marginBottom: '3%',
+                  }}>
+                  <View
+                    style={{
+                      marginTop: 3,
+                      marginLeft: 2,
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}>
+                      <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                      <Text style={{color: Colors.gray_700, fontWeight: '500'}}>
+                        {option.data[0]}
+                      </Text>
+                    </View>
+                  </View>
+                  <Text style={{marginLeft: '6%'}}>{option.data[1]}</Text>
+                </View>
+              )}
           </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Examinations</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Diagnosis</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Medication</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Procedure</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Investigation</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Advice</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Findings</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}>Emergency Instructions</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Prognosis</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Refferd To</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Refferd By</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.bodyText}>
-          <View style={styles.bodyLeftText}>
-            <FontAwesome
-              name="circle-thin"
-              color={Colors.lightGrayBg}
-              style={styles.circleIcon}
-            />
-            <Text style={styles.bodyTextFlex}> Doctor notes</Text>
-          </View>
-          <View style={styles.bodyRightText}>
-            <MaterialIcons
-              name="add"
-              color={Colors.lightGrayBg}
-              style={styles.addIcon}
-            />
-          </View>
-        </View>
-
+        ))}
         <View style={styles.bottomContainer}>
-          <View style={styles.bottomText}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('EditEMR')}
+            style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleColorIcon}
             />
             <Text style={styles.bottomTextColor}> Edit EMR</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
@@ -257,14 +379,16 @@ const E_PrescriptionOptions = () => {
             />
             <Text style={styles.bottomTextColor}> Attachments</Text>
           </View>
-          <View style={styles.bottomText}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('FollowUp')}
+            style={styles.bottomText}>
             <FontAwesome
               name="circle-thin"
               color={Colors.lightGrayBg}
               style={styles.circleColorIcon}
             />
             <Text style={styles.bottomTextColor}> Followup</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.checkBox}>
           <CheckBox
@@ -300,8 +424,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.gray_100,
   },
   bodyLeftText: {
     flexDirection: 'row',
@@ -352,7 +474,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   circleColorIcon: {
-    fontSize: 18,
+    fontSize: 20,
     color: Colors.darkPurple,
     fontWeight: '500',
   },
@@ -362,7 +484,8 @@ const styles = StyleSheet.create({
   },
   checkBox: {
     flexDirection: 'row',
-    margin: '19%',
+    marginTop: '10%',
+    marginHorizontal: '19%',
     marginBottom: '2%',
     alignItems: 'center',
   },

@@ -131,7 +131,7 @@ const toOptions = [
     name: '12:00 Am',
   },
 ];
-const ClinicAppointmentDetails = () => {
+const ClinicAppointmentDetails = ({navigation}) => {
   const [timeDropdown, setTimeDropdown] = useState(false);
   const [timeOption, setTimeOption] = useState('15 mins');
   const [toggleIcon, setToggleIcon] = useState(false);
@@ -164,7 +164,7 @@ const ClinicAppointmentDetails = () => {
             </View>
             <View style={styles.onlineFlexText}>
               <Text style={styles.onlineText}>
-                Enabled for receving appointments
+                Enabled for receiving appointments
               </Text>
               <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
                 {toggleIcon ? (
@@ -402,7 +402,7 @@ const ClinicAppointmentDetails = () => {
               <Ionicons
                 name="add-circle-outline"
                 color={Colors.lightPurple}
-                style={styles.circleaddIcon}
+                style={styles.circleAddIcon}
               />
               <Text style={styles.addDaysText}>
                 Add additional days and timings
@@ -420,7 +420,7 @@ const ClinicAppointmentDetails = () => {
             </View>
           </View>
           <TouchableOpacity
-            // onPressIn={() => navigation.navigate(nextScreen)}
+            onPressIn={() => navigation.navigate('OnlineConsultDetails')}
             style={styles.buttonBackground}>
             <Text style={styles.buttonText}>Save & Proceed</Text>
           </TouchableOpacity>
@@ -637,6 +637,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
   },
+  toggleIcon: {
+    marginLeft: '4%',
+    fontSize: 35,
+  },
   daysRow: {
     marginHorizontal: '4%',
     flexDirection: 'row',
@@ -666,7 +670,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     alignItems: 'center',
   },
-  circleaddIcon: {
+  circleAddIcon: {
     fontSize: 22,
   },
   addDaysText: {

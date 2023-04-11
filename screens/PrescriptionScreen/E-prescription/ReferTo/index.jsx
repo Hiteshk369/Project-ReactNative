@@ -10,8 +10,26 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
+import {Pressable} from 'react-native';
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-const ReferTo = () => {
+const ReferTo = ({navigation}) => {
+  const [doctorName, setDoctorName] = useState('');
+  const [details, setDetails] = useState('');
+  const referToItems = useSelector(state => state.prescriptionReducer.referTo);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (doctorName !== '' && details !== '') {
+      dispatch({
+        type: 'SET_REFER_TO',
+        referTo: [doctorName, details],
+      });
+    }
+  }, [doctorName, details, dispatch]);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -23,20 +41,28 @@ const ReferTo = () => {
           </View>
           <View style={styles.mainLayout}>
             <View style={styles.rightFull}>
-              <MaterialIcons
-                name="arrow-back-ios"
-                color={Colors.black}
-                style={styles.backIcon}
-              />
-              <Text style={styles.headerText}>Referred To</Text>
+              <Pressable onPressIn={() => navigation.navigate('Prognosis')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.black}
+                  style={styles.backIcon}
+                />
+              </Pressable>
+              <Text style={styles.headerText}>Refer To</Text>
               <Text style={styles.inputHeader}>Doctor Name</Text>
               <TextInput
+                value={referToItems[0]}
+                onChangeText={text => setDoctorName(text)}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder="Dr. Name"
               />
-              <Text style={styles.inputHeader}>Details</Text>
+              <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
               <TextInput
+                value={referToItems[1]}
+                onChangeText={text => setDetails(text)}
+                multiline={true}
+                numberOfLines={4}
                 placeholderTextColor={Colors.gray_200}
                 style={styles.inputField}
                 placeholder=" "
@@ -46,10 +72,14 @@ const ReferTo = () => {
         </View>
       </View>
       <View style={styles.buttonsFlex}>
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Prescribe')}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Preview</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('ReferBy')}
+          style={styles.nextButtonBackground}>
           <View style={styles.nextButtonFlex}>
             <Text style={styles.nextButtonText}>Referred By</Text>
             <MaterialIcons
@@ -101,6 +131,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     fontSize: 18,
     color: Colors.black,
+    marginTop: '1%',
   },
   inputHeader: {
     fontSize: 15,
@@ -109,14 +140,19 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     color: Colors.gray_500,
   },
+  mt: {
+    marginTop: '10%',
+  },
   inputField: {
     fontSize: 18,
     paddingLeft: '3%',
     marginHorizontal: '5%',
     borderWidth: 1,
-    borderColor: Colors.gray_100,
+    borderColor: Colors.gray_200,
     borderRadius: 10,
     color: Colors.black,
+    textAlignVertical: 'top',
+    color: Colors.gray_700,
   },
   buttonsFlex: {
     flexDirection: 'row',

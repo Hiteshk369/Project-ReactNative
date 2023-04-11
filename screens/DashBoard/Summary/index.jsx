@@ -32,14 +32,16 @@ const timeOptions = [
   },
 ];
 
-const Summary = () => {
+const Summary = ({navigation}) => {
   const [timeDropdown, setTimeDropdown] = useState(false);
   const [timeOption, setTimeOption] = useState('All');
   const [date, setDate] = useState(new Date());
   return (
     <ScrollView style={styles.mainContainer}>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.notSelectedButton}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('Home')}
+          style={styles.notSelectedButton}>
           <FontAwesome style={styles.notSelectedButtonText} name="circle-o" />
           <Text style={styles.notSelectedButtonText}>DASHBOARD</Text>
         </TouchableOpacity>
@@ -297,6 +299,7 @@ const styles = StyleSheet.create({
   addrText: {
     fontSize: 12,
     marginTop: '1%',
+    color: Colors.gray_700,
   },
   calenderContainer: {
     color: Colors.black,

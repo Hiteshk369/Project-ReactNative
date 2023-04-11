@@ -1,49 +1,90 @@
-import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {Colors} from '../constants/colors';
 
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-
-import Home from '../screens/DashBoard/Home';
-
-import MainProfileScreen from '../screens/Profile/MainProfileScreen';
-
 import Patients from '../FakeData/Patients';
-import FeedScreen from '../screens/Clinic/FeedScreen';
-import SelectPatient from '../FakeData/SelectPatient';
 
+import {Home, Summary, DashBoardAmount} from '../screens/DashBoard';
 import {
-  CustomAddAppointmentHeader,
-  CustomCreatePackageHeader,
-  CustomCreateYourFeedHeader,
-  CustomDashBoardHeader,
-  CustomHealthFeedHeader,
-  CustomSellPackageHeader,
-} from '../utils/HeaderButtons';
-import DashBoardAmount from '../screens/DashBoard/DashBoardAmount';
-import CreateYourFeed from '../screens/Clinic/CreateYourFeed';
-import {AddClinic} from '../screens/Clinic';
+  PatientsList,
+  PatientsMain,
+  Prescribe,
+} from '../screens/PrescriptionScreen';
+import {MainProfileScreen, Timeline} from '../screens/Profile';
 import {
   AddAppointment,
   MainAppointment,
   TodaysAppointments,
 } from '../screens/Appointements';
+import {
+  AddClinic,
+  ClinicAppointmentDetails,
+  OnlineConsultDetails,
+  CreateYourFeed,
+  FeedScreen,
+} from '../screens/Clinic';
 import {CreateNewPackage, SellPackage} from '../screens/Package';
+import {
+  ChiefComplaints,
+  Examination,
+  Diagnosis,
+  Medication,
+  Procedure,
+  Investigation,
+  Advice,
+  Findings,
+  EmergencyInstructions,
+  Prognosis,
+  ReferTo,
+  ReferBy,
+  DoctorNotes,
+} from '../screens/PrescriptionScreen/E-prescription';
+import {
+  CustomAddAppointmentHeader,
+  CustomCreatePackageHeader,
+  CustomRectangleHeader,
+  CustomDashBoardHeader,
+  CustomHealthFeedHeader,
+  CustomSellPackageHeader,
+} from '../utils/HeaderButtons';
+import {
+  Allergies,
+  FamilyHistory,
+  HabitHistory,
+  Immunization,
+  MedicalHistory,
+  OngoingMedication,
+  Surgeries,
+} from '../screens/PatientsHistory';
+import {
+  EMR_Fields,
+  FollowUp,
+} from '../screens/PrescriptionScreen/BottomThreeButtons';
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const HomeNav = () => {
   const navigation = useNavigation();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Summary"
+        component={Summary}
         options={{
           headerShown: false,
         }}
@@ -101,7 +142,12 @@ const HomeNav = () => {
         component={CreateYourFeed}
         options={{
           header: props => (
-            <CustomCreateYourFeedHeader {...props} navigation={navigation} />
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="Create Your Feed"
+              navTo="HealthFeed"
+            />
           ),
         }}
       />
@@ -109,7 +155,42 @@ const HomeNav = () => {
         name="AddClinic"
         component={AddClinic}
         options={{
-          headerShown: false,
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="Add Clinic"
+              navTo="Profile"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ClinicAppointmentDetails"
+        component={ClinicAppointmentDetails}
+        options={{
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="In-Clinic Appointment Details"
+              navTo="AddClinic"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="OnlineConsultDetails"
+        component={OnlineConsultDetails}
+        options={{
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="Online Consult Details"
+              navTo="ClinicAppointmentDetails"
+            />
+          ),
         }}
       />
       <Stack.Screen
@@ -130,19 +211,208 @@ const HomeNav = () => {
           ),
         }}
       />
+      <Stack.Screen
+        name="Timeline"
+        component={Timeline}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const PrescribeNav = () => {
+  return (
+    <Stack.Navigator initialRouteName="Prescribe">
+      <Stack.Screen
+        name="Prescribe"
+        component={Prescribe}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PatientsList"
+        component={PatientsList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PatientsMain"
+        component={PatientsMain}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChiefComplaints"
+        component={ChiefComplaints}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Examination"
+        component={Examination}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Diagnosis"
+        component={Diagnosis}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Medication"
+        component={Medication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Procedure"
+        component={Procedure}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Investigation"
+        component={Investigation}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Advice"
+        component={Advice}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Findings"
+        component={Findings}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EmergencyInstructions"
+        component={EmergencyInstructions}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Prognosis"
+        component={Prognosis}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ReferTo"
+        component={ReferTo}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ReferBy"
+        component={ReferBy}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DoctorNotes"
+        component={DoctorNotes}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditEMR"
+        component={EMR_Fields}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FollowUp"
+        component={FollowUp}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MedicalHistory"
+        component={MedicalHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FamilyHistory"
+        component={FamilyHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OngoingMedication"
+        component={OngoingMedication}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Allergies"
+        component={Allergies}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HabitHistory"
+        component={HabitHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Surgeries"
+        component={Surgeries}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Immunization"
+        component={Immunization}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
 
 const CustomTabButton = ({children, onPress}) => (
-  <TouchableOpacity
+  <Pressable
     style={{
       top: -15,
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 10,
     }}
-    onPress={onPress}>
+    onPressIn={onPress}>
     <View
       style={{
         width: 50,
@@ -153,7 +423,7 @@ const CustomTabButton = ({children, onPress}) => (
       {children}
     </View>
     <Text style={styles.iconText}>Prescribe</Text>
-  </TouchableOpacity>
+  </Pressable>
 );
 
 const HomeStack = () => {
@@ -173,15 +443,16 @@ const HomeStack = () => {
         <Tab.Screen
           name="HomeNav"
           component={HomeNav}
-          options={{
+          options={({route}) => ({
             headerShown: false,
+            tabBarStyle: {display: getTabBarVisibility(route)},
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <IonIcons name="home" style={styles.icon} />
                 <Text style={styles.iconText}>Home</Text>
               </View>
             ),
-          }}
+          })}
         />
         <Tab.Screen
           name="Patients"
@@ -198,16 +469,17 @@ const HomeStack = () => {
         />
         <Tab.Screen
           name="Prescribe"
-          component={SelectPatient}
-          options={{
+          component={PrescribeNav}
+          options={({route}) => ({
             headerShown: false,
+            tabBarStyle: {display: getTabBarVisibility(route)},
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <Text style={{color: Colors.white}}>Px</Text>
               </View>
             ),
             tabBarButton: props => <CustomTabButton {...props} />,
-          }}
+          })}
         />
         <Tab.Screen
           name="HealthTube"
@@ -254,5 +526,73 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 });
+
+const getTabBarVisibility = route => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+  switch (routeName) {
+    case 'BookAppointment':
+      return 'none';
+    case 'SellPackage':
+      return 'none';
+    case 'CreatePackage':
+      return 'none';
+    case 'AddClinic':
+      return 'none';
+    case 'ClinicAppointmentDetails':
+      return 'none';
+    case 'OnlineConsultDetails':
+      return 'none';
+    case 'CreateYourFeed':
+      return 'none';
+    case 'PatientsList':
+      return 'none';
+    case 'ChiefComplaints':
+      return 'none';
+    case 'Examination':
+      return 'none';
+    case 'Diagnosis':
+      return 'none';
+    case 'Medication':
+      return 'none';
+    case 'Procedure':
+      return 'none';
+    case 'Investigation':
+      return 'none';
+    case 'Advice':
+      return 'none';
+    case 'Findings':
+      return 'none';
+    case 'EmergencyInstructions':
+      return 'none';
+    case 'Prognosis':
+      return 'none';
+    case 'ReferTo':
+      return 'none';
+    case 'ReferBy':
+      return 'none';
+    case 'DoctorNotes':
+      return 'none';
+    case 'EditEMR':
+      return 'none';
+    case 'FollowUp':
+      return 'none';
+    case 'MedicalHistory':
+      return 'none';
+    case 'FamilyHistory':
+      return 'none';
+    case 'OngoingMedication':
+      return 'none';
+    case 'Allergies':
+      return 'none';
+    case 'HabitHistory':
+      return 'none';
+    case 'Surgeries':
+      return 'none';
+    case 'Immunization':
+      return 'none';
+    default:
+      return 'flex';
+  }
+};
 
 export default HomeStack;
