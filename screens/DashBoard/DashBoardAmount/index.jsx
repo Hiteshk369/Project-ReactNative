@@ -1,9 +1,6 @@
 import {ScrollView, Text, View, StyleSheet, Pressable} from 'react-native';
-import React, {Component} from 'react';
+import React from 'react';
 
-import LinearGradient from 'react-native-linear-gradient';
-
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../../constants/colors';
 
 const DashBoardAmount = () => {

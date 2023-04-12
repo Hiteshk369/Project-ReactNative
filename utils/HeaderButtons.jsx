@@ -1,10 +1,15 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Switch} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../constants/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useState} from 'react';
 
-export const CustomAddAppointmentHeader = ({navigation}) => (
+export const CustomAddAppointmentHeader = ({
+  navigation,
+  toggleIcon,
+  toggleSwitch,
+}) => (
   <View style={styles.bgWhite}>
     <LinearGradient
       colors={[Colors.darkPurple, Colors.lightPurple]}
@@ -27,10 +32,11 @@ export const CustomAddAppointmentHeader = ({navigation}) => (
             style={styles.rightText}
           />
           <Text style={styles.rightText}>Video Consult</Text>
-          <MaterialIcons
-            name="toggle-off"
-            color={Colors.white}
-            style={styles.toggleIcon}
+          <Switch
+            trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+            thumbColor={toggleIcon ? Colors.white : Colors.white}
+            onValueChange={toggleSwitch}
+            value={toggleIcon}
           />
         </View>
       </View>

@@ -67,12 +67,16 @@ import {
   EMR_Fields,
   FollowUp,
 } from '../screens/PrescriptionScreen/BottomThreeButtons';
+import {useState} from 'react';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const HomeNav = () => {
   const navigation = useNavigation();
+
+  const [toggleIcon, setToggleIcon] = useState(false);
+  const toggleSwitch = () => setToggleIcon(previousState => !previousState);
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
@@ -115,7 +119,12 @@ const HomeNav = () => {
         component={AddAppointment}
         options={{
           header: props => (
-            <CustomAddAppointmentHeader {...props} navigation={navigation} />
+            <CustomAddAppointmentHeader
+              {...props}
+              navigation={navigation}
+              toggleIcon={toggleIcon}
+              toggleSwitch={toggleSwitch}
+            />
           ),
         }}
       />

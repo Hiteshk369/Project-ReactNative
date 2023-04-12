@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
+  Switch,
 } from 'react-native';
 import React, {useState} from 'react';
 
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -135,7 +135,9 @@ const ClinicAppointmentDetails = ({navigation}) => {
   const [timeDropdown, setTimeDropdown] = useState(false);
   const [timeOption, setTimeOption] = useState('15 mins');
   const [toggleIcon, setToggleIcon] = useState(false);
+  const toggleSwitch = () => setToggleIcon(previousState => !previousState);
   const [toggleIcon2, setToggleIcon2] = useState(false);
+  const toggleSwitch2 = () => setToggleIcon2(previousState => !previousState);
   const [fromDropdown, setFromDropdown] = useState(false);
   const [fromOption, setFromOption] = useState('Open 24Hrs');
   const [toDropdown, setToDropdown] = useState(false);
@@ -166,21 +168,12 @@ const ClinicAppointmentDetails = ({navigation}) => {
               <Text style={styles.onlineText}>
                 Enabled for receiving appointments
               </Text>
-              <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
-                {toggleIcon ? (
-                  <MaterialIcons
-                    name="toggle-on"
-                    color={Colors.blue_500}
-                    style={styles.toggleTopIcon}
-                  />
-                ) : (
-                  <MaterialIcons
-                    name="toggle-off"
-                    color={Colors.black}
-                    style={styles.toggleTopIcon}
-                  />
-                )}
-              </TouchableOpacity>
+              <Switch
+                trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+                thumbColor={toggleIcon ? Colors.white : Colors.white}
+                onValueChange={toggleSwitch}
+                value={toggleIcon}
+              />
             </View>
             <Text style={styles.inputsHeader}>Appointment Duration</Text>
             <View style={styles.cityInputHolder}>
@@ -320,21 +313,12 @@ const ClinicAppointmentDetails = ({navigation}) => {
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <TouchableOpacity onPressIn={() => setToggleIcon2(!toggleIcon2)}>
-                {toggleIcon2 ? (
-                  <MaterialIcons
-                    name="toggle-on"
-                    color={Colors.blue_500}
-                    style={styles.toggleTopIcon}
-                  />
-                ) : (
-                  <MaterialIcons
-                    name="toggle-off"
-                    color={Colors.black}
-                    style={styles.toggleTopIcon}
-                  />
-                )}
-              </TouchableOpacity>
+              <Switch
+                trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+                thumbColor={toggleIcon ? Colors.white : Colors.white}
+                onValueChange={toggleSwitch2}
+                value={toggleIcon2}
+              />
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -488,6 +472,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: '5%',
+    marginVertical: '5%',
   },
   onlineText: {
     fontSize: 14,
@@ -623,6 +608,7 @@ const styles = StyleSheet.create({
   },
   daysFlexText: {
     marginHorizontal: '5%',
+    marginTop: '5%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

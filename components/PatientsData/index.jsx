@@ -1,13 +1,20 @@
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, Modal} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../constants/colors';
 import {TouchableOpacity} from 'react-native';
+import {useState} from 'react';
 
 const PatientsData = ({navigation}) => {
+  const [save, setSave] = useState(false);
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={
+        save === true
+          ? [styles.container, styles.notActiveBg]
+          : [styles.container, styles.activeBg]
+      }>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
@@ -22,7 +29,37 @@ const PatientsData = ({navigation}) => {
               />
             </TouchableOpacity>
             <Text style={styles.leftText}>Sandeep R Reddy</Text>
-            <Text style={styles.leftText}>Save</Text>
+            <TouchableOpacity onPressIn={() => setSave(!save)}>
+              <Text style={styles.leftText}>Save</Text>
+            </TouchableOpacity>
+            <Modal
+              animationType="fade"
+              transparent={true}
+              visible={save}
+              onRequestClose={() => {
+                setSave(!save);
+              }}>
+              <TouchableOpacity onPressIn={() => setSave(!save)}>
+                <View style={styles.gradientModal}>
+                  <View style={styles.modalContainer}>
+                    <Text style={styles.successText}>Save Changes ?</Text>
+                    <Text style={styles.invoiceText}>
+                      Going back without saving will delete all {'\n'}
+                      {'                   '} the entered details.
+                    </Text>
+                    <TouchableOpacity>
+                      <Text style={styles.buttonColorText}>Save</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Text style={styles.buttonTextModal}>Discard</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Text style={styles.cancelTextModal}>Cancel</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </Modal>
           </View>
         </View>
       </LinearGradient>
@@ -72,6 +109,12 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.white,
   },
+  activeBg: {
+    backgroundColor: Colors.white,
+  },
+  notActiveBg: {
+    backgroundColor: Colors.gray_800,
+  },
   gradient: {
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
@@ -106,6 +149,61 @@ const styles = StyleSheet.create({
     fontSize: 18,
     gap: 10,
     color: Colors.white,
+  },
+  menuContainer: {},
+  gradientModal: {
+    marginTop: '50%',
+    alignSelf: 'center',
+    borderRadius: 20,
+    height: '55%',
+    width: '80%',
+    backgroundColor: Colors.white,
+  },
+  modalContainer: {
+    alignItems: 'center',
+  },
+  successText: {
+    fontSize: 17,
+    fontWeight: '500',
+    color: Colors.black,
+    marginVertical: '5%',
+    marginTop: '15%',
+  },
+  invoiceText: {
+    fontSize: 13,
+    marginHorizontal: '10%',
+    // fontWeight: '200',
+    color: Colors.black,
+  },
+  buttonColorText: {
+    backgroundColor: Colors.darkPurple,
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '500',
+    borderRadius: 20,
+    padding: '3%',
+    paddingHorizontal: '32%',
+    marginVertical: '8%',
+  },
+  buttonTextModal: {
+    borderWidth: 1,
+    borderColor: Colors.darkPurple,
+    color: Colors.darkPurple,
+    fontSize: 16,
+    fontWeight: '500',
+    borderRadius: 20,
+    padding: '3%',
+    paddingHorizontal: '29%',
+    // marginVertical: '%',
+  },
+  cancelTextModal: {
+    color: Colors.darkPurple,
+    fontSize: 16,
+    fontWeight: '500',
+    borderRadius: 20,
+    padding: '3%',
+    paddingHorizontal: '30%',
+    marginVertical: '8%',
   },
   horizontalContainer: {
     flexDirection: 'row',

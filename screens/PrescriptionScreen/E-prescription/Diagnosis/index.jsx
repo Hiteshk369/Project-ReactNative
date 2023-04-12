@@ -126,118 +126,44 @@ const Diagnosis = ({navigation}) => {
                 placeholder="Search for Diagnosis"
               />
               {diagnosisItems.length > 0 && (
-                <View
-                  style={{
-                    width: '90%',
-                    marginTop: 15,
-                    marginLeft: 15,
-                    marginRight: 6,
-                  }}>
-                  <View
-                    style={{
-                      justifyContent: 'space-between',
-                      flexDirection: 'row',
-                    }}>
-                    <Text
-                      style={{
-                        fontWeight: '600',
-                        fontSize: 14,
-                        color: Colors.darkPurple,
-                      }}>
-                      Added
-                    </Text>
+                <View style={styles.addedItemsContainer}>
+                  <View style={styles.flexContainer}>
+                    <Text style={styles.addedText}>Added</Text>
                     <Pressable onPressIn={() => setItems([])}>
-                      <Text
-                        style={{
-                          fontWeight: '600',
-                          fontSize: 14,
-                          color: Colors.red,
-                        }}>
-                        Clear All
-                      </Text>
+                      <Text style={styles.clearText}>Clear All</Text>
                     </Pressable>
                   </View>
                   {diagnosisItems.map((data, index) => (
-                    <View
-                      key={index}
-                      style={{
-                        marginTop: 6,
-                        marginLeft: 2,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: 8,
-                        }}>
-                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                        <Text
-                          style={{color: Colors.gray_700, fontWeight: '500'}}>
-                          {data}
-                        </Text>
+                    <View key={index} style={styles.textFlex}>
+                      <View style={styles.bulletsFlex}>
+                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                        <Text style={styles.textColor}>{data}</Text>
                       </View>
                       <Pressable onPressIn={() => updateItemsDiagnosis(data)}>
-                        <Text
-                          style={{color: Colors.gray_700, fontWeight: '500'}}>
-                          x
-                        </Text>
+                        <Text style={styles.closeText}>x</Text>
                       </Pressable>
                     </View>
                   ))}
-                  <View
-                    style={{
-                      borderColor: Colors.gray_400,
-                      borderWidth: 1,
-                      marginTop: 12,
-                    }}
-                  />
+                  <View style={styles.border} />
                 </View>
               )}
 
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  marginHorizontal: '5%',
-                  gap: 10,
-                  marginVertical: '2%',
-                }}>
+              <View style={styles.optionsContainer}>
                 {suggestions.map(suggestion => (
                   <TouchableOpacity
                     onPressIn={() => updateItemsDiagnosis(suggestion.name)}
                     key={suggestion.id}
                     style={
                       diagnosisItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsText
-                        : {
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: 4,
-                            borderColor: Colors.gray_400,
-                            borderWidth: 1,
-                            marginVertical: '0.5%',
-                            paddingHorizontal: '4%',
-                            paddingVertical: '3%',
-                            borderRadius: 6,
-                          }
+                        ? styles.activeSuggestionsButton
+                        : styles.suggestionsButton
                     }>
                     <Text
                       style={
                         diagnosisItems.includes(suggestion.name)
-                          ? {
-                              color: Colors.darkPurple,
-                              fontWeight: '500',
-                              overflow: 'hidden',
-                            }
-                          : {
-                              color: Colors.gray_400,
-                              fontWeight: '500',
-                              maxWidth: 110,
-                              overflow: 'hidden',
-                            }
+                          ? styles.activeSuggestionsText
+                          : styles.suggestionsText
                       }
                       numberOfLines={1}
                       ellipsizeMode="tail">
@@ -315,18 +241,60 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: Colors.purple_200,
+    backgroundColor: '#f7f6fe',
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
   },
-  suggestionsHeader: {
-    fontSize: 14,
+  addedItemsContainer: {
+    width: '90%',
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 6,
+  },
+  flexContainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  addedText: {
     fontWeight: '600',
-    margin: '5%',
-    marginTop: '13%',
-    marginBottom: '2%',
-    color: Colors.gray_500,
+    fontSize: 14,
+    color: Colors.darkPurple,
+  },
+  clearText: {
+    fontWeight: '600',
+    fontSize: 14,
+    color: Colors.red,
+  },
+  textFlex: {
+    marginTop: 6,
+    marginLeft: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bulletsFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  bulletText: {fontSize: 10},
+  textColor: {
+    color: Colors.gray_700,
+    fontWeight: '500',
+  },
+  closeText: {color: Colors.gray_700, fontWeight: '500'},
+  optionsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: '5%',
+    gap: 10,
+    marginVertical: '2%',
+  },
+  border: {
+    borderColor: Colors.gray_400,
+    backgroundColor: Colors.gray_400,
+    borderWidth: 1,
+    marginTop: '5%',
   },
   suggestionsFlex: {
     flexDirection: 'row',
@@ -336,17 +304,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     gap: 8,
   },
-  suggestionsText: {
-    fontSize: 14,
-    fontWeight: '500',
-    borderWidth: 1,
+  suggestionsButton: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
     borderColor: Colors.gray_400,
-    color: Colors.gray_400,
+    borderWidth: 1,
+    marginVertical: '0.5%',
     paddingHorizontal: '4%',
     paddingVertical: '3%',
-    borderRadius: 10,
+    borderRadius: 6,
   },
-  activeSuggestionsText: {
+  activeSuggestionsButton: {
     alignItems: 'center',
     justifyContent: 'flex-start',
     gap: 4,
@@ -357,6 +326,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 6,
+  },
+  activeSuggestionsText: {
+    color: Colors.darkPurple,
+    fontWeight: '500',
+    maxWidth: 125,
+    overflow: 'hidden',
+  },
+  suggestionsText: {
+    color: Colors.gray_400,
+    fontWeight: '500',
+    maxWidth: 110,
+    overflow: 'hidden',
+  },
+  suggestionsHeader: {
+    fontSize: 14,
+    fontWeight: '600',
+    margin: '5%',
+    marginTop: '13%',
+    marginBottom: '2%',
+    color: Colors.gray_500,
   },
   buttonsFlex: {
     flexDirection: 'row',

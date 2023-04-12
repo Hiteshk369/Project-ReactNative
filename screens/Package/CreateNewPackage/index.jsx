@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
+  Switch,
 } from 'react-native';
 import {Colors} from '../../../constants/colors';
 import {useState} from 'react';
@@ -40,7 +41,9 @@ const timeOptions = [
 
 const CreateNewPackage = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
+  const toggleSwitch = () => setToggleIcon(previousState => !previousState);
   const [toggleIcon2, setToggleIcon2] = useState(false);
+  const toggleSwitch2 = () => setToggleIcon2(previousState => !previousState);
   const [daysDropdown, setDaysDropdown] = useState(false);
   const [daysOption, setDaysOption] = useState('Days');
   const [timeDropdown, setTimeDropdown] = useState(false);
@@ -51,21 +54,12 @@ const CreateNewPackage = () => {
       <View style={styles.mainContainer}>
         <View style={styles.onlineFlexText}>
           <Text style={styles.onlineText}>Patient will pay Online</Text>
-          <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
-            {toggleIcon ? (
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.toggleTopIcon}
-              />
-            ) : (
-              <MaterialIcons
-                name="toggle-off"
-                color={Colors.black}
-                style={styles.toggleTopIcon}
-              />
-            )}
-          </TouchableOpacity>
+          <Switch
+            trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+            thumbColor={toggleIcon ? Colors.white : Colors.white}
+            onValueChange={toggleSwitch}
+            value={toggleIcon}
+          />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput
@@ -197,21 +191,12 @@ const CreateNewPackage = () => {
         </Text>
         <View style={styles.onlineFlexText}>
           <Text style={styles.onlineText}>Medicines Included ?</Text>
-          <TouchableOpacity onPressIn={() => setToggleIcon2(!toggleIcon2)}>
-            {toggleIcon2 ? (
-              <MaterialIcons
-                name="toggle-on"
-                color={Colors.blue_500}
-                style={styles.toggleTopIcon}
-              />
-            ) : (
-              <MaterialIcons
-                name="toggle-off"
-                color={Colors.black}
-                style={styles.toggleTopIcon}
-              />
-            )}
-          </TouchableOpacity>
+          <Switch
+            trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+            thumbColor={toggleIcon ? Colors.white : Colors.white}
+            onValueChange={toggleSwitch2}
+            value={toggleIcon2}
+          />
         </View>
         <View style={styles.nameInputHolder}>
           <TextInput

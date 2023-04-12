@@ -18,7 +18,7 @@ const Immunization = ({navigation}) => {
       <View style={styles.bgShade}>
         <View style={styles.bgShadeFlex}>
           <Entypo name="dot-single" color={Colors.black} style={styles.dot} />
-          <Text style={styles.bgShadeText}>Appendictis</Text>
+          <Text style={styles.bgShadeText}>Covid</Text>
         </View>
       </View>
       <View style={styles.suggestionsContainer}>

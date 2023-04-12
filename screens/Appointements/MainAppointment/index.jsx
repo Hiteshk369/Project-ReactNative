@@ -20,7 +20,7 @@ const MainAppointment = ({navigation}) => {
       <View style={styles.bgColor}>
         <View style={styles.navigation}>
           <Text style={styles.navHeader}>PRANA</Text>
-          <Text style={styles.drHeader}>Docter</Text>
+          <Text style={styles.drHeader}>Doctor</Text>
           <View style={styles.navIcons}>
             <MaterialIcons
               name="notifications"

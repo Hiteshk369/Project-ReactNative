@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Pressable,
+  Modal,
 } from 'react-native';
 import {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,9 +16,15 @@ import {E_PrescriptionOptions, HandwrittenOptions} from '../../../components';
 
 const Prescribe = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState('prescription');
+  const [menu, setMenu] = useState(false);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={
+        menu === true
+          ? [styles.container, styles.notActiveBg]
+          : [styles.container, styles.activeBg]
+      }>
       <LinearGradient
         colors={[Colors.purple_200, Colors.purple_100]}
         style={styles.gradient}>
@@ -37,11 +44,29 @@ const Prescribe = ({navigation}) => {
               <Text style={styles.leftText}>Select Patient</Text>
             </Pressable>
           </View>
-          <MaterialIcons
-            name="more-vert"
-            color={Colors.black}
-            style={styles.moreIcon}
-          />
+          <Pressable onPressIn={() => setMenu(!menu)}>
+            <MaterialIcons
+              name="more-vert"
+              color={Colors.black}
+              style={styles.moreIcon}
+            />
+          </Pressable>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={menu}
+            onRequestClose={() => {
+              setMenu(!menu);
+            }}>
+            <TouchableOpacity onPressIn={() => setMenu(!menu)}>
+              <View style={styles.menuContainer}>
+                <Text style={styles.menuText}>Help</Text>
+                <Text style={styles.menuText}>Customize EMR</Text>
+                <Text style={styles.menuText}>Edit Layout</Text>
+                <Text style={styles.menuText}>End Consultation</Text>
+              </View>
+            </TouchableOpacity>
+          </Modal>
         </View>
       </LinearGradient>
       <View style={styles.buttons}>
@@ -88,6 +113,12 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.white,
   },
+  activeBg: {
+    backgroundColor: Colors.white,
+  },
+  notActiveBg: {
+    backgroundColor: Colors.gray_800,
+  },
   gradient: {
     height: 150,
     borderBottomLeftRadius: 40,
@@ -127,6 +158,22 @@ const styles = StyleSheet.create({
   },
   moreIcon: {
     fontSize: 35,
+  },
+  menuContainer: {
+    height: '41%',
+    width: '45%',
+    marginTop: '30%',
+    marginRight: '10%',
+    alignSelf: 'flex-end',
+    padding: '5%',
+    borderRadius: 20,
+    backgroundColor: Colors.white,
+  },
+  menuText: {
+    fontSize: 17,
+    fontWeight: '400',
+    color: Colors.black,
+    marginVertical: '5%',
   },
   buttons: {
     display: 'flex',

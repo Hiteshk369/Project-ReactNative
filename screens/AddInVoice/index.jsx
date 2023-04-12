@@ -6,11 +6,13 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
+  Modal,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../constants/colors';
 
@@ -33,8 +35,15 @@ const AddInVoice = () => {
   const [dropdown, setDropdown] = useState(false);
   const [selectOption, setSelectOption] = useState('Consultation');
   const [data, setData] = useState(dropDownOptions);
+  const [addInvoice, setAddInvoice] = useState(false);
   return (
-    <ScrollView nestedScrollEnabled={true} style={styles.container}>
+    <ScrollView
+      nestedScrollEnabled={true}
+      style={
+        addInvoice === true
+          ? [styles.container, styles.notActiveBg]
+          : [styles.container, styles.activeBg]
+      }>
       <LinearGradient
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
@@ -196,7 +205,38 @@ const AddInVoice = () => {
         <Text style={styles.totalText}>Total</Text>
         <Text style={styles.totalText}>₹ 0</Text>
       </View>
-      <TouchableOpacity style={styles.buttonBackground}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={addInvoice}
+        onRequestClose={() => {
+          setAddInvoice(!addInvoice);
+        }}>
+        <TouchableOpacity onPressIn={() => setAddInvoice(!addInvoice)}>
+          <LinearGradient
+            colors={[Colors.darkPurple, Colors.lightPurple]}
+            style={styles.gradientModal}>
+            <View style={styles.modalContainer}>
+              <MaterialCommunityIcons
+                name="check-decagram-outline"
+                color={Colors.white}
+                style={styles.checkIcon}
+              />
+              <Text style={styles.successText}>Success</Text>
+              <Text style={styles.invoiceText}>Invoice added successfully</Text>
+              <TouchableOpacity>
+                <Text style={styles.buttonColorText}>View Invoice</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.buttonTextModal}>Go to Homepage</Text>
+              </TouchableOpacity>
+            </View>
+          </LinearGradient>
+        </TouchableOpacity>
+      </Modal>
+      <TouchableOpacity
+        style={styles.buttonBackground}
+        onPressIn={() => setAddInvoice(!addInvoice)}>
         <Text style={styles.buttonText}>Add Invoice</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -207,6 +247,13 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+    backgroundColor: Colors.white,
+  },
+  activeBg: {
+    backgroundColor: Colors.white,
+  },
+  notActiveBg: {
+    backgroundColor: Colors.gray_800,
   },
   gradient: {
     borderBottomLeftRadius: 40,
@@ -437,6 +484,52 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     marginHorizontal: '3%',
+  },
+  gradientModal: {
+    marginTop: '50%',
+    alignSelf: 'center',
+    borderRadius: 20,
+    height: '55%',
+    width: '80%',
+  },
+  modalContainer: {
+    alignItems: 'center',
+  },
+  checkIcon: {
+    marginVertical: '10%',
+    fontSize: 80,
+  },
+  successText: {
+    fontSize: 17,
+    fontWeight: '500',
+    color: Colors.white,
+    marginVertical: '2%',
+  },
+  invoiceText: {
+    fontSize: 15,
+    fontWeight: '200',
+    color: Colors.white,
+  },
+  buttonColorText: {
+    backgroundColor: Colors.white,
+    color: Colors.darkPurple,
+    fontSize: 16,
+    fontWeight: '500',
+    borderRadius: 10,
+    padding: '3%',
+    paddingHorizontal: '25%',
+    marginVertical: '8%',
+  },
+  buttonTextModal: {
+    borderWidth: 1,
+    borderColor: Colors.gray_200,
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '500',
+    borderRadius: 10,
+    padding: '3%',
+    paddingHorizontal: '20%',
+    // marginVertical: '%',
   },
   buttonBackground: {
     marginHorizontal: '10%',
