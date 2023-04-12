@@ -146,14 +146,6 @@ const AddClinic = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.mainContainer}>
-        <View style={styles.navBar}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            color={Colors.white}
-            style={styles.backIcon}
-          />
-          <Text style={styles.navText}>Add Clinic</Text>
-        </View>
         <View style={styles.Card}>
           <View style={styles.bgWhite}>
             <View style={styles.nameInputHolder}>
@@ -542,72 +534,6 @@ const AddClinic = ({navigation}) => {
               />
             </View>
           </View>
-          <Text style={styles.inputsHeader}>Gender Restriction</Text>
-          <View style={styles.yesNoContainer}>
-            <MaterialIcons
-              name="radio-button-off"
-              color={Colors.lightPurple}
-              style={styles.radioButtonIcon}
-            />
-            <Text style={styles.yesNoText}>Yes</Text>
-            <MaterialIcons
-              name="radio-button-on"
-              color={Colors.lightPurple}
-              style={styles.radioButtonIcon}
-            />
-            <Text style={styles.yesNoText}>No</Text>
-          </View>
-          <Text style={styles.inputsHeader}>Select Gender</Text>
-          <View style={styles.genderInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.black}
-              style={styles.genderInputField}
-              placeholder="Male"
-            />
-          </View>
-          <Text style={styles.mainHeader}>
-            Appointment Confirmation Details
-          </Text>
-          <Text style={styles.inputsHeader}>Mobile Number</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder="+91"
-            />
-          </View>
-          <View style={styles.addMoreText}>
-            <Ionicons
-              name="add-circle-outline"
-              color={Colors.lightPurple}
-              style={styles.circleAddIcon}
-            />
-            <Text style={styles.addDaysText}>Add More</Text>
-          </View>
-          <Text style={styles.AddMoreBottomText}>LandLine</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder=""
-            />
-          </View>
-          <View style={styles.addMoreText}>
-            <Ionicons
-              name="add-circle-outline"
-              color={Colors.lightPurple}
-              style={styles.circleAddIcon}
-            />
-            <Text style={styles.addDaysText}>Add More</Text>
-          </View>
-          <Text style={styles.AddMoreBottomText}>E-Mail</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder=""
-            />
-          </View>
         </View>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('ClinicAppointmentDetails')}
@@ -656,7 +582,7 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     marginBottom: '5%',
     paddingHorizontal: '5%',
-    height: '91.5%',
+    height: 'auto',
     width: '90%',
     borderRadius: 25,
     backgroundColor: Colors.white,
@@ -957,6 +883,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   buttonText: {
     fontSize: 15,

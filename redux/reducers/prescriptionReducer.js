@@ -2,7 +2,7 @@ export const initialState = {
   chiefComplaints: [],
   examinations: '',
   diagnosis: [],
-  medication: [],
+  medication: {},
   procedure: [],
   investigation: [],
   advice: [],
@@ -12,6 +12,8 @@ export const initialState = {
   referTo: [],
   referBy: [],
   doctorNotes: '',
+
+  allMedicines: [],
 };
 
 const prescriptionReducer = (state = initialState, action) => {
@@ -80,6 +82,11 @@ const prescriptionReducer = (state = initialState, action) => {
       return {
         ...state,
         doctorNotes: action.doctorNotes,
+      };
+    case 'SET_MEDICINE':
+      return {
+        ...state,
+        allMedicines: action.allMedicines,
       };
     default:
       return state;
