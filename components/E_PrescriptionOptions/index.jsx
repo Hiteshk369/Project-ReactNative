@@ -135,25 +135,11 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={{marginHorizontal: '5%'}}>
+      <View style={styles.mainContainer}>
         {PrescribeOptions.map(option => (
-          <View
-            key={option.id}
-            style={{
-              flexDirection: 'column',
-              borderBottomColor: Colors.gray_400,
-              borderBottomWidth: 1,
-              paddingVertical: '3%',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingHorizontal: '5%',
-                justifyContent: 'space-between',
-              }}>
-              <View
-                style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
+          <View key={option.id} style={styles.columnContainer}>
+            <View style={styles.rowContainer}>
+              <View style={styles.rowIcon}>
                 <FontAwesome
                   name="circle-thin"
                   color={Colors.lightGrayBg}
@@ -161,60 +147,23 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
                 />
                 <Pressable
                   onPressIn={() => navigation.navigate(option.navigator)}>
-                  <Text
-                    style={{
-                      color: Colors.black,
-                      fontWeight: '500',
-                      fontSize: 16,
-                    }}>
-                    {option.name}
-                  </Text>
+                  <Text style={styles.rowText}>{option.name}</Text>
                 </Pressable>
               </View>
               <View>
                 {option.data.length > 0 ? (
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 5,
-                    }}>
+                  <View style={styles.iconFlex}>
                     <Pressable
                       onPressIn={() => navigation.navigate('ChiefComplaints')}
-                      style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: 20,
-                        width: 20,
-                        backgroundColor: Colors.purple_100,
-                        borderRadius: 50,
-                      }}>
+                      style={styles.editIcon}>
                       <MaterialIcons
                         name="edit"
                         color={Colors.lightGrayBg}
-                        style={{
-                          color: Colors.darkPurple,
-                          fontSize: 13,
-                        }}
+                        style={Colors.editIconColor}
                       />
                     </Pressable>
-                    <View
-                      style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: 20,
-                        width: 20,
-                        backgroundColor: '#ffe0e0',
-                        borderRadius: 50,
-                      }}>
-                      <Text
-                        style={{
-                          color: Colors.lightRed,
-                          fontSize: 12,
-                          fontWeight: 'bold',
-                        }}>
-                        X
-                      </Text>
+                    <View style={styles.closeIcon}>
+                      <Text style={styles.closeIconColor}>X</Text>
                     </View>
                   </View>
                 ) : (
@@ -234,64 +183,24 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
                 option.name === 'Advice' ||
                 option.name === 'Emergency Instructions' ||
                 option.name === 'Prognosis') && (
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    paddingHorizontal: '12%',
-                    marginTop: '1%',
-                    marginBottom: '3%',
-                  }}>
+                <View style={styles.optionsContainer}>
                   {option.data.map((data, index) => (
-                    <View
-                      key={index}
-                      style={{
-                        marginTop: 3,
-                        marginLeft: 2,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: 8,
-                        }}>
-                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                        <Text
-                          style={{color: Colors.gray_800, fontWeight: '500'}}>
-                          {data}
-                        </Text>
+                    <View key={index} style={styles.optionsTextContainer}>
+                      <View style={styles.bulletFlex}>
+                        <Text style={styles.bulletsIcon}>{'\u2B24'}</Text>
+                        <Text style={styles.optionsText}>{data}</Text>
                       </View>
                     </View>
                   ))}
                 </View>
               )}
             {option.data.length > 0 && option.name === 'Examinations' && (
-              <View
-                style={{
-                  flexDirection: 'column',
-                  paddingHorizontal: '12%',
-                  marginTop: '1%',
-                  marginBottom: '3%',
-                }}>
+              <View style={styles.optionsContainer}>
                 <Text>On examination notes</Text>
-                <View
-                  style={{
-                    marginTop: 3,
-                    marginLeft: 2,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 8,
-                    }}>
-                    <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                    <Text style={{color: Colors.gray_600, fontWeight: '500'}}>
-                      {option.data}
-                    </Text>
+                <View style={styles.optionsTextContainer}>
+                  <View style={styles.bulletFlex}>
+                    <Text style={styles.bulletsIcon}>{'\u2B24'}</Text>
+                    <Text style={styles.optionsText}>{option.data}</Text>
                   </View>
                 </View>
               </View>
@@ -299,63 +208,25 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
             {option.data.length > 0 &&
               (option.name === 'Findings' ||
                 option.name === 'Doctor Notes') && (
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    paddingHorizontal: '12%',
-                    marginTop: '1%',
-                    marginBottom: '3%',
-                  }}>
-                  <View
-                    style={{
-                      marginTop: 3,
-                      marginLeft: 2,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                    }}>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 8,
-                      }}>
-                      <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                      <Text style={{color: Colors.gray_600, fontWeight: '500'}}>
-                        {option.data}
-                      </Text>
+                <View style={styles.optionsContainer}>
+                  <View style={styles.optionsTextContainer}>
+                    <View style={styles.bulletFlex}>
+                      <Text style={styles.bulletsIcon}>{'\u2B24'}</Text>
+                      <Text style={styles.optionsText}>{option.data}</Text>
                     </View>
                   </View>
                 </View>
               )}
             {option.data.length > 0 &&
               (option.name === 'Refer To' || option.name === 'Referred By') && (
-                <View
-                  style={{
-                    flexDirection: 'column',
-                    paddingHorizontal: '12%',
-                    marginTop: '1%',
-                    marginBottom: '3%',
-                  }}>
-                  <View
-                    style={{
-                      marginTop: 3,
-                      marginLeft: 2,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                    }}>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        gap: 8,
-                      }}>
-                      <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                      <Text style={{color: Colors.gray_700, fontWeight: '500'}}>
-                        {option.data[0]}
-                      </Text>
+                <View style={styles.optionsContainer}>
+                  <View style={styles.optionsTextContainer}>
+                    <View style={styles.bulletFlex}>
+                      <Text style={styles.bulletsIcon}>{'\u2B24'}</Text>
+                      <Text style={styles.optionsText}>{option.data[0]}</Text>
                     </View>
                   </View>
-                  <Text style={{marginLeft: '6%'}}>{option.data[1]}</Text>
+                  <Text style={styles.detailsText}>{option.data[1]}</Text>
                 </View>
               )}
           </View>
@@ -418,6 +289,88 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  mainContainer: {
+    marginHorizontal: '5%',
+  },
+  columnContainer: {
+    flexDirection: 'column',
+    borderBottomColor: Colors.gray_400,
+    borderBottomWidth: 1,
+    paddingVertical: '3%',
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: '5%',
+    justifyContent: 'space-between',
+  },
+  rowIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  rowText: {
+    color: Colors.black,
+    fontWeight: '500',
+    fontSize: 16,
+  },
+  iconFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  editIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20,
+    width: 20,
+    backgroundColor: Colors.purple_100,
+    borderRadius: 50,
+  },
+  editIconColor: {
+    color: Colors.darkPurple,
+    fontSize: 13,
+  },
+  closeIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20,
+    width: 20,
+    backgroundColor: Colors.red_100,
+    borderRadius: 50,
+  },
+  closeIconColor: {
+    color: Colors.lightRed,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  optionsContainer: {
+    flexDirection: 'column',
+    paddingHorizontal: '12%',
+    marginTop: '1%',
+    marginBottom: '3%',
+  },
+  optionsTextContainer: {
+    marginTop: 3,
+    marginLeft: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bulletFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  bulletsIcon: {
+    fontSize: 10,
+  },
+  optionsText: {
+    color: Colors.gray_800,
+    fontWeight: '500',
+  },
+  detailsText: {
+    marginLeft: '6%',
+  },
   bodyText: {
     marginTop: '5%',
     marginHorizontal: '5%',
@@ -459,8 +412,6 @@ const styles = StyleSheet.create({
   bottomContainer: {
     flexDirection: 'row',
     marginVertical: '5%',
-    marginHorizontal: '6%',
-    display: 'flex',
     alignItems: 'center',
     gap: 10,
     borderBottomWidth: 1,

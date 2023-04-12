@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   TextInput,
+  Switch,
 } from 'react-native';
 import {useState} from 'react';
 
@@ -140,20 +141,13 @@ const AddClinic = ({navigation}) => {
   const [toDropdown, setToDropdown] = useState(false);
   const [toOption, setToOption] = useState('To');
   const [toggleIcon, setToggleIcon] = useState(false);
+  const toggleSwitch = () => setToggleIcon(previousState => !previousState);
   const [circleIcon, setcircleIcon] = useState(false);
   const [genderCircleIcon, setGenderCircleIcon] = useState(false);
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.mainContainer}>
-        <View style={styles.navBar}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            color={Colors.white}
-            style={styles.backIcon}
-          />
-          <Text style={styles.navText}>Add Clinic</Text>
-        </View>
         <View style={styles.Card}>
           <View style={styles.bgWhite}>
             <View style={styles.nameInputHolder}>
@@ -306,21 +300,12 @@ const AddClinic = ({navigation}) => {
             <View style={styles.daysFlexText}>
               <Text style={styles.LeftText}>Days of Practice</Text>
               <Text style={styles.RightText}>Apply To All</Text>
-              <TouchableOpacity onPressIn={() => setToggleIcon(!toggleIcon)}>
-                {toggleIcon ? (
-                  <MaterialIcons
-                    name="toggle-on"
-                    color={Colors.blue_500}
-                    style={styles.toggleIcon}
-                  />
-                ) : (
-                  <MaterialIcons
-                    name="toggle-off"
-                    color={Colors.black}
-                    style={styles.toggleIcon}
-                  />
-                )}
-              </TouchableOpacity>
+              <Switch
+                trackColor={{false: Colors.gray_200, true: Colors.blue_500}}
+                thumbColor={toggleIcon ? Colors.white : Colors.white}
+                onValueChange={toggleSwitch}
+                value={toggleIcon}
+              />
             </View>
             <View style={styles.daysRow}>
               <View style={styles.daysColumn}>
@@ -438,14 +423,14 @@ const AddClinic = ({navigation}) => {
               <Text style={styles.bgShadeHeader}>To</Text>
             </View>
             <View style={styles.fromTwoInputHolder}>
-              <View style={styles.bgshadeInput}>
+              <View style={styles.bgShadeInput}>
                 <TextInput
                   placeholderTextColor={Colors.black}
                   style={styles.inputField}
                   placeholder="0"
                 />
               </View>
-              <View style={styles.bgshadeInput}>
+              <View style={styles.bgShadeInput}>
                 <TextInput
                   placeholderTextColor={Colors.black}
                   style={styles.inputField}
@@ -542,72 +527,6 @@ const AddClinic = ({navigation}) => {
               />
             </View>
           </View>
-          <Text style={styles.inputsHeader}>Gender Restriction</Text>
-          <View style={styles.yesNoContainer}>
-            <MaterialIcons
-              name="radio-button-off"
-              color={Colors.lightPurple}
-              style={styles.radioButtonIcon}
-            />
-            <Text style={styles.yesNoText}>Yes</Text>
-            <MaterialIcons
-              name="radio-button-on"
-              color={Colors.lightPurple}
-              style={styles.radioButtonIcon}
-            />
-            <Text style={styles.yesNoText}>No</Text>
-          </View>
-          <Text style={styles.inputsHeader}>Select Gender</Text>
-          <View style={styles.genderInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.black}
-              style={styles.genderInputField}
-              placeholder="Male"
-            />
-          </View>
-          <Text style={styles.mainHeader}>
-            Appointment Confirmation Details
-          </Text>
-          <Text style={styles.inputsHeader}>Mobile Number</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder="+91"
-            />
-          </View>
-          <View style={styles.addMoreText}>
-            <Ionicons
-              name="add-circle-outline"
-              color={Colors.lightPurple}
-              style={styles.circleAddIcon}
-            />
-            <Text style={styles.addDaysText}>Add More</Text>
-          </View>
-          <Text style={styles.AddMoreBottomText}>LandLine</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder=""
-            />
-          </View>
-          <View style={styles.addMoreText}>
-            <Ionicons
-              name="add-circle-outline"
-              color={Colors.lightPurple}
-              style={styles.circleAddIcon}
-            />
-            <Text style={styles.addDaysText}>Add More</Text>
-          </View>
-          <Text style={styles.AddMoreBottomText}>E-Mail</Text>
-          <View style={styles.cityInputHolder}>
-            <TextInput
-              placeholderTextColor={Colors.gray_200}
-              style={styles.inputField}
-              placeholder=""
-            />
-          </View>
         </View>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('ClinicAppointmentDetails')}
@@ -656,7 +575,7 @@ const styles = StyleSheet.create({
     marginTop: '2%',
     marginBottom: '5%',
     paddingHorizontal: '5%',
-    height: '91.5%',
+    height: 'auto',
     width: '90%',
     borderRadius: 25,
     backgroundColor: Colors.white,
@@ -711,6 +630,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.gray_300,
     borderBottomWidth: 1.5,
     paddingBottom: '1%',
+    marginBottom: '2%',
   },
   rightDropDown: {
     width: '100%',
@@ -847,7 +767,7 @@ const styles = StyleSheet.create({
     // marginHorizontal: '2%',
     alignItems: 'center',
   },
-  circleAddIcon: {
+  circleaddIcon: {
     fontSize: 22,
   },
   addDaysText: {
@@ -957,6 +877,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   buttonText: {
     fontSize: 15,

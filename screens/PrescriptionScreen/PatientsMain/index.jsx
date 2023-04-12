@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,6 +21,7 @@ const PatientsMain = ({navigation}) => {
   const [viewMore, setViewMore] = useState(false);
 
   const patientName = useSelector(state => state.patientReducer.user);
+  const [menu, setMenu] = useState(false);
 
   return (
     <ScrollView
@@ -52,11 +54,29 @@ const PatientsMain = ({navigation}) => {
               color={Colors.black}
               style={styles.moreIcon}
             />
-            <MaterialIcons
-              name="more-vert"
-              color={Colors.black}
-              style={styles.moreIcon}
-            />
+            <Pressable onPressIn={() => setMenu(!menu)}>
+              <MaterialIcons
+                name="more-vert"
+                color={Colors.black}
+                style={styles.moreIcon}
+              />
+            </Pressable>
+            <Modal
+              animationType="fade"
+              transparent={true}
+              visible={menu}
+              onRequestClose={() => {
+                setMenu(!menu);
+              }}>
+              <TouchableOpacity onPressIn={() => setMenu(!menu)}>
+                <View style={styles.menuContainer}>
+                  <Text style={styles.menuText}>Help</Text>
+                  <Text style={styles.menuText}>Customize EMR</Text>
+                  <Text style={styles.menuText}>Edit Layout</Text>
+                  <Text style={styles.menuText}>End Consultation</Text>
+                </View>
+              </TouchableOpacity>
+            </Modal>
           </View>
         </View>
         {viewMore && (
@@ -157,20 +177,23 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     position: 'absolute',
     zIndex: 1,
   },
   navHeader: {
-    height: 140,
+    height: 'auto',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 100,
   },
   leftText: {
     flexDirection: 'row',
     marginHorizontal: '3%',
+    marginTop: '15%',
+    marginVertical: '10%',
     alignItems: 'center',
-    justifyContent: 'space-between',
     gap: 10,
   },
   backIcon: {
@@ -189,11 +212,32 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   rightText: {
-    marginLeft: '18%',
+    // marginLeft: '18%',
     flexDirection: 'row',
+    marginTop: '15%',
+    marginVertical: '10%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // gap: 20,
   },
   moreIcon: {
     fontSize: 35,
+  },
+  menuContainer: {
+    height: '41%',
+    width: '45%',
+    marginTop: '25%',
+    marginRight: '8%',
+    alignSelf: 'flex-end',
+    padding: '5%',
+    borderRadius: 20,
+    backgroundColor: Colors.white,
+  },
+  menuText: {
+    fontSize: 17,
+    fontWeight: '400',
+    color: Colors.black,
+    marginVertical: '5%',
   },
   arrowDown: {
     justifyContent: 'center',
@@ -266,21 +310,20 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
   },
   buttons: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'space-between',
     marginHorizontal: '5%',
-    marginTop: '48%',
+    marginTop: '46%',
     width: '90%',
     borderBottomColor: Colors.gray_100,
     borderBottomWidth: 2,
   },
-
   selectedButton: {
     width: '77%',
     fontSize: 18,
-    marginLeft: '10%',
+    marginLeft: '15%',
     paddingVertical: 12,
     color: Colors.darkPurple,
     borderBottomColor: Colors.darkPurple,

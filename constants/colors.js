@@ -3,7 +3,9 @@ export const Colors = {
   white: '#fff',
   black: '#000',
   orange: '#ff6f00',
+
   red: '#ff0000',
+  red_100: '#ffe0e0',
 
   green: '#00ff00',
   green_100: '#33FFB7',
@@ -24,6 +26,7 @@ export const Colors = {
   slate_300: '#afafaf',
   slate_400: '#f7f6fe',
   slate_500: '#9c9c9c',
+  slate_600: '#ababb0',
 
   gray_100: '#d8d8d8',
   gray_200: '#D3D3D3',

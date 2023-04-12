@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -62,13 +63,7 @@ const Preview = () => {
               onRequestClose={() => {
                 setDownload(!download);
               }}>
-              <TouchableOpacity
-                style={
-                  download === true
-                    ? [styles.container, styles.notActiveBg]
-                    : [styles.container, styles.activeBg]
-                }
-                onPressIn={() => setDownload(!download)}>
+              <TouchableOpacity onPressIn={() => setDownload(!download)}>
                 <View style={styles.downloadContainer}>
                   <Text style={styles.downloadHeader}>
                     Sharing Prescription
@@ -107,43 +102,6 @@ const Preview = () => {
           </View>
         </View>
       </LinearGradient>
-      <View style={styles.mainContainer}>
-        <View style={styles.flexContainer}>
-          <Text style={styles.bigText}>Select preferred languages:</Text>
-          <View style={styles.flexText}>
-            <Text style={styles.colorText}>English</Text>
-            <FontAwesome
-              name="angle-down"
-              color={Colors.darkPurple}
-              style={styles.dropDown}
-            />
-          </View>
-        </View>
-        <Text style={styles.smallText}>
-          Only Medication instructions will be changed to select language
-        </Text>
-      </View>
-      {download && (
-        <View style={styles.downloadContainer}>
-          <Text style={styles.downloadHeader}>Sharing Prescription</Text>
-          <View style={styles.pdfFlex}>
-            <Text style={styles.pdfText}>PDF</Text>
-            <MaterialIcons
-              name="check-circle"
-              color={Colors.green_300}
-              style={styles.pdfCircleIcon}
-            />
-          </View>
-          <View style={styles.bar}>
-            <View style={styles.colorBar} />
-          </View>
-          <View style={styles.downloadingContainer}>
-            <Text style={styles.downloadingText}>
-              Downloading Prescription... 40%
-            </Text>
-          </View>
-        </View>
-      )}
       <View style={styles.mainContainer}>
         <View style={styles.flexContainer}>
           <Text style={styles.bigText}>Select preferred languages:</Text>
