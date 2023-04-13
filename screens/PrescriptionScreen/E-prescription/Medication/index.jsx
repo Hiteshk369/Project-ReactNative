@@ -13,9 +13,60 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {MedicationOptions, StepsIndicator} from '../../../../components';
 import {Colors} from '../../../../constants/colors';
 import {Pressable} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+
+const suggestions = [
+  {
+    id: 1,
+    name: 'PAN-D CAP PR',
+  },
+  {
+    id: 2,
+    name: 'AZEE 500MG TAB',
+  },
+  {
+    id: 3,
+    name: 'STAMLO BETA M T...',
+  },
+  {
+    id: 4,
+    name: 'MONTEK 8MG CAP',
+  },
+  {
+    id: 5,
+    name: 'MEDROL 8MG CAP',
+  },
+  {
+    id: 6,
+    name: 'TELEKAST L TAB',
+  },
+  {
+    id: 7,
+    name: 'DOLO 650MG TAB',
+  },
+];
 
 const Medication = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalItem, setModalItem] = useState('');
+  const [items, setItems] = useState([]);
+
+  const handleModal = name => {
+    setModalItem(name);
+    setModalVisible(true);
+  };
+  const dispatch = useDispatch();
+  const [allMedicineItems, setAllMedicineItems] = useState([]);
+  useEffect(() => {
+    if (allMedicineItems.length > 0) {
+      dispatch({
+        type: 'SET_MEDICINE',
+        allMedicines: allMedicineItems,
+      });
+    }
+  });
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -40,6 +91,90 @@ const Medication = ({navigation}) => {
                 style={styles.inputField}
                 placeholder="Search for Medication"
               />
+              {allMedicineItems.length > 0 && (
+                <View
+                  style={{
+                    width: '90%',
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 6,
+                  }}>
+                  <View
+                    style={{
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 14,
+                        color: Colors.darkPurple,
+                      }}>
+                      Added
+                    </Text>
+                    <Pressable onPressIn={() => setAllMedicineItems([])}>
+                      <Text
+                        style={{
+                          fontWeight: '600',
+                          fontSize: 14,
+                          color: Colors.red,
+                        }}>
+                        Clear All
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {allMedicineItems.map((data, index) => (
+                    <View
+                      style={{flexDirection: 'column', gap: 3, marginTop: 4}}>
+                      <View
+                        key={index}
+                        style={{
+                          marginTop: 6,
+                          marginLeft: 2,
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 8,
+                          }}>
+                          <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                          <Text
+                            style={{color: Colors.gray_700, fontWeight: '500'}}>
+                            {data.medicineName}
+                          </Text>
+                        </View>
+                        <Pressable>
+                          <Text
+                            style={{color: Colors.gray_700, fontWeight: '500'}}>
+                            x
+                          </Text>
+                        </Pressable>
+                      </View>
+                      <View style={{marginLeft: 18}}>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            color: Colors.gray_400,
+                            fontWeight: '500',
+                          }}>
+                          {data.frequency}, {data.count}
+                          {data.duration}, {data.timings}, {data.instructions}
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
+                  <View
+                    style={{
+                      borderColor: Colors.gray_400,
+                      borderWidth: 1,
+                      marginTop: 12,
+                    }}
+                  />
+                </View>
+              )}
               <Text style={styles.suggestionsHeader}>Recently used</Text>
               <View style={styles.suggestionsFlex}>
                 <Modal
@@ -49,54 +184,106 @@ const Medication = ({navigation}) => {
                   onRequestClose={() => {
                     setModalVisible(!modalVisible);
                   }}>
-                  <TouchableOpacity
-                    // style={[styles.button, styles.buttonClose]}
-                    onPressIn={() => setModalVisible(!modalVisible)}>
-                    <MedicationOptions />
-                  </TouchableOpacity>
+                  <MedicationOptions
+                    modalVisible={modalVisible}
+                    setModalVisible={setModalVisible}
+                    modalItem={modalItem}
+                    allMedicineItems={allMedicineItems}
+                    setAllMedicineItems={setAllMedicineItems}
+                  />
                 </Modal>
                 <TouchableOpacity
-                  // style={[styles.button, styles.buttonOpen]}
-                  onPressIn={() => setModalVisible(true)}>
-                  <Text style={styles.suggestionsText}>AZEE 500MG TAB</Text>
+                  onPressIn={() => handleModal('AZEE 500MG TAB')}>
+                  <Text
+                    style={
+                      allMedicineItems.some(
+                        item => item.medicineName === 'AZEE 500MG TAB',
+                      )
+                        ? styles.activeSuggestionsText
+                        : styles.notActiveSuggestionsText
+                    }>
+                    AZEE 500MG TAB
+                  </Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>STAMLO BETA M T...</Text>
+                <TouchableOpacity
+                  onPressIn={() => handleModal('STAMLO BETA M T...')}>
+                  <Text
+                    style={
+                      allMedicineItems.some(
+                        item => item.medicineName === 'STAMLO BETA M T...',
+                      )
+                        ? styles.activeSuggestionsText
+                        : styles.notActiveSuggestionsText
+                    }>
+                    STAMLO BETA M T...
+                  </Text>
                 </TouchableOpacity>
               </View>
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>PAN-D CAP PR</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>AZEE 500MG TAB</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>STAMLO BETA M T...</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>MONTEK 8MG CAP</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>MEDROL 8MG CAP</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>TELEKAST L TAB</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.suggestionsFlex}>
-                <TouchableOpacity>
-                  <Text style={styles.suggestionsText}>DOLO 650MG TAB</Text>
-                </TouchableOpacity>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  marginHorizontal: '5%',
+                  gap: 10,
+                  marginVertical: '2%',
+                }}>
+                {suggestions.map(suggestion => (
+                  <TouchableOpacity
+                    onPressIn={() => handleModal(suggestion.name)}
+                    key={suggestion.id}
+                    style={
+                      allMedicineItems.some(
+                        item => item.medicineName === suggestion.name,
+                      )
+                        ? {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.lightPurple,
+                            backgroundColor: Colors.purple_100,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                        : {
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
+                            gap: 4,
+                            borderColor: Colors.gray_400,
+                            borderWidth: 1,
+                            marginVertical: '0.5%',
+                            paddingHorizontal: '4%',
+                            paddingVertical: '3%',
+                            borderRadius: 6,
+                          }
+                    }>
+                    <Text
+                      style={
+                        allMedicineItems.some(
+                          item => item.medicineName === suggestion.name,
+                        )
+                          ? {
+                              color: Colors.darkPurple,
+                              fontWeight: '500',
+                              maxWidth: 180,
+                              overflow: 'hidden',
+                            }
+                          : {
+                              color: Colors.gray_400,
+                              fontWeight: '500',
+                              maxWidth: 180,
+                              overflow: 'hidden',
+                            }
+                      }
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {suggestion.name}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </View>
@@ -190,13 +377,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     gap: 8,
   },
-  suggestionsText: {
+  notActiveSuggestionsText: {
     width: '60%',
     fontSize: 14,
     fontWeight: '500',
     borderWidth: 1,
     borderColor: Colors.gray_400,
     color: Colors.gray_400,
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 10,
+  },
+  activeSuggestionsText: {
+    width: '60%',
+    fontSize: 14,
+    fontWeight: '500',
+    borderWidth: 1,
+    borderColor: Colors.lightPurple,
+    color: Colors.darkPurple,
+    backgroundColor: Colors.purple_100,
     paddingHorizontal: '4%',
     paddingVertical: '3%',
     borderRadius: 10,

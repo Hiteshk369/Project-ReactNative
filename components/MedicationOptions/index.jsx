@@ -1,60 +1,264 @@
-import {View, Text, ScrollView, StyleSheet, TextInput} from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  Pressable,
+} from 'react-native';
+import React, {useEffect} from 'react';
 import {Colors} from '../../constants/colors';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native';
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-const MedicationOptions = () => {
+const frequencyOptions = [
+  {
+    id: 1,
+    name: '1-0-0',
+  },
+  {
+    id: 2,
+    name: '0-1-0',
+  },
+  {
+    id: 3,
+    name: '0-0-1',
+  },
+  {
+    id: 4,
+    name: '1-1-1',
+  },
+  {
+    id: 5,
+    name: '1-1-0',
+  },
+  {
+    id: 6,
+    name: '0-1-1',
+  },
+  {
+    id: 7,
+    name: '1-0-1',
+  },
+  {
+    id: 8,
+    name: '0-0-0',
+  },
+];
+
+const durationOptions = [
+  {
+    id: 1,
+    name: 'Days',
+  },
+  {
+    id: 2,
+    name: 'Weeks',
+  },
+  {
+    id: 3,
+    name: 'Months',
+  },
+  {
+    id: 4,
+    name: 'Years',
+  },
+];
+
+const timingOptions = [
+  {
+    id: 1,
+    name: 'Before Food',
+  },
+  {
+    id: 2,
+    name: 'After Food',
+  },
+  {
+    id: 3,
+    name: 'Any time of day',
+  },
+  {
+    id: 4,
+    name: 'Before lunch/dinner',
+  },
+  {
+    id: 5,
+    name: 'After lunch/dinner',
+  },
+  {
+    id: 6,
+    name: 'Empty stomach',
+  },
+  {
+    id: 7,
+    name: 'Severe pain',
+  },
+  {
+    id: 8,
+    name: 'At night',
+  },
+];
+
+const MedicationOptions = ({
+  modalVisible,
+  setModalVisible,
+  modalItem,
+  allMedicineItems,
+  setAllMedicineItems,
+}) => {
+  const [count, setCount] = useState(1);
+  const handleCountMinus = () => {
+    if (count != 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const [items, setItems] = useState({
+    medicineName: '',
+    combinations: '',
+    frequency: '',
+    quantity: '',
+    count: 1,
+    duration: '',
+    timings: '',
+    instructions: '',
+  });
+  const medicationItems = useSelector(
+    state => state.prescriptionReducer.medication,
+  );
+
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+  useEffect(() => {
+    setItems(prevState => ({
+      ...prevState,
+      count: count,
+      medicineName: modalItem,
+    }));
+  }, [count, modalItem]);
+
+  const dispatch = useDispatch();
+
+  const dispatchData = () => {
+    setAllMedicineItems([...allMedicineItems, items]);
+    dispatch({
+      type: 'SET_MEDICATION',
+      medication: items,
+    });
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.card}>
         <View style={styles.navigation}>
-          <Text style={styles.navigationText}>AZEE 500MG TAB</Text>
-          <MaterialIcons
-            name="close"
-            color={Colors.black}
-            style={styles.closeIcon}
-          />
+          <Text style={styles.navigationText}>{modalItem}</Text>
+          <Pressable onPressIn={() => setModalVisible(!modalVisible)}>
+            <MaterialIcons
+              name="close"
+              color={Colors.black}
+              style={styles.closeIcon}
+            />
+          </Pressable>
         </View>
         <View style={styles.bodyContainer}>
           <Text style={styles.bodyTopText}>Combinations</Text>
           <Text style={styles.bodyTopColorText}>Clear Selection</Text>
         </View>
-        <TouchableOpacity style={styles.activeButton}>
-          <Text style={styles.activeButtonText}>0-0-1 For 5 days , A... </Text>
+        <TouchableOpacity
+          onPressIn={() =>
+            setItems(prevState => ({
+              ...prevState,
+              combinations: '0-0-1 For 5 days , A...',
+            }))
+          }
+          style={
+            items.combinations === '0-0-1 For 5 days , A...'
+              ? styles.activeButton
+              : styles.notActiveButton
+          }>
+          <Text
+            style={
+              items.combinations === '0-0-1 For 5 days , A...'
+                ? styles.activeButtonText
+                : styles.notActiveButtonText
+            }>
+            0-0-1 For 5 days , A...{' '}
+          </Text>
         </TouchableOpacity>
         <View style={styles.bodyContainer}>
           <Text style={styles.bodyTopText}>Frequency</Text>
         </View>
-        <View style={styles.flexButtonsContainer}>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtonsColor}>
-            <Text style={styles.flexButtonsColorText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.flexButtonsContainer}>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.flexButtonsText}>1-0-0</Text>
-          </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: 10,
+            marginVertical: '2%',
+          }}>
+          {frequencyOptions.length > 0 &&
+            frequencyOptions.map(option => (
+              <TouchableOpacity
+                onPressIn={() =>
+                  setItems(prevState => ({
+                    ...prevState,
+                    frequency: option.name,
+                  }))
+                }
+                key={option.id}
+                style={
+                  items.frequency === option.name
+                    ? {
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: 4,
+                        borderColor: Colors.lightPurple,
+                        backgroundColor: Colors.purple_100,
+                        borderWidth: 1,
+                        marginVertical: '0.5%',
+                        paddingHorizontal: '4%',
+                        paddingVertical: '3%',
+                        borderRadius: 6,
+                      }
+                    : {
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: 4,
+                        borderColor: Colors.gray_400,
+                        borderWidth: 1,
+                        marginVertical: '0.5%',
+                        paddingHorizontal: '4%',
+                        paddingVertical: '3%',
+                        borderRadius: 6,
+                      }
+                }>
+                <Text
+                  style={
+                    items.frequency === option.name
+                      ? {
+                          fontSize: 15,
+                          fontWeight: '500',
+                          color: Colors.darkPurple,
+                          width: 50,
+                          textAlign: 'center',
+                        }
+                      : {
+                          fontSize: 15,
+                          fontWeight: '500',
+                          color: Colors.gray_500,
+                          width: 50,
+                          textAlign: 'center',
+                        }
+                  }>
+                  {option.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
         </View>
         <TouchableOpacity style={styles.customButton}>
           <Text style={styles.customButtonText}>Custom</Text>
@@ -67,69 +271,125 @@ const MedicationOptions = () => {
         <View style={styles.bodyContainer}>
           <Text style={styles.bodyTopText}>Quantity</Text>
         </View>
-        <TextInput style={styles.boxText} placeholder="    1 Tab/1 Tsp/5 ml" />
+        <TextInput
+          onChangeText={text =>
+            setItems(prevState => ({...prevState, quantity: text}))
+          }
+          style={styles.boxText}
+          placeholder="1 Tab/1 Tsp/5 ml"
+        />
         <View style={styles.bodyContainer}>
           <Text style={styles.bodyTopText}>Duration</Text>
         </View>
         <View style={styles.durationContainer}>
-          <TouchableOpacity style={styles.numberTextContainer}>
+          <Pressable
+            onPressIn={handleCountMinus}
+            style={styles.numberTextContainer}>
             <AntDesign
               name="minus"
               color={Colors.black}
               style={styles.minusIcon}
             />
-            <Text style={styles.numberText}>5</Text>
+          </Pressable>
+          <View style={styles.numberTextContainer}>
+            <Text style={styles.numberText}>{count}</Text>
+          </View>
+          <Pressable
+            onPressIn={() => setCount(count + 1)}
+            style={styles.numberTextContainer}>
             <MaterialIcons
               name="add"
               color={Colors.black}
               style={styles.minusIcon}
             />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.daysText}>Days</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.weeksText}>Weeks</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.weeksText}>Months</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.weeksText}>Years</Text>
-          </TouchableOpacity>
+          </Pressable>
+          {durationOptions.length > 0 &&
+            durationOptions.map(option => (
+              <TouchableOpacity
+                onPressIn={() =>
+                  setItems(prevState => ({...prevState, duration: option.name}))
+                }
+                key={option.id}>
+                <Text
+                  style={
+                    items.duration === option.name
+                      ? {
+                          color: Colors.darkPurple,
+                          borderColor: Colors.lightPurple,
+                          backgroundColor: Colors.purple_100,
+                          borderWidth: 1,
+                          fontWeight: '500',
+                          paddingHorizontal: '4.4%',
+                          paddingVertical: '2%',
+                        }
+                      : styles.weeksText
+                  }>
+                  {option.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
         </View>
         <View style={styles.bodyContainer}>
           <Text style={styles.bodyTopText}>Timings</Text>
         </View>
-        <View style={styles.flexButtonsContainer}>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>Before food</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtonsColor}>
-            <Text style={styles.timingButtonsColorText}>After food</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>Any time of day</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.flexButtonsContainer}>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>Before lunch/dinner</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>after lunch/dinner</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.flexButtonsContainer}>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>Empty stomach</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>Severe pain</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.flexButtons}>
-            <Text style={styles.timingButtonsText}>At night</Text>
-          </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: 10,
+            marginVertical: '2%',
+          }}>
+          {timingOptions.length > 0 &&
+            timingOptions.map(option => (
+              <TouchableOpacity
+                onPressIn={() =>
+                  setItems(prevState => ({...prevState, timings: option.name}))
+                }
+                key={option.id}
+                style={
+                  items.timings === option.name
+                    ? {
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: 4,
+                        borderColor: Colors.lightPurple,
+                        backgroundColor: Colors.purple_100,
+                        borderWidth: 1,
+                        marginVertical: '0.5%',
+                        paddingHorizontal: '4%',
+                        paddingVertical: '3%',
+                        borderRadius: 6,
+                      }
+                    : {
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: 4,
+                        borderColor: Colors.gray_400,
+                        borderWidth: 1,
+                        marginVertical: '0.5%',
+                        paddingHorizontal: '4%',
+                        paddingVertical: '3%',
+                        borderRadius: 6,
+                      }
+                }>
+                <Text
+                  style={
+                    items.timings === option.name
+                      ? {
+                          fontSize: 14,
+                          fontWeight: '500',
+                          color: Colors.darkPurple,
+                        }
+                      : {
+                          fontSize: 14,
+                          fontWeight: '500',
+                          color: Colors.gray_500,
+                        }
+                  }>
+                  {option.name}
+                </Text>
+              </TouchableOpacity>
+            ))}
         </View>
         <TouchableOpacity style={styles.customButton}>
           <Text style={styles.customButtonText}>Custom</Text>
@@ -143,10 +403,15 @@ const MedicationOptions = () => {
           <Text style={styles.bodyTopText}>Instructions(optional)</Text>
         </View>
         <TextInput
+          onChangeText={text =>
+            setItems(prevState => ({...prevState, instructions: text}))
+          }
           style={styles.boxText}
-          placeholder="    Enter instructions here"
+          placeholder="Enter instructions here"
         />
-        <TouchableOpacity style={styles.buttonBackground}>
+        <TouchableOpacity
+          onPressIn={dispatchData}
+          style={styles.buttonBackground}>
           <Text style={styles.buttonText}>Add Medicine</Text>
         </TouchableOpacity>
       </View>
@@ -202,12 +467,26 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.red,
   },
+  notActiveButton: {
+    borderWidth: 1,
+    borderColor: Colors.gray_200,
+    backgroundColor: Colors.white,
+    borderRadius: 5,
+    width: '47%',
+  },
   activeButton: {
     borderWidth: 1,
-    borderColor: Colors.darkPurple,
+    borderColor: Colors.lightPurple,
     backgroundColor: Colors.purple_100,
     borderRadius: 5,
     width: '47%',
+  },
+  notActiveButtonText: {
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    fontSize: 15,
+    fontWeight: '500',
+    color: Colors.gray_500,
   },
   activeButtonText: {
     paddingHorizontal: '5%',
@@ -232,14 +511,14 @@ const styles = StyleSheet.create({
     paddingVertical: '2%',
     fontSize: 15,
     fontWeight: '500',
-    color: Colors.gray_400,
+    color: Colors.gray_600,
   },
   timingButtonsText: {
     paddingHorizontal: '3.3%',
     paddingVertical: '2%',
     fontSize: 15,
     fontWeight: '500',
-    color: Colors.gray_400,
+    color: Colors.gray_600,
   },
   timingButtonsColorText: {
     paddingHorizontal: '3.3%',
@@ -270,13 +549,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '30%',
     marginBottom: '5%',
+    marginTop: '1%',
   },
   customButtonText: {
     paddingHorizontal: '10%',
     paddingVertical: '8%',
     fontSize: 15,
     fontWeight: '500',
-    color: Colors.gray_200,
+    color: Colors.gray_600,
   },
   editIcon: {
     fontSize: 18,
@@ -285,6 +565,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.gray_100,
     borderRadius: 5,
+    paddingLeft: 15,
   },
   durationContainer: {
     flexDirection: 'row',
@@ -319,7 +600,7 @@ const styles = StyleSheet.create({
     paddingVertical: '2%',
   },
   weeksText: {
-    color: Colors.gray_200,
+    color: Colors.gray_500,
     fontWeight: '500',
     paddingHorizontal: '4.4%',
     paddingVertical: '2%',

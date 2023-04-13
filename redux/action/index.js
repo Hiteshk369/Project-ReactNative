@@ -15,5 +15,6 @@ export const actionType = () => {
     SET_REFER_TO: 'SET_REFER_TO',
     SET_REFER_BY: 'SET_REFER_By',
     SET_DOCTOR_NOTES: 'SET_DOCTOR_NOTES',
+    SET_MEDICINE: 'SET_MEDICINE',
   };
 };
