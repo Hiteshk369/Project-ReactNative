@@ -57,7 +57,7 @@ const MainAppointment = ({navigation}) => {
                 <Text style={styles.consultedText}>Patients Consulted</Text>
                 <Text style={styles.lineText}> </Text>
                 <Text style={styles.numbersText}>2 </Text>
-                <Text style={styles.consultedText}>Completed Appoinments</Text>
+                <Text style={styles.consultedText}>Completed Appointments</Text>
               </View>
             </LinearGradient>
           </View>
@@ -268,17 +268,19 @@ const styles = StyleSheet.create({
   addButton: {
     color: Colors.white,
     borderRadius: 25,
-    width: '30%',
-    display: 'flex',
+    // width: '30%',
+    // display: 'flex',
     backgroundColor: Colors.darkPurple,
     textAlign: 'center',
-    marginLeft: '35%',
-    padding: '2%',
+    alignSelf: 'center',
+    // marginLeft: '35%',
+    padding: '4%',
     fontSize: 13,
   },
   calenderCard: {
-    display: 'flex',
+    alignSelf: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     width: '90%',
     height: 250,
     borderRadius: 20,
@@ -289,10 +291,12 @@ const styles = StyleSheet.create({
   nameCard: {
     color: Colors.black,
     fontSize: 18,
-    marginTop: '2%',
+    // marginTop: '2%',
+    alignSelf: 'center',
   },
   timeCard: {
     color: Colors.black,
+    alignSelf: 'center',
     fontWeight: 300,
     fontSize: 12,
   },

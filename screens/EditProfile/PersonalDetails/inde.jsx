@@ -46,7 +46,7 @@ const yourWebsiteOptions = [
   },
 ];
 
-const PersonalDetails = () => {
+const PersonalDetails = ({navigation}) => {
   const [specializationDropdown, setSpecializationDropdown] = useState(false);
   const [specializationOption, setSpecializationOption] =
     useState('Pulmonologist');
@@ -61,6 +61,16 @@ const PersonalDetails = () => {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         style={styles.container}>
+        <View style={styles.navContainer}>
+          <TouchableOpacity onPressIn={() => navigation.navigate('Profile')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.navIcon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.navText}>Edit Profile</Text>
+        </View>
         <View style={styles.uploadImage} />
         <TouchableOpacity style={styles.buttonBackground}>
           <MaterialIcons name="mode-edit" color={'white'} />
@@ -312,7 +322,9 @@ const PersonalDetails = () => {
             {/* <View style={styles.saveButtonContainer}>
               <SaveButton nextScreen="VerificationRegistration" />
             </View> */}
-            <TouchableOpacity style={styles.bottomButtonBackground}>
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('Verification')}
+              style={styles.bottomButtonBackground}>
               <Text style={styles.bottomButtonText}>Update</Text>
             </TouchableOpacity>
           </View>
@@ -332,6 +344,23 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+  navContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap: 110,
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.gray_200,
+  },
+  navIcon: {
+    fontSize: 22,
+  },
+  navText: {
+    fontSize: 18,
+    color: Colors.white,
+  },
   wholeContainer: {
     height: 1500,
   },
@@ -343,13 +372,13 @@ const styles = StyleSheet.create({
     borderColor: Colors.white,
     borderWidth: 2,
     borderRadius: 50,
-    top: '11%',
+    top: '14%',
     alignSelf: 'center',
     zIndex: 50,
   },
   buttonBackground: {
     position: 'absolute',
-    top: '19%',
+    top: '21%',
     alignSelf: 'center',
     zIndex: 100,
     fontSize: 20,
@@ -529,7 +558,7 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
   },
   bottomButtonBackground: {
-    marginVertical: '10%',
+    marginVertical: '8%',
     width: '98%',
     paddingVertical: 15,
     backgroundColor: Colors.orange,

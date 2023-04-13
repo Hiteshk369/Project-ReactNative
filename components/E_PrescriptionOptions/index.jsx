@@ -275,7 +275,9 @@ const E_PrescriptionOptions = ({navigation, screen}) => {
           <TouchableOpacity style={styles.buttonBackground}>
             <Text style={styles.buttonText}>Preview Rx</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.activeButtonBackground}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('ConsultationMain')}
+            style={styles.activeButtonBackground}>
             <Text style={styles.activeButtonText}>End Consultation</Text>
           </TouchableOpacity>
         </View>

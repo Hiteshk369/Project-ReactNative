@@ -10,15 +10,27 @@ import {
 import {FormNavigation, SaveButton} from '../../../components';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 
-const Verification = () => {
+const Verification = ({navigation}) => {
   return (
     <LinearGradient
       colors={[Colors.darkPurple, Colors.lightPurple]}
       style={styles.gradient}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+        <View style={styles.navContainer}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('PersonalDetails')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.navIcon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.navText}>Edit Profile</Text>
+        </View>
         <View style={styles.breadCrumb}>
           <FormNavigation />
         </View>
@@ -128,7 +140,9 @@ const Verification = () => {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.bottomButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('BankingDetails')}
+          style={styles.bottomButtonBackground}>
           <Text style={styles.bottomButtonText}>Verify</Text>
         </TouchableOpacity>
         {/* <View style={styles.buttonContainer}>
@@ -148,6 +162,23 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+  },
+  navContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap: 110,
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.gray_200,
+  },
+  navIcon: {
+    fontSize: 22,
+  },
+  navText: {
+    fontSize: 18,
+    color: Colors.white,
   },
   breadCrumb: {
     height: '9%',
@@ -252,7 +283,8 @@ const styles = StyleSheet.create({
   //     marginBottom: '15%',
   //   },
   bottomButtonBackground: {
-    marginVertical: '10%',
+    marginVertical: '8%',
+    marginBottom: '13%',
     width: '90%',
     paddingVertical: 15,
     backgroundColor: Colors.orange,

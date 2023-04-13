@@ -16,6 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const instituteOptions = [
@@ -49,7 +50,7 @@ const specializationOptions = [
   },
 ];
 
-const ExperienceEducation = () => {
+const ExperienceEducation = ({navigation}) => {
   const [instituteDropdown, setInstituteDropdown] = useState(false);
   const [instituteOption, setInstituteOption] = useState(
     'Select Your Institute',
@@ -67,6 +68,17 @@ const ExperienceEducation = () => {
       colors={[Colors.darkPurple, Colors.lightPurple]}
       style={styles.gradient}>
       <ScrollView style={styles.container}>
+        <View style={styles.navContainer}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('BankingDetails')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.navIcon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.navText}>Edit Profile</Text>
+        </View>
         <View style={styles.breadCrumb}>
           <FormNavigation />
         </View>
@@ -304,7 +316,9 @@ const ExperienceEducation = () => {
           {/* <View style={styles.saveButtonContainer}>
             <SaveButton nextScreen="Home" />
           </View> */}
-          <TouchableOpacity style={styles.bottomButtonBackground}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('PictureVideo')}
+            style={styles.bottomButtonBackground}>
             <Text style={styles.bottomButtonText}>Save & Proceed</Text>
           </TouchableOpacity>
         </View>
@@ -322,6 +336,23 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+  },
+  navContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap: 110,
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.gray_200,
+  },
+  navIcon: {
+    fontSize: 22,
+  },
+  navText: {
+    fontSize: 18,
+    color: Colors.white,
   },
   breadCrumb: {
     height: '12%',

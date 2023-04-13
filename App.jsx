@@ -79,7 +79,7 @@ const App = () => {
     <Provider store={store}>
       <HomeStack />
     </Provider>
-    // <Immunization />
+    // <ConsultationCompleted />
   );
 };
 
