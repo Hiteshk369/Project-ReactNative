@@ -31,7 +31,7 @@ const dropDownOptions = [
   },
 ];
 
-const AddInVoice = () => {
+const AddInVoice = ({navigation}) => {
   const [dropdown, setDropdown] = useState(false);
   const [selectOption, setSelectOption] = useState('Consultation');
   const [data, setData] = useState(dropDownOptions);
@@ -49,11 +49,14 @@ const AddInVoice = () => {
         style={styles.gradient}>
         <View style={styles.navBackground}>
           <View style={styles.Flex}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.leftText}
-            />
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('ConsultationCompleted')}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.white}
+                style={styles.leftText}
+              />
+            </TouchableOpacity>
             <Text style={styles.leftText}>Add Invoice</Text>
           </View>
         </View>

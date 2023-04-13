@@ -68,13 +68,22 @@ import {
   FollowUp,
 } from '../screens/PrescriptionScreen/BottomThreeButtons';
 import {useState} from 'react';
+import AddInVoice from '../screens/AddInVoice';
+import {ConsultationCompleted, ConsultationMain} from '../screens/Consultation';
+import {E_PrescriptionOptions} from '../components';
+import {
+  BankingDetails,
+  ExperienceEducation,
+  PersonalDetails,
+  PictureVideo,
+  Verification,
+} from '../screens/EditProfile';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const HomeNav = () => {
   const navigation = useNavigation();
-
   const [toggleIcon, setToggleIcon] = useState(false);
   const toggleSwitch = () => setToggleIcon(previousState => !previousState);
   return (
@@ -223,6 +232,76 @@ const HomeNav = () => {
       <Stack.Screen
         name="Timeline"
         component={Timeline}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ConsultationMain"
+        component={ConsultationMain}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="E_PrescriptionOptions"
+        component={E_PrescriptionOptions}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ConsultationCompleted"
+        component={ConsultationCompleted}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AddInVoice"
+        component={AddInVoice}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PatientsMain"
+        component={PatientsMain}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Verification"
+        component={Verification}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PersonalDetails"
+        component={PersonalDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BankingDetails"
+        component={BankingDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ExperienceEducation"
+        component={ExperienceEducation}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PictureVideo"
+        component={PictureVideo}
         options={{
           headerShown: false,
         }}
@@ -405,6 +484,13 @@ const PrescribeNav = () => {
       <Stack.Screen
         name="Immunization"
         component={Immunization}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PersonalDetails"
+        component={PersonalDetails}
         options={{
           headerShown: false,
         }}

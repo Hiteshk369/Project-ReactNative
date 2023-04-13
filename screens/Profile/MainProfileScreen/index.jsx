@@ -18,12 +18,14 @@ const MainProfileScreen = ({navigation}) => {
         colors={[Colors.darkPurple, Colors.lightPurple]}
         style={styles.gradient}>
         <View style={styles.navBackground}>
-          <View style={styles.box}></View>
+          <View style={styles.box} />
           <Text style={styles.nameText}>Umar</Text>
           <Text style={styles.numberText}>9866733112</Text>
         </View>
-        <TouchableOpacity style={styles.buttonBackground}>
-          <MaterialIcons name="mode-edit" color={Colors.styles} />
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('PersonalDetails')}
+          style={styles.buttonBackground}>
+          <MaterialIcons name="mode-edit" color={Colors.white} />
           <Text style={styles.buttonText}>Edit Profile</Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   gradient: {
-    height: '14%',
+    height: '12.5%',
     marginBottom: '22%',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
@@ -172,7 +174,6 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: 18,
     fontWeight: '600',
-    marginBottom: '0%',
   },
   numberText: {
     marginBottom: '0%',

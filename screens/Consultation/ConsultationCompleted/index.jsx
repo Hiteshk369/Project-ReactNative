@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../../constants/colors';
 
-const ConsultationCompleted = () => {
+const ConsultationCompleted = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <LinearGradient
@@ -18,11 +18,14 @@ const ConsultationCompleted = () => {
         style={styles.gradient}>
         <View style={styles.navBackground}>
           <View style={styles.navText}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.backIcon}
-            />
+            <TouchableOpacity
+              onPressIn={() => navigation.navigate('ConsultationMain')}>
+              <MaterialIcons
+                name="arrow-back-ios"
+                color={Colors.white}
+                style={styles.backIcon}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.navText}>
             <MaterialIcons
@@ -92,11 +95,15 @@ const ConsultationCompleted = () => {
               Generate invoice for {'\n'}Sandeep R Reddy
             </Text>
           </View>
-          <MaterialIcons
-            name="add-circle"
-            color={Colors.darkPurple}
-            style={styles.addCircleIcon}
-          />
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('AddInVoice')}
+            style={styles.addButton}>
+            <MaterialIcons
+              name="add-circle"
+              color={Colors.darkPurple}
+              style={styles.addCircleIcon}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.buttonsFlex}>
@@ -263,6 +270,10 @@ const styles = StyleSheet.create({
   },
   addCircleIcon: {
     fontSize: 40,
+  },
+  addButton: {
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
     marginLeft: '18%',
   },
   buttonsFlex: {

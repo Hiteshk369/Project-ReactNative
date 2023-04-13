@@ -4,60 +4,66 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '../../../constants/colors';
 
-const ConsultationMain = () => {
+const ConsultationMain = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient
-        colors={[Colors.green_100, Colors.green_200]}
-        style={styles.gradient}>
-        <View style={styles.navBackground}>
-          <View style={styles.navText}>
-            <MaterialIcons
-              name="arrow-back-ios"
-              color={Colors.white}
-              style={styles.backIcon}
-            />
+      <Pressable onPressIn={() => navigation.navigate('ConsultationCompleted')}>
+        <LinearGradient
+          colors={[Colors.green_100, Colors.green_200]}
+          style={styles.gradient}>
+          <View style={styles.navBackground}>
+            <View style={styles.navText}>
+              <TouchableOpacity
+                onPressIn={() => navigation.navigate('E_PrescriptionOptions')}>
+                <MaterialIcons
+                  name="arrow-back-ios"
+                  color={Colors.white}
+                  style={styles.backIcon}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.navText}>
+              <MaterialIcons
+                name="print"
+                color={Colors.white}
+                style={styles.printIcon}
+              />
+            </View>
           </View>
-          <View style={styles.navText}>
-            <MaterialIcons
-              name="print"
-              color={Colors.white}
-              style={styles.printIcon}
-            />
-          </View>
-        </View>
-        <View style={styles.iconText}>
-          <MaterialIcons
-            name="check-circle"
-            color={Colors.green_300}
-            style={styles.circleIcon}
-          />
-        </View>
-        <View style={styles.bottomHeaderText}>
-          <View style={styles.bottomHeaderFlex}>
+          <View style={styles.iconText}>
             <MaterialIcons
               name="check-circle"
               color={Colors.green_300}
-              style={styles.circleSmallIcon}
+              style={styles.circleIcon}
             />
-            <Text style={styles.Text}>Consultation Complete</Text>
           </View>
-          <View style={styles.bottomHeaderFlex}>
-            <MaterialIcons
-              name="check-circle"
-              color={Colors.green_300}
-              style={styles.circleSmallIcon}
-            />
-            <Text style={styles.Text}>Prescription not Shared</Text>
+          <View style={styles.bottomHeaderText}>
+            <View style={styles.bottomHeaderFlex}>
+              <MaterialIcons
+                name="check-circle"
+                color={Colors.green_300}
+                style={styles.circleSmallIcon}
+              />
+              <Text style={styles.Text}>Consultation Complete</Text>
+            </View>
+            <View style={styles.bottomHeaderFlex}>
+              <MaterialIcons
+                name="check-circle"
+                color={Colors.green_300}
+                style={styles.circleSmallIcon}
+              />
+              <Text style={styles.Text}>Prescription not Shared</Text>
+            </View>
           </View>
-        </View>
-      </LinearGradient>
+        </LinearGradient>
+      </Pressable>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity style={styles.bottomButtonsBackground}>
           <Text style={styles.buttonText}>Go to homepage</Text>
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     height: 550,
-    marginBottom: '45%',
+    marginBottom: '34%',
   },
   navBackground: {
     flexDirection: 'row',

@@ -12,6 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../../constants/colors';
 import {FormNavigation, SaveButton} from '../../../components';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -26,7 +27,7 @@ const accountTypeOptions = [
   },
 ];
 
-const BankingDetails = () => {
+const BankingDetails = ({navigation}) => {
   const [accountTypeDropdown, setAccountTypeDropdown] = useState(false);
   const [accountTypeOption, setAccountTypeOption] = useState(
     'Select Account Type',
@@ -36,6 +37,17 @@ const BankingDetails = () => {
       colors={[Colors.darkPurple, Colors.lightPurple]}
       style={styles.gradient}>
       <ScrollView style={styles.container}>
+        <View style={styles.navContainer}>
+          <TouchableOpacity
+            onPressIn={() => navigation.navigate('Verification')}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              color={Colors.white}
+              style={styles.navIcon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.navText}>Edit Profile</Text>
+        </View>
         <View style={styles.breadCrumb}>
           <FormNavigation />
         </View>
@@ -149,7 +161,9 @@ const BankingDetails = () => {
         {/* <View style={styles.saveButton}>
           <SaveButton nextScreen="ExperienceDetailsRegistration" />
         </View> */}
-        <TouchableOpacity style={styles.bottomButtonBackground}>
+        <TouchableOpacity
+          onPressIn={() => navigation.navigate('ExperienceEducation')}
+          style={styles.bottomButtonBackground}>
           <Text style={styles.bottomButtonText}>Update</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -166,6 +180,23 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+  },
+  navContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap: 110,
+    paddingHorizontal: '5%',
+    paddingVertical: '5%',
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.gray_200,
+  },
+  navIcon: {
+    fontSize: 22,
+  },
+  navText: {
+    fontSize: 18,
+    color: Colors.white,
   },
   breadCrumb: {
     height: '12%',
@@ -280,7 +311,8 @@ const styles = StyleSheet.create({
   //     marginBottom: '15%',
   //   },
   bottomButtonBackground: {
-    marginVertical: '10%',
+    marginVertical: '8%',
+    marginBottom: '13%',
     width: '90%',
     paddingVertical: 15,
     backgroundColor: Colors.orange,
