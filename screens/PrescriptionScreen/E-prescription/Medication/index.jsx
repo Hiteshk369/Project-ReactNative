@@ -92,87 +92,36 @@ const Medication = ({navigation}) => {
                 placeholder="Search for Medication"
               />
               {allMedicineItems.length > 0 && (
-                <View
-                  style={{
-                    width: '90%',
-                    marginTop: 15,
-                    marginLeft: 15,
-                    marginRight: 6,
-                  }}>
-                  <View
-                    style={{
-                      justifyContent: 'space-between',
-                      flexDirection: 'row',
-                    }}>
-                    <Text
-                      style={{
-                        fontWeight: '600',
-                        fontSize: 14,
-                        color: Colors.darkPurple,
-                      }}>
-                      Added
-                    </Text>
+                <View style={styles.addedItemsContainer}>
+                  <View style={styles.flexContainer}>
+                    <Text style={styles.addedText}>Added</Text>
                     <Pressable onPressIn={() => setAllMedicineItems([])}>
-                      <Text
-                        style={{
-                          fontWeight: '600',
-                          fontSize: 14,
-                          color: Colors.red,
-                        }}>
-                        Clear All
-                      </Text>
+                      <Text style={styles.clearText}>Clear All</Text>
                     </Pressable>
                   </View>
                   {allMedicineItems.map((data, index) => (
                     <View
                       style={{flexDirection: 'column', gap: 3, marginTop: 4}}>
-                      <View
-                        key={index}
-                        style={{
-                          marginTop: 6,
-                          marginLeft: 2,
-                          flexDirection: 'row',
-                          justifyContent: 'space-between',
-                        }}>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 8,
-                          }}>
-                          <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
-                          <Text
-                            style={{color: Colors.gray_700, fontWeight: '500'}}>
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>
                             {data.medicineName}
                           </Text>
                         </View>
                         <Pressable>
-                          <Text
-                            style={{color: Colors.gray_700, fontWeight: '500'}}>
-                            x
-                          </Text>
+                          <Text style={styles.closeText}>x</Text>
                         </Pressable>
                       </View>
-                      <View style={{marginLeft: 18}}>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            color: Colors.gray_400,
-                            fontWeight: '500',
-                          }}>
+                      <View style={styles.headerSmallContainer}>
+                        <Text style={styles.headerSmallText}>
                           {data.frequency}, {data.count}
                           {data.duration}, {data.timings}, {data.instructions}
                         </Text>
                       </View>
                     </View>
                   ))}
-                  <View
-                    style={{
-                      borderColor: Colors.gray_400,
-                      borderWidth: 1,
-                      marginTop: 12,
-                    }}
-                  />
+                  <View style={styles.border} />
                 </View>
               )}
               <Text style={styles.suggestionsHeader}>Recently used</Text>
@@ -220,14 +169,7 @@ const Medication = ({navigation}) => {
                 </TouchableOpacity>
               </View>
               <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  marginHorizontal: '5%',
-                  gap: 10,
-                  marginVertical: '2%',
-                }}>
+              <View style={styles.suggestionsButtonFlex}>
                 {suggestions.map(suggestion => (
                   <TouchableOpacity
                     onPressIn={() => handleModal(suggestion.name)}
@@ -236,47 +178,16 @@ const Medication = ({navigation}) => {
                       allMedicineItems.some(
                         item => item.medicineName === suggestion.name,
                       )
-                        ? {
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: 4,
-                            borderColor: Colors.lightPurple,
-                            backgroundColor: Colors.purple_100,
-                            borderWidth: 1,
-                            marginVertical: '0.5%',
-                            paddingHorizontal: '4%',
-                            paddingVertical: '3%',
-                            borderRadius: 6,
-                          }
-                        : {
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: 4,
-                            borderColor: Colors.gray_400,
-                            borderWidth: 1,
-                            marginVertical: '0.5%',
-                            paddingHorizontal: '4%',
-                            paddingVertical: '3%',
-                            borderRadius: 6,
-                          }
+                        ? styles.suggestionsButton
+                        : styles.activeSuggestionsButton
                     }>
                     <Text
                       style={
                         allMedicineItems.some(
                           item => item.medicineName === suggestion.name,
                         )
-                          ? {
-                              color: Colors.darkPurple,
-                              fontWeight: '500',
-                              maxWidth: 180,
-                              overflow: 'hidden',
-                            }
-                          : {
-                              color: Colors.gray_400,
-                              fontWeight: '500',
-                              maxWidth: 180,
-                              overflow: 'hidden',
-                            }
+                          ? styles.activeSuggestionText
+                          : styles.suggestionText
                       }
                       numberOfLines={1}
                       ellipsizeMode="tail">
@@ -354,10 +265,61 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: Colors.purple_200,
+    backgroundColor: Colors.slate_400,
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
+  },
+  addedItemsContainer: {
+    width: '90%',
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 6,
+  },
+  flexContainer: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  addedText: {
+    fontWeight: '600',
+    fontSize: 14,
+    color: Colors.darkPurple,
+  },
+  clearText: {
+    fontWeight: '600',
+    fontSize: 14,
+    color: Colors.red,
+  },
+  textFlex: {
+    marginTop: 6,
+    marginLeft: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bulletsFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  bulletText: {fontSize: 10},
+  textColor: {
+    color: Colors.gray_700,
+    fontWeight: '500',
+  },
+  closeText: {color: Colors.gray_700, fontWeight: '500'},
+  headerSmallContainer: {
+    marginLeft: 18,
+  },
+  headerSmallText: {
+    fontSize: 12,
+    color: Colors.gray_400,
+    fontWeight: '500',
+  },
+  border: {
+    borderColor: Colors.gray_400,
+    backgroundColor: Colors.gray_400,
+    borderWidth: 1,
+    marginTop: '5%',
   },
   suggestionsHeader: {
     fontSize: 14,
@@ -367,6 +329,48 @@ const styles = StyleSheet.create({
     marginBottom: '2%',
     color: Colors.gray_500,
     // width: '50%',
+  },
+  suggestionsButtonFlex: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: '5%',
+    gap: 10,
+    marginVertical: '2%',
+  },
+  activeSuggestionsButton: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.gray_400,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
+  },
+  activeSuggestionText: {
+    color: Colors.darkPurple,
+    fontWeight: '500',
+    maxWidth: 180,
+    overflow: 'hidden',
+  },
+  suggestionText: {
+    color: Colors.gray_400,
+    fontWeight: '500',
+    maxWidth: 180,
+    overflow: 'hidden',
+  },
+  suggestionsButton: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 4,
+    borderColor: Colors.lightPurple,
+    backgroundColor: Colors.purple_100,
+    borderWidth: 1,
+    marginVertical: '0.5%',
+    paddingHorizontal: '4%',
+    paddingVertical: '3%',
+    borderRadius: 6,
   },
   suggestionsFlex: {
     // flexDirection: 'row',
