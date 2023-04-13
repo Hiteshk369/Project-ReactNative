@@ -152,7 +152,7 @@ const AddClinic = ({navigation}) => {
           <View style={styles.bgWhite}>
             <View style={styles.nameInputHolder}>
               <TextInput
-                placeholderTextColor={Colors.gray_100}
+                placeholderTextColor={Colors.gray_500}
                 style={styles.inputField}
                 placeholder="Hospital/Clinic Name"
               />
@@ -160,7 +160,7 @@ const AddClinic = ({navigation}) => {
             <Text style={styles.inputsHeader}>Address</Text>
             <View style={styles.addressInputHolder}>
               <TextInput
-                placeholderTextColor={Colors.gray_100}
+                placeholderTextColor={Colors.gray_500}
                 style={styles.addressInputField}
                 placeholder="Selected address location"
               />
@@ -168,7 +168,7 @@ const AddClinic = ({navigation}) => {
             <Text style={styles.inputsHeader}>City</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
-                placeholderTextColor={Colors.gray_100}
+                placeholderTextColor={Colors.gray_500}
                 style={styles.inputField}
                 placeholder="City"
               />
@@ -491,7 +491,7 @@ const AddClinic = ({navigation}) => {
             <Text style={styles.inputsHeader}>Mobile Number</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
-                placeholderTextColor={Colors.gray_100}
+                placeholderTextColor={Colors.gray_500}
                 style={styles.inputField}
                 placeholder="+91"
               />
@@ -507,7 +507,7 @@ const AddClinic = ({navigation}) => {
             <Text style={styles.inputsHeader}>LandLine</Text>
             <View style={styles.cityInputHolder}>
               <TextInput
-                placeholderTextColor={Colors.gray_100}
+                placeholderTextColor={Colors.gray_500}
                 style={styles.inputField}
               />
             </View>
@@ -614,7 +614,7 @@ const styles = StyleSheet.create({
   inputsHeader: {
     marginVertical: '2%',
     fontSize: 16,
-    color: Colors.gray_100,
+    color: Colors.gray_800,
     fontWeight: '500',
   },
   addressInputField: {
@@ -878,6 +878,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 10,
   },
   buttonText: {
     fontSize: 15,
