@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '4%',
     height: '5%',
-    backgroundColor: '#f7f6fe',
+    backgroundColor: Colors.slate_400,
     borderRadius: 20,
     alignItems: 'center',
     paddingLeft: '5%',
