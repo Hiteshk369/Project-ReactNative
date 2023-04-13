@@ -170,73 +170,6 @@ const HomeNav = () => {
         }}
       />
       <Stack.Screen
-        name="AddClinic"
-        component={AddClinic}
-        options={{
-          header: props => (
-            <CustomRectangleHeader
-              {...props}
-              navigation={navigation}
-              name="Add Clinic"
-              navTo="Profile"
-            />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="ClinicAppointmentDetails"
-        component={ClinicAppointmentDetails}
-        options={{
-          header: props => (
-            <CustomRectangleHeader
-              {...props}
-              navigation={navigation}
-              name="In-Clinic Appointment Details"
-              navTo="AddClinic"
-            />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="OnlineConsultDetails"
-        component={OnlineConsultDetails}
-        options={{
-          header: props => (
-            <CustomRectangleHeader
-              {...props}
-              navigation={navigation}
-              name="Online Consult Details"
-              navTo="ClinicAppointmentDetails"
-            />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="SellPackage"
-        component={SellPackage}
-        options={{
-          header: props => (
-            <CustomSellPackageHeader {...props} navigation={navigation} />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="CreatePackage"
-        component={CreateNewPackage}
-        options={{
-          header: props => (
-            <CustomCreatePackageHeader {...props} navigation={navigation} />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="Timeline"
-        component={Timeline}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="ConsultationMain"
         component={ConsultationMain}
         options={{
@@ -267,41 +200,6 @@ const HomeNav = () => {
       <Stack.Screen
         name="PatientsMain"
         component={PatientsMain}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Verification"
-        component={Verification}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="PersonalDetails"
-        component={PersonalDetails}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="BankingDetails"
-        component={BankingDetails}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ExperienceEducation"
-        component={ExperienceEducation}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="PictureVideo"
-        component={PictureVideo}
         options={{
           headerShown: false,
         }}
@@ -499,6 +397,124 @@ const PrescribeNav = () => {
   );
 };
 
+const ProfileNav = () => {
+  const navigation = useNavigation();
+  return (
+    <Stack.Navigator initialRouteName="Profile">
+      <Stack.Screen
+        name="Profile"
+        component={MainProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Verification"
+        component={Verification}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PersonalDetails"
+        component={PersonalDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BankingDetails"
+        component={BankingDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ExperienceEducation"
+        component={ExperienceEducation}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PictureVideo"
+        component={PictureVideo}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="AddClinic"
+        component={AddClinic}
+        options={{
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="Add Clinic"
+              navTo="Profile"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ClinicAppointmentDetails"
+        component={ClinicAppointmentDetails}
+        options={{
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="In-Clinic Appointment Details"
+              navTo="AddClinic"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="OnlineConsultDetails"
+        component={OnlineConsultDetails}
+        options={{
+          header: props => (
+            <CustomRectangleHeader
+              {...props}
+              navigation={navigation}
+              name="Online Consult Details"
+              navTo="ClinicAppointmentDetails"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="SellPackage"
+        component={SellPackage}
+        options={{
+          header: props => (
+            <CustomSellPackageHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="CreatePackage"
+        component={CreateNewPackage}
+        options={{
+          header: props => (
+            <CustomCreatePackageHeader {...props} navigation={navigation} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Timeline"
+        component={Timeline}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const CustomTabButton = ({children, onPress}) => (
   <Pressable
     style={{
@@ -563,7 +579,7 @@ const HomeStack = () => {
           }}
         />
         <Tab.Screen
-          name="Prescribe"
+          name="PrescribeNav"
           component={PrescribeNav}
           options={({route}) => ({
             headerShown: false,
@@ -590,17 +606,18 @@ const HomeStack = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={MainProfileScreen}
-          options={{
+          name="ProfileNav"
+          component={ProfileNav}
+          options={({route}) => ({
             headerShown: false,
+            tabBarStyle: {display: getTabBarVisibility(route)},
             tabBarIcon: ({focused}) => (
               <View style={styles.iconView}>
                 <FontAwesome name="user-circle-o" style={styles.icon} />
                 <Text style={styles.iconText}>Profile</Text>
               </View>
             ),
-          }}
+          })}
         />
       </Tab.Navigator>
     </NavigationContainer>
