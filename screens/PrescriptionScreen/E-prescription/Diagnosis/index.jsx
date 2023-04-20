@@ -102,80 +102,82 @@ const Diagnosis = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="three" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="three" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Examination')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('Examination')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Diagnosis</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for Diagnosis"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Diagnosis</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for Diagnosis"
-              />
-              {diagnosisItems.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {diagnosisItems.map((data, index) => (
-                    <View key={index} style={styles.textFlex}>
-                      <View style={styles.bulletsFlex}>
-                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                        <Text style={styles.textColor}>{data}</Text>
-                      </View>
-                      <Pressable onPressIn={() => updateItemsDiagnosis(data)}>
-                        <Text style={styles.closeText}>x</Text>
+                {diagnosisItems.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View style={styles.border} />
-                </View>
-              )}
+                    {diagnosisItems.map((data, index) => (
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>{data}</Text>
+                        </View>
+                        <Pressable onPressIn={() => updateItemsDiagnosis(data)}>
+                          <Text style={styles.closeText}>x</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View style={styles.border} />
+                  </View>
+                )}
 
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.optionsContainer}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() => updateItemsDiagnosis(suggestion.name)}
-                    key={suggestion.id}
-                    style={
-                      diagnosisItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsButton
-                        : styles.suggestionsButton
-                    }>
-                    <Text
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.optionsContainer}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() => updateItemsDiagnosis(suggestion.name)}
+                      key={suggestion.id}
                       style={
                         diagnosisItems.includes(suggestion.name)
-                          ? styles.activeSuggestionsText
-                          : styles.suggestionsText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.activeSuggestionsButton
+                          : styles.suggestionsButton
+                      }>
+                      <Text
+                        style={
+                          diagnosisItems.includes(suggestion.name)
+                            ? styles.activeSuggestionsText
+                            : styles.suggestionsText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -195,7 +197,7 @@ const Diagnosis = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

@@ -103,81 +103,85 @@ const Investigation = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="six" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="six" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Procedure')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('Procedure')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Investigation</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for Investigation"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Investigation</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for Investigation"
-              />
-              {investigationItems.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {investigationItems.map((data, index) => (
-                    <View key={index} style={styles.textFlex}>
-                      <View style={styles.bulletsFlex}>
-                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                        <Text style={styles.textColor}>{data}</Text>
-                      </View>
-                      <Pressable
-                        onPressIn={() => updateItemsInvestigation(data)}>
-                        <Text style={styles.closeText}>x</Text>
+                {investigationItems.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View style={styles.border} />
-                </View>
-              )}
+                    {investigationItems.map((data, index) => (
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>{data}</Text>
+                        </View>
+                        <Pressable
+                          onPressIn={() => updateItemsInvestigation(data)}>
+                          <Text style={styles.closeText}>x</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View style={styles.border} />
+                  </View>
+                )}
 
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.optionsContainer}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() => updateItemsInvestigation(suggestion.name)}
-                    key={suggestion.id}
-                    style={
-                      investigationItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsButton
-                        : styles.suggestionsButton
-                    }>
-                    <Text
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.optionsContainer}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() =>
+                        updateItemsInvestigation(suggestion.name)
+                      }
+                      key={suggestion.id}
                       style={
                         investigationItems.includes(suggestion.name)
-                          ? styles.activeSuggestionsText
-                          : styles.suggestionsText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.activeSuggestionsButton
+                          : styles.suggestionsButton
+                      }>
+                      <Text
+                        style={
+                          investigationItems.includes(suggestion.name)
+                            ? styles.activeSuggestionsText
+                            : styles.suggestionsText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -197,7 +201,7 @@ const Investigation = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

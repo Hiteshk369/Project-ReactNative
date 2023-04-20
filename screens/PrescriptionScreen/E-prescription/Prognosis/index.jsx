@@ -102,80 +102,84 @@ const Prognosis = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="ten" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="ten" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable
-                onPressIn={() => navigation.navigate('EmergencyInstructions')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable
+                  onPressIn={() =>
+                    navigation.navigate('EmergencyInstructions')
+                  }>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Prognosis</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for Prognosis"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Prognosis</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for Prognosis"
-              />
-              {prognosisItems.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {prognosisItems.map((data, index) => (
-                    <View key={index} style={styles.textFlex}>
-                      <View style={styles.bulletsFlex}>
-                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                        <Text style={styles.textColor}>{data}</Text>
-                      </View>
-                      <Pressable onPressIn={() => updateItemsPrognosis(data)}>
-                        <Text style={styles.closeText}>x</Text>
+                {prognosisItems.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View style={styles.border} />
-                </View>
-              )}
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.optionsContainer}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() => updateItemsPrognosis(suggestion.name)}
-                    key={suggestion.id}
-                    style={
-                      prognosisItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsButton
-                        : styles.suggestionsButton
-                    }>
-                    <Text
+                    {prognosisItems.map((data, index) => (
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>{data}</Text>
+                        </View>
+                        <Pressable onPressIn={() => updateItemsPrognosis(data)}>
+                          <Text style={styles.closeText}>x</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View style={styles.border} />
+                  </View>
+                )}
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.optionsContainer}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() => updateItemsPrognosis(suggestion.name)}
+                      key={suggestion.id}
                       style={
                         prognosisItems.includes(suggestion.name)
-                          ? styles.activeSuggestionsText
-                          : styles.suggestionsText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.activeSuggestionsButton
+                          : styles.suggestionsButton
+                      }>
+                      <Text
+                        style={
+                          prognosisItems.includes(suggestion.name)
+                            ? styles.activeSuggestionsText
+                            : styles.suggestionsText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -195,7 +199,7 @@ const Prognosis = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

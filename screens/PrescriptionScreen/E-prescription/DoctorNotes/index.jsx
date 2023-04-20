@@ -31,40 +31,42 @@ const DoctorNotes = ({navigation}) => {
   }, [doctorNotes, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="null" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="null" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('ReferBy')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
-                />
-              </Pressable>
-              <Text style={styles.headerText}>Doctor Notes</Text>
-              <View style={styles.boxContainer}>
-                <Text style={styles.boxHeader}>Notes</Text>
-                <TextInput
-                  value={doctorNotesItems}
-                  onChangeText={text => setDoctorNotes(text)}
-                  multiline={true}
-                  numberOfLines={5}
-                  placeholderTextColor={Colors.gray_200}
-                  style={styles.boxText}
-                  placeholder="Type Here...."
-                />
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('ReferBy')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Doctor Notes</Text>
+                <View style={styles.boxContainer}>
+                  <Text style={styles.boxHeader}>Notes</Text>
+                  <TextInput
+                    value={doctorNotesItems}
+                    onChangeText={text => setDoctorNotes(text)}
+                    multiline={true}
+                    numberOfLines={5}
+                    placeholderTextColor={Colors.gray_200}
+                    style={styles.boxText}
+                    placeholder="Type Here...."
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <TouchableOpacity
         onPressIn={() => navigation.navigate('Prescribe')}
         style={styles.nextButtonBackground}>
@@ -72,7 +74,7 @@ const DoctorNotes = ({navigation}) => {
           <Text style={styles.nextButtonText}>Preview</Text>
         </View>
       </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 };
 

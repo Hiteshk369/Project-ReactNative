@@ -33,49 +33,51 @@ const Examination = ({navigation}) => {
   }, [examinationNotes, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="two" />
-            </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable
-                onPressIn={() => navigation.navigate('ChiefComplaints')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
-                />
-              </Pressable>
-              <Text style={styles.headerText}>Examination</Text>
-              <View style={styles.boxContainer}>
-                <Text style={styles.boxHeader}>On-Examination notes</Text>
-                <TextInput
-                  onChangeText={text => setExaminationNotes(text)}
-                  value={examinationItems}
-                  multiline={true}
-                  numberOfLines={4}
-                  placeholderTextColor={Colors.gray_200}
-                  style={styles.boxText}
-                  placeholder="Type Here...."
-                />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="two" />
               </View>
-              <View style={styles.bottomFlex}>
-                <Text style={styles.bottomText}>Add Vitals</Text>
-                <MaterialIcons
-                  name="navigate-next"
-                  color={Colors.black}
-                  style={styles.darkNextIcon}
-                />
+            </View>
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable
+                  onPressIn={() => navigation.navigate('ChiefComplaints')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Examination</Text>
+                <View style={styles.boxContainer}>
+                  <Text style={styles.boxHeader}>On-Examination notes</Text>
+                  <TextInput
+                    onChangeText={text => setExaminationNotes(text)}
+                    value={examinationItems}
+                    multiline={true}
+                    numberOfLines={4}
+                    placeholderTextColor={Colors.gray_200}
+                    style={styles.boxText}
+                    placeholder="Type Here...."
+                  />
+                </View>
+                <View style={styles.bottomFlex}>
+                  <Text style={styles.bottomText}>Add Vitals</Text>
+                  <MaterialIcons
+                    name="navigate-next"
+                    color={Colors.black}
+                    style={styles.darkNextIcon}
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -95,7 +97,7 @@ const Examination = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

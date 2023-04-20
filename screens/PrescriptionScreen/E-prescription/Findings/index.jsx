@@ -33,40 +33,42 @@ const Findings = ({navigation}) => {
   }, [findingsNotes, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="eight" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="eight" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Advice')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
-                />
-              </Pressable>
-              <Text style={styles.headerText}>Findings</Text>
-              <View style={styles.boxContainer}>
-                <Text style={styles.boxHeader}>Notes</Text>
-                <TextInput
-                  value={findingsItems}
-                  onChangeText={text => setFindingsNotes(text)}
-                  multiline={true}
-                  numberOfLines={4}
-                  placeholderTextColor={Colors.gray_200}
-                  style={styles.boxText}
-                  placeholder="Type Here...."
-                />
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('Advice')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Findings</Text>
+                <View style={styles.boxContainer}>
+                  <Text style={styles.boxHeader}>Notes</Text>
+                  <TextInput
+                    value={findingsItems}
+                    onChangeText={text => setFindingsNotes(text)}
+                    multiline={true}
+                    numberOfLines={4}
+                    placeholderTextColor={Colors.gray_200}
+                    style={styles.boxText}
+                    placeholder="Type Here...."
+                  />
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -86,7 +88,7 @@ const Findings = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

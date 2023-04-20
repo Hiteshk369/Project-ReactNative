@@ -76,154 +76,157 @@ const Advice = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="seven" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="seven" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Investigation')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable
+                  onPressIn={() => navigation.navigate('Investigation')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Advice</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for Advice"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Advice</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for Advice"
-              />
-              {adviceItems.length > 0 && (
-                <View
-                  style={{
-                    width: '90%',
-                    marginTop: 15,
-                    marginLeft: 15,
-                    marginRight: 6,
-                  }}>
+                {adviceItems.length > 0 && (
                   <View
                     style={{
-                      justifyContent: 'space-between',
-                      flexDirection: 'row',
+                      width: '90%',
+                      marginTop: 15,
+                      marginLeft: 15,
+                      marginRight: 6,
                     }}>
-                    <Text
+                    <View
                       style={{
-                        fontWeight: '600',
-                        fontSize: 14,
-                        color: Colors.darkPurple,
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
                       }}>
-                      Added
-                    </Text>
-                    <Pressable onPressIn={() => setItems([])}>
                       <Text
                         style={{
                           fontWeight: '600',
                           fontSize: 14,
-                          color: Colors.red,
+                          color: Colors.darkPurple,
                         }}>
-                        Clear All
+                        Added
                       </Text>
-                    </Pressable>
-                  </View>
-                  {adviceItems.map((data, index) => (
-                    <View
-                      key={index}
-                      style={{
-                        marginTop: 6,
-                        marginLeft: 2,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: 8,
-                        }}>
-                        <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                      <Pressable onPressIn={() => setItems([])}>
                         <Text
-                          style={{color: Colors.gray_700, fontWeight: '500'}}>
-                          {data}
-                        </Text>
-                      </View>
-                      <Pressable onPressIn={() => updateItemsAdvice(data)}>
-                        <Text
-                          style={{color: Colors.gray_700, fontWeight: '500'}}>
-                          x
+                          style={{
+                            fontWeight: '600',
+                            fontSize: 14,
+                            color: Colors.red,
+                          }}>
+                          Clear All
                         </Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View
-                    style={{
-                      borderColor: Colors.gray_400,
-                      borderWidth: 1,
-                      marginTop: 12,
-                    }}
-                  />
-                </View>
-              )}
-
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  marginHorizontal: '5%',
-                  gap: 10,
-                  marginVertical: '2%',
-                }}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() => updateItemsAdvice(suggestion.name)}
-                    key={suggestion.id}
-                    style={
-                      adviceItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsText
-                        : {
+                    {adviceItems.map((data, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          marginTop: 6,
+                          marginLeft: 2,
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <View
+                          style={{
+                            flexDirection: 'row',
                             alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: 4,
-                            borderColor: Colors.gray_400,
-                            borderWidth: 1,
-                            marginVertical: '0.5%',
-                            paddingHorizontal: '4%',
-                            paddingVertical: '3%',
-                            borderRadius: 6,
-                          }
-                    }>
-                    <Text
+                            gap: 8,
+                          }}>
+                          <Text style={{fontSize: 10}}>{'\u2B24'}</Text>
+                          <Text
+                            style={{color: Colors.gray_700, fontWeight: '500'}}>
+                            {data}
+                          </Text>
+                        </View>
+                        <Pressable onPressIn={() => updateItemsAdvice(data)}>
+                          <Text
+                            style={{color: Colors.gray_700, fontWeight: '500'}}>
+                            x
+                          </Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View
+                      style={{
+                        borderColor: Colors.gray_400,
+                        borderWidth: 1,
+                        marginTop: 12,
+                      }}
+                    />
+                  </View>
+                )}
+
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    marginHorizontal: '5%',
+                    gap: 10,
+                    marginVertical: '2%',
+                  }}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() => updateItemsAdvice(suggestion.name)}
+                      key={suggestion.id}
                       style={
                         adviceItems.includes(suggestion.name)
-                          ? {
-                              color: Colors.darkPurple,
-                              fontWeight: '500',
-                              overflow: 'hidden',
-                            }
+                          ? styles.activeSuggestionsText
                           : {
-                              color: Colors.gray_400,
-                              fontWeight: '500',
-                              maxWidth: 220,
-                              overflow: 'hidden',
+                              alignItems: 'center',
+                              justifyContent: 'flex-start',
+                              gap: 4,
+                              borderColor: Colors.gray_400,
+                              borderWidth: 1,
+                              marginVertical: '0.5%',
+                              paddingHorizontal: '4%',
+                              paddingVertical: '3%',
+                              borderRadius: 6,
                             }
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                      }>
+                      <Text
+                        style={
+                          adviceItems.includes(suggestion.name)
+                            ? {
+                                color: Colors.darkPurple,
+                                fontWeight: '500',
+                                overflow: 'hidden',
+                              }
+                            : {
+                                color: Colors.gray_400,
+                                fontWeight: '500',
+                                maxWidth: 220,
+                                overflow: 'hidden',
+                              }
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -243,7 +246,7 @@ const Advice = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

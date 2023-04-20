@@ -75,85 +75,87 @@ const EmergencyInstructions = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="nine" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="nine" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Findings')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('Findings')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>EmergencyInstructions</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for EmergencyInstructions"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>EmergencyInstructions</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for EmergencyInstructions"
-              />
-              {emergencyInstructions.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {emergencyInstructions.map((data, index) => (
-                    <View key={index} style={styles.textFlex}>
-                      <View style={styles.bulletsFlex}>
-                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                        <Text style={styles.textColor}>{data}</Text>
-                      </View>
-                      <Pressable
-                        onPressIn={() =>
-                          updateItemsEmergencyInstructions(data)
-                        }>
-                        <Text style={styles.closeText}>x</Text>
+                {emergencyInstructions.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View style={styles.suggestionsHeader} />
-                </View>
-              )}
+                    {emergencyInstructions.map((data, index) => (
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>{data}</Text>
+                        </View>
+                        <Pressable
+                          onPressIn={() =>
+                            updateItemsEmergencyInstructions(data)
+                          }>
+                          <Text style={styles.closeText}>x</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View style={styles.suggestionsHeader} />
+                  </View>
+                )}
 
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.optionsContainer}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() =>
-                      updateItemsEmergencyInstructions(suggestion.name)
-                    }
-                    key={suggestion.id}
-                    style={
-                      emergencyInstructions.includes(suggestion.name)
-                        ? styles.activeSuggestionsButton
-                        : styles.suggestionsButton
-                    }>
-                    <Text
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.optionsContainer}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() =>
+                        updateItemsEmergencyInstructions(suggestion.name)
+                      }
+                      key={suggestion.id}
                       style={
                         emergencyInstructions.includes(suggestion.name)
-                          ? styles.activeSuggestionsText
-                          : styles.suggestionsText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.activeSuggestionsButton
+                          : styles.suggestionsButton
+                      }>
+                      <Text
+                        style={
+                          emergencyInstructions.includes(suggestion.name)
+                            ? styles.activeSuggestionsText
+                            : styles.suggestionsText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -173,7 +175,7 @@ const EmergencyInstructions = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

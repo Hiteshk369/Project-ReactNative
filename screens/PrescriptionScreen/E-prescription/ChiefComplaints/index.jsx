@@ -102,82 +102,86 @@ const ChiefComplaints = ({navigation}) => {
   }, [items, dispatch]);
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="one" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="one" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <View style={{position: 'absolute', top: 0}}>
+                  <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+                    <MaterialIcons
+                      name="arrow-back-ios"
+                      color={Colors.black}
+                      style={styles.backIcon}
+                    />
+                  </Pressable>
+                  <Text style={styles.headerText}>Chief Complaints</Text>
+                </View>
+                <TextInput
+                  placeholderTextColor={Colors.slate_600}
+                  style={styles.inputField}
+                  placeholder="Search for Chief Complaints"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Chief Complaints</Text>
-              <TextInput
-                placeholderTextColor={Colors.slate_600}
-                style={styles.inputField}
-                placeholder="Search for Chief Complaints"
-              />
-              {chiefComplaintsItems.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {chiefComplaintsItems.map((data, index) => (
-                    <View key={index} style={styles.textFlex}>
-                      <View style={styles.bulletsFlex}>
-                        <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                        <Text style={styles.textColor}>{data}</Text>
-                      </View>
-                      <Pressable
-                        onPressIn={() => updateItemsChiefComplaints(data)}>
-                        <Text style={styles.closeText}>x</Text>
+                {chiefComplaintsItems.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
                       </Pressable>
                     </View>
-                  ))}
-                  <View style={styles.border} />
-                </View>
-              )}
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.optionsContainer}>
-                {suggestions.map(suggestion => (
-                  <TouchableOpacity
-                    onPressIn={() =>
-                      updateItemsChiefComplaints(suggestion.name)
-                    }
-                    key={suggestion.id}
-                    style={
-                      chiefComplaintsItems.includes(suggestion.name)
-                        ? styles.activeSuggestionsButton
-                        : styles.suggestionsButton
-                    }>
-                    <Text
+                    {chiefComplaintsItems.map((data, index) => (
+                      <View key={index} style={styles.textFlex}>
+                        <View style={styles.bulletsFlex}>
+                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                          <Text style={styles.textColor}>{data}</Text>
+                        </View>
+                        <Pressable
+                          onPressIn={() => updateItemsChiefComplaints(data)}>
+                          <Text style={styles.closeText}>x</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                    <View style={styles.border} />
+                  </View>
+                )}
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.optionsContainer}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() =>
+                        updateItemsChiefComplaints(suggestion.name)
+                      }
+                      key={suggestion.id}
                       style={
                         chiefComplaintsItems.includes(suggestion.name)
-                          ? styles.activeSuggestionsText
-                          : styles.suggestionsText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.activeSuggestionsButton
+                          : styles.suggestionsButton
+                      }>
+                      <Text
+                        style={
+                          chiefComplaintsItems.includes(suggestion.name)
+                            ? styles.activeSuggestionsText
+                            : styles.suggestionsText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -197,19 +201,20 @@ const ChiefComplaints = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    height: '70%',
     width: '100%',
     flex: 1,
     backgroundColor: Colors.white,
   },
   rowContainer: {
     flexDirection: 'row',
+    height: 'auto',
   },
   sideBar: {
     width: '20%',
@@ -222,6 +227,7 @@ const styles = StyleSheet.create({
   rightFull: {
     backgroundColor: Colors.white,
     height: '100%',
+    position: 'relative',
   },
   mainLayout: {
     width: '100%',

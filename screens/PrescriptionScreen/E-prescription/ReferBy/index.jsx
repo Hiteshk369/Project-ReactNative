@@ -30,46 +30,48 @@ const ReferBy = ({navigation}) => {
     }
   }, [doctorName, details, dispatch]);
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="eleven" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="eleven" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('ReferTo')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('ReferTo')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Refer By</Text>
+                <Text style={styles.inputHeader}>Doctor Name</Text>
+                <TextInput
+                  value={referByItems[0]}
+                  onChangeText={text => setDoctorName(text)}
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Dr. Name"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Refer By</Text>
-              <Text style={styles.inputHeader}>Doctor Name</Text>
-              <TextInput
-                value={referByItems[0]}
-                onChangeText={text => setDoctorName(text)}
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Dr. Name"
-              />
-              <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
-              <TextInput
-                value={referByItems[1]}
-                onChangeText={text => setDetails(text)}
-                multiline={true}
-                numberOfLines={4}
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder=" "
-              />
+                <Text style={[styles.inputHeader, styles.mt]}>Details</Text>
+                <TextInput
+                  value={referByItems[1]}
+                  onChangeText={text => setDetails(text)}
+                  multiline={true}
+                  numberOfLines={4}
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder=" "
+                />
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -89,7 +91,7 @@ const ReferBy = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

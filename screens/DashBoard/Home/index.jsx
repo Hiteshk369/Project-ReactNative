@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
   dashboardContainer: {
     width: '100%',
     height: 'auto',
-    paddingVertical: 10,
+    paddingVertical: '4%',
     marginBottom: 30,
   },
   dashboardRowContainer: {

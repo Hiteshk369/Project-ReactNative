@@ -68,138 +68,140 @@ const Medication = ({navigation}) => {
   });
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <View style={styles.sideBar}>
-            <View style={styles.leftFull}>
-              <StepsIndicator active="four" />
+    <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.rowContainer}>
+            <View style={styles.sideBar}>
+              <View style={styles.leftFull}>
+                <StepsIndicator active="four" />
+              </View>
             </View>
-          </View>
-          <View style={styles.mainLayout}>
-            <View style={styles.rightFull}>
-              <Pressable onPressIn={() => navigation.navigate('Diagnosis')}>
-                <MaterialIcons
-                  name="arrow-back-ios"
-                  color={Colors.black}
-                  style={styles.backIcon}
+            <View style={styles.mainLayout}>
+              <View style={styles.rightFull}>
+                <Pressable onPressIn={() => navigation.navigate('Diagnosis')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Medication</Text>
+                <TextInput
+                  placeholderTextColor={Colors.gray_200}
+                  style={styles.inputField}
+                  placeholder="Search for Medication"
                 />
-              </Pressable>
-              <Text style={styles.headerText}>Medication</Text>
-              <TextInput
-                placeholderTextColor={Colors.gray_200}
-                style={styles.inputField}
-                placeholder="Search for Medication"
-              />
-              {allMedicineItems.length > 0 && (
-                <View style={styles.addedItemsContainer}>
-                  <View style={styles.flexContainer}>
-                    <Text style={styles.addedText}>Added</Text>
-                    <Pressable onPressIn={() => setAllMedicineItems([])}>
-                      <Text style={styles.clearText}>Clear All</Text>
-                    </Pressable>
-                  </View>
-                  {allMedicineItems.map((data, index) => (
-                    <View
-                      style={{flexDirection: 'column', gap: 3, marginTop: 4}}>
-                      <View key={index} style={styles.textFlex}>
-                        <View style={styles.bulletsFlex}>
-                          <Text style={styles.bulletText}>{'\u2B24'}</Text>
-                          <Text style={styles.textColor}>
-                            {data.medicineName}
+                {allMedicineItems.length > 0 && (
+                  <View style={styles.addedItemsContainer}>
+                    <View style={styles.flexContainer}>
+                      <Text style={styles.addedText}>Added</Text>
+                      <Pressable onPressIn={() => setAllMedicineItems([])}>
+                        <Text style={styles.clearText}>Clear All</Text>
+                      </Pressable>
+                    </View>
+                    {allMedicineItems.map((data, index) => (
+                      <View
+                        style={{flexDirection: 'column', gap: 3, marginTop: 4}}>
+                        <View key={index} style={styles.textFlex}>
+                          <View style={styles.bulletsFlex}>
+                            <Text style={styles.bulletText}>{'\u2B24'}</Text>
+                            <Text style={styles.textColor}>
+                              {data.medicineName}
+                            </Text>
+                          </View>
+                          <Pressable>
+                            <Text style={styles.closeText}>x</Text>
+                          </Pressable>
+                        </View>
+                        <View style={styles.headerSmallContainer}>
+                          <Text style={styles.headerSmallText}>
+                            {data.frequency}, {data.count}
+                            {data.duration}, {data.timings}, {data.instructions}
                           </Text>
                         </View>
-                        <Pressable>
-                          <Text style={styles.closeText}>x</Text>
-                        </Pressable>
                       </View>
-                      <View style={styles.headerSmallContainer}>
-                        <Text style={styles.headerSmallText}>
-                          {data.frequency}, {data.count}
-                          {data.duration}, {data.timings}, {data.instructions}
-                        </Text>
-                      </View>
-                    </View>
-                  ))}
-                  <View style={styles.border} />
-                </View>
-              )}
-              <Text style={styles.suggestionsHeader}>Recently used</Text>
-              <View style={styles.suggestionsFlex}>
-                <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modalVisible}
-                  onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                  }}>
-                  <MedicationOptions
-                    modalVisible={modalVisible}
-                    setModalVisible={setModalVisible}
-                    modalItem={modalItem}
-                    allMedicineItems={allMedicineItems}
-                    setAllMedicineItems={setAllMedicineItems}
-                  />
-                </Modal>
-                <TouchableOpacity
-                  onPressIn={() => handleModal('AZEE 500MG TAB')}>
-                  <Text
-                    style={
-                      allMedicineItems.some(
-                        item => item.medicineName === 'AZEE 500MG TAB',
-                      )
-                        ? styles.activeSuggestionsText
-                        : styles.notActiveSuggestionsText
-                    }>
-                    AZEE 500MG TAB
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPressIn={() => handleModal('STAMLO BETA M T...')}>
-                  <Text
-                    style={
-                      allMedicineItems.some(
-                        item => item.medicineName === 'STAMLO BETA M T...',
-                      )
-                        ? styles.activeSuggestionsText
-                        : styles.notActiveSuggestionsText
-                    }>
-                    STAMLO BETA M T...
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <Text style={styles.suggestionsHeader}>Suggestions</Text>
-              <View style={styles.suggestionsButtonFlex}>
-                {suggestions.map(suggestion => (
+                    ))}
+                    <View style={styles.border} />
+                  </View>
+                )}
+                <Text style={styles.suggestionsHeader}>Recently used</Text>
+                <View style={styles.suggestionsFlex}>
+                  <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                      setModalVisible(!modalVisible);
+                    }}>
+                    <MedicationOptions
+                      modalVisible={modalVisible}
+                      setModalVisible={setModalVisible}
+                      modalItem={modalItem}
+                      allMedicineItems={allMedicineItems}
+                      setAllMedicineItems={setAllMedicineItems}
+                    />
+                  </Modal>
                   <TouchableOpacity
-                    onPressIn={() => handleModal(suggestion.name)}
-                    key={suggestion.id}
-                    style={
-                      allMedicineItems.some(
-                        item => item.medicineName === suggestion.name,
-                      )
-                        ? styles.suggestionsButton
-                        : styles.activeSuggestionsButton
-                    }>
+                    onPressIn={() => handleModal('AZEE 500MG TAB')}>
                     <Text
+                      style={
+                        allMedicineItems.some(
+                          item => item.medicineName === 'AZEE 500MG TAB',
+                        )
+                          ? styles.activeSuggestionsText
+                          : styles.notActiveSuggestionsText
+                      }>
+                      AZEE 500MG TAB
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPressIn={() => handleModal('STAMLO BETA M T...')}>
+                    <Text
+                      style={
+                        allMedicineItems.some(
+                          item => item.medicineName === 'STAMLO BETA M T...',
+                        )
+                          ? styles.activeSuggestionsText
+                          : styles.notActiveSuggestionsText
+                      }>
+                      STAMLO BETA M T...
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <Text style={styles.suggestionsHeader}>Suggestions</Text>
+                <View style={styles.suggestionsButtonFlex}>
+                  {suggestions.map(suggestion => (
+                    <TouchableOpacity
+                      onPressIn={() => handleModal(suggestion.name)}
+                      key={suggestion.id}
                       style={
                         allMedicineItems.some(
                           item => item.medicineName === suggestion.name,
                         )
-                          ? styles.activeSuggestionText
-                          : styles.suggestionText
-                      }
-                      numberOfLines={1}
-                      ellipsizeMode="tail">
-                      {suggestion.name}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
+                          ? styles.suggestionsButton
+                          : styles.activeSuggestionsButton
+                      }>
+                      <Text
+                        style={
+                          allMedicineItems.some(
+                            item => item.medicineName === suggestion.name,
+                          )
+                            ? styles.activeSuggestionText
+                            : styles.suggestionText
+                        }
+                        numberOfLines={1}
+                        ellipsizeMode="tail">
+                        {suggestion.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.buttonsFlex}>
         <TouchableOpacity
           onPressIn={() => navigation.navigate('Prescribe')}
@@ -219,7 +221,7 @@ const Medication = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
