@@ -15,7 +15,7 @@ import CheckBox from '@react-native-community/checkbox';
 import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
 
-const E_PrescriptionOptions = ({navigation, screen}) => {
+const E_PrescriptionOptions = ({navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const chiefComplaintsItems = useSelector(

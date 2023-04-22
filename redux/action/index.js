@@ -1,5 +1,6 @@
 export const actionType = () => {
   return {
+    SET_REGISTER_USER: 'SET_REGISTER_USER',
     SET_USER: 'SET_USER',
 
     SET_CHIEF_COMPLAINTS: 'SET_CHIEF_COMPLAINTS',

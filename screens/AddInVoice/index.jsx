@@ -15,6 +15,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../constants/colors';
+import {ConsultationOptions} from '../../components';
+import {Pressable} from 'react-native';
 
 const dropDownOptions = [
   {
@@ -36,6 +38,7 @@ const AddInVoice = ({navigation}) => {
   const [selectOption, setSelectOption] = useState('Consultation');
   const [data, setData] = useState(dropDownOptions);
   const [addInvoice, setAddInvoice] = useState(false);
+  const [activateConsultation, setActivateConsultation] = useState(false);
   return (
     <ScrollView
       nestedScrollEnabled={true}
@@ -72,176 +75,195 @@ const AddInVoice = ({navigation}) => {
       <View style={styles.itemsHeader}>
         <Text style={styles.itemsText}>ITEMS (2)</Text>
       </View>
-      <View style={styles.flexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.bigCircle} />
-          <View>
-            <Text style={styles.boldText}>Consultation</Text>
-            <Text style={styles.lightText}>Default Consultation</Text>
-          </View>
-        </View>
-        <View style={styles.rightFlexText}>
-          <View style={styles.rightText}>
-            <Text style={styles.amountText}>Amount</Text>
-            <Text style={styles.amountText}>₹ 0</Text>
-          </View>
-          <MaterialIcons
-            name="navigate-next"
-            color={Colors.black}
-            style={styles.navigateNextIcon}
-          />
-        </View>
-      </View>
-      <View style={styles.flexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.bigCircle} />
-          <View>
-            <Text style={styles.boldText}>Procedure</Text>
-            <Text style={styles.lightText}>Medication Procedure</Text>
-          </View>
-        </View>
-        <View style={styles.rightFlexText}>
-          <View style={styles.rightText}>
-            <Text style={styles.amountText}>Amount</Text>
-            <Text style={styles.amountText}>₹ 0</Text>
-          </View>
-          <MaterialIcons
-            name="navigate-next"
-            color={Colors.black}
-            style={styles.navigateNextIcon}
-          />
-        </View>
-      </View>
-      <View style={styles.smallflexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.smallCircle} />
-          <View style={styles.boxBottomFlex}>
-            <TouchableOpacity
-              style={styles.rightDropDown}
-              onPressIn={() => setDropdown(!dropdown)}>
-              <Text style={styles.boxText}>{selectOption}</Text>
-              {dropdown ? (
+      {activateConsultation ? (
+        <ConsultationOptions />
+      ) : (
+        <>
+          <Pressable
+            style={styles.FlexBox}
+            onPressIn={() => setActivateConsultation(true)}>
+            <View style={styles.flexContainer}>
+              <View style={styles.leftFlexText}>
+                <View style={styles.bigCircle} />
+                <View>
+                  <Text style={styles.boldText}>Consultation</Text>
+                  <Text style={styles.lightText}>Default Consultation</Text>
+                </View>
+              </View>
+              <View style={styles.rightFlexText}>
+                <View style={styles.rightText}>
+                  <Text style={styles.amountText}>Amount</Text>
+                  <Text style={styles.amountText}>₹ 0</Text>
+                </View>
                 <MaterialIcons
-                  name="keyboard-arrow-up"
+                  name="navigate-next"
                   color={Colors.black}
-                  style={styles.dropDown}
+                  style={styles.navigateNextIcon}
                 />
-              ) : (
+              </View>
+            </View>
+          </Pressable>
+          <View style={styles.flexContainer}>
+            <View style={styles.leftFlexText}>
+              <View style={styles.bigCircle} />
+              <View>
+                <Text style={styles.boldText}>Procedure</Text>
+                <Text style={styles.lightText}>Medication Procedure</Text>
+              </View>
+            </View>
+            <View style={styles.rightFlexText}>
+              <View style={styles.rightText}>
+                <Text style={styles.amountText}>Amount</Text>
+                <Text style={styles.amountText}>₹ 0</Text>
+              </View>
+              <MaterialIcons
+                name="navigate-next"
+                color={Colors.black}
+                style={styles.navigateNextIcon}
+              />
+            </View>
+          </View>
+          <View style={styles.smallflexContainer}>
+            <View style={styles.leftFlexText}>
+              <View style={styles.smallCircle} />
+              <View style={styles.boxBottomFlex}>
+                <TouchableOpacity
+                  style={styles.rightDropDown}
+                  onPressIn={() => setDropdown(!dropdown)}>
+                  <Text style={styles.boxText}>{selectOption}</Text>
+                  {dropdown ? (
+                    <MaterialIcons
+                      name="keyboard-arrow-up"
+                      color={Colors.black}
+                      style={styles.dropDown}
+                    />
+                  ) : (
+                    <MaterialIcons
+                      name="keyboard-arrow-down"
+                      color={Colors.black}
+                      style={styles.dropDown}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+          {dropdown ? (
+            <View style={styles.dropDownArea}>
+              <ScrollView
+                horizontal={true}
+                showsVerticalScrollIndicator={false}>
+                <FlatList
+                  data={data}
+                  renderItem={({item, index}) => {
+                    return (
+                      <TouchableOpacity
+                        style={styles.dropDownText}
+                        onPressIn={() => {
+                          setSelectOption(item.name);
+                          setDropdown(false);
+                        }}>
+                        <Text style={styles.dropDownTextColor}>
+                          {item.name}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  }}
+                />
+              </ScrollView>
+            </View>
+          ) : null}
+          <View style={styles.smallflexContainer}>
+            <View style={styles.leftFlexText}>
+              <View style={styles.smallCircle} />
+              <View style={styles.boxBottomFlex}>
+                <TextInput
+                  style={styles.boxLightText}
+                  placeholder="Description*"
+                />
+              </View>
+            </View>
+          </View>
+          <Text style={styles.buttonsBottomText}>100 characters remaining</Text>
+          <View style={styles.smallFlexContainer}>
+            <View style={styles.leftFlexText}>
+              <View style={styles.smallCircle} />
+              <View style={styles.boxBottomFlex}>
+                <TextInput
+                  style={styles.boxLightText}
+                  placeholder="Enter the Amount"
+                />
+              </View>
+            </View>
+          </View>
+          <View style={styles.smallflexContainer}>
+            <View style={styles.leftFlexText}>
+              <View style={styles.smallCircle} />
+              <View style={styles.boxBottomFlex}>
+                <Text style={styles.boxLightText}>Discount</Text>
+                <FontAwesome
+                  name="rupee"
+                  color={Colors.gray_100}
+                  style={styles.rupee}
+                />
                 <MaterialIcons
                   name="keyboard-arrow-down"
-                  color={Colors.black}
-                  style={styles.dropDown}
+                  color={Colors.gray_100}
+                  style={styles.discountDropDown}
                 />
-              )}
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-      {dropdown ? (
-        <View style={styles.dropDownArea}>
-          <ScrollView horizontal={true} showsVerticalScrollIndicator={false}>
-            <FlatList
-              data={data}
-              renderItem={({item, index}) => {
-                return (
-                  <TouchableOpacity
-                    style={styles.dropDownText}
-                    onPressIn={() => {
-                      setSelectOption(item.name);
-                      setDropdown(false);
-                    }}>
-                    <Text style={styles.dropDownTextColor}>{item.name}</Text>
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </ScrollView>
-        </View>
-      ) : null}
-      <View style={styles.smallflexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.smallCircle} />
-          <View style={styles.boxBottomFlex}>
-            <TextInput style={styles.boxLightText} placeholder="Description*" />
-          </View>
-        </View>
-      </View>
-      <Text style={styles.buttonsBottomText}>100 characters remaining</Text>
-      <View style={styles.smallFlexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.smallCircle} />
-          <View style={styles.boxBottomFlex}>
-            <TextInput
-              style={styles.boxLightText}
-              placeholder="Enter the Amount"
-            />
-          </View>
-        </View>
-      </View>
-      <View style={styles.smallflexContainer}>
-        <View style={styles.leftFlexText}>
-          <View style={styles.smallCircle} />
-          <View style={styles.boxBottomFlex}>
-            <Text style={styles.boxLightText}>Discount</Text>
-            <FontAwesome
-              name="rupee"
-              color={Colors.gray_100}
-              style={styles.rupee}
-            />
-            <MaterialIcons
-              name="keyboard-arrow-down"
-              color={Colors.gray_100}
-              style={styles.discountDropDown}
-            />
-          </View>
-        </View>
-      </View>
-      <View style={styles.SaveFlex}>
-        <MaterialIcons
-          name="add"
-          color={Colors.darkPurple}
-          style={styles.addIcon}
-        />
-        <Text style={styles.saveText}>Save and Add item</Text>
-      </View>
-      <View style={styles.totalFlex}>
-        <Text style={styles.totalText}>Total</Text>
-        <Text style={styles.totalText}>₹ 0</Text>
-      </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={addInvoice}
-        onRequestClose={() => {
-          setAddInvoice(!addInvoice);
-        }}>
-        <TouchableOpacity onPressIn={() => setAddInvoice(!addInvoice)}>
-          <LinearGradient
-            colors={[Colors.darkPurple, Colors.lightPurple]}
-            style={styles.gradientModal}>
-            <View style={styles.modalContainer}>
-              <MaterialCommunityIcons
-                name="check-decagram-outline"
-                color={Colors.white}
-                style={styles.checkIcon}
-              />
-              <Text style={styles.successText}>Success</Text>
-              <Text style={styles.invoiceText}>Invoice added successfully</Text>
-              <TouchableOpacity>
-                <Text style={styles.buttonColorText}>View Invoice</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.buttonTextModal}>Go to Homepage</Text>
-              </TouchableOpacity>
+              </View>
             </View>
-          </LinearGradient>
-        </TouchableOpacity>
-      </Modal>
-      <TouchableOpacity
-        style={styles.buttonBackground}
-        onPressIn={() => setAddInvoice(!addInvoice)}>
-        <Text style={styles.buttonText}>Add Invoice</Text>
-      </TouchableOpacity>
+          </View>
+          <View style={styles.SaveFlex}>
+            <MaterialIcons
+              name="add"
+              color={Colors.darkPurple}
+              style={styles.addIcon}
+            />
+            <Text style={styles.saveText}>Save and Add item</Text>
+          </View>
+          <View style={styles.totalFlex}>
+            <Text style={styles.totalText}>Total</Text>
+            <Text style={styles.totalText}>₹ 0</Text>
+          </View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={addInvoice}
+            onRequestClose={() => {
+              setAddInvoice(!addInvoice);
+            }}>
+            <TouchableOpacity onPressIn={() => setAddInvoice(!addInvoice)}>
+              <LinearGradient
+                colors={[Colors.darkPurple, Colors.lightPurple]}
+                style={styles.gradientModal}>
+                <View style={styles.modalContainer}>
+                  <MaterialCommunityIcons
+                    name="check-decagram-outline"
+                    color={Colors.white}
+                    style={styles.checkIcon}
+                  />
+                  <Text style={styles.successText}>Success</Text>
+                  <Text style={styles.invoiceText}>
+                    Invoice added successfully
+                  </Text>
+                  <TouchableOpacity>
+                    <Text style={styles.buttonColorText}>View Invoice</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={styles.buttonTextModal}>Go to Homepage</Text>
+                  </TouchableOpacity>
+                </View>
+              </LinearGradient>
+            </TouchableOpacity>
+          </Modal>
+          <TouchableOpacity
+            style={styles.buttonBackground}
+            onPressIn={() => setAddInvoice(!addInvoice)}>
+            <Text style={styles.buttonText}>Add Invoice</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </ScrollView>
   );
 };
@@ -321,16 +343,21 @@ const styles = StyleSheet.create({
   },
   flexContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 50,
-    marginHorizontal: '2%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    gap: 70,
+    // marginHorizontal: '2%',
     // marginVertical: '3%',
     marginTop: '3%',
     paddingBottom: '3%',
     borderBottomWidth: 1,
-    width: '90%',
+    width: '100%',
     borderBottomColor: Colors.gray_300,
+  },
+  FlexBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   leftFlexText: {
     flexDirection: 'row',
@@ -350,6 +377,9 @@ const styles = StyleSheet.create({
   rightFlexText: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  rightText: {
+    justifyContent: 'flex-end',
   },
   amountText: {
     color: Colors.green_200,
@@ -424,7 +454,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.gray_100,
   },
-
   dropDownTextColor: {
     color: Colors.slate_500,
     fontSize: 16,
@@ -439,7 +468,7 @@ const styles = StyleSheet.create({
     marginLeft: '45%',
     marginVertical: '2%',
     fontSize: 15,
-    fontWeight: '400',
+    fontWeight: '500',
     color: Colors.green_200,
   },
   smallFlexContainer: {
@@ -473,12 +502,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   totalFlex: {
-    marginHorizontal: '5%',
     marginBottom: '5%',
     paddingVertical: '4%',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderColor: Colors.black,
+    width: '100%',
+    borderBottomWidth: 0.5,
+    borderTopWidth: 0.9,
+    borderColor: Colors.gray_200,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -486,7 +515,7 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
     fontSize: 20,
     fontWeight: '500',
-    marginHorizontal: '3%',
+    marginHorizontal: '7%',
   },
   gradientModal: {
     marginTop: '50%',

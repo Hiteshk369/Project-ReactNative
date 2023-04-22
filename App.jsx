@@ -5,16 +5,15 @@ import {OtpKey, OtpVerification} from './screens/OTP';
 
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import MainNavigation from './Navigation/MainNavigation';
 
 store.subscribe(() => store.getState());
 
 const App = () => {
-  console.log(store);
   return (
     <Provider store={store}>
-      <HomeStack />
+      <MainNavigation />
     </Provider>
-    // <ConsultationCompleted />
   );
 };
 

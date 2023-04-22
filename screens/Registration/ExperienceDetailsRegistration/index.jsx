@@ -17,6 +17,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useDispatch} from 'react-redux';
 
 const instituteOptions = [
   {
@@ -61,7 +62,7 @@ const ExperienceDetailsRegistration = () => {
     'Select additional specialization',
   );
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <LinearGradient
       colors={[Colors.darkPurple, Colors.lightPurple]}
@@ -302,7 +303,16 @@ const ExperienceDetailsRegistration = () => {
             </View>
           </View>
           <View style={styles.saveButtonContainer}>
-            <SaveButton nextScreen="Home" />
+            <TouchableOpacity
+              onPressIn={() =>
+                dispatch({
+                  type: 'SET_REGISTER_USER',
+                  userRegistered: true,
+                })
+              }
+              style={styles.buttonBackground}>
+              <Text style={styles.buttonText}>Save & Proceed</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -494,6 +504,21 @@ const styles = StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     marginBottom: '15%',
+  },
+  buttonBackground: {
+    margin: 5,
+    width: '98%',
+    paddingVertical: 15,
+    backgroundColor: Colors.orange,
+    borderRadius: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: Colors.white,
   },
 });
 export default ExperienceDetailsRegistration;
