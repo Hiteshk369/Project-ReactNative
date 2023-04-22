@@ -702,6 +702,8 @@ const getTabBarVisibility = route => {
       return 'none';
     case 'Immunization':
       return 'none';
+    case 'AddInVoice':
+      return 'none';
     default:
       return 'flex';
   }

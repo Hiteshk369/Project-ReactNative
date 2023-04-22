@@ -151,7 +151,7 @@ const PatientsMain = ({navigation}) => {
             : styles.headerButton
         }>
         {toggleCheckBox === 'prescription' ? (
-          <E_PrescriptionOptions screen="preview" />
+          <E_PrescriptionOptions />
         ) : (
           <HandwrittenOptions />
         )}

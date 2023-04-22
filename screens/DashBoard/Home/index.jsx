@@ -341,9 +341,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: '1%',
     borderRadius: 20,
-    borderWidth: 0.1,
+    borderWidth: 0.5,
     borderColor: Colors.gray_200,
-    elevation: 3,
+    backgroundColor: Colors.white,
+    elevation: 4,
   },
   dashboardButtonText: {
     color: Colors.gray_800,

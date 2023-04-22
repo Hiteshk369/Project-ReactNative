@@ -7,6 +7,7 @@ import StepsIndicator from './StepsIndicator';
 import PatientsData from './PatientsData';
 import ConsultationCard from './ConsultationCard';
 import MedicationOptions from './MedicationOptions';
+import ConsultationOptions from './ConsultationOptions';
 
 export {
   FormNavigation,
@@ -18,4 +19,5 @@ export {
   PatientsData,
   ConsultationCard,
   MedicationOptions,
+  ConsultationOptions,
 };

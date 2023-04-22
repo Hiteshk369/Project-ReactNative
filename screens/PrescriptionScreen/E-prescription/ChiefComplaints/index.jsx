@@ -113,16 +113,16 @@ const ChiefComplaints = ({navigation}) => {
             </View>
             <View style={styles.mainLayout}>
               <View style={styles.rightFull}>
-                <View style={{position: 'absolute', top: 0}}>
-                  <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
-                    <MaterialIcons
-                      name="arrow-back-ios"
-                      color={Colors.black}
-                      style={styles.backIcon}
-                    />
-                  </Pressable>
-                  <Text style={styles.headerText}>Chief Complaints</Text>
-                </View>
+                {/* <View style={{position: 'absolute', top: 0}}> */}
+                <Pressable onPressIn={() => navigation.navigate('Prescribe')}>
+                  <MaterialIcons
+                    name="arrow-back-ios"
+                    color={Colors.black}
+                    style={styles.backIcon}
+                  />
+                </Pressable>
+                <Text style={styles.headerText}>Chief Complaints</Text>
+                {/* </View> */}
                 <TextInput
                   placeholderTextColor={Colors.slate_600}
                   style={styles.inputField}
@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
   },
   rowContainer: {
     flexDirection: 'row',
-    height: 'auto',
   },
   sideBar: {
     width: '20%',
@@ -227,7 +226,6 @@ const styles = StyleSheet.create({
   rightFull: {
     backgroundColor: Colors.white,
     height: '100%',
-    position: 'relative',
   },
   mainLayout: {
     width: '100%',
